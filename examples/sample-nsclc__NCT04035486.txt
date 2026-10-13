@@ -1,0 +1,188 @@
+
+sample-nsclc  vs  NCT04035486  A Study of Osimertinib With or Without Chemotherapy as 1st Line Treatment in Patients With Mutated Epidermal Growth Factor Receptor Non-Small Cell Lung Cancer (FLAURA2)
+Trial criteria: ctgov_api (2026-10-13T14:41:58+00:00) | note given to model: full
+Overall: More information needed
+Criteria: 31 total | 16 support enrollment | 0 block | 15 unresolved (12 missing from the note, 3 to confirm at screening) | 5 low confidence
+Citations: 26/26 quotes found verbatim in the note; 0 judgment(s) downgraded to 'insufficient information'
+
+  [+] supports enrollment   [x] blocks enrollment   [?] unresolved
+
+[+] INC-01 (inclusion) Age at least 18 Years
+      Met | confidence high
+      The patient is 62 years old, which is at least 18 years.
+      patient value: 62 years
+      calculation (recomputed, agrees): 62 >= 18 Years is true
+      "62-year-old woman" [148:165]
+[+] INC-02 (inclusion) Age at most 110 Years
+      Met | confidence high
+      The patient is 62 years old, which is at most 110 years.
+      patient value: 62 years
+      calculation (recomputed, agrees): 62 <= 110 Years is true
+      "62-year-old woman" [148:165]
+[+] INC-03 (inclusion) The patient is male or female.
+      Met | confidence high
+      The note identifies the patient as female.
+      "62-year-old woman" [148:165]
+[+] INC-04 (inclusion) The patient is at least 18 years of age, or is from Japan and is at least 20 years of age.
+      Met | confidence high
+      At 62 years old, the patient meets the at-least-18-years branch of this criterion; the Japan-specific branch is not needed.
+      patient value: 62 years
+      calculation (recomputed, agrees): 62 >= 18 years is true
+      "62-year-old woman" [148:165]
+[+] INC-05 (inclusion) The patient has pathologically confirmed non-squamous non-small cell lung cancer; non-small cell lung cancer of mixed histology is allowed.
+      Met | confidence medium
+      The biopsy confirmed lung adenocarcinoma, which is a non-squamous non-small cell lung cancer histology.
+      "CT-guided biopsy on 2026-08-04 confirmed lung adenocarcinoma." [364:425]
+[?] INC-06 (inclusion) The patient has newly diagnosed locally advanced non-small cell lung cancer at clinical stage IIIB or IIIC, metastatic non-small cell lung cancer at clinical stage IVA or IVB, or recurrent non-small cell lung cancer, and the disease is not amenable to curative surgery or radiotherapy.
+      Insufficient information | confidence medium
+      The note establishes newly diagnosed metastatic stage IV lung cancer but does not state whether it is not amenable to curative surgery or radiotherapy.
+      already established: newly diagnosed metastatic stage IV lung cancer
+      "CT-guided biopsy on 2026-08-04 confirmed lung adenocarcinoma." [364:425]
+      "PET-CT on 2026-08-12 showed bilateral adrenal metastases; stage IV disease." [426:501]
+[+] INC-07 (inclusion) The tumor harbors Ex19del or L858R, either alone or in combination with other epidermal growth factor receptor mutations, which may include T790M.
+      Met | confidence high
+      Molecular testing detected an EGFR exon 19 deletion, meeting the Ex19del requirement.
+      "EGFR exon 19 deletion detected" [580:610]
+[?] INC-08 (inclusion) The patient has untreated advanced non-small cell lung cancer that is not amenable to curative surgery or radiotherapy.
+      Insufficient information | confidence medium
+      The note establishes untreated advanced lung cancer but does not state whether it is not amenable to curative surgery or radiotherapy.
+      already established: untreated advanced lung cancer
+      "She has not yet received any systemic therapy for lung cancer." [650:712]
+      "Stage IV EGFR-mutated lung adenocarcinoma, treatment-naive." [1602:1661]
+[+] INC-09 (inclusion) The patient's WHO performance status is 0 to 1 at screening.
+      Met | confidence high
+      The documented ECOG performance status is 1, which is within the required 0 to 1 range and uses the WHO-equivalent performance-status scale.
+      patient value: ECOG performance status 1
+      calculation (recomputed, agrees): 1 between [0, 1] is true
+      "ECOG performance status 1." [1200:1226]
+[?] INC-10 (inclusion) The patient has had no clinically significant deterioration in WHO performance status during the previous 2 weeks.
+      Insufficient information | confidence low
+      The note documents the current performance status but does not address deterioration during the previous 2 weeks.
+[?] INC-11 (inclusion) The patient's life expectancy is greater than 12 weeks at Day 1.
+      Insufficient information | confidence low
+      The note does not state the patient's life expectancy.
+      settled in person at screening, not from the note
+[?] INC-12 (inclusion) The patient is willing to use contraception as appropriate during the study and for a period of time after discontinuing study treatment.
+      Insufficient information | confidence high
+      The note does not document willingness to use contraception.
+      settled in person at screening, not from the note
+[?] EXC-01 (exclusion) The patient has spinal cord compression or unstable brain metastases, except that patients with stable brain metastases who have completed definitive therapy, are not on steroids, and have a stable neurological status for at least 2 weeks after completion of definitive therapy and steroids can be enrolled; patients with asymptomatic brain metastases can be eligible if, in the Investigator's opinion, immediate definitive treatment is not indicated.
+      Insufficient information | confidence medium
+      The MRI excludes intracranial metastases, but the note does not address spinal cord compression.
+      already established: No intracranial metastases on MRI
+      "Brain MRI on 2026-08-14 showed no intracranial metastases." [502:560]
+[?] EXC-02 (exclusion) The patient has a past medical history of interstitial lung disease, drug-induced interstitial lung disease, or radiation pneumonitis that required steroid treatment, or has any evidence of clinically active interstitial lung disease.
+      Insufficient information | confidence medium
+      The patient denies a history of interstitial lung disease or pneumonitis, but clinically active disease and the specified radiation-pneumonitis details are not fully documented.
+      already established: Denies history of interstitial lung disease or pneumonitis
+      "She denies any history of interstitial lung disease or pneumonitis." [946:1013]
+[?] EXC-03 (exclusion) The patient has evidence of severe or uncontrolled systemic disease, including uncontrolled hypertension or active bleeding diathesis, which in the Investigator's opinion makes participation undesirable or would jeopardize compliance with the protocol.
+      Insufficient information | confidence medium
+      Hypertension is documented as controlled, but the note does not establish absence of all other severe or uncontrolled systemic disease or the required Investigator assessment.
+      already established: Hypertension is well controlled
+      settled in person at screening, not from the note
+      "Hypertension, well controlled on lisinopril." [736:780]
+[?] EXC-04 (exclusion) The patient has an active infection, including hepatitis B, hepatitis C, or HIV; active infection includes receiving treatment for infection, and screening for chronic conditions is not required.
+      Insufficient information | confidence high
+      The note does not address whether the patient has an active infection or is receiving treatment for one.
+[+] EXC-05 (exclusion) The patient has QT prolongation or any clinically important abnormality in cardiac rhythm.
+      Not met | confidence high
+      The ECG documents normal sinus rhythm and a QTc of 438 ms, so the note does not show QT prolongation or a clinically important rhythm abnormality.
+      "ECG on 2026-09-15: normal sinus rhythm, QTc 438 ms." [1528:1579]
+[+] EXC-06 (exclusion) The patient's absolute neutrophil count is below the lower limit of normal.
+      Not met | confidence medium  !assumed_reference_range
+      The ANC is 3.4 x 10^9/L, which is not below the assumed adult lower limit of normal of 1.5 x 10^9/L.
+      patient value: 3.4 x 10^9/L
+      calculation (recomputed, agrees): 3.4 < 1.5 (1 x 1.5) x 10^9/L is false; the reference limit 1.5 is a typical adult value, not from the note, and the result holds if the lab's limit is 25% lower or higher
+      "absolute neutrophil count 3.4 x 10^9/L" [1391:1429]
+[+] EXC-07 (exclusion) The patient's platelet count is below the lower limit of normal.
+      Not met | confidence medium  !assumed_reference_range
+      The platelet count is 245 x 10^9/L, which is not below the assumed adult lower limit of normal of 150 x 10^9/L.
+      patient value: 245 x 10^9/L
+      calculation (recomputed, agrees): 245 < 150 (1 x 150) x 10^9/L is false; the reference limit 150 is a typical adult value, not from the note, and the result holds if the lab's limit is 25% lower or higher
+      "platelets 245 x 10^9/L" [1431:1453]
+[+] EXC-08 (exclusion) The patient's hemoglobin is below 90 g/L.
+      Not met | confidence high
+      Hemoglobin is 11.8 g/dL, equivalent to 118 g/L, which is not below 90 g/L.
+      patient value: 11.8 g/dL
+      calculation (recomputed, agrees): 11.8 g/dL = 118 g/L; 118 < 90 g/L is false
+      "Hemoglobin 11.8 g/dL" [1369:1389]
+[?] EXC-09 (exclusion) The patient has used granulocyte colony stimulating factor support, platelet transfusion, or blood transfusion to meet the laboratory criteria.
+      Insufficient information | confidence low
+      The note does not state whether any of the specified supportive treatments were used to meet laboratory criteria.
+[+] EXC-10 (exclusion) The patient's ALT is greater than 2.5 x ULN when there are no demonstrable liver metastases, or greater than 5 x ULN in the presence of liver metastases.
+      Not met | confidence medium  !assumed_reference_range
+      ALT is 28 U/L, below the lower exclusion threshold of 2.5 times the assumed ULN, so it is not greater than either conditional threshold.
+      patient value: 28 U/L
+      calculation (recomputed, agrees): 28 > 100 (2.5 x 40) U/L is false; the reference limit 40 is a typical adult value, not from the note, and the result holds if the lab's limit is 25% lower or higher
+      "ALT 28 U/L" [1477:1487]
+[+] EXC-11 (exclusion) The patient's AST is greater than 2.5 x ULN when there are no demonstrable liver metastases, or greater than 5 x ULN in the presence of liver metastases.
+      Not met | confidence medium  !assumed_reference_range
+      AST is 31 U/L, below the lower exclusion threshold of 2.5 times the assumed ULN, so it is not greater than either conditional threshold.
+      patient value: 31 U/L
+      calculation (recomputed, agrees): 31 > 100 (2.5 x 40) U/L is false; the reference limit 40 is a typical adult value, not from the note, and the result holds if the lab's limit is 25% lower or higher
+      "AST 31 U/L" [1489:1499]
+[+] EXC-12 (exclusion) The patient's total bilirubin is greater than 1.5 x ULN when there are no liver metastases, or greater than 3 x ULN in the presence of documented Gilbert's syndrome with unconjugated hyperbilirubinemia or liver metastases.
+      Not met | confidence medium  !assumed_reference_range
+      Total bilirubin is 0.6 mg/dL, below the lower exclusion threshold of 1.5 times the assumed ULN, so it is not greater than either conditional threshold.
+      patient value: 0.6 mg/dL
+      calculation (recomputed, agrees): 0.6 > 1.8 (1.5 x 1.2) mg/dL is false; the reference limit 1.2 is a typical adult value, not from the note, and the result holds if the lab's limit is 25% lower or higher
+      "total bilirubin 0.6 mg/dL" [1501:1526]
+[?] EXC-13 (exclusion) The patient's creatinine clearance is below 60 mL/min, calculated by the Cockcroft and Gault equation or a 24-hour urine collection.
+      Insufficient information | confidence medium
+      The note does not provide the required creatinine clearance measurement or calculation.
+      already established: Serum creatinine 0.9 mg/dL is documented, but creatinine clearance is not calculated.
+      "Creatinine 0.9 mg/dL." [1455:1476]
+[?] EXC-14 (exclusion) The patient has refractory nausea and vomiting, chronic gastrointestinal disease, inability to swallow the formulated product, or previous significant bowel resection that would preclude adequate absorption of osimertinib.
+      Insufficient information | confidence high
+      The note does not address the gastrointestinal conditions or swallowing and bowel-resection history listed in this exclusion.
+[+] EXC-15 (exclusion) The patient has previously received systemic anti-cancer therapy for advanced non-small cell lung cancer that was not amenable to curative surgery or radiation, including chemotherapy, biologic therapy, immunotherapy, or an investigational drug; prior adjuvant or neoadjuvant therapy, or definitive radiation or chemoradiation with or without immunotherapy, biologic therapy, or investigational agents, is permitted only if treatment was completed at least 12 months before development of recurrent disease.
+      Not met | confidence high
+      The note states that she has not received systemic therapy for her lung cancer, so prior systemic therapy for advanced NSCLC is not shown.
+      "She has not yet received any systemic therapy for lung cancer." [650:712]
+[+] EXC-16 (exclusion) The patient has previously received an epidermal growth factor receptor tyrosine kinase inhibitor.
+      Not met | confidence high
+      The note states that she has not received systemic therapy for lung cancer, which does not show prior EGFR-TKI treatment.
+      "She has not yet received any systemic therapy for lung cancer." [650:712]
+[?] EXC-17 (exclusion) The patient has undergone major surgery within 4 weeks before the first dose of investigational product, except that placement of vascular access, biopsy via mediastinoscopy, and biopsy via video-assisted thoracoscopic surgery are permitted.
+      Insufficient information | confidence low
+      The note mentions a remote lumpectomy but does not establish recent major surgery relative to the first investigational dose.
+      already established: A lumpectomy was performed in 2014.
+      "Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence." [847:945]
+[?] EXC-18 (exclusion) The patient has received radiotherapy to more than 30% of the bone marrow or radiotherapy with a wide field within 4 weeks before the first dose of investigational product.
+      Insufficient information | confidence low
+      The note documents remote breast radiation but does not provide the qualifying radiation extent or timing relative to the first dose.
+      already established: Breast radiation was given in 2014.
+      "Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence." [847:945]
+[?] EXC-19 (exclusion) The patient has a history of hypersensitivity to active or inactive excipients of the investigational product or to drugs with a chemical structure or class similar to the investigational product.
+      Insufficient information | confidence high
+      The note does not address hypersensitivity to the investigational product or similar drugs.
+
+Key reasons:
+  - Meets inclusion criterion: Age at least 18 Years (The patient is 62 years old, which is at least 18 years.)
+  - Meets inclusion criterion: Age at most 110 Years (The patient is 62 years old, which is at most 110 years.)
+  - Meets inclusion criterion: The patient is male or female. (The note identifies the patient as female.)
+  - Meets inclusion criterion: The patient is at least 18 years of age, or is from Japan and is at least 20 years of age. (At 62 years old, the patient meets the at-least-18-years branch of this criterion; the Japan-specific branch is not needed.)
+  - Meets inclusion criterion: The tumor harbors Ex19del or L858R, either alone or in combination with other epidermal growth factor receptor mutations, which may include T790M. (Molecular testing detected an EGFR exon 19 deletion, meeting the Ex19del requirement.)
+
+To check in the record (12):
+  - Check inclusion criterion "The patient has newly diagnosed locally advanced non-small cell lung cancer at clinical stage IIIB or IIIC, metastatic non-small cell lung cancer at clinical stage IVA or IVB, or recurrent non-small cell lung cancer, and the disease is not amenable to curative surgery or radiotherapy.": Whether the disease is not amenable to curative surgery or radiotherapy. Already established: newly diagnosed metastatic stage IV lung cancer.
+  - Check inclusion criterion "The patient has untreated advanced non-small cell lung cancer that is not amenable to curative surgery or radiotherapy.": Whether the advanced disease is not amenable to curative surgery or radiotherapy. Already established: untreated advanced lung cancer.
+  - Check inclusion criterion "The patient has had no clinically significant deterioration in WHO performance status during the previous 2 weeks.": Documentation of whether there has been any clinically significant deterioration in WHO performance status during the previous 2 weeks.
+  - Check exclusion criterion "The patient has spinal cord compression or unstable brain metastases, except that patients with stable brain metastases who have completed definitive therapy, are not on steroids, and have a stable neurological status for at least 2 weeks after completion of definitive therapy and steroids can be enrolled; patients with asymptomatic brain metastases can be eligible if, in the Investigator's opinion, immediate definitive treatment is not indicated.": Assessment for spinal cord compression and documentation sufficient to exclude unstable brain metastases based on the full criterion. Already established: No intracranial metastases on MRI.
+  - Check exclusion criterion "The patient has a past medical history of interstitial lung disease, drug-induced interstitial lung disease, or radiation pneumonitis that required steroid treatment, or has any evidence of clinically active interstitial lung disease.": Assessment for clinically active interstitial lung disease and confirmation regarding radiation pneumonitis that required steroid treatment. Already established: Denies history of interstitial lung disease or pneumonitis.
+  - Check exclusion criterion "The patient has an active infection, including hepatitis B, hepatitis C, or HIV; active infection includes receiving treatment for infection, and screening for chronic conditions is not required.": Assessment for active infection, including hepatitis B, hepatitis C, HIV, or treatment for an infection.
+  - Check exclusion criterion "The patient has used granulocyte colony stimulating factor support, platelet transfusion, or blood transfusion to meet the laboratory criteria.": Whether the patient has received granulocyte colony-stimulating factor support, platelet transfusion, or blood transfusion to meet laboratory criteria.
+  - Check exclusion criterion "The patient's creatinine clearance is below 60 mL/min, calculated by the Cockcroft and Gault equation or a 24-hour urine collection.": Creatinine clearance calculated by Cockcroft and Gault or measured by 24-hour urine collection. Already established: Serum creatinine 0.9 mg/dL is documented, but creatinine clearance is not calculated..
+  - Check exclusion criterion "The patient has refractory nausea and vomiting, chronic gastrointestinal disease, inability to swallow the formulated product, or previous significant bowel resection that would preclude adequate absorption of osimertinib.": History of refractory nausea or vomiting, chronic gastrointestinal disease, difficulty swallowing the formulated product, or significant bowel resection affecting osimertinib absorption.
+  - Check exclusion criterion "The patient has undergone major surgery within 4 weeks before the first dose of investigational product, except that placement of vascular access, biopsy via mediastinoscopy, and biopsy via video-assisted thoracoscopic surgery are permitted.": Whether the patient has had major surgery within 4 weeks before the first dose of investigational product, and the date of the first dose. Already established: A lumpectomy was performed in 2014..
+  - Check exclusion criterion "The patient has received radiotherapy to more than 30% of the bone marrow or radiotherapy with a wide field within 4 weeks before the first dose of investigational product.": Whether radiotherapy involving more than 30% of bone marrow or a wide radiation field was given within 4 weeks before the first dose of investigational product, and the date of the first dose. Already established: Breast radiation was given in 2014..
+  - Check exclusion criterion "The patient has a history of hypersensitivity to active or inactive excipients of the investigational product or to drugs with a chemical structure or class similar to the investigational product.": History of hypersensitivity to the investigational product, its excipients, or chemically or pharmacologically similar drugs.
+
+To confirm at the screening visit (3):
+  - Confirm at screening "The patient's life expectancy is greater than 12 weeks at Day 1.": Clinician assessment or documentation of life expectancy at Day 1 showing it is greater than 12 weeks.
+  - Confirm at screening "The patient is willing to use contraception as appropriate during the study and for a period of time after discontinuing study treatment.": Confirmation that the patient is willing to use contraception during the study and for the required period after treatment discontinuation.
+  - Confirm at screening "The patient has evidence of severe or uncontrolled systemic disease, including uncontrolled hypertension or active bleeding diathesis, which in the Investigator's opinion makes participation undesirable or would jeopardize compliance with the protocol.": Assessment of other severe or uncontrolled systemic disease, active bleeding diathesis, active infection, and the Investigator's opinion about trial participation and protocol compliance. Already established: Hypertension is well controlled.
+
+Screening aid only. This tool does not make enrollment decisions; every determination must be reviewed and confirmed by a physician.
+

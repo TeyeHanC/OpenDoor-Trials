@@ -158,7 +158,7 @@ def test_agreeing_threshold_check_is_recorded_as_confirmed(settings, patient, tr
     c, _ = _one(settings, patient, trial, "INC-02", judgment("INC-02", "met", ["62-year-old"], threshold_check=AGE_OK))
     assert c.verdict == "met" and c.flags == [] and c.confidence == "high"
     assert c.checks[0]["status"] == "confirmed" and c.checks[0]["computed"] is True
-    assert c.checks[0]["detail"] == "62 >= 18.0 years is true"
+    assert c.checks[0]["detail"] == "62 >= 18 years is true"
 
 
 def test_unit_spellings_that_mean_the_same_are_not_treated_as_a_conversion(settings, patient, trial):
@@ -179,7 +179,7 @@ def test_wrong_arithmetic_sets_the_determination_aside(settings, patient, trial)
     c, run = _one(settings, patient, trial, "EXC-02", judgment("EXC-02", "met", ["ALT 28 U/L"], segment="S5", threshold_check=wrong))
     assert c.model_verdict == "met" and c.verdict == "unknown" and c.effect == "unresolved" and c.confidence == "low"
     assert c.flags == ["calculation_mismatch"] and c.checks[0]["status"] == "mismatch"
-    assert "28 > 100.0 (2.5 x 40)" in c.checks[0]["detail"] and "did not match the program's" in c.missing_info
+    assert "28 > 100 (2.5 x 40)" in c.checks[0]["detail"] and "did not match the program's" in c.missing_info
     assert run.summary.overall == "needs_more_info"  # a wrong "exclusion applies" must not block enrollment
 
 
@@ -203,7 +203,7 @@ def test_units_are_converted_by_the_program_or_the_check_is_marked_uncheckable(s
             "reference_limit_assumed": False}
     hb = LLMThresholdCheck(value=11.8, value_unit="g/dL", analyte="hemoglobin", satisfied=False, **base)
     done = run_threshold_check(hb, "Hemoglobin 11.8 g/dL")
-    assert done.status == "confirmed" and done.detail == "11.8 g/dL = 118 g/L; 118 < 90.0 g/L is false" and done.inputs_not_in_note == []
+    assert done.status == "confirmed" and done.detail == "11.8 g/dL = 118 g/L; 118 < 90 g/L is false" and done.inputs_not_in_note == []
     no_analyte = run_threshold_check(hb.model_copy(update={"analyte": None}), "Hemoglobin 11.8 g/dL")
     assert no_analyte.status == "not_checkable" and no_analyte.computed is None
 
@@ -667,3 +667,26 @@ def test_established_part_and_answer_source_reach_the_stored_result(settings, pa
     assert c.established_part == "no HIV history" and c.answer_source == "medical_record"
     met, _ = _one(settings, patient, trial, "INC-03", judgment("INC-03", "met", ["ECOG performance status 1"], established_part="ignored"))
     assert met.established_part is None
+
+
+def test_calculation_text_has_no_floating_point_noise():
+    from trialmatch.checks import run_threshold_check
+    from trialmatch.models import LLMThresholdCheck
+
+    bili = LLMThresholdCheck(value=0.6, value_unit="mg/dL", comparator=">", threshold=1.5, threshold_upper=None, threshold_unit=None,
+                             reference_limit=1.2, reference_limit_assumed=True, analyte=None, satisfied=False)
+    assert run_threshold_check(bili, "total bilirubin 0.6 mg/dL").detail.startswith("0.6 > 1.8 (1.5 x 1.2) mg/dL is false")
+    score = LLMThresholdCheck(value=1, value_unit=None, comparator="between", threshold=0, threshold_upper=1, threshold_unit=None,
+                              reference_limit=None, reference_limit_assumed=False, analyte=None, satisfied=True)
+    assert run_threshold_check(score, "ECOG performance status 1").detail == "1 between [0, 1] is true"
+
+
+def test_limit_written_into_both_fields_is_read_once():
+    from trialmatch.checks import run_threshold_check
+    from trialmatch.models import LLMThresholdCheck
+
+    platelets = LLMThresholdCheck(value=245, value_unit="x 10^9/L", comparator="<", threshold=150, threshold_upper=None, threshold_unit=None,
+                                  reference_limit=150, reference_limit_assumed=True, analyte=None, satisfied=False)
+    done = run_threshold_check(platelets, "platelets 245 x 10^9/L")
+    assert done.status == "confirmed" and done.computed is False and done.detail.startswith("245 < 150 (1 x 150) x 10^9/L is false")
+    assert done.inputs["threshold"] == 1.0

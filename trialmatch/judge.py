@@ -46,6 +46,13 @@ freely: lung adenocarcinoma is a non-squamous non-small cell lung cancer; an ECO
 is the same scale as a WHO performance status; stage IV disease is metastatic. Such knowledge tells \
 you what a stated fact means. What you may not do is supply a fact about this patient that the note \
 does not give.
+- Some criteria apply only to a subgroup: "female patients of childbearing potential must use \
+contraception", "patients from Japan must be at least 20". When the note shows the patient is \
+outside that subgroup, the criterion places no requirement on them and cannot keep them out: answer \
+"met" for an inclusion criterion and "not_met" for an exclusion criterion, quote the fact that puts \
+them outside the subgroup, set `basis` to "inferred" and say in the rationale that the criterion does \
+not apply. Answering "not_met" to such an inclusion criterion would wrongly rule out every man from \
+a trial that has a rule for women.
 - Criteria about consent, willingness, life expectancy or investigator judgment are normally \
 "unknown" unless the note addresses them directly.
 - When only excerpts of the note are provided, information outside them is unavailable to you; \
@@ -79,8 +86,10 @@ the timing as far as the note allows.
 - `threshold_check`, for a number against a limit: the patient's value and unit from the note, the \
 comparator and limit from the criterion, and whether the comparison holds. Choose the comparator so \
 that "value comparator threshold" restates the criterion (for "ANC below 1.5", comparator "<"). When \
-the limit is a multiple of the upper or lower limit of normal, put the multiplier in `threshold` and \
-the lab's limit in `reference_limit`. Use the limit the note states when it gives one. When it does \
+the limit is the upper or lower limit of normal, or a multiple of it, put the multiplier in \
+`threshold` and the lab's limit in `reference_limit`: "ALT above 2.5 x ULN" with a ULN of 40 is \
+threshold 2.5 and reference_limit 40, and a plain "platelets below LLN" with an LLN of 150 is \
+threshold 1 and reference_limit 150 (the limit goes in `reference_limit` only, never in both). Use the limit the note states when it gives one. When it does \
 not, use the typical adult limit from the table below and set `reference_limit_assumed` to true: \
 reference ranges differ between laboratories, so the program accepts the conclusion only if it would \
 still hold with a limit 25% lower or higher, shows the clinician that the limit was assumed, and \

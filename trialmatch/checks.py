@@ -60,7 +60,7 @@ def _same_unit(a: str, b: str) -> bool:
 
 
 def _number_text(value: float) -> str:
-    return f"{value:g}"
+    return f"{round(value, 6):g}"
 
 
 def run_time_check(check: LLMTimeCheck, note: str) -> Check:
@@ -93,6 +93,11 @@ def run_threshold_check(check: LLMThresholdCheck, note: str) -> Check:
     def unchecked(reason: str) -> Check:
         return Check(kind="threshold", inputs=inputs, model_answer=check.satisfied, status="not_checkable", detail=reason)
 
+    if check.reference_limit is not None and check.threshold == check.reference_limit and check.threshold_upper is None:
+        # The limit was written into both fields ("below LLN" given as 150 x 150). A multiplier
+        # equal to the limit itself is not a real criterion, so read it as the limit, once.
+        check = check.model_copy(update={"threshold": 1.0})
+        inputs = check.model_dump(exclude={"satisfied"})
     value, converted = check.value, ""
     if check.value_unit and check.threshold_unit and check.reference_limit is None:
         if not _same_unit(check.value_unit, check.threshold_unit):
@@ -126,7 +131,10 @@ def run_threshold_check(check: LLMThresholdCheck, note: str) -> Check:
                 )
             )
             robust = robust and shifted["satisfied"] == computed
-    limit = out.get("effective_threshold", out.get("effective_range"))
+    if "effective_range" in out:
+        limit = "[" + ", ".join(_number_text(bound) for bound in out["effective_range"]) + "]"
+    else:
+        limit = _number_text(out["effective_threshold"])
     unit = check.threshold_unit or check.value_unit or ""
     scaled = f" ({_number_text(check.threshold)} x {_number_text(check.reference_limit)})" if check.reference_limit is not None else ""
     detail = f"{converted}{_number_text(value)} {check.comparator} {limit}{scaled} {unit}".strip() + f" is {'true' if computed else 'false'}"

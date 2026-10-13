@@ -1,0 +1,74 @@
+{
+  "pairs_evaluated": 20,
+  "gold_eligible": 7,
+  "screen_in": {
+    "recall": 0.7143,
+    "precision": 0.4545,
+    "tp": 5,
+    "fp": 6,
+    "fn": 2
+  },
+  "strict": {
+    "recall": 0.1429,
+    "precision": 1.0,
+    "tp": 1,
+    "fp": 0,
+    "fn": 6
+  },
+  "excluded_ruled_out": {
+    "trec_excluded_pairs": 7,
+    "predicted_not_eligible": 3,
+    "rate": 0.4286
+  },
+  "needs_more_info": {
+    "pairs": 10,
+    "share_of_all_pairs": 0.5
+  },
+  "confusion_trec_label_by_prediction": {
+    "eligible": {
+      "possibly_eligible": 1,
+      "needs_more_info": 4,
+      "not_eligible": 2
+    },
+    "excluded": {
+      "possibly_eligible": 0,
+      "needs_more_info": 4,
+      "not_eligible": 3
+    },
+    "not_relevant": {
+      "possibly_eligible": 0,
+      "needs_more_info": 2,
+      "not_eligible": 4
+    }
+  },
+  "citations": {
+    "quotes_total": 142,
+    "quotes_verified": 142,
+    "quote_pass_rate": 1.0,
+    "judgments_needing_evidence": 66,
+    "judgments_downgraded": 0,
+    "judgment_pass_rate": 1.0
+  },
+  "criteria": {
+    "total": 330,
+    "unresolved": 264,
+    "inferred": 24
+  },
+  "config": {
+    "year": 2021,
+    "n": 20,
+    "seed": 13,
+    "sampling": "balanced",
+    "trial_source": "snapshot",
+    "model": "gpt-6-sol",
+    "full_note_max_chars": 20000,
+    "judge_batch_size": 8,
+    "effort": "high",
+    "failed_pairs": 0,
+    "usage": {
+      "requests": 69,
+      "input_tokens": 454390,
+      "output_tokens": 81786
+    }
+  }
+}
