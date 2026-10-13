@@ -73,6 +73,9 @@ class OpenAICompatLLM:
         self.headers = {"Authorization": f"Bearer {key}"}
         self.mode = MODES[0]
         self._ask_for_usage = True
+        # Some gateways cannot combine a model's reasoning with tool calls on this API and say so
+        # in a 400; reasoning is then switched off for requests that offer tools (and only those).
+        self._no_reasoning_with_tools = False
         self._usage = {"requests": 0, "input_tokens": 0, "output_tokens": 0}
         self._usage_lock = threading.Lock()
 
@@ -168,7 +171,12 @@ class OpenAICompatLLM:
             body["stream"] = True
             if self._ask_for_usage:
                 body["stream_options"] = {"include_usage": True}
+            if tools and self._no_reasoning_with_tools:
+                body["reasoning_effort"] = "none"
             status, text, choice, usage = self._post(body)
+            if status == 400 and tools and not self._no_reasoning_with_tools and "reasoning" in text.lower():
+                self._no_reasoning_with_tools = True
+                continue
             if status == 400 and self._ask_for_usage:
                 # Possibly the usage option itself; drop it before giving up on the request shape.
                 self._ask_for_usage = False

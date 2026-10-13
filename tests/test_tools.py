@@ -492,3 +492,21 @@ def test_gateway_timeout_page_is_reported_briefly(settings, monkeypatch):
     llm = _openai_llm(settings, lambda request: httpx.Response(524, text="<!DOCTYPE html><html>...</html>"), monkeypatch)
     with pytest.raises(LLMError, match="524: the gateway returned an HTML error page \\(response timeout\\)"):
         llm.structured(system="s", user_blocks=["x"], schema=LLMJudgmentBatch)
+
+
+def test_openai_endpoint_turns_reasoning_off_only_for_tool_requests_when_told_to(settings, monkeypatch):
+    bodies = []
+
+    def handler(request):
+        body = json.loads(request.content)
+        bodies.append(body)
+        if body.get("tools") and body.get("reasoning_effort") != "none":
+            return httpx.Response(400, json={"error": {"message": "model requires Responses for tool calls with reasoning; use reasoning_effort=none"}})
+        return _chat(content=FINAL_JSON)
+
+    llm = _openai_llm(settings, handler, monkeypatch)
+    llm.structured(system="s", user_blocks=["x"], schema=LLMJudgmentBatch, tools=calculator_tools())
+    llm.structured(system="s", user_blocks=["x"], schema=LLMJudgmentBatch)
+    assert [b.get("reasoning_effort") for b in bodies] == [None, "none", None]
+    # The strict schema and the usage option survive: only reasoning was the problem.
+    assert llm.mode == "schema" and all("stream_options" in b for b in bodies)
