@@ -106,6 +106,7 @@ def compute_metrics(records: list[dict]) -> dict:
         "criteria": {
             "total": sum(r["criteria_total"] for r in records),
             "unresolved": sum(r["criteria_unresolved"] for r in records),
+            "inferred": sum(r["criteria_inferred"] for r in records),
         },
     }
 
@@ -121,6 +122,7 @@ def record_for(run: RunResult, topic: int, label: int) -> dict:
         "criteria_total": len(run.criteria),
         "criteria_blocking": run.summary.counts["blocks"],
         "criteria_unresolved": run.summary.counts["unresolved"],
+        "criteria_inferred": sum(1 for c in run.criteria if c.basis == "inferred"),
         "quotes_total": run.citation_stats.quotes_total,
         "quotes_verified": run.citation_stats.quotes_verified,
         "judgments_needing_evidence": run.citation_stats.judgments_needing_evidence,
@@ -146,6 +148,8 @@ def error_detail(run: RunResult, record: dict, kind: str, base_url: str) -> dict
             "type": c.type,
             "criterion": c.criterion_text,
             "verdict": c.verdict,
+            "effect": c.effect,
+            "used_inference": c.basis == "inferred",
             "confidence": c.confidence,
             "rationale": c.rationale,
             "quotes": [e.quote for e in c.evidence],
@@ -158,6 +162,7 @@ def error_detail(run: RunResult, record: dict, kind: str, base_url: str) -> dict
         "trial_title": run.trial.title,
         "patient_note": run.patient.text,
         "blocking_criteria": [brief(c) for c in run.criteria if c.effect == "blocks"],
+        "supporting_criteria": [brief(c) for c in run.criteria if c.effect == "supports"],
         "unresolved_criteria": [brief(c) for c in run.criteria if c.effect == "unresolved"],
     }
 
@@ -228,18 +233,39 @@ def write_outputs(out_dir, evaluated, failures, metrics: dict, base_url: str) ->
     with (out_dir / "errors.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.writer(handle)
         writer.writerow(
-            ["error_type", "topic", "nct_id", "trec_label", "predicted", "blocking_criteria", "n_unresolved", "review_url", "trial_title"]
+            ["error_type", "topic", "nct_id", "trec_label", "predicted", "blocking_criteria", "inferred_criteria",
+             "n_unresolved", "review_url", "trial_title"]
         )
         for e in errors:
             blocking = " || ".join(
-                f"[{b['criterion_id']} {b['type']} {b['verdict']}, {b['confidence']}] {b['criterion']} -- {b['rationale']} "
+                f"[{b['criterion_id']} {b['type']} {b['verdict']}, {b['confidence']}"
+                f"{', INFERRED' if b['used_inference'] else ''}] {b['criterion']} -- {b['rationale']} "
                 f"-- quotes: {' | '.join(b['quotes'])}"
                 for b in e["blocking_criteria"]
             )
+            inferred = " ".join(
+                b["criterion_id"] for b in e["blocking_criteria"] + e["supporting_criteria"] if b["used_inference"]
+            )
             writer.writerow(
-                [e["error_type"], e["topic"], e["nct_id"], e["label_name"], e["overall"], blocking,
+                [e["error_type"], e["topic"], e["nct_id"], e["label_name"], e["overall"], blocking, inferred,
                  len(e["unresolved_criteria"]), e["review_url"], e["trial_title"]]
             )
+
+    # One row per determination (met / not met) in the misjudged pairs, so each can be
+    # checked on its own; used_inference marks verdicts not backed by a direct quote.
+    with (out_dir / "error_criteria.csv").open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(
+            ["error_type", "topic", "nct_id", "criterion_id", "type", "verdict", "effect", "used_inference",
+             "confidence", "criterion", "rationale", "quotes", "review_url"]
+        )
+        for e in errors:
+            for b in e["blocking_criteria"] + e["supporting_criteria"]:
+                writer.writerow(
+                    [e["error_type"], e["topic"], e["nct_id"], b["criterion_id"], b["type"], b["verdict"], b["effect"],
+                     "yes" if b["used_inference"] else "no", b["confidence"], b["criterion"], b["rationale"],
+                     " | ".join(b["quotes"]), f"{e['review_url']}&criterion={b['criterion_id']}"]
+                )
     return errors
 
 
@@ -272,10 +298,12 @@ def format_report(metrics: dict, errors: list[dict], failures: list[dict], out_d
         "",
         f"Citation check: {c['quotes_verified']}/{c['quotes_total']} quotes found verbatim ({pct(c['quote_pass_rate'])}); "
         f"{c['judgments_downgraded']}/{c['judgments_needing_evidence']} determinations downgraded for lack of a verified quote",
-        f"Criteria judged: {metrics['criteria']['total']}, of which {metrics['criteria']['unresolved']} unresolved",
+        f"Criteria judged: {metrics['criteria']['total']}, of which {metrics['criteria']['unresolved']} unresolved "
+        f"and {metrics['criteria']['inferred']} decided by inference rather than a direct quote",
         "",
         "Errors exported: " + (", ".join(f"{n} {k}" for k, n in Counter(e["error_type"] for e in errors).items()) or "none"),
         f"  {out_dir / 'errors.csv'}   (one row per case, with a link to open it in the review app)",
+        f"  {out_dir / 'error_criteria.csv'} (one row per determination, with a used_inference column)",
         f"  {out_dir / 'errors.jsonl'} (full detail)",
     ]
     return "\n".join(lines)

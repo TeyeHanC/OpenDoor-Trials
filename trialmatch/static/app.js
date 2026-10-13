@@ -331,6 +331,7 @@ function renderCard(c) {
     el("span", { class: `chip ${c.type}`, text: c.type === "inclusion" ? "Inclusion" : "Exclusion" }),
     el("span", { class: "verdict", "data-effect": effect, text: verdictLabel(c.type, verdict) }),
     c.downgraded ? el("span", { class: "badge warn", text: "Evidence not verified" }) : null,
+    c.basis === "inferred" ? el("span", { class: "badge low", text: "Inferred, not directly stated" }) : null,
     c.confidence === "low"
       ? el("span", { class: "badge low", text: "Low confidence — review first" })
       : el("span", { class: "badge conf", text: `${c.confidence} confidence` }),

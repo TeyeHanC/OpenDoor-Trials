@@ -22,6 +22,8 @@ Verdict = Literal["met", "not_met", "unknown"]
 Confidence = Literal["high", "medium", "low"]
 Effect = Literal["supports", "blocks", "unresolved"]
 Overall = Literal["possibly_eligible", "not_eligible", "needs_more_info"]
+# How a met / not_met verdict follows from the quoted text (see the judging prompt).
+Basis = Literal["stated", "inferred", "not_applicable"]
 
 VERDICT_LABELS = {"met": "Met", "not_met": "Not met", "unknown": "Insufficient information"}
 OVERALL_LABELS = {
@@ -95,6 +97,10 @@ class LLMJudgment(BaseModel):
         description="For numeric criteria: the patient's value and unit as written in the note. null otherwise."
     )
     rationale: str = Field(description="One short sentence.")
+    basis: Basis = Field(
+        description="'stated': the quoted text itself says what the criterion asks about. 'inferred': the "
+        "quoted text is a different fact (age, sex) from which the verdict follows. 'not_applicable' for unknown."
+    )
     confidence: Confidence
     missing_info: Optional[str] = Field(
         description="When verdict is 'unknown': what the clinician should look up or ask. null otherwise."
@@ -177,6 +183,9 @@ class CriterionResult(BaseModel):
     evidence: list[Evidence]
     rationale: str
     confidence: Confidence
+    # "inferred": the model reached the verdict from a different stated fact
+    # rather than a passage about the criterion itself. Self-reported by the model.
+    basis: Basis = "stated"
     patient_value: Optional[str] = None
     missing_info: Optional[str] = None
     time_window: Optional[str] = None

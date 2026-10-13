@@ -6,7 +6,7 @@ import pytest
 
 from trialmatch.config import Settings
 from trialmatch.llm import LLMRefusal
-from trialmatch.models import LLMDecomposition, LLMJudgmentBatch, Patient, Trial
+from trialmatch.models import LLMDecomposition, LLMJudgmentBatch, Patient, Trial  # noqa: F401 (re-exported to tests)
 
 NOTE = (
     "Note date: 2026-09-18\n"
@@ -38,6 +38,7 @@ def judgment(cid, verdict, quotes=(), confidence="high", segment="S2", **extra):
         "evidence": [{"segment_id": segment, "quote": q} for q in quotes],
         "patient_value": extra.get("patient_value"),
         "rationale": extra.get("rationale", "r"),
+        "basis": extra.get("basis", "not_applicable" if verdict == "unknown" else "stated"),
         "confidence": confidence,
         "missing_info": extra.get("missing_info"),
     }

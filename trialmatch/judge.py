@@ -33,9 +33,13 @@ absence: a note that never mentions hepatitis does not show the patient is free 
 medication list that omits a drug does not show the patient never took it.
 - An explicit negative statement IS evidence ("denies chest pain", "no history of seizures", \
 "brain MRI showed no metastases").
-- You may rely on direct logical consequences of what is written (a 45-year-old meets "age 18 or \
-older"; a man is not pregnant). Do not make clinical guesses beyond that (a normal creatinine does \
-not establish the absence of all kidney disease).
+- The one exception is a conclusion that follows with certainty from a demographic fact the note \
+states outright, such as age or sex: a man is not pregnant; a 45-year-old is not a child. Quote the \
+stated fact and set `basis` to "inferred". Nothing else may be inferred. In particular, never \
+conclude that a condition, treatment or event is absent because the note does not mention it, \
+because a related test was normal, or because it would usually have been recorded (a normal \
+creatinine does not establish the absence of kidney disease; no listed anticoagulant does not \
+establish that none is taken). Those are "unknown".
 - Criteria about consent, willingness, life expectancy or investigator judgment are normally \
 "unknown" unless the note addresses them directly.
 - When only excerpts of the note are provided, information outside them is unavailable to you; \
@@ -67,6 +71,10 @@ note character by character, and a determination whose quotes cannot be found is
 quote it so the clinician can see why it falls short.
 
 Other fields
+- `basis`: "stated" when your quote itself is about what the criterion asks (including a stated \
+value compared with a threshold); "inferred" when your quote is a different fact, age or sex, from \
+which the verdict follows; "not_applicable" for "unknown". Inferred determinations are listed \
+separately for the clinician to double-check.
 - `rationale`: one short sentence explaining the verdict in plain language.
 - `confidence`: "high" when the note states the fact directly; "medium" when a small, safe \
 interpretation was needed; "low" when the note is ambiguous or conflicting, or the answer depends on \

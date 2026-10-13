@@ -11,7 +11,7 @@ QRELS = [(t, f"NCT{t:04d}{i:04d}", i % 3) for t in range(1, 6) for i in range(30
 
 def rec(label, overall, **kw):
     base = {"label": label, "overall": overall, "quotes_total": 4, "quotes_verified": 3,
-            "judgments_needing_evidence": 4, "judgments_downgraded": 1, "criteria_total": 5, "criteria_unresolved": 1}
+            "judgments_needing_evidence": 4, "judgments_downgraded": 1, "criteria_total": 5, "criteria_unresolved": 1, "criteria_inferred": 0}
     return {**base, **kw}
 
 
@@ -64,7 +64,7 @@ def test_evaluate_pairs_exports_errors_and_survives_failures(settings, patient, 
         "INC-01": judgment("INC-01", "met", ["62-year-old woman"]),
         "INC-02": judgment("INC-02", "met", ["62-year-old"]),
         "INC-03": judgment("INC-03", "met", ["ECOG performance status 1"]),
-        "EXC-01": judgment("EXC-01", "not_met", ["She denies any history of interstitial lung disease"]),
+        "EXC-01": judgment("EXC-01", "not_met", ["62-year-old woman"], basis="inferred"),
         "EXC-02": judgment("EXC-02", "met", ["Mother died of breast cancer"], rationale="misread family history"),
     })
     pairs = [(1, "NCT00000001", 2), (1, "NCT00000002", 0), (1, "NCT99999999", 2)]
@@ -83,5 +83,10 @@ def test_evaluate_pairs_exports_errors_and_survives_failures(settings, patient, 
     rows = list(csv.DictReader((out / "errors.csv").open()))
     assert rows[0]["nct_id"] == "NCT00000001" and "misread family history" in rows[0]["blocking_criteria"]
     assert rows[0]["review_url"] == "http://x/?run=trec2021-1__NCT00000001__snap2021"
+    assert rows[0]["inferred_criteria"] == "EXC-01"
+    per_criterion = {r["criterion_id"]: r for r in csv.DictReader((out / "error_criteria.csv").open())}
+    assert per_criterion["EXC-01"]["used_inference"] == "yes" and per_criterion["EXC-02"]["used_inference"] == "no"
+    assert per_criterion["EXC-02"]["effect"] == "blocks" and "EXC-02" in per_criterion["EXC-02"]["review_url"]
+    assert metrics["criteria"]["inferred"] == 2  # EXC-01 in each of the two evaluated pairs
     assert json.loads((out / "metrics.json").read_text())["screen_in"]["fn"] == 1
     assert len(list(csv.DictReader((out / "predictions.csv").open()))) == 2
