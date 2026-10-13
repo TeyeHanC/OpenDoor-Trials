@@ -12,7 +12,7 @@ from .models import AtomicCriterion, LLMDecomposition, Threshold, Trial
 from .verify import locate_quote
 
 # Bump when the prompt changes so cached decompositions are not reused.
-PROMPT_VERSION = "2"
+PROMPT_VERSION = "3"
 
 SYSTEM_PROMPT = """\
 You prepare clinical trial eligibility criteria for a screening tool. Each item you produce will be \
@@ -23,6 +23,10 @@ your job is to break the criteria text into atomic criteria.
 How to split
 - One checkable fact per item. "Age 18 or older and ECOG 0-1" becomes two items. A lab panel \
 ("ANC >= 1.5, platelets >= 100, hemoglobin >= 9") becomes one item per test.
+- A qualifier that adds a second requirement is an AND even without the word: "WHO performance \
+status 0-1 with no deterioration over the previous 2 weeks" is two items, the status and the absence \
+of deterioration. Splitting these matters because a note often settles one part and not the other, \
+and an unsplit item would then be reported as wholly unknown.
 - Split only where the parts are joined by AND, i.e. each part must hold on its own. Keep \
 alternatives (OR) and exceptions ("unless", "except", "with the exception of") together in one item: \
 splitting them would change the meaning.
@@ -55,6 +59,13 @@ and unit as written; else null.
 wording used; `normalized` is the standard preferred name (generic drug name, standard disease or \
 test name, abbreviation expanded). If you are not confident of a standard name, set `normalized` to \
 null rather than choosing the nearest match.
+
+- `answer_source`: "screening_visit" for criteria that only the patient or the investigator can \
+settle in person at screening: consent, willingness (for example to use contraception), ability to \
+comply with the protocol, an estimate of life expectancy, anything left to the investigator's opinion. \
+"medical_record" for everything a patient's records could document, including history, diagnoses, \
+treatments, allergies, lab values and test results. The tool reports the two groups separately so \
+that a clinician can tell "ask at the visit" apart from "missing from the note".
 
 List inclusion criteria first, then exclusion criteria, each in their original order."""
 
@@ -135,6 +146,7 @@ def decompose_trial(trial: Trial, settings: Settings, llm: StructuredLLM) -> lis
             time_window=item.time_window,
             threshold=item.threshold,
             concepts=item.concepts,
+            answer_source=item.answer_source,
         )
         for item in result.criteria
         if item.text.strip()

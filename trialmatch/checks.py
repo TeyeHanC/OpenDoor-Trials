@@ -25,7 +25,10 @@ from .tools import (
     convert_lab_unit,
 )
 
-CheckStatus = Literal["confirmed", "mismatch", "not_checkable"]
+CheckStatus = Literal["confirmed", "mismatch", "not_checkable", "not_robust"]
+# A conclusion that rests on an assumed (typical) reference limit must also hold if the lab's
+# real limit is this much lower or higher; otherwise it is not safe to draw.
+ASSUMED_LIMIT_MARGIN = 0.25
 
 
 class Check(BaseModel):
@@ -37,6 +40,8 @@ class Check(BaseModel):
     detail: str
     # Inputs the model gave that do not appear in the note as written.
     inputs_not_in_note: list[str] = []
+    # The reference limit was a typical adult value, not one stated in the note.
+    assumed_reference_limit: bool = False
 
 
 _UNIT_ALIASES = {"yr": "year", "y": "year", "yo": "year", "mo": "month", "wk": "week", "d": "day", "hr": "hour", "h": "hour"}
@@ -110,14 +115,35 @@ def run_threshold_check(check: LLMThresholdCheck, note: str) -> Check:
     except ToolError as exc:
         return unchecked(str(exc))
     computed = out["satisfied"]
+    assumed = check.reference_limit is not None and check.reference_limit_assumed
+    robust = True
+    if assumed:
+        for factor in (1 - ASSUMED_LIMIT_MARGIN, 1 + ASSUMED_LIMIT_MARGIN):
+            shifted = compare_to_threshold(
+                ThresholdInput(
+                    patient_value=value, comparator=check.comparator, threshold=check.threshold,
+                    threshold_upper=check.threshold_upper, upper_limit_of_normal=check.reference_limit * factor,
+                )
+            )
+            robust = robust and shifted["satisfied"] == computed
     limit = out.get("effective_threshold", out.get("effective_range"))
     unit = check.threshold_unit or check.value_unit or ""
     scaled = f" ({_number_text(check.threshold)} x {_number_text(check.reference_limit)})" if check.reference_limit is not None else ""
     detail = f"{converted}{_number_text(value)} {check.comparator} {limit}{scaled} {unit}".strip() + f" is {'true' if computed else 'false'}"
+    if assumed:
+        detail += (
+            f"; the reference limit {_number_text(check.reference_limit)} is a typical adult value, not from the note, and the result "
+            + ("holds" if robust else "would change")
+            + f" if the lab's limit is {ASSUMED_LIMIT_MARGIN:.0%} lower or higher"
+        )
+    if computed != check.satisfied:
+        status: CheckStatus = "mismatch"
+    else:
+        status = "confirmed" if robust else "not_robust"
     return Check(
-        kind="threshold", inputs=inputs, model_answer=check.satisfied, computed=computed,
-        status="confirmed" if computed == check.satisfied else "mismatch", detail=detail,
+        kind="threshold", inputs=inputs, model_answer=check.satisfied, computed=computed, status=status, detail=detail,
         inputs_not_in_note=[_number_text(check.value)] if _number_text(check.value) not in note else [],
+        assumed_reference_limit=assumed,
     )
 
 

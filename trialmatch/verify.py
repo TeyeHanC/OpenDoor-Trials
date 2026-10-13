@@ -86,7 +86,16 @@ def verify_judgment(
             "so this needs a manual check."
         )
         verdict, confidence = "unknown", "low"
+    elif verdict != "unknown" and any(c.status == "not_robust" for c in checks):
+        # Right arithmetic, but it depends on an assumed reference limit and sits too close to it.
+        flags.append("assumed_reference_range_too_close")
+        close = next(c for c in checks if c.status == "not_robust")
+        missing_info = f"Obtain the laboratory's own reference limit: {close.detail}."
+        verdict, confidence = "unknown", "low"
     elif verdict != "unknown":
+        if any(c.assumed_reference_limit for c in checks):
+            flags.append("assumed_reference_range")
+            confidence = "medium" if confidence == "high" else confidence
         if any(c.status == "not_checkable" for c in checks):
             flags.append("calculation_not_checkable")
             confidence = "low"
@@ -107,6 +116,8 @@ def verify_judgment(
         basis="not_applicable" if verdict == "unknown" else judgment.basis,
         patient_value=judgment.patient_value,
         missing_info=missing_info if verdict == "unknown" else None,
+        established_part=(judgment.established_part or "").strip() or None if verdict == "unknown" else None,
+        answer_source=criterion.answer_source,
         time_window=criterion.time_window,
         threshold=criterion.threshold,
         concepts=criterion.concepts,
@@ -137,6 +148,7 @@ def unresolved_result(
         confidence="low",
         basis="not_applicable",
         missing_info="No automated assessment is available for this criterion; check it manually.",
+        answer_source=criterion.answer_source,
         time_window=criterion.time_window,
         threshold=criterion.threshold,
         concepts=criterion.concepts,

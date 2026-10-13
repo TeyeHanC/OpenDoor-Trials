@@ -74,10 +74,12 @@ function needsAttention(c) {
   return !state.reviews[c.criterion_id] && (c.confidence === "low" || c.downgraded || c.flags.length > 0);
 }
 
-function overallOf(effects) {
+// Unresolved criteria that are settled in person at screening do not hold back the conclusion.
+function overallOf(criteria) {
+  const effects = criteria.map((c) => current(c).effect);
   if (effects.includes("blocks")) return "not_eligible";
-  if (effects.includes("unresolved")) return "needs_more_info";
-  return "possibly_eligible";
+  const fromRecord = criteria.some((c) => current(c).effect === "unresolved" && c.answer_source !== "screening_visit");
+  return fromRecord ? "needs_more_info" : "possibly_eligible";
 }
 
 // ---- note pane ----
@@ -176,7 +178,7 @@ function renderSummary() {
   overall.dataset.overall = s.overall;
 
   const effects = run.criteria.map((c) => current(c).effect);
-  const reviewedOverall = overallOf(effects);
+  const reviewedOverall = overallOf(run.criteria);
   const reviewed = Object.keys(state.reviews).length;
   const reviewedNode = $("reviewed-overall");
   reviewedNode.hidden = reviewed === 0;
@@ -198,8 +200,11 @@ function renderSummary() {
 
   $("disclaimer").textContent = s.disclaimer;
   linkList($("key-reasons"), s.key_reasons, "No determinations support or block enrollment yet.");
-  $("follow-up-heading").textContent = `To check (${s.follow_up.length})`;
+  $("follow-up-heading").textContent = `To check in the record (${s.follow_up.length})`;
   linkList($("follow-up"), s.follow_up, "Nothing outstanding.");
+  const atScreening = s.confirm_at_screening || [];
+  $("screening-heading").textContent = `To confirm at the screening visit (${atScreening.length})`;
+  linkList($("screening"), atScreening, "Nothing to confirm in person.");
 }
 
 // ---- criteria pane ----
@@ -267,6 +272,13 @@ function renderDetails(c) {
     detailRow(dl, "Threshold", `${t.parameter} ${t.comparator} ${t.value}${t.unit ? " " + t.unit : ""}`);
   }
   detailRow(dl, "Patient value", c.patient_value);
+  const checkNotes = { confirmed: "recomputed, agrees", mismatch: "recomputed, DISAGREES",
+    not_checkable: "could not be recomputed", not_robust: "too close to an assumed limit" };
+  (c.checks || []).forEach((k) => detailRow(dl, "Calculation", `${k.detail} (${checkNotes[k.status]})`));
+  detailRow(dl, "Already established", c.established_part);
+  if (c.verdict === "unknown" && c.answer_source === "screening_visit") {
+    detailRow(dl, "Answered by", "The patient or investigator at the screening visit, not the note");
+  }
   detailRow(dl, "Time window", c.time_window);
   if (!c.downgraded) detailRow(dl, "To check", c.missing_info);
   if (c.source_text && c.source_text !== c.criterion_text) {

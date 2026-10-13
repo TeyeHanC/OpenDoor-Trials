@@ -146,7 +146,7 @@ def test_note_tools_can_be_switched_off(settings, patient, trial):
 # ---- arithmetic the program recomputes --------------------------------------
 
 AGE_OK = {"value": 62, "value_unit": "years", "comparator": ">=", "threshold": 18, "threshold_upper": None,
-          "threshold_unit": "years", "reference_limit": None, "analyte": None, "satisfied": True}
+          "threshold_unit": "years", "reference_limit": None, "reference_limit_assumed": False, "analyte": None, "satisfied": True}
 
 
 def _one(settings, patient, trial, criterion_id, scripted_judgment):
@@ -175,7 +175,7 @@ def test_unit_spellings_that_mean_the_same_are_not_treated_as_a_conversion(setti
 def test_wrong_arithmetic_sets_the_determination_aside(settings, patient, trial):
     # The model claims ALT 28 U/L exceeds 2.5 x ULN (40): 28 > 100 is false.
     wrong = {"value": 28, "value_unit": "U/L", "comparator": ">", "threshold": 2.5, "threshold_upper": None,
-             "threshold_unit": None, "reference_limit": 40, "analyte": None, "satisfied": True}
+             "threshold_unit": None, "reference_limit": 40, "reference_limit_assumed": False, "analyte": None, "satisfied": True}
     c, run = _one(settings, patient, trial, "EXC-02", judgment("EXC-02", "met", ["ALT 28 U/L"], segment="S5", threshold_check=wrong))
     assert c.model_verdict == "met" and c.verdict == "unknown" and c.effect == "unresolved" and c.confidence == "low"
     assert c.flags == ["calculation_mismatch"] and c.checks[0]["status"] == "mismatch"
@@ -199,7 +199,8 @@ def test_units_are_converted_by_the_program_or_the_check_is_marked_uncheckable(s
     from trialmatch.checks import run_threshold_check
     from trialmatch.models import LLMThresholdCheck
 
-    base = {"comparator": "<", "threshold": 90, "threshold_upper": None, "threshold_unit": "g/L", "reference_limit": None}
+    base = {"comparator": "<", "threshold": 90, "threshold_upper": None, "threshold_unit": "g/L", "reference_limit": None,
+            "reference_limit_assumed": False}
     hb = LLMThresholdCheck(value=11.8, value_unit="g/dL", analyte="hemoglobin", satisfied=False, **base)
     done = run_threshold_check(hb, "Hemoglobin 11.8 g/dL")
     assert done.status == "confirmed" and done.detail == "11.8 g/dL = 118 g/L; 118 < 90.0 g/L is false" and done.inputs_not_in_note == []
@@ -596,3 +597,73 @@ def test_openai_endpoint_resends_a_request_whose_stream_was_cut(settings, monkey
     )
     with pytest.raises(LLMError, match="mid-stream"):
         always_cut.structured(system="s", user_blocks=["x"], schema=LLMJudgmentBatch)
+
+
+# ---- what is left to check: record, screening visit, assumed reference limits ----
+
+
+def _alt_check(value, satisfied, assumed=True):
+    return {"value": value, "value_unit": "U/L", "comparator": ">", "threshold": 2.5, "threshold_upper": None,
+            "threshold_unit": None, "reference_limit": 40, "reference_limit_assumed": assumed, "analyte": None, "satisfied": satisfied}
+
+
+def test_assumed_reference_limit_is_accepted_only_with_a_safe_margin(settings, patient, trial):
+    # ALT 28 against 2.5 x an assumed ULN of 40: false at 75, 100 and 125, so the conclusion is safe.
+    c, _ = _one(settings, patient, trial, "EXC-02", judgment("EXC-02", "not_met", ["ALT 28 U/L"], segment="S5", threshold_check=_alt_check(28, False)))
+    assert c.verdict == "not_met" and c.flags == ["assumed_reference_range"] and c.confidence == "medium"
+    assert c.checks[0]["status"] == "confirmed" and "typical adult value, not from the note, and the result holds" in c.checks[0]["detail"]
+
+    # A stated limit carries no flag and keeps its confidence.
+    c, _ = _one(settings, patient, trial, "EXC-02", judgment("EXC-02", "not_met", ["ALT 28 U/L"], segment="S5", threshold_check=_alt_check(28, False, assumed=False)))
+    assert c.flags == [] and c.confidence == "high"
+
+
+def test_conclusion_too_close_to_an_assumed_limit_is_set_aside():
+    from trialmatch.checks import run_threshold_check
+    from trialmatch.models import LLMThresholdCheck
+
+    # 110 > 100 holds at the typical limit but not if the lab's ULN is 25% higher (125).
+    near = run_threshold_check(LLMThresholdCheck(**_alt_check(110, True)), "ALT 110 U/L")
+    assert near.computed is True and near.status == "not_robust" and "would change" in near.detail
+
+
+def test_too_close_to_assumed_limit_becomes_unknown_in_the_run(settings, trial):
+    note = "62-year-old woman.\nLabs: ALT 110 U/L."
+    patient = Patient(id="sample-near", source="synthetic", text=note)
+    scripted = dict(GOOD, **{"EXC-02": judgment("EXC-02", "met", ["ALT 110 U/L"], threshold_check=_alt_check(110, True))})
+    for cid in ("INC-03", "EXC-01"):
+        scripted[cid] = judgment(cid, "unknown")
+    run = run_match(patient, trial, settings, FakeLLM(scripted))
+    c = {x.criterion_id: x for x in run.criteria}["EXC-02"]
+    assert c.model_verdict == "met" and c.verdict == "unknown" and c.flags == ["assumed_reference_range_too_close"]
+    assert "Obtain the laboratory's own reference limit" in c.missing_info and run.summary.counts["blocks"] == 0
+
+
+def test_screening_visit_criteria_are_listed_apart_and_do_not_hold_back_the_conclusion(settings, patient, trial):
+    from trialmatch.models import CriterionResult
+    from trialmatch.summarize import summarize
+
+    def result(cid, verdict, source="medical_record", **extra):
+        kind = "inclusion" if cid.startswith("INC") else "exclusion"
+        effect = "unresolved" if verdict == "unknown" else "supports"
+        return CriterionResult(criterion_id=cid, criterion_text=cid, source_text=cid, type=kind, verdict=verdict, effect=effect,
+                               evidence=[], rationale="r", confidence="high", model_verdict=verdict, answer_source=source, **extra)
+
+    consent = result("INC-02", "unknown", "screening_visit", missing_info="Ask about contraception.")
+    labs = result("EXC-01", "unknown", missing_info="Get hepatitis serology.", established_part="no HIV history")
+    only_visit = summarize([result("INC-01", "met"), consent])
+    assert only_visit.overall == "possibly_eligible" and only_visit.follow_up == []
+    assert [i.criterion_id for i in only_visit.confirm_at_screening] == ["INC-02"]
+    assert only_visit.confirm_at_screening[0].text.startswith('Confirm at screening "INC-02": Ask about contraception.')
+
+    both = summarize([result("INC-01", "met"), consent, labs])
+    assert both.overall == "needs_more_info"
+    assert [i.criterion_id for i in both.follow_up] == ["EXC-01"] and "Already established: no HIV history." in both.follow_up[0].text
+    assert both.counts["missing_from_record"] == 1 and both.counts["confirm_at_screening"] == 1 and both.counts["partly_established"] == 1
+
+
+def test_established_part_and_answer_source_reach_the_stored_result(settings, patient, trial):
+    c, _ = _one(settings, patient, trial, "EXC-02", judgment("EXC-02", "unknown", established_part=" no HIV history "))
+    assert c.established_part == "no HIV history" and c.answer_source == "medical_record"
+    met, _ = _one(settings, patient, trial, "INC-03", judgment("INC-03", "met", ["ECOG performance status 1"], established_part="ignored"))
+    assert met.established_part is None

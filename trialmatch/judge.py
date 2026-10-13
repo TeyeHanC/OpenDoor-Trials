@@ -80,8 +80,16 @@ the timing as far as the note allows.
 comparator and limit from the criterion, and whether the comparison holds. Choose the comparator so \
 that "value comparator threshold" restates the criterion (for "ANC below 1.5", comparator "<"). When \
 the limit is a multiple of the upper or lower limit of normal, put the multiplier in `threshold` and \
-the lab's limit in `reference_limit`, and only if the note states that limit. When the units differ, \
-keep each as written and name the `analyte`; the program converts.
+the lab's limit in `reference_limit`. Use the limit the note states when it gives one. When it does \
+not, use the typical adult limit from the table below and set `reference_limit_assumed` to true: \
+reference ranges differ between laboratories, so the program accepts the conclusion only if it would \
+still hold with a limit 25% lower or higher, shows the clinician that the limit was assumed, and \
+otherwise sets the determination aside. For a value with no entry in the table, answer "unknown". \
+When the units differ, keep each as written and name the `analyte`; the program converts.
+  Typical adult reference limits (assumptions, to be flagged):
+  ALT upper limit 40 U/L; AST upper limit 40 U/L; alkaline phosphatase upper limit 120 U/L;
+  total bilirubin upper limit 1.2 mg/dL (20.5 umol/L); absolute neutrophil count lower limit 1.5 x 10^9/L;
+  platelets lower limit 150 x 10^9/L; white blood cell count lower limit 4.0 x 10^9/L.
 Leave both null for criteria that involve no arithmetic. A check supports a verdict but does not \
 replace the quote: every value and date in it must come from text you can quote.
 
@@ -104,6 +112,10 @@ separately for the clinician to double-check.
 interpretation was needed; "low" when the note is ambiguous or conflicting, or the answer depends on \
 an assumption about timing, units or meaning. Low-confidence items are shown to the clinician first.
 - `missing_info`: for "unknown" only, what the clinician should look up or ask the patient; else null.
+- `established_part`: for "unknown" only. When the note settles part of a criterion and leaves the \
+rest open, name the settled part in a few words ("no brain metastases on MRI", "denies ILD history"), \
+so the clinician sees what is already covered and `missing_info` can name only what is left. Null \
+when the note settles nothing.
 
 Return exactly one judgment per criterion, using the criterion ids you were given."""
 

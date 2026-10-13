@@ -31,7 +31,9 @@ def _follow_up_text(c: CriterionResult) -> str:
     kind = "inclusion" if c.type == "inclusion" else "exclusion"
     if c.verdict == "unknown":
         detail = c.missing_info or "Not documented in the note."
-        return f"Check {kind} criterion \"{c.criterion_text}\": {detail}"
+        covered = f" Already established: {c.established_part}." if c.established_part else ""
+        lead = "Confirm at screening" if c.answer_source == "screening_visit" else f"Check {kind} criterion"
+        return f"{lead} \"{c.criterion_text}\": {detail}{covered}"
     return f"Verify low-confidence {kind} determination \"{c.criterion_text}\": {c.rationale}"
 
 
@@ -40,10 +42,15 @@ def summarize(criteria: list[CriterionResult]) -> Summary:
     unresolved = [c for c in criteria if c.effect == "unresolved"]
     supports = [c for c in criteria if c.effect == "supports"]
 
+    # Criteria settled in person at screening cannot be answered by any note, so they are listed
+    # for the visit but do not hold the conclusion at "more information needed".
+    at_screening = [c for c in unresolved if c.answer_source == "screening_visit"]
+    from_record = [c for c in unresolved if c.answer_source != "screening_visit"]
+
     overall: Overall
     if blockers:
         overall = "not_eligible"
-    elif unresolved:
+    elif from_record:
         overall = "needs_more_info"
     else:
         overall = "possibly_eligible"
@@ -57,7 +64,7 @@ def summarize(criteria: list[CriterionResult]) -> Summary:
 
     # Low-confidence determinations first: they are the ones most likely to be wrong.
     low_confidence = [c for c in criteria if c.verdict != "unknown" and c.confidence == "low"]
-    follow_up = low_confidence + unresolved
+    follow_up = low_confidence + from_record
 
     return Summary(
         overall=overall,
@@ -67,10 +74,14 @@ def summarize(criteria: list[CriterionResult]) -> Summary:
             "supports": len(supports),
             "blocks": len(blockers),
             "unresolved": len(unresolved),
+            "missing_from_record": len(from_record),
+            "confirm_at_screening": len(at_screening),
+            "partly_established": len([c for c in unresolved if c.established_part]),
             "low_confidence": len([c for c in criteria if c.confidence == "low"]),
             "downgraded": len([c for c in criteria if c.downgraded]),
         },
         key_reasons=[SummaryItem(criterion_id=c.criterion_id, text=text) for c, text in key[:MAX_KEY_REASONS]],
         follow_up=[SummaryItem(criterion_id=c.criterion_id, text=_follow_up_text(c)) for c in follow_up],
+        confirm_at_screening=[SummaryItem(criterion_id=c.criterion_id, text=_follow_up_text(c)) for c in at_screening],
         disclaimer=DISCLAIMER,
     )

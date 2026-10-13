@@ -24,6 +24,10 @@ Effect = Literal["supports", "blocks", "unresolved"]
 Overall = Literal["possibly_eligible", "not_eligible", "needs_more_info"]
 # How a met / not_met verdict follows from the quoted text (see the judging prompt).
 Basis = Literal["stated", "inferred", "not_applicable"]
+# Where the answer to a criterion can come from. "screening_visit" criteria (consent, willingness,
+# life expectancy, investigator judgment) are settled in person, so a note that is silent on them
+# is not missing anything and they do not hold back a "possibly eligible" conclusion.
+AnswerSource = Literal["medical_record", "screening_visit"]
 
 VERDICT_LABELS = {"met": "Met", "not_met": "Not met", "unknown": "Insufficient information"}
 OVERALL_LABELS = {
@@ -78,6 +82,11 @@ class LLMAtomicCriterion(BaseModel):
     )
     threshold: Optional[Threshold]
     concepts: list[Concept]
+    answer_source: AnswerSource = Field(
+        description="'screening_visit' when only the patient or the investigator can settle it at screening "
+        "(consent, willingness, ability to comply, estimated life expectancy, investigator's opinion). "
+        "'medical_record' for everything a patient's records could document."
+    )
 
 
 class LLMDecomposition(BaseModel):
@@ -108,6 +117,9 @@ class LLMThresholdCheck(BaseModel):
         description="The lab's upper or lower limit of normal, in the unit of the patient's value, when the criterion "
         "is a multiple of it AND the note states it. null otherwise."
     )
+    reference_limit_assumed: bool = Field(
+        description="true when reference_limit is a typical adult value you were given rather than one the note states."
+    )
     analyte: Optional[Literal["creatinine", "bilirubin", "hemoglobin", "albumin", "glucose", "calcium", "blood_cell_count"]] = Field(
         description="What was measured, needed only when the two units differ so the program can convert; null otherwise."
     )
@@ -133,6 +145,10 @@ class LLMJudgment(BaseModel):
     confidence: Confidence
     missing_info: Optional[str] = Field(
         description="When verdict is 'unknown': what the clinician should look up or ask. null otherwise."
+    )
+    established_part: Optional[str] = Field(
+        description="When verdict is 'unknown' but the note settles part of the criterion: that part, in a few "
+        "words ('performance status 1 documented'). null otherwise."
     )
 
 
@@ -188,6 +204,7 @@ class AtomicCriterion(BaseModel):
     time_window: Optional[str] = None
     threshold: Optional[Threshold] = None
     concepts: list[Concept] = []
+    answer_source: AnswerSource = "medical_record"
 
 
 class Evidence(BaseModel):
@@ -217,6 +234,8 @@ class CriterionResult(BaseModel):
     basis: Basis = "stated"
     patient_value: Optional[str] = None
     missing_info: Optional[str] = None
+    established_part: Optional[str] = None
+    answer_source: AnswerSource = "medical_record"
     time_window: Optional[str] = None
     threshold: Optional[Threshold] = None
     concepts: list[Concept] = []
@@ -242,7 +261,10 @@ class Summary(BaseModel):
     overall_label: str
     counts: dict[str, int]
     key_reasons: list[SummaryItem]
+    # Unresolved criteria the record could answer, plus low-confidence determinations to verify.
     follow_up: list[SummaryItem]
+    # Unresolved criteria that are settled in person at screening; they do not affect `overall`.
+    confirm_at_screening: list[SummaryItem] = []
     disclaimer: str
 
 

@@ -18,7 +18,9 @@ def print_run(run: RunResult) -> None:
     print(f"Overall: {s.overall_label}")
     print(
         f"Criteria: {s.counts['total']} total | {s.counts['supports']} support enrollment | "
-        f"{s.counts['blocks']} block | {s.counts['unresolved']} unresolved | "
+        f"{s.counts['blocks']} block | {s.counts['unresolved']} unresolved "
+        f"({s.counts.get('missing_from_record', s.counts['unresolved'])} missing from the note, "
+        f"{s.counts.get('confirm_at_screening', 0)} to confirm at screening) | "
         f"{s.counts['low_confidence']} low confidence"
     )
     stats = run.citation_stats
@@ -34,10 +36,17 @@ def print_run(run: RunResult) -> None:
         print(f"[{_EFFECT_MARK[c.effect]}] {c.criterion_id} ({c.type}) {c.criterion_text}")
         print(f"      {VERDICT_LABELS[c.verdict]} | confidence {c.confidence}{flags}")
         print(f"      {c.rationale}")
+        if c.established_part:
+            print(f"      already established: {c.established_part}")
+        if c.verdict == "unknown" and c.answer_source == "screening_visit":
+            print("      settled in person at screening, not from the note")
         if c.patient_value:
             print(f"      patient value: {c.patient_value}")
         for check in c.checks:
-            mark = {"confirmed": "recomputed, agrees", "mismatch": "RECOMPUTED, DISAGREES", "not_checkable": "could not be recomputed"}[check["status"]]
+            mark = {
+                "confirmed": "recomputed, agrees", "mismatch": "RECOMPUTED, DISAGREES",
+                "not_checkable": "could not be recomputed", "not_robust": "TOO CLOSE TO AN ASSUMED LIMIT",
+            }[check["status"]]
             print(f"      calculation ({mark}): {check['detail']}")
         for e in c.evidence:
             print(f"      \"{e.quote}\" [{e.start}:{e.end}]")
@@ -50,8 +59,12 @@ def print_run(run: RunResult) -> None:
         for item in s.key_reasons:
             print(f"  - {item.text}")
     if s.follow_up:
-        print(f"\nTo check ({len(s.follow_up)}):")
+        print(f"\nTo check in the record ({len(s.follow_up)}):")
         for item in s.follow_up:
+            print(f"  - {item.text}")
+    if s.confirm_at_screening:
+        print(f"\nTo confirm at the screening visit ({len(s.confirm_at_screening)}):")
+        for item in s.confirm_at_screening:
             print(f"  - {item.text}")
     print(f"\n{s.disclaimer}")
 

@@ -19,14 +19,15 @@ NOTE = (
 DECOMPOSITION = {
     "criteria": [
         {"type": "inclusion", "text": "Age 18 years or older", "source_text": "Age >= 18 and ECOG 0-1",
-         "time_window": None, "threshold": {"parameter": "age", "comparator": ">=", "value": "18", "unit": "years"}, "concepts": []},
+         "time_window": None, "threshold": {"parameter": "age", "comparator": ">=", "value": "18", "unit": "years"}, "concepts": [], "answer_source": "medical_record"},
         {"type": "inclusion", "text": "ECOG performance status 0-1", "source_text": "Age >= 18 and ECOG 0-1",
-         "time_window": None, "threshold": None, "concepts": []},
+         "time_window": None, "threshold": None, "concepts": [], "answer_source": "medical_record"},
         {"type": "exclusion", "text": "History of interstitial lung disease", "source_text": "History of ILD",
          "time_window": None, "threshold": None,
-         "concepts": [{"original": "ILD", "normalized": "interstitial lung disease", "category": "condition"}]},
+         "concepts": [{"original": "ILD", "normalized": "interstitial lung disease", "category": "condition"}],
+         "answer_source": "medical_record"},
         {"type": "exclusion", "text": "Active hepatitis B infection", "source_text": "Active hepatitis B",
-         "time_window": None, "threshold": None, "concepts": []},
+         "time_window": None, "threshold": None, "concepts": [], "answer_source": "medical_record"},
     ]
 }
 
@@ -43,6 +44,7 @@ def judgment(cid, verdict, quotes=(), confidence="high", segment="S2", **extra):
         "basis": extra.get("basis", "not_applicable" if verdict == "unknown" else "stated"),
         "confidence": confidence,
         "missing_info": extra.get("missing_info"),
+        "established_part": extra.get("established_part"),
     }
 
 
