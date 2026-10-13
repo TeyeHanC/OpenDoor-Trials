@@ -163,3 +163,20 @@ class AnthropicLLM:
             **extra,
         ) as stream:
             return stream.get_final_message()
+
+
+def resolve_provider(settings: Settings) -> str:
+    if settings.provider in ("anthropic", "openai"):
+        return settings.provider
+    if settings.provider != "auto":
+        raise ValueError(f"TRIALMATCH_PROVIDER must be anthropic, openai or auto, not {settings.provider!r}")
+    return "anthropic" if settings.model.lower().startswith("claude") else "openai"
+
+
+def make_llm(settings: Settings) -> StructuredLLM:
+    """The model client for the configured provider."""
+    if resolve_provider(settings) == "anthropic":
+        return AnthropicLLM(settings)
+    from .llm_openai import OpenAICompatLLM
+
+    return OpenAICompatLLM(settings)

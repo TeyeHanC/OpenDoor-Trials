@@ -14,7 +14,7 @@ from pydantic import BaseModel
 
 from .config import get_settings
 from .ctgov import TrialNotFound, fetch_trial
-from .llm import AnthropicLLM, LLMError, MissingCredentials
+from .llm import LLMError, MissingCredentials, make_llm
 from .models import Review, Verdict
 from .patients import PatientNotFound, list_patients, load_patient
 from .pipeline import run_match
@@ -81,7 +81,7 @@ def api_create_run(request: RunRequest) -> dict:
     except (PatientNotFound, TrialNotFound, ValueError) as exc:
         raise HTTPException(400, str(exc)) from exc
     try:
-        run = run_match(patient, trial, settings, AnthropicLLM(settings))
+        run = run_match(patient, trial, settings, make_llm(settings))
     except anthropic.AuthenticationError as exc:
         raise HTTPException(400, "The Anthropic API rejected the API key. Check ANTHROPIC_API_KEY in .env.") from exc
     except anthropic.APIError as exc:

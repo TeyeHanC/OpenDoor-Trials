@@ -327,3 +327,118 @@ def test_unknown_trial_id_is_reported_as_not_found(settings, monkeypatch):
     assert is_error and out == "NCT00000000 was not found on ClinicalTrials.gov"
     out, is_error = call(trial_tools(settings, {}), "get_trial_criteria", {"nct_id": "FLAURA2"})
     assert is_error and "Not a valid NCT number" in out
+
+
+# ---- OpenAI-compatible endpoint ---------------------------------------------
+
+
+def _openai_llm(settings, handler, monkeypatch, model="gpt-test"):
+    import dataclasses
+
+    from trialmatch.llm_openai import OpenAICompatLLM
+
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
+    monkeypatch.setenv("ANTHROPIC_BASE_URL", "https://gateway.test/v1/")
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.delenv("OPENAI_BASE_URL", raising=False)
+    monkeypatch.setattr("trialmatch.llm_openai.time.sleep", lambda s: None)
+    client = httpx.Client(transport=httpx.MockTransport(handler))
+    return OpenAICompatLLM(dataclasses.replace(settings, model=model), client=client)
+
+
+def _chat(content=None, tool_calls=None, finish="stop"):
+    message = {"role": "assistant", "content": content}
+    if tool_calls:
+        message["tool_calls"] = tool_calls
+    return httpx.Response(200, json={"choices": [{"message": message, "finish_reason": finish}],
+                                     "usage": {"prompt_tokens": 7, "completion_tokens": 3}})
+
+
+def test_provider_is_chosen_from_the_model_name(settings):
+    import dataclasses
+
+    from trialmatch.llm import resolve_provider
+
+    assert resolve_provider(dataclasses.replace(settings, model="claude-opus-5-5")) == "anthropic"
+    assert resolve_provider(dataclasses.replace(settings, model="gpt-6-luna")) == "openai"
+    assert resolve_provider(dataclasses.replace(settings, model="gpt-6-luna", provider="anthropic")) == "anthropic"
+    with pytest.raises(ValueError):
+        resolve_provider(dataclasses.replace(settings, provider="azure"))
+
+
+def test_openai_endpoint_tool_loop_and_strict_schema(settings, monkeypatch):
+    requests = []
+
+    def handler(request):
+        body = json.loads(request.content)
+        requests.append((str(request.url), request.headers.get("authorization"), body))
+        if len(requests) == 1:
+            return _chat(tool_calls=[{"id": "c1", "type": "function", "function": {
+                "name": "date_difference", "arguments": json.dumps({"earlier_date": "2026-08-04", "later_date": "2026-09-18"})}}],
+                finish="tool_calls")
+        return _chat(content=FINAL_JSON)
+
+    llm = _openai_llm(settings, handler, monkeypatch)
+    trace = []
+    result = llm.structured(system="s", user_blocks=["note", "criteria"], schema=LLMJudgmentBatch,
+                            tools=calculator_tools(), trace=trace)
+    assert result.judgments[0].criterion_id == "INC-01"
+    url, auth, first = requests[0]
+    assert url == "https://gateway.test/v1/chat/completions" and auth == "Bearer test-key"
+    assert first["model"] == "gpt-test" and first["response_format"]["json_schema"]["strict"] is True
+    assert first["tools"][0]["function"]["strict"] is True and first["messages"][1]["content"] == "note\n\ncriteria"
+    second = requests[1][2]["messages"]
+    assert second[2]["tool_calls"][0]["id"] == "c1"
+    assert second[3]["role"] == "tool" and second[3]["tool_call_id"] == "c1" and json.loads(second[3]["content"])["days"] == 45
+    assert trace[0]["tool"] == "date_difference" and llm.usage_summary() == {"requests": 2, "input_tokens": 14, "output_tokens": 6}
+
+
+def test_openai_endpoint_falls_back_when_strict_schema_is_rejected(settings, monkeypatch):
+    seen = []
+
+    def handler(request):
+        body = json.loads(request.content)
+        kind = (body.get("response_format") or {}).get("type")
+        seen.append(kind)
+        if kind in ("json_schema", "json_object"):
+            return httpx.Response(400, json={"error": {"message": "response_format not supported"}})
+        assert "JSON Schema" in body["messages"][0]["content"]
+        assert all("strict" not in tool["function"] for tool in body.get("tools", []))
+        return _chat(content="Here you go:\n```json\n" + FINAL_JSON + "\n```")
+
+    llm = _openai_llm(settings, handler, monkeypatch)
+    result = llm.structured(system="s", user_blocks=["x"], schema=LLMJudgmentBatch, tools=calculator_tools())
+    assert result.judgments[0].verdict == "unknown"
+    assert seen == ["json_schema", "json_object", None] and llm.mode == "prompt"
+    llm.structured(system="s", user_blocks=["x"], schema=LLMJudgmentBatch)
+    assert seen[3:] == [None]  # the accepted mode is remembered
+
+
+def test_openai_endpoint_repairs_an_invalid_reply_once(settings, monkeypatch):
+    replies = [_chat(content='{"judgments": [{"criterion_id": "INC-01"}]}'), _chat(content=FINAL_JSON)]
+    bodies = []
+
+    def handler(request):
+        bodies.append(json.loads(request.content))
+        return replies[len(bodies) - 1]
+
+    llm = _openai_llm(settings, handler, monkeypatch)
+    assert llm.structured(system="s", user_blocks=["x"], schema=LLMJudgmentBatch).judgments[0].criterion_id == "INC-01"
+    assert "did not match the required JSON schema" in bodies[1]["messages"][-1]["content"]
+
+    always_bad = _openai_llm(settings, lambda request: _chat(content="not json"), monkeypatch)
+    with pytest.raises(LLMError, match="after one retry"):
+        always_bad.structured(system="s", user_blocks=["x"], schema=LLMJudgmentBatch)
+
+
+def test_openai_endpoint_retries_transient_errors_and_reports_auth_failure(settings, monkeypatch):
+    statuses = iter([429, 503, 200])
+
+    def flaky(request):
+        status = next(statuses)
+        return _chat(content=FINAL_JSON) if status == 200 else httpx.Response(status, text="busy")
+
+    assert _openai_llm(settings, flaky, monkeypatch).structured(system="s", user_blocks=["x"], schema=LLMJudgmentBatch)
+    denied = _openai_llm(settings, lambda request: httpx.Response(401, text="bad key"), monkeypatch)
+    with pytest.raises(LLMError, match="rejected the API key"):
+        denied.structured(system="s", user_blocks=["x"], schema=LLMJudgmentBatch)

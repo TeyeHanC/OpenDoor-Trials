@@ -310,7 +310,7 @@ def format_report(metrics: dict, errors: list[dict], failures: list[dict], out_d
 
 
 def run_evaluation(args: argparse.Namespace) -> int:
-    from .llm import AnthropicLLM
+    from .llm import make_llm
 
     settings = get_settings()
     pairs = sample_pairs(load_qrels(settings, args.year), args.n, args.seed, args.sampling)
@@ -334,7 +334,7 @@ def run_evaluation(args: argparse.Namespace) -> int:
             print("Cancelled.")
             return 1
 
-    llm = AnthropicLLM(settings)
+    llm = make_llm(settings)
     evaluated, failures = evaluate_pairs(
         pairs, args.year, settings, llm, trial_source=args.trial_source, workers=args.workers, rerun=args.rerun, progress=lambda m: print(m, file=sys.stderr)
     )

@@ -66,7 +66,7 @@ def cmd_fetch_trec(args: argparse.Namespace) -> int:
 
 
 def cmd_run(args: argparse.Namespace) -> int:
-    from .llm import AnthropicLLM
+    from .llm import make_llm
     from .patients import load_patient
     from .pipeline import run_match
     from .store import save_run
@@ -76,7 +76,7 @@ def cmd_run(args: argparse.Namespace) -> int:
     patient = load_patient(args.patient, settings)
     trial = get_trial(args.nct, settings, args.trial_source)
     run = run_match(
-        patient, trial, settings, AnthropicLLM(settings),
+        patient, trial, settings, make_llm(settings),
         progress=lambda m: print(m, file=sys.stderr), run_suffix=run_id_suffix(args.trial_source),
     )
     save_run(settings, run)
@@ -86,9 +86,41 @@ def cmd_run(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_check_model(args: argparse.Namespace) -> int:
+    """Two tiny requests that show whether the configured model and endpoint can run the pipeline."""
+    from pydantic import BaseModel
+
+    from .llm import make_llm, resolve_provider
+    from .tools import calculator_tools
+
+    class Answer(BaseModel):
+        days: int
+        used_tool: bool
+
+    settings = get_settings()
+    print(f"provider: {resolve_provider(settings)} | model: {settings.model}")
+    llm = make_llm(settings)
+    trace: list[dict] = []
+    answer = llm.structured(
+        system="You answer with the requested JSON. Use the date_difference tool for date arithmetic.",
+        user_blocks=["How many days are there from 2026-08-04 to 2026-09-18? Use the tool, then answer."],
+        schema=Answer,
+        tools=calculator_tools(),
+        trace=trace,
+    )
+    print(f"structured answer: {answer.model_dump()}  (correct: 45)")
+    print(f"tool calls made: {[call['tool'] for call in trace] or 'none'}")
+    if hasattr(llm, "mode"):
+        print(f"request mode the endpoint accepted: {llm.mode}  (schema = strict structured output; json/prompt = weaker fallbacks)")
+    print(f"usage: {llm.usage_summary()}")
+    if answer.days != 45 or not trace:
+        print("WARNING: wrong answer or no tool call; this model may not follow the pipeline's instructions reliably.")
+    return 0
+
+
 def cmd_find_trials(args: argparse.Namespace) -> int:
     from .find import find_trials, format_find_result, save_find_result
-    from .llm import AnthropicLLM
+    from .llm import make_llm
     from .patients import load_patient
     from .pipeline import run_match
     from .store import save_run
@@ -96,7 +128,7 @@ def cmd_find_trials(args: argparse.Namespace) -> int:
 
     settings = get_settings()
     patient = load_patient(args.patient, settings)
-    llm = AnthropicLLM(settings)
+    llm = make_llm(settings)
     result = find_trials(patient, settings, llm, max_candidates=args.max, country=args.country)
     path = save_find_result(settings, result)
     print(format_find_result(result))
@@ -119,7 +151,7 @@ def cmd_find_trials(args: argparse.Namespace) -> int:
 
 def cmd_compare_batching(args: argparse.Namespace) -> int:
     from .compare import compare_batching, format_diff
-    from .llm import AnthropicLLM
+    from .llm import make_llm
     from .patients import load_patient
     from .trials import get_trial, run_id_suffix
 
@@ -127,7 +159,7 @@ def cmd_compare_batching(args: argparse.Namespace) -> int:
     patient = load_patient(args.patient, settings)
     trial = get_trial(args.nct, settings, args.trial_source)
     diff = compare_batching(
-        patient, trial, settings, AnthropicLLM(settings),
+        patient, trial, settings, make_llm(settings),
         batch_size=args.batch_size, run_suffix=run_id_suffix(args.trial_source),
     )
     print(format_diff(diff))
@@ -170,6 +202,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--trial-source", choices=("api", "snapshot"), default="api",
                    help="api: current ClinicalTrials.gov record (default); snapshot: TREC 2021-04-27 registry snapshot")
     p.set_defaults(func=cmd_run)
+
+    p = sub.add_parser("check-model", help="Send two tiny requests to check the configured model and endpoint")
+    p.set_defaults(func=cmd_check_model)
 
     p = sub.add_parser("find-trials", help="Search ClinicalTrials.gov for trials a patient might qualify for")
     p.add_argument("--patient", required=True, help="sample-nsclc, trec2021-1, ...")
