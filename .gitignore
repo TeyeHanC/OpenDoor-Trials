@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.env
+
+# Downloaded datasets, caches, run outputs and clinician reviews stay local.
+data/
+
+# macOS metadata (this repo lives on an exFAT volume)
+.DS_Store
+._*
