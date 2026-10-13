@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import re
 
+from .checks import run_checks
 from .models import AtomicCriterion, CriterionResult, Evidence, LLMJudgment, RetrievedSegment, Segment, effect_of
 
 
@@ -75,6 +76,24 @@ def verify_judgment(
         )
         verdict, confidence = "unknown", "low"
 
+    checks = run_checks(judgment.time_check, judgment.threshold_check, note)
+    wrong = [c for c in checks if c.status == "mismatch"]
+    if wrong and verdict != "unknown":
+        # The model's arithmetic does not survive recomputation; do not pass its verdict on.
+        flags.append("calculation_mismatch")
+        missing_info = (
+            f"The model answered '{verdict}' but its arithmetic did not match the program's ({wrong[0].detail}), "
+            "so this needs a manual check."
+        )
+        verdict, confidence = "unknown", "low"
+    elif verdict != "unknown":
+        if any(c.status == "not_checkable" for c in checks):
+            flags.append("calculation_not_checkable")
+            confidence = "low"
+        if any(c.inputs_not_in_note for c in checks):
+            flags.append("calculation_input_not_in_note")
+            confidence = "low"
+
     return CriterionResult(
         criterion_id=criterion.id,
         criterion_text=criterion.text,
@@ -94,6 +113,7 @@ def verify_judgment(
         source_verified=criterion.source_verified,
         origin=criterion.origin,
         retrieved_segments=retrieved,
+        checks=[c.model_dump() for c in checks],
         model_verdict=judgment.verdict,
         downgraded=downgraded,
         rejected_quotes=rejected,

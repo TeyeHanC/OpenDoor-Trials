@@ -38,6 +38,8 @@ def judgment(cid, verdict, quotes=(), confidence="high", segment="S2", **extra):
         "evidence": [{"segment_id": segment, "quote": q} for q in quotes],
         "patient_value": extra.get("patient_value"),
         "rationale": extra.get("rationale", "r"),
+        "time_check": extra.get("time_check"),
+        "threshold_check": extra.get("threshold_check"),
         "basis": extra.get("basis", "not_applicable" if verdict == "unknown" else "stated"),
         "confidence": confidence,
         "missing_info": extra.get("missing_info"),

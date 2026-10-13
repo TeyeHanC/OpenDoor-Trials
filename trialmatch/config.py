@@ -40,7 +40,7 @@ class Settings:
     segment_max_chars: int = 400
     judge_batch_size: int = 8
     judge_workers: int = 4
-    # Offer the judging step its tools: calculators always, note search for long notes.
+    # Offer the judging step note-search tools when a note is too long to send whole.
     judge_tools: bool = True
     # "anthropic" (Messages API), "openai" (an OpenAI-compatible chat completions
     # endpoint), or "auto": anthropic for claude-* model names, openai otherwise.

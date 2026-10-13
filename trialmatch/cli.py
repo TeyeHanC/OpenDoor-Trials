@@ -36,10 +36,13 @@ def print_run(run: RunResult) -> None:
         print(f"      {c.rationale}")
         if c.patient_value:
             print(f"      patient value: {c.patient_value}")
+        for check in c.checks:
+            mark = {"confirmed": "recomputed, agrees", "mismatch": "RECOMPUTED, DISAGREES", "not_checkable": "could not be recomputed"}[check["status"]]
+            print(f"      calculation ({mark}): {check['detail']}")
         for e in c.evidence:
             print(f"      \"{e.quote}\" [{e.start}:{e.end}]")
     if run.tool_calls:
-        print(f"\nCalculations and look-ups ({len(run.tool_calls)}):")
+        print(f"\nNote searches ({len(run.tool_calls)}):")
         for call in run.tool_calls:
             print(f"  {call.tool}({call.input}) -> {call.output}")
     if s.key_reasons:

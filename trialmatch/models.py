@@ -89,6 +89,31 @@ class LLMEvidence(BaseModel):
     quote: str = Field(description="Exact, contiguous, character-for-character copy from that segment.")
 
 
+class LLMTimeCheck(BaseModel):
+    event_date: str = Field(description="Date of the event as the note gives it, YYYY-MM-DD.")
+    reference_date: str = Field(description="Date the window is counted back from, YYYY-MM-DD; normally the note date.")
+    window_amount: int = Field(description="Length of the window, e.g. 28 for 'within 28 days'.")
+    window_unit: Literal["days", "weeks", "months", "years"]
+    within_window: bool = Field(description="Your own answer: does the event fall inside the window?")
+
+
+class LLMThresholdCheck(BaseModel):
+    value: float = Field(description="The patient's value as a number, as written in the note.")
+    value_unit: Optional[str] = Field(description="Unit of the patient's value as written in the note; null if unitless.")
+    comparator: Literal["<", "<=", ">", ">=", "=", "between"]
+    threshold: float = Field(description="The criterion's limit (lower bound for 'between'); the multiplier when reference_limit is set.")
+    threshold_upper: Optional[float] = Field(description="Upper bound for 'between'; null otherwise.")
+    threshold_unit: Optional[str] = Field(description="Unit of the criterion's limit; null if unitless or a multiple of a reference limit.")
+    reference_limit: Optional[float] = Field(
+        description="The lab's upper or lower limit of normal, in the unit of the patient's value, when the criterion "
+        "is a multiple of it AND the note states it. null otherwise."
+    )
+    analyte: Optional[Literal["creatinine", "bilirubin", "hemoglobin", "albumin", "glucose", "calcium", "blood_cell_count"]] = Field(
+        description="What was measured, needed only when the two units differ so the program can convert; null otherwise."
+    )
+    satisfied: bool = Field(description="Your own answer: is 'value comparator threshold' true?")
+
+
 class LLMJudgment(BaseModel):
     criterion_id: str
     verdict: Verdict
@@ -97,6 +122,10 @@ class LLMJudgment(BaseModel):
         description="For numeric criteria: the patient's value and unit as written in the note. null otherwise."
     )
     rationale: str = Field(description="One short sentence.")
+    time_check: Optional[LLMTimeCheck] = Field(description="Set when the verdict rests on a look-back time window; null otherwise.")
+    threshold_check: Optional[LLMThresholdCheck] = Field(
+        description="Set when the verdict rests on comparing a number with a limit; null otherwise."
+    )
     basis: Basis = Field(
         description="'stated': the quoted text itself says what the criterion asks about. 'inferred': the "
         "quoted text is a different fact (age, sex) from which the verdict follows. 'not_applicable' for unknown."
@@ -194,6 +223,8 @@ class CriterionResult(BaseModel):
     source_verified: bool = True
     origin: str = "criteria_text"
     retrieved_segments: list[RetrievedSegment] = []
+    # Date and threshold arithmetic recomputed by the program (see checks.py).
+    checks: list[dict] = []
     # Audit trail of what the program changed after the model answered.
     model_verdict: Verdict
     downgraded: bool = False

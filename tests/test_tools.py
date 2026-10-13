@@ -112,40 +112,92 @@ GOOD = {
     "EXC-01": judgment("EXC-01", "not_met", ["She denies any history of interstitial lung disease"], segment="S3"),
     "EXC-02": judgment("EXC-02", "unknown"),
 }
-THRESHOLD_CALL = ("compare_to_threshold", {"patient_value": 62, "comparator": ">=", "threshold": 18,
-                                            "threshold_upper": None, "upper_limit_of_normal": None})
 
 
-def test_short_note_gets_calculators_only_and_calls_are_recorded(settings, patient, trial):
-    llm = FakeLLM(GOOD, tool_script=[THRESHOLD_CALL])
+def test_short_note_is_judged_without_any_tools(settings, patient, trial):
+    llm = FakeLLM(GOOD)
     run = run_match(patient, trial, settings, llm)
     judging = [c for c in llm.calls if c["schema"] is LLMJudgmentBatch]
-    assert all("search_note" not in c["tools"] and "compare_to_threshold" in c["tools"] for c in judging)
-    assert all("calculator tools" in c["system"] and "search_note" not in c["system"] for c in judging)
-    assert len(run.tool_calls) == 1
-    recorded = run.tool_calls[0]
-    assert recorded.tool == "compare_to_threshold" and json.loads(recorded.output)["satisfied"] is True
-    assert recorded.criterion_ids == ["INC-01", "INC-02", "INC-03", "EXC-01", "EXC-02"]
+    assert all(c["tools"] == [] and "search_note" not in c["system"] for c in judging)
+    assert "Arithmetic the program re-checks" in judging[0]["system"] and run.tool_calls == []
 
 
-def test_long_note_also_gets_search_tools(settings, patient, trial):
+def test_long_note_gets_search_tools_and_their_calls_are_recorded(settings, patient, trial):
+    import dataclasses
+
+    llm = FakeLLM(GOOD, tool_script=[("search_note", {"query": "interstitial lung disease ILD"})])
+    run = run_match(patient, trial, dataclasses.replace(settings, full_note_max_chars=10), llm)
+    judging = [c for c in llm.calls if c["schema"] is LLMJudgmentBatch][0]
+    assert judging["tools"] == ["search_note", "read_segments"]
+    assert "use search_note and read_segments" in judging["user_blocks"][0]
+    assert "Before answering \"unknown\"" in judging["system"]
+    assert run.tool_calls[0].tool == "search_note" and "denies" in run.tool_calls[0].output
+    assert run.tool_calls[0].criterion_ids == ["INC-01", "INC-02", "INC-03", "EXC-01", "EXC-02"]
+
+
+def test_note_tools_can_be_switched_off(settings, patient, trial):
     import dataclasses
 
     llm = FakeLLM(GOOD)
-    run_match(patient, trial, dataclasses.replace(settings, full_note_max_chars=10), llm)
-    judging = [c for c in llm.calls if c["schema"] is LLMJudgmentBatch][0]
-    assert {"search_note", "read_segments", "check_time_window"} <= set(judging["tools"])
-    assert "use search_note and read_segments" in judging["user_blocks"][0]
-    assert "Before answering \"unknown\"" in judging["system"]
+    run_match(patient, trial, dataclasses.replace(settings, full_note_max_chars=10, judge_tools=False), llm)
+    assert [c for c in llm.calls if c["schema"] is LLMJudgmentBatch][0]["tools"] == []
 
 
-def test_tools_can_be_switched_off(settings, patient, trial):
-    import dataclasses
+# ---- arithmetic the program recomputes --------------------------------------
 
-    llm = FakeLLM(GOOD, tool_script=[THRESHOLD_CALL])
-    run = run_match(patient, trial, dataclasses.replace(settings, judge_tools=False), llm)
-    judging = [c for c in llm.calls if c["schema"] is LLMJudgmentBatch][0]
-    assert judging["tools"] == [] and "Tools\n" not in judging["system"] and run.tool_calls == []
+AGE_OK = {"value": 62, "value_unit": "years", "comparator": ">=", "threshold": 18, "threshold_upper": None,
+          "threshold_unit": "years", "reference_limit": None, "analyte": None, "satisfied": True}
+
+
+def _one(settings, patient, trial, criterion_id, scripted_judgment):
+    run = run_match(patient, trial, settings, FakeLLM(dict(GOOD, **{criterion_id: scripted_judgment})))
+    return {c.criterion_id: c for c in run.criteria}[criterion_id], run
+
+
+def test_agreeing_threshold_check_is_recorded_as_confirmed(settings, patient, trial):
+    c, _ = _one(settings, patient, trial, "INC-02", judgment("INC-02", "met", ["62-year-old"], threshold_check=AGE_OK))
+    assert c.verdict == "met" and c.flags == [] and c.confidence == "high"
+    assert c.checks[0]["status"] == "confirmed" and c.checks[0]["computed"] is True
+    assert c.checks[0]["detail"] == "62 >= 18.0 years is true"
+
+
+def test_wrong_arithmetic_sets_the_determination_aside(settings, patient, trial):
+    # The model claims ALT 28 U/L exceeds 2.5 x ULN (40): 28 > 100 is false.
+    wrong = {"value": 28, "value_unit": "U/L", "comparator": ">", "threshold": 2.5, "threshold_upper": None,
+             "threshold_unit": None, "reference_limit": 40, "analyte": None, "satisfied": True}
+    c, run = _one(settings, patient, trial, "EXC-02", judgment("EXC-02", "met", ["ALT 28 U/L"], segment="S5", threshold_check=wrong))
+    assert c.model_verdict == "met" and c.verdict == "unknown" and c.effect == "unresolved" and c.confidence == "low"
+    assert c.flags == ["calculation_mismatch"] and c.checks[0]["status"] == "mismatch"
+    assert "28 > 100.0 (2.5 x 40)" in c.checks[0]["detail"] and "did not match the program's" in c.missing_info
+    assert run.summary.overall == "needs_more_info"  # a wrong "exclusion applies" must not block enrollment
+
+
+def test_time_window_is_recomputed_from_the_dates(settings, patient, trial):
+    claims_recent = {"event_date": "2026-08-04", "reference_date": "2026-09-18", "window_amount": 28, "window_unit": "days", "within_window": True}
+    c, _ = _one(settings, patient, trial, "EXC-02", judgment("EXC-02", "met", ["ALT 28 U/L"], segment="S5", time_check=claims_recent))
+    assert c.verdict == "unknown" and c.checks[0]["computed"] is False
+    assert "45 days before 2026-09-18" in c.checks[0]["detail"] and "outside" in c.checks[0]["detail"]
+    # 2026-08-04 is not written in the fixture note, so the input is also flagged on a correct answer.
+    correct = dict(claims_recent, within_window=False)
+    c, _ = _one(settings, patient, trial, "EXC-02", judgment("EXC-02", "not_met", ["ALT 28 U/L"], segment="S5", time_check=correct))
+    assert c.verdict == "not_met" and c.flags == ["calculation_input_not_in_note"] and c.confidence == "low"
+    assert c.checks[0]["status"] == "confirmed" and c.checks[0]["inputs_not_in_note"] == ["2026-08-04"]
+
+
+def test_units_are_converted_by_the_program_or_the_check_is_marked_uncheckable(settings, patient, trial):
+    from trialmatch.checks import run_threshold_check
+    from trialmatch.models import LLMThresholdCheck
+
+    base = {"comparator": "<", "threshold": 90, "threshold_upper": None, "threshold_unit": "g/L", "reference_limit": None}
+    hb = LLMThresholdCheck(value=11.8, value_unit="g/dL", analyte="hemoglobin", satisfied=False, **base)
+    done = run_threshold_check(hb, "Hemoglobin 11.8 g/dL")
+    assert done.status == "confirmed" and done.detail == "11.8 g/dL = 118 g/L; 118 < 90.0 g/L is false" and done.inputs_not_in_note == []
+    no_analyte = run_threshold_check(hb.model_copy(update={"analyte": None}), "Hemoglobin 11.8 g/dL")
+    assert no_analyte.status == "not_checkable" and no_analyte.computed is None
+
+    partial = {"event_date": "2014", "reference_date": "2026-09-18", "window_amount": 4, "window_unit": "weeks", "within_window": False}
+    c, _ = _one(settings, patient, trial, "EXC-02", judgment("EXC-02", "not_met", ["ALT 28 U/L"], segment="S5", time_check=partial))
+    assert c.verdict == "not_met" and c.flags == ["calculation_not_checkable"] and c.confidence == "low"
 
 
 # ---- model wrapper: the tool loop against a scripted client ----------------

@@ -23,7 +23,7 @@ from .models import (
 from .retrieval import BM25Index, criterion_query, select_segments
 from .segment import segment_note
 from .summarize import summarize
-from .tools import calculator_tools, note_tools
+from .tools import note_tools
 from .verify import unresolved_result, verify_judgment
 
 Progress = Callable[[str], None]
@@ -65,10 +65,9 @@ def run_match(
         for c in criteria:
             retrieved[c.id] = select_segments(index.rank(criterion_query(c)), segments, settings.top_k_segments)
 
-    # Calculators for every note; search tools only when the model cannot see the whole note.
-    tools = []
-    if settings.judge_tools:
-        tools = calculator_tools() + ([] if complete else note_tools(segments))
+    # Search tools only when the model cannot see the whole note. Date and threshold arithmetic is
+    # not a tool: the model reports its inputs and the program recomputes them (checks.py).
+    tools = note_tools(segments) if settings.judge_tools and not complete else []
 
     size = settings.judge_batch_size
     batches = [criteria[i : i + size] for i in range(0, len(criteria), size)]

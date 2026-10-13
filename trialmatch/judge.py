@@ -58,9 +58,27 @@ window, the verdict is "unknown".
 
 Numeric criteria
 For lab values, age, doses and scores, put the patient's value and unit as written in the note in \
-`patient_value`, then compare it with the threshold. If the units differ and cannot be converted \
-with certainty, or the threshold depends on something the note lacks (such as the lab's upper limit \
-of normal), say so and answer "unknown" or lower your confidence.
+`patient_value`, then compare it with the threshold. If the threshold depends on something the note \
+lacks (such as the lab's upper limit of normal), say so and answer "unknown".
+
+Arithmetic the program re-checks
+When your verdict rests on date arithmetic or on comparing a number with a limit, also fill in the \
+matching check with the inputs you used and your own answer. The program recomputes the answer from \
+those inputs. If it agrees, the clinician sees a verified calculation; if it disagrees, your \
+determination is set aside for manual review. So give the inputs exactly as the note and the \
+criterion state them, and do not adjust them to fit your conclusion.
+- `time_check`, for a look-back window ("within 28 days", "in the last 6 months"): the event's date \
+and the reference date as YYYY-MM-DD, the window, and whether you find the event inside it. Use it \
+only when the note gives the event's full date; with only a month or a year, leave it null and judge \
+the timing as far as the note allows.
+- `threshold_check`, for a number against a limit: the patient's value and unit from the note, the \
+comparator and limit from the criterion, and whether the comparison holds. Choose the comparator so \
+that "value comparator threshold" restates the criterion (for "ANC below 1.5", comparator "<"). When \
+the limit is a multiple of the upper or lower limit of normal, put the multiplier in `threshold` and \
+the lab's limit in `reference_limit`, and only if the note states that limit. When the units differ, \
+keep each as written and name the `analyte`; the program converts.
+Leave both null for criteria that involve no arithmetic. A check supports a verdict but does not \
+replace the quote: every value and date in it must come from text you can quote.
 
 Evidence
 - Every "met" or "not_met" needs at least one quote that supports it.
@@ -84,17 +102,7 @@ an assumption about timing, units or meaning. Low-confidence items are shown to 
 
 Return exactly one judgment per criterion, using the criterion ids you were given."""
 
-# Appended to the system prompt only when tools are offered.
-CALCULATOR_GUIDANCE = """
-
-Tools
-You have calculator tools for dates, thresholds and lab units. Use them whenever a verdict depends on \
-arithmetic: whether an event falls inside a time window, how a value compares with a limit, or a \
-comparison across different units. The clinician can re-check a computed result, which they cannot do \
-with mental arithmetic. A tool result is a calculation, not evidence: the dates and values you pass in \
-must come from the note, and your quotes must still be the note's own text. Criteria that need no \
-arithmetic need no tool call."""
-
+# Appended to the system prompt only when the note-search tools are offered.
 NOTE_TOOL_GUIDANCE = """
 This note is too long to show in full, so you were given the excerpts a keyword search judged most \
 relevant. That search matches words rather than meaning and can miss a passage that uses a synonym or \
@@ -104,13 +112,9 @@ as far as you can tell, and the verdict is then still "unknown", never "not_met"
 
 
 def system_prompt(tools: list[Tool]) -> str:
-    names = {tool.name for tool in tools}
-    prompt = SYSTEM_PROMPT
-    if names:
-        prompt += CALCULATOR_GUIDANCE
-    if "search_note" in names:
-        prompt += NOTE_TOOL_GUIDANCE
-    return prompt
+    if any(tool.name == "search_note" for tool in tools):
+        return SYSTEM_PROMPT + "\n" + NOTE_TOOL_GUIDANCE
+    return SYSTEM_PROMPT
 
 
 def render_note(patient: Patient, segments: list[Segment], *, complete: bool, searchable: bool = False) -> str:
