@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trial eligibility screening</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Trial eligibility screening</h1>
+    <label class="field">Saved run
+      <select id="run-select"><option value="">Select a run</option></select>
+    </label>
+    <form id="new-run" class="new-run">
+      <label class="field">Patient
+        <select id="patient-select" required></select>
+      </label>
+      <label class="field">Trial
+        <input id="nct-input" placeholder="NCT number" pattern="[Nn][Cc][Tt]\d{8}" required size="13">
+      </label>
+      <button type="submit" id="run-button">Run match</button>
+    </form>
+    <label class="field reviewer">Reviewer
+      <input id="reviewer-input" placeholder="Your name" size="12">
+    </label>
+  </header>
+
+  <p id="status" class="status" role="status" hidden></p>
+
+  <section id="summary" class="summary" hidden>
+    <div class="summary-head">
+      <div>
+        <div class="summary-context" id="summary-context"></div>
+        <div class="overall" id="overall"></div>
+        <div class="reviewed-overall" id="reviewed-overall" hidden></div>
+      </div>
+      <div class="counts" id="counts"></div>
+    </div>
+    <p class="disclaimer" id="disclaimer"></p>
+    <details open>
+    <summary>Reasons and items to check</summary>
+    <div class="summary-lists">
+      <div>
+        <h2>Key reasons</h2>
+        <ul id="key-reasons" class="link-list"></ul>
+      </div>
+      <div>
+        <h2 id="follow-up-heading">To check</h2>
+        <ul id="follow-up" class="link-list"></ul>
+      </div>
+    </div>
+    </details>
+  </section>
+
+  <main id="workspace" class="workspace" hidden>
+    <section class="pane note-pane" aria-label="Patient note">
+      <div class="pane-head">
+        <h2>Patient note</h2>
+        <span id="note-source" class="muted"></span>
+      </div>
+      <p id="note-hint" class="note-hint" hidden></p>
+      <div id="note" class="note"></div>
+    </section>
+
+    <section class="pane criteria-pane" aria-label="Eligibility criteria">
+      <div class="pane-head">
+        <h2>Criteria</h2>
+        <div id="filters" class="filters" role="group" aria-label="Filter criteria"></div>
+        <label class="field inline">Order
+          <select id="sort-select">
+            <option value="attention">Needs attention first</option>
+            <option value="trial">Trial order</option>
+          </select>
+        </label>
+      </div>
+      <ol id="criteria" class="criteria"></ol>
+    </section>
+  </main>
+
+  <p id="empty" class="empty">
+    Select a saved run, or pick a patient and enter an NCT number to run a new match.
+  </p>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
