@@ -14,6 +14,7 @@ _EFFECT_MARK = {"supports": "+", "blocks": "x", "unresolved": "?"}
 def print_run(run: RunResult) -> None:
     s = run.summary
     print(f"\n{run.patient.id}  vs  {run.trial.nct_id}  {run.trial.title}")
+    print(f"Trial criteria: {run.trial.source} ({run.trial.fetched_at}) | note given to model: {run.note_coverage}")
     print(f"Overall: {s.overall_label}")
     print(
         f"Criteria: {s.counts['total']} total | {s.counts['supports']} support enrollment | "
@@ -59,16 +60,19 @@ def cmd_fetch_trec(args: argparse.Namespace) -> int:
 
 
 def cmd_run(args: argparse.Namespace) -> int:
-    from .ctgov import fetch_trial
     from .llm import AnthropicLLM
     from .patients import load_patient
     from .pipeline import run_match
     from .store import save_run
+    from .trials import get_trial, run_id_suffix
 
     settings = get_settings()
     patient = load_patient(args.patient, settings)
-    trial = fetch_trial(args.nct, settings)
-    run = run_match(patient, trial, settings, AnthropicLLM(settings), progress=lambda m: print(m, file=sys.stderr))
+    trial = get_trial(args.nct, settings, args.trial_source)
+    run = run_match(
+        patient, trial, settings, AnthropicLLM(settings),
+        progress=lambda m: print(m, file=sys.stderr), run_suffix=run_id_suffix(args.trial_source),
+    )
     save_run(settings, run)
     print_run(run)
     print(f"\nSaved to {settings.runs_dir / (run.run_id + '.json')}")
@@ -108,6 +112,8 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("run", help="Match one patient against one trial")
     p.add_argument("--patient", required=True, help="sample-nsclc, trec2021-1, ...")
     p.add_argument("--nct", required=True, help="NCT number, e.g. NCT04035486")
+    p.add_argument("--trial-source", choices=("api", "snapshot"), default="api",
+                   help="api: current ClinicalTrials.gov record (default); snapshot: TREC 2021-04-27 registry snapshot")
     p.set_defaults(func=cmd_run)
 
     p = sub.add_parser("serve", help="Start the review web app")
@@ -120,6 +126,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--n", type=int, default=500, help="Number of pairs to sample")
     p.add_argument("--seed", type=int, default=13)
     p.add_argument("--sampling", choices=("balanced", "proportional"), default="balanced")
+    p.add_argument("--trial-source", choices=("api", "snapshot"), default="snapshot",
+                   help="snapshot (default): criteria as TREC assessors saw them; api: current registry record")
     p.add_argument("--workers", type=int, default=4, help="Pairs processed concurrently")
     p.add_argument("--name", default=None, help="Output folder name under data/eval/")
     p.add_argument("--rerun", action="store_true", help="Ignore saved runs and call the model again")

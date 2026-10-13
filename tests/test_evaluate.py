@@ -34,6 +34,8 @@ def test_metrics_screen_in_vs_strict():
     assert m["screen_in"] == {"recall": 0.75, "precision": 0.6, "tp": 3, "fp": 2, "fn": 1}
     assert m["strict"] == {"recall": 0.25, "precision": 0.5, "tp": 1, "fp": 1, "fn": 3}
     assert m["confusion_trec_label_by_prediction"]["eligible"]["needs_more_info"] == 2
+    assert m["excluded_ruled_out"] == {"trec_excluded_pairs": 2, "predicted_not_eligible": 1, "rate": 0.5}
+    assert m["needs_more_info"] == {"pairs": 3, "share_of_all_pairs": 0.3333}
     assert m["citations"]["quote_pass_rate"] == 0.75 and m["citations"]["judgment_pass_rate"] == 0.75
     assert compute_metrics([])["screen_in"]["recall"] is None
 
@@ -51,7 +53,8 @@ def test_evaluate_pairs_exports_errors_and_survives_failures(settings, patient, 
     path.parent.mkdir(parents=True)
     path.write_text(f'<topics><topic number="1">{patient.text}</topic></topics>', encoding="utf-8")
 
-    def fetch(nct_id, _settings):
+    def fetch(nct_id, _settings, source):
+        assert source == "snapshot"
         if nct_id == "NCT99999999":
             raise RuntimeError("gone")
         return trial.model_copy(update={"nct_id": nct_id})
@@ -79,6 +82,6 @@ def test_evaluate_pairs_exports_errors_and_survives_failures(settings, patient, 
     assert errors[0]["blocking_criteria"][0]["quotes"] == ["Mother died of breast cancer"]
     rows = list(csv.DictReader((out / "errors.csv").open()))
     assert rows[0]["nct_id"] == "NCT00000001" and "misread family history" in rows[0]["blocking_criteria"]
-    assert rows[0]["review_url"] == "http://x/?run=trec2021-1__NCT00000001"
+    assert rows[0]["review_url"] == "http://x/?run=trec2021-1__NCT00000001__snap2021"
     assert json.loads((out / "metrics.json").read_text())["screen_in"]["fn"] == 1
     assert len(list(csv.DictReader((out / "predictions.csv").open()))) == 2

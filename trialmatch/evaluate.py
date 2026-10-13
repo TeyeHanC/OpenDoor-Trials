@@ -11,8 +11,14 @@ under two definitions:
   a patient is only lost when the system says "not eligible".
 * strict: only "possibly eligible" counts as positive.
 
-Caveat: trials are fetched live from ClinicalTrials.gov, so their criteria may
-have changed since the 2021 snapshot the TREC assessors judged.
+Screen-in recall alone is meaningless (ruling nobody out gives 100%), so it is
+always reported next to two counterweights: how many TREC-"excluded" pairs the
+system did rule out, and what share of all pairs ended as "more information
+needed".
+
+Trial criteria come from the 2021-04-27 registry snapshot TREC assessors saw
+(``--trial-source snapshot``, the default), so an error is never just a
+criterion that changed in the live registry afterwards.
 """
 
 from __future__ import annotations
@@ -28,12 +34,12 @@ from datetime import datetime
 from typing import Callable
 
 from .config import Settings, get_settings
-from .ctgov import fetch_trial
 from .llm import StructuredLLM
 from .models import RunResult, Trial
 from .patients import load_patient, load_qrels
 from .pipeline import make_run_id, run_match
 from .store import latest_reviews, load_run, save_run
+from .trials import get_trial, run_id_suffix
 
 LABEL_NAMES = {0: "not_relevant", 1: "excluded", 2: "eligible"}
 OVERALLS = ("possibly_eligible", "needs_more_info", "not_eligible")
@@ -74,11 +80,20 @@ def compute_metrics(records: list[dict]) -> dict:
     quotes_verified = sum(r["quotes_verified"] for r in records)
     needing = sum(r["judgments_needing_evidence"] for r in records)
     downgraded = sum(r["judgments_downgraded"] for r in records)
+    excluded = [r for r in records if r["label"] == 1]
+    excluded_ruled_out = sum(1 for r in excluded if r["overall"] == "not_eligible")
+    needs_info = sum(1 for r in records if r["overall"] == "needs_more_info")
     return {
         "pairs_evaluated": len(records),
         "gold_eligible": sum(1 for r in records if r["label"] == 2),
         "screen_in": _precision_recall(records, lambda o: o != "not_eligible"),
         "strict": _precision_recall(records, lambda o: o == "possibly_eligible"),
+        "excluded_ruled_out": {
+            "trec_excluded_pairs": len(excluded),
+            "predicted_not_eligible": excluded_ruled_out,
+            "rate": _ratio(excluded_ruled_out, len(excluded)),
+        },
+        "needs_more_info": {"pairs": needs_info, "share_of_all_pairs": _ratio(needs_info, len(records))},
         "confusion_trec_label_by_prediction": confusion,
         "citations": {
             "quotes_total": quotes_total,
@@ -153,7 +168,8 @@ def evaluate_pairs(
     settings: Settings,
     llm: StructuredLLM,
     *,
-    fetch: Callable[[str, Settings], Trial] = fetch_trial,
+    trial_source: str = "snapshot",
+    fetch: Callable[[str, Settings, str], Trial] = get_trial,
     workers: int = 4,
     rerun: bool = False,
     progress: Callable[[str], None] = lambda message: None,
@@ -164,9 +180,11 @@ def evaluate_pairs(
         topic, nct_id, label = pair
         patient_id = f"trec{year}-{topic}"
         try:
-            run = None if rerun else load_run(settings, make_run_id(patient_id, nct_id))
+            suffix = run_id_suffix(trial_source)
+            run = None if rerun else load_run(settings, make_run_id(patient_id, nct_id, suffix))
             if run is None:
-                run = run_match(load_patient(patient_id, settings), fetch(nct_id, settings), settings, llm)
+                trial = fetch(nct_id, settings, trial_source)
+                run = run_match(load_patient(patient_id, settings), trial, settings, llm, run_suffix=suffix)
                 save_run(settings, run)
             return record_for(run, topic, label), run, None
         except Exception as exc:  # one bad pair must not abort a long evaluation
@@ -239,6 +257,12 @@ def format_report(metrics: dict, errors: list[dict], failures: list[dict], out_d
         f"  Strict (possibly eligible):  recall {pct(t['recall'])}   precision {pct(t['precision'])}   "
         f"[TP {t['tp']}  FP {t['fp']}  FN {t['fn']}]",
         "",
+        "Read screen-in recall together with:",
+        f"  TREC-excluded pairs ruled out ('not eligible'):  {metrics['excluded_ruled_out']['predicted_not_eligible']}/"
+        f"{metrics['excluded_ruled_out']['trec_excluded_pairs']} ({pct(metrics['excluded_ruled_out']['rate'])})",
+        f"  'More information needed' share of all pairs:   {metrics['needs_more_info']['pairs']}/"
+        f"{metrics['pairs_evaluated']} ({pct(metrics['needs_more_info']['share_of_all_pairs'])})",
+        "",
         "TREC label x predicted conclusion",
         f"  {'':14}" + "".join(f"{o:>20}" for o in OVERALLS),
     ]
@@ -263,11 +287,14 @@ def run_evaluation(args: argparse.Namespace) -> int:
     settings = get_settings()
     pairs = sample_pairs(load_qrels(settings, args.year), args.n, args.seed, args.sampling)
     by_label = Counter(LABEL_NAMES[label] for _, _, label in pairs)
-    cached = sum(1 for topic, nct, _ in pairs if load_run(settings, make_run_id(f"trec{args.year}-{topic}", nct)))
+    suffix = run_id_suffix(args.trial_source)
+    cached = sum(1 for topic, nct, _ in pairs if load_run(settings, make_run_id(f"trec{args.year}-{topic}", nct, suffix)))
     to_run = len(pairs) if args.rerun else len(pairs) - cached
     print(
         f"TREC CT {args.year}: {len(pairs)} pairs sampled ({args.sampling}, seed {args.seed}): {dict(by_label)}\n"
-        f"{cached} already have a saved run; {to_run} will call {settings.model}."
+        f"Trial criteria source: {args.trial_source}"
+        + ("" if args.trial_source == "snapshot" else "  (WARNING: live registry text may differ from what TREC judged)")
+        + f"\n{cached} already have a saved run; {to_run} will call {settings.model}."
     )
     if args.sampling == "balanced":
         print("Note: balanced sampling over-represents eligible pairs, so precision is not the real-world rate.")
@@ -281,11 +308,12 @@ def run_evaluation(args: argparse.Namespace) -> int:
 
     llm = AnthropicLLM(settings)
     evaluated, failures = evaluate_pairs(
-        pairs, args.year, settings, llm, workers=args.workers, rerun=args.rerun, progress=lambda m: print(m, file=sys.stderr)
+        pairs, args.year, settings, llm, trial_source=args.trial_source, workers=args.workers, rerun=args.rerun, progress=lambda m: print(m, file=sys.stderr)
     )
     metrics = compute_metrics([record for record, _ in evaluated])
     metrics["config"] = {
-        "year": args.year, "n": args.n, "seed": args.seed, "sampling": args.sampling, "model": settings.model,
+        "year": args.year, "n": args.n, "seed": args.seed, "sampling": args.sampling, "trial_source": args.trial_source, "model": settings.model,
+        "full_note_max_chars": settings.full_note_max_chars, "judge_batch_size": settings.judge_batch_size,
         "effort": settings.effort, "failed_pairs": len(failures), "usage": llm.usage_summary(),
     }
     name = args.name or f"trec{args.year}-n{args.n}-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
