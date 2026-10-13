@@ -40,6 +40,10 @@ _RETRY_STATUS = {408, 409, 429, 500, 502, 503, 504}
 _FENCE_RE = re.compile(r"^```(?:json)?\s*(.*?)\s*```$", re.DOTALL)
 
 
+class StreamInterrupted(LLMError):
+    """The endpoint cut a streamed answer short; the request can be sent again."""
+
+
 def _schema_instruction(schema: dict) -> str:
     return (
         "\n\nReply with a single JSON object and nothing else: no prose, no code fence. "
@@ -223,6 +227,9 @@ class OpenAICompatLLM:
             except httpx.TransportError as exc:
                 if attempt == 3:
                     raise LLMError(f"Could not reach the endpoint: {type(exc).__name__}") from exc
+            except StreamInterrupted:
+                if attempt == 3:
+                    raise
             time.sleep(2**attempt)
         raise AssertionError("unreachable")
 
@@ -244,7 +251,7 @@ def _read_stream(lines) -> tuple[dict, dict]:
         except ValueError:
             continue
         if chunk.get("error"):
-            raise LLMError(f"Endpoint error mid-stream: {json.dumps(chunk['error'], ensure_ascii=False)[:300]}")
+            raise StreamInterrupted(f"Endpoint error mid-stream: {json.dumps(chunk['error'], ensure_ascii=False)[:300]}")
         usage = chunk.get("usage") or usage
         for choice in chunk.get("choices") or []:
             finish = choice.get("finish_reason") or finish
@@ -260,7 +267,7 @@ def _read_stream(lines) -> tuple[dict, dict]:
                 call["function"]["name"] += function.get("name") or ""
                 call["function"]["arguments"] += function.get("arguments") or ""
     if finish is None and not content and not calls:
-        raise LLMError("The endpoint closed the stream without sending an answer")
+        raise StreamInterrupted("The endpoint closed the stream without sending an answer")
     message: dict = {"role": "assistant", "content": "".join(content) or None}
     if calls:
         message["tool_calls"] = [calls[i] for i in sorted(calls)]

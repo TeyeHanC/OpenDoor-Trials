@@ -510,3 +510,26 @@ def test_openai_endpoint_turns_reasoning_off_only_for_tool_requests_when_told_to
     assert [b.get("reasoning_effort") for b in bodies] == [None, "none", None]
     # The strict schema and the usage option survive: only reasoning was the problem.
     assert llm.mode == "schema" and all("stream_options" in b for b in bodies)
+
+
+def test_openai_endpoint_resends_a_request_whose_stream_was_cut(settings, monkeypatch):
+    attempts = []
+
+    def handler(request):
+        attempts.append(1)
+        if len(attempts) < 3:
+            cut = 'data: {"choices": [{"delta": {"content": "{\\"judg"}}]}\n\ndata: {"error": {"message": "Upstream response stream was interrupted"}}\n\n'
+            return httpx.Response(200, text=cut, headers={"content-type": "text/event-stream"})
+        return _chat(content=FINAL_JSON)
+
+    llm = _openai_llm(settings, handler, monkeypatch)
+    assert llm.structured(system="s", user_blocks=["x"], schema=LLMJudgmentBatch).judgments[0].criterion_id == "INC-01"
+    assert len(attempts) == 3 and llm.usage_summary()["requests"] == 1
+
+    always_cut = _openai_llm(
+        settings,
+        lambda request: httpx.Response(200, text='data: {"error": {"message": "interrupted"}}\n\n', headers={"content-type": "text/event-stream"}),
+        monkeypatch,
+    )
+    with pytest.raises(LLMError, match="mid-stream"):
+        always_cut.structured(system="s", user_blocks=["x"], schema=LLMJudgmentBatch)
