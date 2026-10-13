@@ -14,7 +14,7 @@ from pydantic import BaseModel
 
 from .config import get_settings
 from .ctgov import TrialNotFound, fetch_trial
-from .llm import AnthropicLLM, LLMError
+from .llm import AnthropicLLM, LLMError, MissingCredentials
 from .models import Review, Verdict
 from .patients import PatientNotFound, list_patients, load_patient
 from .pipeline import run_match
@@ -86,13 +86,10 @@ def api_create_run(request: RunRequest) -> dict:
         raise HTTPException(400, "The Anthropic API rejected the API key. Check ANTHROPIC_API_KEY in .env.") from exc
     except anthropic.APIError as exc:
         raise HTTPException(502, f"Anthropic API error: {exc}") from exc
+    except MissingCredentials as exc:
+        raise HTTPException(400, f"{exc} Then restart the server.") from exc
     except LLMError as exc:
         raise HTTPException(502, str(exc)) from exc
-    except Exception as exc:
-        # The SDK raises a plain error at client construction when no credentials are configured.
-        if "api_key" in str(exc) or "auth" in str(exc).lower():
-            raise HTTPException(400, "No Anthropic API key found. Put ANTHROPIC_API_KEY in .env and restart.") from exc
-        raise
     save_run(settings, run)
     return {"run_id": run.run_id}
 

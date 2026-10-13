@@ -21,6 +21,10 @@ class LLMRefusal(LLMError):
     """The model declined the request (stop_reason == "refusal")."""
 
 
+class MissingCredentials(LLMError):
+    """No Anthropic credentials are configured."""
+
+
 class StructuredLLM(Protocol):
     def structured(self, *, system: str, user_blocks: list[str], schema: type[T]) -> T: ...
 
@@ -48,17 +52,15 @@ class AnthropicLLM:
         for block in content[:-1]:
             block["cache_control"] = {"type": "ephemeral"}
 
-        # Streamed so a long decomposition cannot hit the HTTP timeout.
-        with self.client.messages.stream(
-            model=self.settings.model,
-            max_tokens=32000,
-            thinking={"type": "adaptive"},
-            output_config={"effort": self.settings.effort},
-            system=[{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
-            messages=[{"role": "user", "content": content}],
-            output_format=schema,
-        ) as stream:
-            message = stream.get_final_message()
+        try:
+            message = self._request(system, content, schema)
+        except TypeError as exc:
+            # The SDK reports absent credentials as a TypeError when the request is built.
+            if "authentication" not in str(exc):
+                raise
+            raise MissingCredentials(
+                "No Anthropic API key found. Copy .env.example to .env and set ANTHROPIC_API_KEY."
+            ) from exc
 
         usage = message.usage
         with self._usage_lock:
@@ -81,3 +83,16 @@ class AnthropicLLM:
                 raise LLMError("Model returned no text block")
             parsed = schema.model_validate_json(text)
         return parsed
+
+    def _request(self, system: str, content: list[dict], schema: type[T]):
+        # Streamed so a long decomposition cannot hit the HTTP timeout.
+        with self.client.messages.stream(
+            model=self.settings.model,
+            max_tokens=32000,
+            thinking={"type": "adaptive"},
+            output_config={"effort": self.settings.effort},
+            system=[{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
+            messages=[{"role": "user", "content": content}],
+            output_format=schema,
+        ) as stream:
+            return stream.get_final_message()

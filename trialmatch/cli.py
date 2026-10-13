@@ -133,8 +133,16 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
+    from .ctgov import TrialNotFound
+    from .llm import LLMError
+    from .patients import PatientNotFound
+
     args = build_parser().parse_args(argv)
-    return args.func(args)
+    try:
+        return args.func(args)
+    except (LLMError, PatientNotFound, TrialNotFound, FileNotFoundError, ValueError) as exc:
+        print(f"Error: {exc}", file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":
