@@ -12,7 +12,7 @@ from .models import AtomicCriterion, LLMDecomposition, Threshold, Trial
 from .verify import locate_quote
 
 # Bump when the prompt changes so cached decompositions are not reused.
-PROMPT_VERSION = "1"
+PROMPT_VERSION = "2"
 
 SYSTEM_PROMPT = """\
 You prepare clinical trial eligibility criteria for a screening tool. Each item you produce will be \
@@ -28,8 +28,16 @@ alternatives (OR) and exceptions ("unless", "except", "with the exception of") t
 splitting them would change the meaning.
 - Each item's `text` must stand alone. Resolve references such as "the above" or "study drug" using \
 the surrounding text, and carry any shared qualifier or time window into every item it applies to.
-- Do not add, drop, strengthen or weaken any requirement. Do not turn an exclusion into an inclusion \
-or the reverse; keep each item's meaning in the direction it was written.
+- Do not add, drop, strengthen or weaken any requirement.
+- Keep each item pointing the way the registry wrote it. An exclusion item states the condition that \
+excludes a patient, as a positive statement that is true of a patient who must be kept out: "Prior \
+treatment with an EGFR-TKI" becomes "The patient has previously received an EGFR-TKI", and "ANC below \
+LLN" becomes "The patient's absolute neutrophil count is below the lower limit of normal". Never \
+rewrite an exclusion as the requirement a patient has to satisfy ("has not received...", "is not \
+below..."). The next step judges whether each statement is true of the patient, and the program then \
+treats a true exclusion as blocking enrollment, so a negated exclusion would silently reverse the \
+result and rule out exactly the patients who qualify. Inclusion items likewise state what must be \
+true of a patient who can enroll.
 - Keep criteria that a medical note may not be able to answer (consent, willingness, investigator \
 judgment). The clinician still needs to see them.
 - Skip text that is not a criterion: section headings, notes to investigators, definitions.
