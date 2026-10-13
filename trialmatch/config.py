@@ -29,9 +29,13 @@ class Settings:
     model: str
     effort: str
     data_dir: Path
-    # Notes at or below this length are sent to the model whole, so a retrieval
-    # miss can never be the reason a criterion is judged "unknown".
-    full_note_max_chars: int = 6000
+    # Notes at or below this length skip retrieval and go to the model whole.
+    # BM25 only matches words, so it cannot connect "lung adenocarcinoma" to
+    # "NSCLC"; a missed segment would surface as a wrong "unknown". 20,000
+    # characters is roughly 5,000 tokens: longer than a multi-page clinic note
+    # or discharge summary, and still cheap to resend with each batch of
+    # criteria. Only longitudinal records beyond that go through retrieval.
+    full_note_max_chars: int = 20000
     top_k_segments: int = 6
     segment_max_chars: int = 400
     judge_batch_size: int = 8
@@ -69,4 +73,5 @@ def get_settings() -> Settings:
         model=os.environ.get("TRIALMATCH_MODEL", "claude-opus-5-5"),
         effort=os.environ.get("TRIALMATCH_EFFORT", "high"),
         data_dir=data_dir,
+        full_note_max_chars=int(os.environ.get("TRIALMATCH_FULL_NOTE_MAX_CHARS", 20000)),
     )

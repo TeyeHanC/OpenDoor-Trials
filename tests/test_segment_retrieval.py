@@ -36,12 +36,10 @@ def test_bm25_ranks_matching_segment_first():
     assert "creatinine" in next(s.text for s in segments if s.id == top.segment_id)
 
 
-def test_select_segments_short_note_gets_everything_long_note_gets_top_k_plus_first():
+def test_select_segments_returns_top_k_matches_plus_first_segment():
     segments = segment_note(NOTE, max_chars=60)
     ranked = BM25Index(segments).rank("creatinine")
-    everything = select_segments(ranked, segments, note_length=len(NOTE), full_note_max_chars=10_000, top_k=2)
-    assert len(everything) == len(segments)
-    limited = select_segments(ranked, segments, note_length=len(NOTE), full_note_max_chars=10, top_k=2)
+    limited = select_segments(ranked, segments, top_k=2)
     ids = [r.segment_id for r in limited]
     assert segments[0].id in ids and len(ids) == 2
 

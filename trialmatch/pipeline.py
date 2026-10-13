@@ -19,8 +19,8 @@ from .verify import unresolved_result, verify_judgment
 Progress = Callable[[str], None]
 
 
-def make_run_id(patient_id: str, nct_id: str) -> str:
-    return f"{patient_id}__{nct_id}"
+def make_run_id(patient_id: str, nct_id: str, suffix: str = "") -> str:
+    return f"{patient_id}__{nct_id}{suffix}"
 
 
 def citation_stats(results: list[CriterionResult]) -> CitationStats:
@@ -40,32 +40,31 @@ def run_match(
     settings: Settings,
     llm: StructuredLLM,
     progress: Progress = lambda message: None,
+    run_suffix: str = "",
 ) -> RunResult:
     progress(f"Decomposing eligibility criteria for {trial.nct_id}")
     criteria = decompose_trial(trial, settings, llm)
 
     segments = segment_note(patient.text, settings.segment_max_chars)
     by_id = {s.id: s for s in segments}
+    # Short notes go to the model whole; only long ones are narrowed by retrieval.
     complete = len(patient.text) <= settings.full_note_max_chars
-    index = BM25Index(segments)
-    retrieved: dict[str, list[RetrievedSegment]] = {
-        c.id: select_segments(
-            index.rank(criterion_query(c)),
-            segments,
-            note_length=len(patient.text),
-            full_note_max_chars=settings.full_note_max_chars,
-            top_k=settings.top_k_segments,
-        )
-        for c in criteria
-    }
+    retrieved: dict[str, list[RetrievedSegment]] = {c.id: [] for c in criteria}
+    if not complete:
+        index = BM25Index(segments)
+        for c in criteria:
+            retrieved[c.id] = select_segments(index.rank(criterion_query(c)), segments, settings.top_k_segments)
 
     size = settings.judge_batch_size
     batches = [criteria[i : i + size] for i in range(0, len(criteria), size)]
 
     def judge(batch: list[AtomicCriterion]) -> list[CriterionResult]:
-        # A batch sees the union of its criteria's segments, in note order.
-        wanted = {r.segment_id for c in batch for r in retrieved[c.id]}
-        batch_segments = [s for s in segments if s.id in wanted]
+        if complete:
+            batch_segments = segments
+        else:
+            # A batch sees the union of its criteria's segments, in note order.
+            wanted = {r.segment_id for c in batch for r in retrieved[c.id]}
+            batch_segments = [s for s in segments if s.id in wanted]
         judgments = judge_batch(patient, batch_segments, batch, llm, complete=complete)
         results = []
         for criterion in batch:
@@ -88,9 +87,11 @@ def run_match(
         results = [r for batch_results in pool.map(judge, batches) for r in batch_results]
 
     return RunResult(
-        run_id=make_run_id(patient.id, trial.nct_id),
+        run_id=make_run_id(patient.id, trial.nct_id, run_suffix),
         created_at=datetime.now(timezone.utc).isoformat(timespec="seconds"),
         model=settings.model,
+        note_coverage="full" if complete else "retrieved",
+        judge_batch_size=settings.judge_batch_size,
         patient=patient,
         segments=segments,
         trial=trial,

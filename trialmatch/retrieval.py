@@ -1,9 +1,10 @@
 """Lexical (BM25) evidence retrieval over note segments.
 
-BM25 ranks segments for every criterion. Short notes are still passed to the
-model in full (see ``select_segments``): lexical search misses paraphrases
-("renal impairment" vs "creatinine 2.4"), and a retrieval miss would otherwise
-turn into a wrong "insufficient information" verdict.
+Used only for notes longer than ``Settings.full_note_max_chars``; shorter
+notes are given to the model whole. Lexical search misses paraphrases and
+synonyms ("lung adenocarcinoma" vs "NSCLC"), and a retrieval miss turns into a
+wrong "insufficient information" verdict, so retrieval is a fallback for notes
+too long to send in full, not the default.
 """
 
 from __future__ import annotations
@@ -66,22 +67,12 @@ def criterion_query(criterion: AtomicCriterion) -> str:
     return " ".join(parts)
 
 
-def select_segments(
-    ranked: list[RetrievedSegment],
-    segments: list[Segment],
-    *,
-    note_length: int,
-    full_note_max_chars: int,
-    top_k: int,
-) -> list[RetrievedSegment]:
-    """Which ranked segments the model gets to see for one criterion.
+def select_segments(ranked: list[RetrievedSegment], segments: list[Segment], top_k: int) -> list[RetrievedSegment]:
+    """Which segments of a long note the model gets to see for one criterion.
 
-    Short note: everything. Long note: the top-k matching segments, plus the
-    first segment, which usually carries age and sex in words BM25 cannot match
-    to a criterion such as "Age >= 18 years".
+    The top-k matching segments, plus the first segment, which usually carries
+    age and sex in words BM25 cannot match to a criterion such as "Age >= 18".
     """
-    if note_length <= full_note_max_chars:
-        return ranked
     chosen = [r for r in ranked[:top_k] if r.score > 0]
     if segments and all(r.segment_id != segments[0].id for r in chosen):
         first = next(r for r in ranked if r.segment_id == segments[0].id)

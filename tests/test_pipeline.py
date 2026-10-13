@@ -121,3 +121,27 @@ def test_run_roundtrip(settings, patient, trial):
     assert load_run(settings, run.run_id) == run
     assert list_runs(settings)[0]["run_id"] == "sample-test__NCT00000000"
     assert load_run(settings, "missing") is None
+
+
+def test_short_note_goes_to_model_whole_and_long_note_uses_retrieval(settings, patient, trial):
+    import dataclasses
+
+    llm = FakeLLM(GOOD)
+    run = run_match(patient, trial, settings, llm)
+    note_block = llm.calls[-1]["user_blocks"][0]
+    assert run.note_coverage == "full" and "Coverage: the complete note" in note_block
+    assert all(f"[{s.id}]" in note_block for s in run.segments)
+    assert all(c.retrieved_segments == [] for c in run.criteria)  # retrieval was not used
+
+    # Same note, but the threshold is set below its length: only matching segments are sent.
+    tight = dataclasses.replace(settings, full_note_max_chars=10, top_k_segments=1, judge_batch_size=1)
+    llm = FakeLLM(GOOD)
+    run = run_match(patient, trial, tight, llm)
+    assert run.note_coverage == "retrieved"
+    ild_call = next(c for c in llm.calls if '"EXC-01"' in c["user_blocks"][-1])
+    assert "excerpts only" in ild_call["user_blocks"][0]
+    assert "interstitial lung disease" in ild_call["user_blocks"][0]
+    assert "Family history" not in ild_call["user_blocks"][0]
+    # Offsets and citation checking are unaffected by which segments were sent.
+    e = by_id(run)["EXC-01"].evidence[0]
+    assert patient.text[e.start : e.end] == e.quote

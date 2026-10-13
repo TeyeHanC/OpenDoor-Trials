@@ -137,6 +137,8 @@ class Trial(BaseModel):
     overall_status: Optional[str] = None
     url: str
     fetched_at: str
+    # "ctgov_api" (current registry record) or "trec_snapshot_<date>" (what TREC assessors saw).
+    source: str = "ctgov_api"
 
 
 class AtomicCriterion(BaseModel):
@@ -215,6 +217,9 @@ class RunResult(BaseModel):
     run_id: str
     created_at: str
     model: str
+    # "full": the whole note was given to the model; "retrieved": BM25-selected segments only.
+    note_coverage: str = "full"
+    judge_batch_size: int = 8
     patient: Patient
     segments: list[Segment]
     trial: Trial
