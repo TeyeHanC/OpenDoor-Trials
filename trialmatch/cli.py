@@ -122,6 +122,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--sampling", choices=("balanced", "proportional"), default="balanced")
     p.add_argument("--workers", type=int, default=4, help="Pairs processed concurrently")
     p.add_argument("--name", default=None, help="Output folder name under data/eval/")
+    p.add_argument("--rerun", action="store_true", help="Ignore saved runs and call the model again")
     p.add_argument("--dry-run", action="store_true", help="Show the sample and exit without calling the model")
     p.add_argument("--yes", action="store_true", help="Skip the cost confirmation prompt")
     p.set_defaults(func=cmd_eval)

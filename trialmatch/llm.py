@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import threading
 from typing import Protocol, TypeVar
 
 import anthropic
@@ -28,6 +29,13 @@ class AnthropicLLM:
     def __init__(self, settings: Settings, client: anthropic.Anthropic | None = None):
         self.settings = settings
         self.client = client or anthropic.Anthropic(max_retries=5)
+        self._usage = {"requests": 0, "input_tokens": 0, "output_tokens": 0}
+        self._usage_lock = threading.Lock()
+
+    def usage_summary(self) -> dict:
+        """Tokens used so far (input includes cache reads and writes)."""
+        with self._usage_lock:
+            return dict(self._usage)
 
     def structured(self, *, system: str, user_blocks: list[str], schema: type[T]) -> T:
         """One request whose reply is guaranteed to parse as ``schema``.
@@ -51,6 +59,14 @@ class AnthropicLLM:
             output_format=schema,
         ) as stream:
             message = stream.get_final_message()
+
+        usage = message.usage
+        with self._usage_lock:
+            self._usage["requests"] += 1
+            self._usage["output_tokens"] += usage.output_tokens
+            self._usage["input_tokens"] += (
+                usage.input_tokens + (usage.cache_read_input_tokens or 0) + (usage.cache_creation_input_tokens or 0)
+            )
 
         if message.stop_reason == "refusal":
             details = getattr(message, "stop_details", None)
