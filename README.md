@@ -15,7 +15,7 @@ make demo                     # 建虚拟环境、安装依赖、启动 http://1
 
 ```bash
 .venv/bin/python -m trialmatch fetch-trec --year 2021          # 下载 TREC 患者和标注
-.venv/bin/python -m trialmatch run --patient trec2021-1 --nct NCT00002814
+.venv/bin/python -m trialmatch run --patient trec2021-1 --nct NCT00002814 --trial-source snapshot
 .venv/bin/python -m trialmatch run --patient sample-nsclc --nct NCT04035486
 ```
 
@@ -23,7 +23,8 @@ make demo                     # 建虚拟环境、安装依赖、启动 http://1
 
 | 数据 | 来源 |
 | --- | --- |
-| 试验 | ClinicalTrials.gov API v2，按 NCT 编号拉取，缓存在 `data/cache/trials/` |
+| 试验（演示和产品链路） | ClinicalTrials.gov API v2，按 NCT 编号拉取当前注册信息，缓存在 `data/cache/trials/` |
+| 试验（评测） | TREC 标注时使用的 2021-04-27 注册快照，`--trial-source snapshot` |
 | 患者 | 包内自带的合成病历 `sample-*`，或 TREC Clinical Trials 2021/2022 的患者描述 `trec2021-N` |
 | 评测标注 | TREC qrels：0 不相关，1 被排除，2 符合 |
 
@@ -32,8 +33,8 @@ make demo                     # 建虚拟环境、安装依赖、启动 http://1
 ## 处理流程
 
 1. **标准拆解**（`decompose.py`）：模型把入排标准原文拆成原子条件，保留原文、类型、时间窗、数值阈值；医学概念给出标准名，没把握时留空。年龄、性别这类只存在于注册字段里的条件由程序补上。按试验缓存。
-2. **证据检索**（`segment.py`、`retrieval.py`）：病历按段落切分并记录字符偏移，BM25 给每条条件的相关段落排序。病历不超过 6000 字符时全部段落都交给模型，避免漏检被误判成"信息缺失"；更长的病历只送 top-k。
-3. **逐条判定**（`judge.py`）：每条输出 `met` / `not_met` / `unknown`，附引用、一句理由、置信度。
+2. **证据定位**（`segment.py`、`retrieval.py`）：病历按段落切分并记录字符偏移。病历不超过 `TRIALMATCH_FULL_NOTE_MAX_CHARS`（默认 20000 字符，约 5000 token）时不做检索，全文交给模型；超过才用 BM25 为每条条件取 top-k 段落。BM25 是纯词面匹配，对不上"肺腺癌"和"NSCLC"这类同义表述，漏检会被误判成"信息缺失"，所以只作为超长病历的退路。
+3. **逐条判定**（`judge.py`）：每条输出 `met` / `not_met` / `unknown`，附引用、一句理由、置信度。模型还要自报 `basis`：`stated` 表示引用本身就在说这条条件问的事，`inferred` 表示结论是从年龄、性别这类明确事实推出来的（只允许这一类推论）。
 4. **引用校验**（`verify.py`）：程序在病历原文里逐字查找每条引用（只容忍空白字符差异），偏移由程序计算，不采信模型给的位置。找不到任何有效引用的"符合 / 不符合"会被降级为"信息缺失"并标记。
 5. **汇总**（`summarize.py`）：按规则得出整体结论，不再调用模型，所以结论可以从条件列表手工复算。
 
@@ -51,7 +52,7 @@ make demo                     # 建虚拟环境、安装依赖、启动 http://1
 
 整体结论：有任何 blocks 为 `not_eligible`；否则有任何 unresolved 为 `needs_more_info`；否则 `possibly_eligible`。
 
-每条条件的输出字段见 `trialmatch/models.py` 的 `CriterionResult`，包括 `criterion_id`、`criterion_text`、`source_text`、`type`、`verdict`、`evidence[{quote,start,end,segment_id}]`、`rationale`、`confidence`，以及审计字段 `model_verdict`、`downgraded`、`rejected_quotes`。
+每条条件的输出字段见 `trialmatch/models.py` 的 `CriterionResult`，包括 `criterion_id`、`criterion_text`、`source_text`、`type`、`verdict`、`evidence[{quote,start,end,segment_id}]`、`rationale`、`confidence`，`basis`，以及审计字段 `model_verdict`、`downgraded`、`rejected_quotes`。
 
 ## 界面
 
@@ -72,19 +73,34 @@ make demo                     # 建虚拟环境、安装依赖、启动 http://1
 输出在 `data/eval/<name>/`：
 
 - `metrics.json`：患者-试验层面的召回率和精确率、标注 × 结论的混淆表、引用校验通过率
-- `errors.csv` / `errors.jsonl`：判错的案例，漏掉的合格患者排在最前，每行带一个在界面里打开该案例的链接
+- `errors.csv` / `errors.jsonl`：判错的案例，漏掉的合格患者排在最前，每行带一个在界面里打开该案例的链接；`inferred_criteria` 列列出靠推论得出的条件
+- `error_criteria.csv`：判错案例里每条"符合 / 不符合"判定一行，`used_inference` 列标出该条是否用了推论而没有直接引用
 - `predictions.csv`、`failures.json`
 
 金标准正例是 TREC 标注 2（符合）。系统有三种结论，所以正例预测报告两种口径：
 
 - **screen-in（主指标）**：没有被判为 `not_eligible` 就算推荐。只有系统明确判"不符合"才算漏掉患者。
-- **strict**：只有 `possibly_eligible` 算推荐。
+- **strict（辅助）**：只有 `possibly_eligible` 算推荐。
+
+screen-in 召回率单独看没有意义（什么都不排除也是 100%），所以总是和两个数一起报告：TREC 标为"被排除"的配对中被判为 `not_eligible` 的比例，以及 `needs_more_info` 占全部配对的比例。
+
+评测默认用 TREC 快照里的入排标准（`--trial-source snapshot`），保证和标注时一致。快照是五个 zip 共约 1.8 GB，程序用 HTTP 范围请求只取需要的试验；首次使用会花约 20 秒建立索引（`data/trec/corpus/index.json`）。如果把五个 zip 下载到 `data/trec/corpus/`，会改为读本地文件。快照的评测结果单独存为 `…__snap2021`，不会和通过 API 跑出的结果混用。
 
 已跑过的患者-试验对会复用 `data/runs/` 里的结果，评测中断后重跑同一条命令即可续跑；`--rerun` 强制重新调用模型。
 
+### 每批判定条数的对比
+
+默认每次请求判 8 条条件。下面的命令对同一个患者-试验配对分别按"每批 8 条"和"每条单独判"各跑一次，输出判定不一致的条件清单，两次结果都会保存，可以在界面里打开：
+
+```bash
+.venv/bin/python -m trialmatch compare-batching --patient sample-nsclc --nct NCT04035486
+```
+
+模型输出本身不是确定性的，同一设置跑两次也可能有个别差异，单条不一致只能当线索。
+
 ### 已知局限
 
-- API 返回的是试验**当前**的注册信息，可能与 TREC 标注时（2021 年 4 月快照）的入排标准不同。
+- `basis` 是模型自报的，程序无法校验；它用来帮人定位要重点检查的判定，不是保证。
 - 均衡抽样下的精确率不代表真实患病率下的精确率，可用 `--sampling proportional` 对比。
 - TREC 患者描述很短，大多数条件会是"信息缺失"，strict 口径的召回率预期很低。
 - 模型若拒答某一批条件，这些条件记为"信息缺失"并打上 `model_declined` 标记。

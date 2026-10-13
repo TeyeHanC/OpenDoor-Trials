@@ -29,6 +29,8 @@ def print_run(run: RunResult) -> None:
     print("\n  [+] supports enrollment   [x] blocks enrollment   [?] unresolved\n")
     for c in run.criteria:
         flags = f"  !{','.join(c.flags)}" if c.flags else ""
+        if c.basis == "inferred":
+            flags += "  (inferred, not directly stated)"
         print(f"[{_EFFECT_MARK[c.effect]}] {c.criterion_id} ({c.type}) {c.criterion_text}")
         print(f"      {VERDICT_LABELS[c.verdict]} | confidence {c.confidence}{flags}")
         print(f"      {c.rationale}")
@@ -80,6 +82,24 @@ def cmd_run(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_compare_batching(args: argparse.Namespace) -> int:
+    from .compare import compare_batching, format_diff
+    from .llm import AnthropicLLM
+    from .patients import load_patient
+    from .trials import get_trial, run_id_suffix
+
+    settings = get_settings()
+    patient = load_patient(args.patient, settings)
+    trial = get_trial(args.nct, settings, args.trial_source)
+    diff = compare_batching(
+        patient, trial, settings, AnthropicLLM(settings),
+        batch_size=args.batch_size, run_suffix=run_id_suffix(args.trial_source),
+    )
+    print(format_diff(diff))
+    print(f"Saved to {diff['output_path']}")
+    return 0
+
+
 def cmd_serve(args: argparse.Namespace) -> int:
     import uvicorn
 
@@ -115,6 +135,16 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--trial-source", choices=("api", "snapshot"), default="api",
                    help="api: current ClinicalTrials.gov record (default); snapshot: TREC 2021-04-27 registry snapshot")
     p.set_defaults(func=cmd_run)
+
+    p = sub.add_parser(
+        "compare-batching",
+        help="Judge one pair twice (several criteria per request vs one per request) and list the disagreements",
+    )
+    p.add_argument("--patient", required=True)
+    p.add_argument("--nct", required=True)
+    p.add_argument("--trial-source", choices=("api", "snapshot"), default="api")
+    p.add_argument("--batch-size", type=int, default=8, help="Batch size to compare against one-at-a-time")
+    p.set_defaults(func=cmd_compare_batching)
 
     p = sub.add_parser("serve", help="Start the review web app")
     p.add_argument("--host", default="127.0.0.1")
