@@ -41,6 +41,11 @@ conclude that a condition, treatment or event is absent because the note does no
 because a related test was normal, or because it would usually have been recorded (a normal \
 creatinine does not establish the absence of kidney disease; no listed anticoagulant does not \
 establish that none is taken). Those are "unknown".
+- Applying medical definitions to what the note states is not inference, and you should do it \
+freely: lung adenocarcinoma is a non-squamous non-small cell lung cancer; an ECOG performance status \
+is the same scale as a WHO performance status; stage IV disease is metastatic. Such knowledge tells \
+you what a stated fact means. What you may not do is supply a fact about this patient that the note \
+does not give.
 - Criteria about consent, willingness, life expectancy or investigator judgment are normally \
 "unknown" unless the note addresses them directly.
 - When only excerpts of the note are provided, information outside them is unavailable to you; \

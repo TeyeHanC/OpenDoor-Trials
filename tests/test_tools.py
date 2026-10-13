@@ -161,6 +161,17 @@ def test_agreeing_threshold_check_is_recorded_as_confirmed(settings, patient, tr
     assert c.checks[0]["detail"] == "62 >= 18.0 years is true"
 
 
+def test_unit_spellings_that_mean_the_same_are_not_treated_as_a_conversion(settings, patient, trial):
+    spelled = dict(AGE_OK, value_unit="year-old", threshold_unit="Years")
+    c, _ = _one(settings, patient, trial, "INC-02", judgment("INC-02", "met", ["62-year-old"], threshold_check=spelled))
+    assert c.checks[0]["status"] == "confirmed" and c.flags == [] and c.confidence == "high"
+
+    from trialmatch.checks import _same_unit
+
+    assert _same_unit("U/L", "u/l") and _same_unit("yrs", "years") and _same_unit("x 10^9/L", "10^9/L")
+    assert not _same_unit("g/dL", "g/L") and not _same_unit("mg/dL", "umol/L")
+
+
 def test_wrong_arithmetic_sets_the_determination_aside(settings, patient, trial):
     # The model claims ALT 28 U/L exceeds 2.5 x ULN (40): 28 > 100 is false.
     wrong = {"value": 28, "value_unit": "U/L", "comparator": ">", "threshold": 2.5, "threshold_upper": None,

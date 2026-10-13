@@ -39,6 +39,21 @@ class Check(BaseModel):
     inputs_not_in_note: list[str] = []
 
 
+_UNIT_ALIASES = {"yr": "year", "y": "year", "yo": "year", "mo": "month", "wk": "week", "d": "day", "hr": "hour", "h": "hour"}
+
+
+def _same_unit(a: str, b: str) -> bool:
+    """Whether two unit spellings mean the same unit ("year-old" / "Years", "U/L" / "u/l")."""
+
+    def canonical(unit: str) -> str:
+        unit = _normalize_unit(unit).replace("-old", "").replace("old", "").strip("-.")
+        if unit.endswith("s") and len(unit) > 2:
+            unit = unit[:-1]
+        return _UNIT_ALIASES.get(unit, unit)
+
+    return canonical(a) == canonical(b)
+
+
 def _number_text(value: float) -> str:
     return f"{value:g}"
 
@@ -75,7 +90,7 @@ def run_threshold_check(check: LLMThresholdCheck, note: str) -> Check:
 
     value, converted = check.value, ""
     if check.value_unit and check.threshold_unit and check.reference_limit is None:
-        if _normalize_unit(check.value_unit) != _normalize_unit(check.threshold_unit):
+        if not _same_unit(check.value_unit, check.threshold_unit):
             if check.analyte is None:
                 return unchecked(f"Units differ ({check.value_unit} vs {check.threshold_unit}) and no analyte was given for conversion.")
             try:
