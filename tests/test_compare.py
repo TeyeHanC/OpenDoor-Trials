@@ -7,7 +7,7 @@ from trialmatch.store import load_run
 class BatchSensitiveLLM:
     """Answers EXC-02 differently depending on how many criteria share the request."""
 
-    def structured(self, *, system, user_blocks, schema):
+    def structured(self, *, system, user_blocks, schema, tools=None, trace=None):
         if schema is LLMDecomposition:
             return LLMDecomposition.model_validate(DECOMPOSITION)
         ids = [cid for cid in ("INC-01", "INC-02", "INC-03", "EXC-01", "EXC-02") if f'"{cid}"' in user_blocks[-1]]

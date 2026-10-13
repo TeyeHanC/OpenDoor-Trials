@@ -38,6 +38,10 @@ def print_run(run: RunResult) -> None:
             print(f"      patient value: {c.patient_value}")
         for e in c.evidence:
             print(f"      \"{e.quote}\" [{e.start}:{e.end}]")
+    if run.tool_calls:
+        print(f"\nCalculations and look-ups ({len(run.tool_calls)}):")
+        for call in run.tool_calls:
+            print(f"  {call.tool}({call.input}) -> {call.output}")
     if s.key_reasons:
         print("\nKey reasons:")
         for item in s.key_reasons:
@@ -79,6 +83,37 @@ def cmd_run(args: argparse.Namespace) -> int:
     print_run(run)
     print(f"\nSaved to {settings.runs_dir / (run.run_id + '.json')}")
     print(f"Review in the browser: python -m trialmatch serve  ->  http://127.0.0.1:8000/?run={run.run_id}")
+    return 0
+
+
+def cmd_find_trials(args: argparse.Namespace) -> int:
+    from .find import find_trials, format_find_result, save_find_result
+    from .llm import AnthropicLLM
+    from .patients import load_patient
+    from .pipeline import run_match
+    from .store import save_run
+    from .trials import get_trial
+
+    settings = get_settings()
+    patient = load_patient(args.patient, settings)
+    llm = AnthropicLLM(settings)
+    result = find_trials(patient, settings, llm, max_candidates=args.max, country=args.country)
+    path = save_find_result(settings, result)
+    print(format_find_result(result))
+    print(f"\nSaved to {path}")
+
+    if args.match:
+        print(f"\nMatching {patient.id} against {len(result.candidates)} shortlisted trial(s)")
+        for candidate in result.candidates:
+            run = run_match(patient, get_trial(candidate.nct_id, settings), settings, llm)
+            save_run(settings, run)
+            counts = run.summary.counts
+            print(
+                f"  {candidate.nct_id}  {run.summary.overall_label}  "
+                f"({counts['blocks']} blocking, {counts['unresolved']} unresolved of {counts['total']})  ?run={run.run_id}"
+            )
+    else:
+        print("Add --match to run the criterion-level match on each shortlisted trial.")
     return 0
 
 
@@ -135,6 +170,13 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--trial-source", choices=("api", "snapshot"), default="api",
                    help="api: current ClinicalTrials.gov record (default); snapshot: TREC 2021-04-27 registry snapshot")
     p.set_defaults(func=cmd_run)
+
+    p = sub.add_parser("find-trials", help="Search ClinicalTrials.gov for trials a patient might qualify for")
+    p.add_argument("--patient", required=True, help="sample-nsclc, trec2021-1, ...")
+    p.add_argument("--max", type=int, default=5, help="Maximum number of trials to shortlist")
+    p.add_argument("--country", default=None, help="Restrict to trials with sites in this country")
+    p.add_argument("--match", action="store_true", help="Also run the criterion-level match on each shortlisted trial")
+    p.set_defaults(func=cmd_find_trials)
 
     p = sub.add_parser(
         "compare-batching",

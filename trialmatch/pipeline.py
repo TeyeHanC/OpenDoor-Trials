@@ -10,10 +10,20 @@ from .config import Settings
 from .decompose import decompose_trial
 from .judge import judge_batch
 from .llm import StructuredLLM
-from .models import AtomicCriterion, CitationStats, CriterionResult, Patient, RetrievedSegment, RunResult, Trial
+from .models import (
+    AtomicCriterion,
+    CitationStats,
+    CriterionResult,
+    Patient,
+    RetrievedSegment,
+    RunResult,
+    ToolCall,
+    Trial,
+)
 from .retrieval import BM25Index, criterion_query, select_segments
 from .segment import segment_note
 from .summarize import summarize
+from .tools import calculator_tools, note_tools
 from .verify import unresolved_result, verify_judgment
 
 Progress = Callable[[str], None]
@@ -55,17 +65,24 @@ def run_match(
         for c in criteria:
             retrieved[c.id] = select_segments(index.rank(criterion_query(c)), segments, settings.top_k_segments)
 
+    # Calculators for every note; search tools only when the model cannot see the whole note.
+    tools = []
+    if settings.judge_tools:
+        tools = calculator_tools() + ([] if complete else note_tools(segments))
+
     size = settings.judge_batch_size
     batches = [criteria[i : i + size] for i in range(0, len(criteria), size)]
 
-    def judge(batch: list[AtomicCriterion]) -> list[CriterionResult]:
+    def judge(batch: list[AtomicCriterion]) -> tuple[list[CriterionResult], list[ToolCall]]:
         if complete:
             batch_segments = segments
         else:
             # A batch sees the union of its criteria's segments, in note order.
             wanted = {r.segment_id for c in batch for r in retrieved[c.id]}
             batch_segments = [s for s in segments if s.id in wanted]
-        judgments = judge_batch(patient, batch_segments, batch, llm, complete=complete)
+        trace: list[dict] = []
+        judgments = judge_batch(patient, batch_segments, batch, llm, complete=complete, tools=tools, trace=trace)
+        calls = [ToolCall(criterion_ids=[c.id for c in batch], **call) for call in trace]
         results = []
         for criterion in batch:
             # Only segments that matched the query are recorded as "retrieved".
@@ -80,11 +97,13 @@ def run_match(
                 )
             else:
                 results.append(verify_judgment(judgments[criterion.id], criterion, patient.text, segments, hits))
-        return results
+        return results, calls
 
     progress(f"Judging {len(criteria)} criteria in {len(batches)} batches")
     with ThreadPoolExecutor(max_workers=settings.judge_workers) as pool:
-        results = [r for batch_results in pool.map(judge, batches) for r in batch_results]
+        judged = list(pool.map(judge, batches))
+    results = [r for batch_results, _ in judged for r in batch_results]
+    tool_calls = [call for _, batch_calls in judged for call in batch_calls]
 
     return RunResult(
         run_id=make_run_id(patient.id, trial.nct_id, run_suffix),
@@ -98,4 +117,5 @@ def run_match(
         criteria=results,
         summary=summarize(results),
         citation_stats=citation_stats(results),
+        tool_calls=tool_calls,
     )

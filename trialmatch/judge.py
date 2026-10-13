@@ -6,6 +6,7 @@ import json
 
 from .llm import LLMRefusal, StructuredLLM
 from .models import AtomicCriterion, LLMJudgment, LLMJudgmentBatch, Patient, Segment
+from .tools import Tool
 
 SYSTEM_PROMPT = """\
 You are helping screen a patient for a clinical trial. You will be given segments of the patient's \
@@ -83,12 +84,46 @@ an assumption about timing, units or meaning. Low-confidence items are shown to 
 
 Return exactly one judgment per criterion, using the criterion ids you were given."""
 
+# Appended to the system prompt only when tools are offered.
+CALCULATOR_GUIDANCE = """
 
-def render_note(patient: Patient, segments: list[Segment], *, complete: bool) -> str:
+Tools
+You have calculator tools for dates, thresholds and lab units. Use them whenever a verdict depends on \
+arithmetic: whether an event falls inside a time window, how a value compares with a limit, or a \
+comparison across different units. The clinician can re-check a computed result, which they cannot do \
+with mental arithmetic. A tool result is a calculation, not evidence: the dates and values you pass in \
+must come from the note, and your quotes must still be the note's own text. Criteria that need no \
+arithmetic need no tool call."""
+
+NOTE_TOOL_GUIDANCE = """
+This note is too long to show in full, so you were given the excerpts a keyword search judged most \
+relevant. That search matches words rather than meaning and can miss a passage that uses a synonym or \
+an abbreviation. Before answering "unknown" for a criterion, use search_note with alternative wordings, \
+and read_segments to see the lines around a match. Only after that is something absent from the note \
+as far as you can tell, and the verdict is then still "unknown", never "not_met"."""
+
+
+def system_prompt(tools: list[Tool]) -> str:
+    names = {tool.name for tool in tools}
+    prompt = SYSTEM_PROMPT
+    if names:
+        prompt += CALCULATOR_GUIDANCE
+    if "search_note" in names:
+        prompt += NOTE_TOOL_GUIDANCE
+    return prompt
+
+
+def render_note(patient: Patient, segments: list[Segment], *, complete: bool, searchable: bool = False) -> str:
+    if complete:
+        coverage = "Coverage: the complete note"
+    elif searchable:
+        coverage = "Coverage: excerpts only; use search_note and read_segments to see the rest of the note"
+    else:
+        coverage = "Coverage: excerpts only; the rest of the note is not shown"
     header = [
         "The note below is a synthetic or publicly released patient description.",
         f"Note date: {patient.note_date or 'not given'}",
-        "Coverage: the complete note" if complete else "Coverage: excerpts only; the rest of the note is not shown",
+        coverage,
     ]
     body = "\n".join(f"[{s.id}] {s.text}" for s in segments)
     return "\n".join(header) + f"\n\n<note>\n{body}\n</note>"
@@ -115,13 +150,25 @@ def judge_batch(
     llm: StructuredLLM,
     *,
     complete: bool,
+    tools: list[Tool] | None = None,
+    trace: list[dict] | None = None,
 ) -> dict[str, LLMJudgment] | None:
-    """Judgments keyed by criterion id; None when the model declined the batch."""
+    """Judgments keyed by criterion id; None when the model declined the batch.
+
+    Tool calls the model makes on the way are appended to ``trace``.
+    """
+    tools = tools or []
+    searchable = any(tool.name == "search_note" for tool in tools)
     try:
         result = llm.structured(
-            system=SYSTEM_PROMPT,
-            user_blocks=[render_note(patient, segments, complete=complete), render_criteria(criteria)],
+            system=system_prompt(tools),
+            user_blocks=[
+                render_note(patient, segments, complete=complete, searchable=searchable),
+                render_criteria(criteria),
+            ],
             schema=LLMJudgmentBatch,
+            tools=tools,
+            trace=trace,
         )
     except LLMRefusal:
         return None

@@ -40,6 +40,8 @@ class Settings:
     segment_max_chars: int = 400
     judge_batch_size: int = 8
     judge_workers: int = 4
+    # Offer the judging step its tools: calculators always, note search for long notes.
+    judge_tools: bool = True
 
     @property
     def trials_dir(self) -> Path:
@@ -74,4 +76,5 @@ def get_settings() -> Settings:
         effort=os.environ.get("TRIALMATCH_EFFORT", "high"),
         data_dir=data_dir,
         full_note_max_chars=int(os.environ.get("TRIALMATCH_FULL_NOTE_MAX_CHARS", 20000)),
+        judge_tools=os.environ.get("TRIALMATCH_JUDGE_TOOLS", "1").strip().lower() not in ("0", "false", "no", "off"),
     )

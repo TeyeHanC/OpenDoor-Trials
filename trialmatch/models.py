@@ -222,6 +222,16 @@ class CitationStats(BaseModel):
     judgments_downgraded: int
 
 
+class ToolCall(BaseModel):
+    """One tool call the model made while judging, kept so its arithmetic can be re-checked."""
+
+    criterion_ids: list[str]  # the batch of criteria being judged when the call was made
+    tool: str
+    input: dict
+    output: str
+    is_error: bool = False
+
+
 class RunResult(BaseModel):
     run_id: str
     created_at: str
@@ -235,6 +245,7 @@ class RunResult(BaseModel):
     criteria: list[CriterionResult]
     summary: Summary
     citation_stats: CitationStats
+    tool_calls: list[ToolCall] = []
 
 
 class Review(BaseModel):

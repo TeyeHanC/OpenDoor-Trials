@@ -47,17 +47,24 @@ def judgment(cid, verdict, quotes=(), confidence="high", segment="S2", **extra):
 class FakeLLM:
     """Returns a scripted decomposition and scripted judgments keyed by criterion id."""
 
-    def __init__(self, judgments: dict[str, dict], refuse_judging: bool = False):
+    def __init__(self, judgments: dict[str, dict], refuse_judging: bool = False, tool_script=()):
         self.judgments = judgments
         self.refuse_judging = refuse_judging
+        # (tool name, input) pairs "the model" calls on each judging request that offers that tool.
+        self.tool_script = list(tool_script)
         self.calls: list[dict] = []
 
-    def structured(self, *, system, user_blocks, schema):
-        self.calls.append({"schema": schema, "user_blocks": user_blocks})
+    def structured(self, *, system, user_blocks, schema, tools=None, trace=None):
+        self.calls.append({"schema": schema, "system": system, "user_blocks": user_blocks, "tools": [t.name for t in tools or []]})
         if schema is LLMDecomposition:
             return LLMDecomposition.model_validate(DECOMPOSITION)
         if self.refuse_judging:
             raise LLMRefusal("declined")
+        by_name = {t.name: t for t in tools or []}
+        for name, tool_input in self.tool_script:
+            if name in by_name and trace is not None:
+                output, is_error = by_name[name].run(tool_input)
+                trace.append({"tool": name, "input": tool_input, "output": output, "is_error": is_error})
         asked = [cid for cid in self.judgments if f'"{cid}"' in user_blocks[-1]]
         return LLMJudgmentBatch.model_validate({"judgments": [self.judgments[cid] for cid in asked]})
 
