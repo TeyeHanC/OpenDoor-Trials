@@ -72,6 +72,7 @@ class OpenAICompatLLM:
         self.client = client or httpx.Client(timeout=httpx.Timeout(600, connect=30))
         self.headers = {"Authorization": f"Bearer {key}"}
         self.mode = MODES[0]
+        self._ask_for_usage = True
         self._usage = {"requests": 0, "input_tokens": 0, "output_tokens": 0}
         self._usage_lock = threading.Lock()
 
@@ -138,7 +139,7 @@ class OpenAICompatLLM:
 
     def _body(self, mode: str, system: str, messages: list[dict], name: str, json_schema: dict, tools: list[Tool]) -> dict:
         strict = mode == "schema"
-        body: dict = {"model": self.settings.model, "stream": False}
+        body: dict = {"model": self.settings.model}
         if strict:
             body["response_format"] = {
                 "type": "json_schema",
@@ -162,38 +163,99 @@ class OpenAICompatLLM:
     def _send(self, system: str, messages: list[dict], name: str, json_schema: dict, tools: list[Tool]) -> dict:
         while True:
             mode = self.mode
-            response = self._post(self._body(mode, system, messages, name, json_schema, tools))
-            if response.status_code == 400 and mode != MODES[-1]:
+            body = self._body(mode, system, messages, name, json_schema, tools)
+            # Streamed: a long answer sent in one piece can exceed a gateway's response timeout.
+            body["stream"] = True
+            if self._ask_for_usage:
+                body["stream_options"] = {"include_usage": True}
+            status, text, choice, usage = self._post(body)
+            if status == 400 and self._ask_for_usage:
+                # Possibly the usage option itself; drop it before giving up on the request shape.
+                self._ask_for_usage = False
+                continue
+            if status == 400 and mode != MODES[-1]:
                 # The endpoint rejected this request shape; fall back one step and remember it.
                 if self.mode == mode:
                     self.mode = MODES[MODES.index(mode) + 1]
                 continue
             break
-        if response.status_code in (401, 403):
-            raise LLMError(f"The endpoint rejected the API key ({response.status_code}): {response.text[:200]}")
-        if response.status_code >= 400:
-            raise LLMError(f"Endpoint error {response.status_code}: {response.text[:300]}")
-        try:
-            payload = response.json()
-            choice = payload["choices"][0]
-        except (ValueError, KeyError, IndexError, TypeError) as exc:
-            raise LLMError(f"Unexpected reply from the endpoint: {response.text[:300]}") from exc
-        usage = payload.get("usage") or {}
+        if status in (401, 403):
+            raise LLMError(f"The endpoint rejected the API key ({status}): {text[:200]}")
+        if status >= 400:
+            if text.lstrip().startswith("<"):
+                text = "the gateway returned an HTML error page" + (" (response timeout)" if status == 524 else "")
+            raise LLMError(f"Endpoint error {status}: {text[:300]}")
+        if choice is None:
+            raise LLMError(f"Unexpected reply from the endpoint: {text[:300]}")
         with self._usage_lock:
             self._usage["requests"] += 1
             self._usage["input_tokens"] += usage.get("prompt_tokens") or 0
             self._usage["output_tokens"] += usage.get("completion_tokens") or 0
         return choice
 
-    def _post(self, body: dict) -> httpx.Response:
+    def _post(self, body: dict) -> tuple[int, str, dict | None, dict]:
+        """(status, raw text for error messages, the first choice, usage). Retries transient failures."""
         for attempt in range(4):
             try:
-                response = self.client.post(self.url, json=body, headers=self.headers)
+                with self.client.stream("POST", self.url, json=body, headers=self.headers) as response:
+                    if response.status_code in _RETRY_STATUS and attempt < 3:
+                        response.read()
+                    elif response.status_code != 200:
+                        return response.status_code, response.read().decode("utf-8", "replace"), None, {}
+                    elif "text/event-stream" in response.headers.get("content-type", ""):
+                        choice, usage = _read_stream(response.iter_lines())
+                        return 200, "", choice, usage
+                    else:  # the endpoint ignored stream=true and answered in one piece
+                        text = response.read().decode("utf-8", "replace")
+                        try:
+                            payload = json.loads(text)
+                            return 200, text, payload["choices"][0], payload.get("usage") or {}
+                        except (ValueError, KeyError, IndexError, TypeError):
+                            return 200, text, None, {}
             except httpx.TransportError as exc:
                 if attempt == 3:
                     raise LLMError(f"Could not reach the endpoint: {type(exc).__name__}") from exc
-            else:
-                if response.status_code not in _RETRY_STATUS or attempt == 3:
-                    return response
             time.sleep(2**attempt)
         raise AssertionError("unreachable")
+
+
+def _read_stream(lines) -> tuple[dict, dict]:
+    """Assemble a streamed chat completion into the same shape as a non-streamed choice."""
+    content: list[str] = []
+    refusal: list[str] = []
+    calls: dict[int, dict] = {}
+    finish, usage = None, {}
+    for line in lines:
+        if not line.startswith("data:"):
+            continue
+        data = line[5:].strip()
+        if data == "[DONE]":
+            break
+        try:
+            chunk = json.loads(data)
+        except ValueError:
+            continue
+        if chunk.get("error"):
+            raise LLMError(f"Endpoint error mid-stream: {json.dumps(chunk['error'], ensure_ascii=False)[:300]}")
+        usage = chunk.get("usage") or usage
+        for choice in chunk.get("choices") or []:
+            finish = choice.get("finish_reason") or finish
+            delta = choice.get("delta") or {}
+            if delta.get("content"):
+                content.append(delta["content"])
+            if delta.get("refusal"):
+                refusal.append(delta["refusal"])
+            for part in delta.get("tool_calls") or []:
+                call = calls.setdefault(part.get("index", 0), {"id": None, "type": "function", "function": {"name": "", "arguments": ""}})
+                call["id"] = part.get("id") or call["id"]
+                function = part.get("function") or {}
+                call["function"]["name"] += function.get("name") or ""
+                call["function"]["arguments"] += function.get("arguments") or ""
+    if finish is None and not content and not calls:
+        raise LLMError("The endpoint closed the stream without sending an answer")
+    message: dict = {"role": "assistant", "content": "".join(content) or None}
+    if calls:
+        message["tool_calls"] = [calls[i] for i in sorted(calls)]
+    if refusal:
+        message["refusal"] = "".join(refusal)
+    return {"message": message, "finish_reason": finish}, usage

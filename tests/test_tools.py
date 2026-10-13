@@ -409,9 +409,10 @@ def test_openai_endpoint_falls_back_when_strict_schema_is_rejected(settings, mon
     llm = _openai_llm(settings, handler, monkeypatch)
     result = llm.structured(system="s", user_blocks=["x"], schema=LLMJudgmentBatch, tools=calculator_tools())
     assert result.judgments[0].verdict == "unknown"
-    assert seen == ["json_schema", "json_object", None] and llm.mode == "prompt"
+    # The strict request is tried twice: once more without the usage option before the schema is weakened.
+    assert seen == ["json_schema", "json_schema", "json_object", None] and llm.mode == "prompt"
     llm.structured(system="s", user_blocks=["x"], schema=LLMJudgmentBatch)
-    assert seen[3:] == [None]  # the accepted mode is remembered
+    assert seen[4:] == [None]  # the accepted mode is remembered
 
 
 def test_openai_endpoint_repairs_an_invalid_reply_once(settings, monkeypatch):
@@ -442,3 +443,52 @@ def test_openai_endpoint_retries_transient_errors_and_reports_auth_failure(setti
     denied = _openai_llm(settings, lambda request: httpx.Response(401, text="bad key"), monkeypatch)
     with pytest.raises(LLMError, match="rejected the API key"):
         denied.structured(system="s", user_blocks=["x"], schema=LLMJudgmentBatch)
+
+
+def test_openai_endpoint_reads_a_streamed_answer_with_tool_calls(settings, monkeypatch):
+    def sse(*chunks):
+        text = "".join(f"data: {json.dumps(c)}\n\n" for c in chunks) + "data: [DONE]\n\n"
+        return httpx.Response(200, text=text, headers={"content-type": "text/event-stream"})
+
+    bodies = []
+
+    def handler(request):
+        bodies.append(json.loads(request.content))
+        if len(bodies) == 1:
+            return sse(
+                {"choices": [{"delta": {"tool_calls": [{"index": 0, "id": "c1", "function": {"name": "date_difference", "arguments": '{"earlier_date": "2026-08-04",'}}]}}]},
+                {"choices": [{"delta": {"tool_calls": [{"index": 0, "function": {"arguments": ' "later_date": "2026-09-18"}'}}]}}]},
+                {"choices": [{"delta": {}, "finish_reason": "tool_calls"}]},
+                {"choices": [], "usage": {"prompt_tokens": 11, "completion_tokens": 4}},
+            )
+        half = len(FINAL_JSON) // 2
+        return sse(
+            {"choices": [{"delta": {"content": FINAL_JSON[:half]}}]},
+            {"choices": [{"delta": {"content": FINAL_JSON[half:]}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 20, "completion_tokens": 9}},
+        )
+
+    llm = _openai_llm(settings, handler, monkeypatch)
+    trace = []
+    result = llm.structured(system="s", user_blocks=["x"], schema=LLMJudgmentBatch, tools=calculator_tools(), trace=trace)
+    assert result.judgments[0].criterion_id == "INC-01"
+    assert bodies[0]["stream"] is True and bodies[0]["stream_options"] == {"include_usage": True}
+    assert json.loads(trace[0]["output"])["days"] == 45 and bodies[1]["messages"][2]["tool_calls"][0]["id"] == "c1"
+    assert llm.usage_summary() == {"requests": 2, "input_tokens": 31, "output_tokens": 13}
+
+
+def test_openai_endpoint_drops_the_usage_option_before_weakening_the_schema(settings, monkeypatch):
+    def handler(request):
+        body = json.loads(request.content)
+        if "stream_options" in body:
+            return httpx.Response(400, json={"error": {"message": "unknown field stream_options"}})
+        return _chat(content=FINAL_JSON)
+
+    llm = _openai_llm(settings, handler, monkeypatch)
+    llm.structured(system="s", user_blocks=["x"], schema=LLMJudgmentBatch)
+    assert llm.mode == "schema"
+
+
+def test_gateway_timeout_page_is_reported_briefly(settings, monkeypatch):
+    llm = _openai_llm(settings, lambda request: httpx.Response(524, text="<!DOCTYPE html><html>...</html>"), monkeypatch)
+    with pytest.raises(LLMError, match="524: the gateway returned an HTML error page \\(response timeout\\)"):
+        llm.structured(system="s", user_blocks=["x"], schema=LLMJudgmentBatch)
