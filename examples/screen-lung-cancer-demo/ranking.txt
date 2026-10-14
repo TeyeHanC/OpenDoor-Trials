@@ -1,0 +1,45 @@
+
+sample-nsclc against Lung cancer demo pool (8 trials): 8 of 8 trials assessed (gpt-6-sol)
+
+  1. NCT04035486  More information needed   [registry status: active not recruiting]
+     A Study of Osimertinib With or Without Chemotherapy as 1st Line Treatment in Patients With Mutated Epidermal Growth Factor Receptor Non-Small Cell Lung Cancer (FLAURA2)
+     16 of 31 criteria confirmed, none against, 12 to check in the record, 3 to confirm at the screening visit
+     details: ?run=sample-nsclc__NCT04035486
+
+  2. NCT06735391  More information needed
+     A Clinical Study of JMT101 in Combination With Osimertinib Versus Osimertinib Alone as First-Line Treatment for Patients With Locally Advanced or Metastatic Non-Squamous Non-Small Cell Lung Cancer (NSCLC) Harboring Epidermal Growth Factor Receptor (EGFR) Sensitive Mutations
+     7 of 30 criteria confirmed, none against, 21 to check in the record, 2 to confirm at the screening visit
+     details: ?run=sample-nsclc__NCT06735391
+
+  3. NCT05281406  More information needed
+     Additional Chemotherapy for EGFRm Patients with the Continued Presence of Plasma CtDNA EGFRm At Week 3 After Start of Osimertinib 1st-line Treatment (PACE-LUNG)
+     15 of 48 criteria confirmed, none against, 25 to check in the record, 8 to confirm at the screening visit
+     details: ?run=sample-nsclc__NCT05281406
+
+  4. NCT04181060  More information needed
+     Osimertinib With or Without Bevacizumab as Initial Treatment for Patients With EGFR-Mutant Lung Cancer
+     9 of 41 criteria confirmed, none against, 28 to check in the record, 4 to confirm at the screening visit
+     details: ?run=sample-nsclc__NCT04181060
+
+  5. NCT06487078  Likely not eligible
+     Analysis of the Effectiveness and Safety of Lorlatinib in Untreated ALK-Positive NSCLC Patients in a French Real-World Context
+     Inclusion criterion not met: The patient has a histologically or cytologically confirmed diagnosis of locally advanced or metastatic ALK-positive NSCLC according to the TNM 8th classification, established by IHC 3+, positive FISH, or a transcriptomic method. (The note states that ALK testing was negative, so the required ALK-positive NSCLC criterion is not met.)
+     details: ?run=sample-nsclc__NCT06487078
+
+  6. NCT07198841  Likely not eligible
+     IBI351 Plus Cetuximab β in Untreated Advanced Non-small Cell Lung Cancer With KRAS G12C Mutation
+     Exclusion criterion applies: The patient has an EGFR sensitizing mutation, ALK rearrangement, ROS-1 fusion, or another genomic alteration for which an NMPA-approved first-line NSCLC therapy exists. (The documented EGFR exon 19 deletion is an EGFR sensitizing mutation covered by this exclusion criterion.)
+     details: ?run=sample-nsclc__NCT07198841
+
+  7. NCT06970639  Likely not eligible
+     A Study Evaluating Furmonertinib Plus Platinum-based Doublet Chemotherapy Versus Osimertinib in Patients With Epidermal Growth Factor Receptor (EGFR) Sensitizing Mutation-Positive Non-squamous Non-Small Cell Lung Cancer (NSCLC) and Brain Metastases
+     Inclusion criterion not met: The patient has at least one measurable intracranial lesion per RECIST v1.1 without prior local treatment. (The brain MRI showed no intracranial metastases, so the note does not show a measurable intracranial lesion.)
+     details: ?run=sample-nsclc__NCT06970639
+
+  8. NCT07279935  Likely not eligible
+     Osimertinib Combined With Chemotherapy in Patients Who Had Distant Recurrence After Adjuvant Osimertinib for EGFRm Resectable SIB-IIIA NSCLC.
+     Inclusion criterion not met: The patient previously received adjuvant osimertinib for EGFRm resectable SIB-IIIA NSCLC according to the AJCC 7th edition. (The note explicitly states that she has not received systemic therapy, which includes adjuvant osimertinib.)
+     details: ?run=sample-nsclc__NCT07279935
+
+A ranking for review, not an enrollment decision; open a trial to see every criterion and its evidence.
+

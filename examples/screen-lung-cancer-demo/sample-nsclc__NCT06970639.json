@@ -1,0 +1,2669 @@
+{
+  "run_id": "sample-nsclc__NCT06970639",
+  "created_at": "2026-10-14T01:00:52+00:00",
+  "model": "gpt-6-sol",
+  "note_coverage": "full",
+  "judge_batch_size": 8,
+  "patient": {
+    "id": "sample-nsclc",
+    "source": "Synthetic sample (hand-written, not a real patient)",
+    "text": "SYNTHETIC NOTE - NOT A REAL PATIENT\nNote date: 2026-09-18\n\nChief complaint: Follow-up for newly diagnosed lung cancer.\n\nHistory of present illness: 62-year-old woman, former smoker (30 pack-years, quit in 2015), who presented in July 2026 with persistent cough and 6 kg weight loss. CT chest showed a 4.2 cm right upper lobe mass with mediastinal lymphadenopathy. CT-guided biopsy on 2026-08-04 confirmed lung adenocarcinoma. PET-CT on 2026-08-12 showed bilateral adrenal metastases; stage IV disease. Brain MRI on 2026-08-14 showed no intracranial metastases. Molecular testing: EGFR exon 19 deletion detected; ALK and ROS1 negative. PD-L1 TPS 10%. She has not yet received any systemic therapy for lung cancer.\n\nPast medical history: Hypertension, well controlled on lisinopril. Type 2 diabetes mellitus on metformin, HbA1c 7.1% in August 2026. Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence. She denies any history of interstitial lung disease or pneumonitis.\n\nFamily history: Mother died of breast cancer at age 71. Father had a myocardial infarction at age 65.\n\nMedications: Lisinopril 10 mg daily, metformin 1000 mg twice daily.\n\nExamination: ECOG performance status 1. Blood pressure 128/76 mmHg, heart rate 82, SpO2 96% on room air. Decreased breath sounds at the right apex.\n\nLaboratory results (2026-09-15): Hemoglobin 11.8 g/dL, absolute neutrophil count 3.4 x 10^9/L, platelets 245 x 10^9/L. Creatinine 0.9 mg/dL. ALT 28 U/L, AST 31 U/L, total bilirubin 0.6 mg/dL. ECG on 2026-09-15: normal sinus rhythm, QTc 438 ms.\n\nAssessment and plan: Stage IV EGFR-mutated lung adenocarcinoma, treatment-naive. Discussed first-line options including clinical trial participation.",
+    "note_date": "2026-09-18"
+  },
+  "segments": [
+    {
+      "id": "S1",
+      "start": 0,
+      "end": 35,
+      "text": "SYNTHETIC NOTE - NOT A REAL PATIENT"
+    },
+    {
+      "id": "S2",
+      "start": 36,
+      "end": 57,
+      "text": "Note date: 2026-09-18"
+    },
+    {
+      "id": "S3",
+      "start": 59,
+      "end": 118,
+      "text": "Chief complaint: Follow-up for newly diagnosed lung cancer."
+    },
+    {
+      "id": "S4",
+      "start": 120,
+      "end": 501,
+      "text": "History of present illness: 62-year-old woman, former smoker (30 pack-years, quit in 2015), who presented in July 2026 with persistent cough and 6 kg weight loss. CT chest showed a 4.2 cm right upper lobe mass with mediastinal lymphadenopathy. CT-guided biopsy on 2026-08-04 confirmed lung adenocarcinoma. PET-CT on 2026-08-12 showed bilateral adrenal metastases; stage IV disease."
+    },
+    {
+      "id": "S5",
+      "start": 502,
+      "end": 712,
+      "text": "Brain MRI on 2026-08-14 showed no intracranial metastases. Molecular testing: EGFR exon 19 deletion detected; ALK and ROS1 negative. PD-L1 TPS 10%. She has not yet received any systemic therapy for lung cancer."
+    },
+    {
+      "id": "S6",
+      "start": 714,
+      "end": 1013,
+      "text": "Past medical history: Hypertension, well controlled on lisinopril. Type 2 diabetes mellitus on metformin, HbA1c 7.1% in August 2026. Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence. She denies any history of interstitial lung disease or pneumonitis."
+    },
+    {
+      "id": "S7",
+      "start": 1015,
+      "end": 1116,
+      "text": "Family history: Mother died of breast cancer at age 71. Father had a myocardial infarction at age 65."
+    },
+    {
+      "id": "S8",
+      "start": 1118,
+      "end": 1185,
+      "text": "Medications: Lisinopril 10 mg daily, metformin 1000 mg twice daily."
+    },
+    {
+      "id": "S9",
+      "start": 1187,
+      "end": 1334,
+      "text": "Examination: ECOG performance status 1. Blood pressure 128/76 mmHg, heart rate 82, SpO2 96% on room air. Decreased breath sounds at the right apex."
+    },
+    {
+      "id": "S10",
+      "start": 1336,
+      "end": 1579,
+      "text": "Laboratory results (2026-09-15): Hemoglobin 11.8 g/dL, absolute neutrophil count 3.4 x 10^9/L, platelets 245 x 10^9/L. Creatinine 0.9 mg/dL. ALT 28 U/L, AST 31 U/L, total bilirubin 0.6 mg/dL. ECG on 2026-09-15: normal sinus rhythm, QTc 438 ms."
+    },
+    {
+      "id": "S11",
+      "start": 1581,
+      "end": 1730,
+      "text": "Assessment and plan: Stage IV EGFR-mutated lung adenocarcinoma, treatment-naive. Discussed first-line options including clinical trial participation."
+    }
+  ],
+  "trial": {
+    "nct_id": "NCT06970639",
+    "title": "A Study Evaluating Furmonertinib Plus Platinum-based Doublet Chemotherapy Versus Osimertinib in Patients With Epidermal Growth Factor Receptor (EGFR) Sensitizing Mutation-Positive Non-squamous Non-Small Cell Lung Cancer (NSCLC) and Brain Metastases",
+    "conditions": [
+      "NSCLC Patients With Brain Metastasis"
+    ],
+    "criteria_text": "Inclusion Criteria:\n\n1. Fully understand the trial and voluntarily sign the informed consent form;\n2. Age ≥18 years at the time of signing ICF, regardless of gender;\n3. Histologically/cytologically confirmed non-squamous NSCLC with brain parenchymal metastases assessed by BICR; Subjects with both brain parenchymal and leptomeningeal metastases are eligible. Subjects without brain metastases may be enrolled in the safety run-in phase.\n4. For subjects with brain metastases: clinically stable for ≥4 weeks prior to first dose AND no requirement for corticosteroids/anticonvulsants for ≥14 days prior to first dose; Investigator-confirmed no need for local therapy for brain metastases during screening.\n5. Confirmed EGFR sensitizing mutations (ex19del or L858R) via tumor tissue/cytology/blood testing;\n6. No prior systemic anti-tumor therapy for advanced/metastatic NSCLC; Subjects who received (neo)adjuvant chemotherapy or definitive chemoradiotherapy must have disease recurrence/progression ≥6 months after completion;\n7. ≥1 measurable intracranial AND extracranial lesion(s) per RECIST v1.1 without prior local treatment;\n8. ECOG PS 0-1 with no deterioration within 2 weeks prior to first dose, and life expectancy ≥3 months;\n9. Adequate bone marrow and organ function (no transfusion/G-CSF within 2 weeks prior to first dose);\n10. All prior treatment-related toxicities resolved to ≤Grade 1 (per NCI CTCAE v5.0) except alopecia (≤Grade 2) or peripheral neuropathy (≤Grade 2);\n11. Women of childbearing potential (WOCBP) must have negative serum pregnancy test within 7 days prior to first dose, be non-lactating, and use effective contraception from ICF signing until 6 months after last dose. Male subjects with fertile partners must use contraception during the same period.\n\nExclusion Criteria:\n\n1. The tumor histology or cytology confirmed that the combination of neuroendocrine carcinoma, sarcomatoid carcinoma or squamous cell carcinoma was more than 10%;\n2. Known subjects with ALK positive, ros1 positive, RET fusion positive, ntrk fusion positive, BRAF V600 mutation, met exon 14 skipping variant and other approved drugs for this target;\n3. Subjects with meningeal metastasis but no brain parenchymal metastasis confirmed by MRI and / or CSF malignant cell examination;\n4. Subjects who have previously received any of the following treatments:\n\n   1. Have received any systemic anti-tumor therapy targeting EGFR in the past, including those in clinical research stage (including EGFR TKI, monoclonal antibody, bispecific antibody, etc.);\n   2. Previously received systemic antitumor therapy (such as chemotherapy, targeted therapy, immunotherapy, etc.) for locally advanced / metastatic non-small cell lung cancer;\n   3. Received \\> 30 Gy of chest radiotherapy within 6 months before the first dose; Received non thoracic radiotherapy of \\>30 Gy within 4 weeks before the first dose; Received palliative radiotherapy ≤ 30Gy within 2 weeks before the first dose; Previous brain radiotherapy;\n5. Chinese patent medicine that has received non-specific immune modulators (including but not limited to interferon and IL-2) and approved anti-tumor indications within 2 weeks before the first administration;\n6. Have used any strong inhibitor of cytochrome P450 3A4 (CYP3A4) within 7 days before the first administration or any strong inducer of CYP3A4 within 21 days before the first administration;\n7. Other malignant tumors in addition to the primary tumor; Skin basal cell or squamous cell carcinoma, superficial bladder cancer, cervical carcinoma in situ, breast ductal carcinoma in situ and papillary thyroid cancer that can be treated locally and have been cured can be selected; Subjects with a history of other malignancies and who have been cured for ≥ 3 years after radical treatment can be enrolled;\n8. Brain metastasis subjects with known brain stem metastasis, spinal cord metastasis and / or compression; Subjects with acute or progressive intracranial hypertension related symptoms during the screening period; Subjects with brain herniation or near brain herniation; Brain imaging revealed significant brain midline deviation and other subjects requiring urgent local treatment;\n9. According to CTCAE 5.0, there were subjects with grade 2 headache, vomiting, papilledema, etc. caused by increased intracranial pressure during the screening period; Subjects with grade 2 sensory / motor impairment and visual field damage caused by brain metastasis during the screening period; Subjects with mental symptoms (such as dementia, sluggish reaction, etc.) or seizures caused by brain metastasis during the screening period; Subjects who can control relevant central nervous system symptoms ≤ 1 grade by steroid hormones or anticonvulsants can be enrolled;\n10. The tumor invades the surrounding important organs and blood vessels (such as the heart, esophagus, superior vena cava, etc.) or has the risk of esophago tracheal fistula or esophago pleural fistula;\n11. Cardiovascular and cerebrovascular disease or cardiovascular and cerebrovascular risk factors exist.\n12. There are uncontrollable systemic diseases.\n13. There is a history of (non infectious) interstitial lung disease (ILD) or non infectious pneumonia requiring steroid treatment.\n14. Pulmonary complications lead to clinically severe lung damage.\n15. Severe acute or chronic infection\n16. Subjects who are receiving long-term systemic corticosteroid therapy with prednisone \\> 10 mg/d or equivalent anti-inflammatory active drugs or any form of immunosuppressive therapy before the first administration \\[subjects who need bronchodilators, inhaled or topical steroids or local steroid injection therapy, or as preventive medication for hypersensitivity reactions (such as medication before CT examination, etc.), or to control central nervous system symptoms in patients with brain metastasis can be included in the study\\];\n17. Subjects who had undergone major surgery within 4 weeks before the first dose or were expected to undergo major surgery during the study;\n18. Bleeding symptoms with significant clinical significance or obvious bleeding tendency within 4 weeks before the first administration.\n19. Severe gastrointestinal dysfunction is known.\n20. Known or suspected allergy to the ingredients of the study drug or its analogues;\n21. Pregnant or lactating women or female subjects who plan to become pregnant during the study or within 6 months after the last dose;\n22. In the judgment of the investigator, the subject has other factors that may affect the results of the study or cause the forced termination of the study, such as alcohol abuse, drug abuse, suffering from other serious diseases (including mental diseases) requiring combined treatment, serious abnormal laboratory test values, family or social factors and other conditions that may affect the safety of the subject or the collection of test data.",
+    "minimum_age": "18 Years",
+    "maximum_age": null,
+    "sex": "ALL",
+    "overall_status": "RECRUITING",
+    "url": "https://clinicaltrials.gov/study/NCT06970639",
+    "fetched_at": "2026-10-14T00:19:05+00:00",
+    "source": "ctgov_api"
+  },
+  "criteria": [
+    {
+      "criterion_id": "INC-01",
+      "criterion_text": "The patient fully understands the trial and voluntarily signs the informed consent form.",
+      "source_text": "1. Fully understand the trial and voluntarily sign the informed consent form;",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not address trial understanding or informed consent.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient fully understands the trial and voluntarily signs the informed consent form.",
+      "established_part": null,
+      "answer_source": "screening_visit",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "informed consent form",
+          "normalized": "informed consent",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-02",
+      "criterion_text": "The patient is at least 18 years old at the time of signing the informed consent form.",
+      "source_text": "2. Age ≥18 years at the time of signing ICF, regardless of gender;",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "62-year-old woman",
+          "start": 148,
+          "end": 165,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The patient is 62 years old, which meets the minimum age requirement at consent signing.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": "62 years",
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "at the time of signing ICF",
+      "threshold": {
+        "parameter": "age",
+        "comparator": ">=",
+        "value": "18",
+        "unit": "years"
+      },
+      "concepts": [],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 62.0,
+            "value_unit": "years",
+            "comparator": ">=",
+            "threshold": 18.0,
+            "threshold_upper": null,
+            "threshold_unit": "years",
+            "reference_limit": null,
+            "reference_limit_assumed": false,
+            "analyte": null
+          },
+          "model_answer": true,
+          "computed": true,
+          "status": "confirmed",
+          "detail": "62 >= 18 years is true",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": false
+        }
+      ],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-03",
+      "criterion_text": "The patient has histologically or cytologically confirmed non-squamous non-small cell lung cancer with brain parenchymal metastases assessed by blinded independent central review, or is enrolled in the safety run-in phase without brain metastases; patients with both brain parenchymal and leptomeningeal metastases are eligible.",
+      "source_text": "3. Histologically/cytologically confirmed non-squamous NSCLC with brain parenchymal metastases assessed by BICR; Subjects with both brain parenchymal and leptomeningeal metastases are eligible. Subjects without brain metastases may be enrolled in the safety run-in phase.",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "CT-guided biopsy on 2026-08-04 confirmed lung adenocarcinoma.",
+          "start": 364,
+          "end": 425,
+          "segment_id": "S4"
+        },
+        {
+          "quote": "Brain MRI on 2026-08-14 showed no intracranial metastases.",
+          "start": 502,
+          "end": 560,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The patient has confirmed non-squamous NSCLC but no brain metastases, so eligibility depends on safety run-in enrollment that is not documented.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient is enrolled in the safety run-in phase, which would determine eligibility without brain metastases.",
+      "established_part": "Histologically confirmed lung adenocarcinoma and no brain metastases on MRI",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "non-squamous NSCLC",
+          "normalized": "non-squamous non-small cell lung cancer",
+          "category": "condition"
+        },
+        {
+          "original": "brain parenchymal metastases",
+          "normalized": "brain metastasis",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-04",
+      "criterion_text": "The patient's brain metastases have been clinically stable for at least 4 weeks before the first dose.",
+      "source_text": "4. For subjects with brain metastases: clinically stable for ≥4 weeks prior to first dose AND no requirement for corticosteroids/anticonvulsants for ≥14 days prior to first dose; Investigator-confirmed no need for local therapy for brain metastases during screening.",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "Brain MRI on 2026-08-14 showed no intracranial metastases.",
+          "start": 502,
+          "end": 560,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "This brain-metastasis-specific requirement does not apply because the note documents no intracranial metastases.",
+      "confidence": "high",
+      "basis": "inferred",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "prior to first dose",
+      "threshold": {
+        "parameter": "clinical stability of brain metastases",
+        "comparator": ">=",
+        "value": "4",
+        "unit": "weeks"
+      },
+      "concepts": [
+        {
+          "original": "brain metastases",
+          "normalized": "brain metastasis",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-05",
+      "criterion_text": "The patient has had no requirement for corticosteroids or anticonvulsants for at least 14 days before the first dose.",
+      "source_text": "4. For subjects with brain metastases: clinically stable for ≥4 weeks prior to first dose AND no requirement for corticosteroids/anticonvulsants for ≥14 days prior to first dose; Investigator-confirmed no need for local therapy for brain metastases during screening.",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "Brain MRI on 2026-08-14 showed no intracranial metastases.",
+          "start": 502,
+          "end": 560,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "This brain-metastasis-specific requirement does not apply because the note documents no intracranial metastases.",
+      "confidence": "high",
+      "basis": "inferred",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "prior to first dose",
+      "threshold": {
+        "parameter": "period without requirement for corticosteroids or anticonvulsants",
+        "comparator": ">=",
+        "value": "14",
+        "unit": "days"
+      },
+      "concepts": [
+        {
+          "original": "corticosteroids",
+          "normalized": "corticosteroids",
+          "category": "drug"
+        },
+        {
+          "original": "anticonvulsants",
+          "normalized": "anticonvulsants",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-06",
+      "criterion_text": "The investigator confirms that the patient does not need local therapy for brain metastases during screening.",
+      "source_text": "4. For subjects with brain metastases: clinically stable for ≥4 weeks prior to first dose AND no requirement for corticosteroids/anticonvulsants for ≥14 days prior to first dose; Investigator-confirmed no need for local therapy for brain metastases during screening.",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "Brain MRI on 2026-08-14 showed no intracranial metastases.",
+          "start": 502,
+          "end": 560,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "This brain-metastasis-specific requirement does not apply because the note documents no intracranial metastases.",
+      "confidence": "high",
+      "basis": "inferred",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "screening_visit",
+      "time_window": "during screening",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "brain metastases",
+          "normalized": "brain metastasis",
+          "category": "condition"
+        },
+        {
+          "original": "local therapy",
+          "normalized": "local therapy",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-07",
+      "criterion_text": "The patient has a confirmed EGFR sensitizing mutation, specifically ex19del or L858R, identified by tumor tissue, cytology, or blood testing.",
+      "source_text": "5. Confirmed EGFR sensitizing mutations (ex19del or L858R) via tumor tissue/cytology/blood testing;",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "Molecular testing: EGFR exon 19 deletion detected",
+          "start": 561,
+          "end": 610,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "Molecular testing confirmed an EGFR exon 19 deletion, an eligible sensitizing mutation.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "EGFR sensitizing mutations",
+          "normalized": "epidermal growth factor receptor sensitizing mutation",
+          "category": "condition"
+        },
+        {
+          "original": "tumor tissue",
+          "normalized": "tumor tissue testing",
+          "category": "lab_test"
+        },
+        {
+          "original": "cytology",
+          "normalized": "cytology testing",
+          "category": "lab_test"
+        },
+        {
+          "original": "blood testing",
+          "normalized": "blood testing",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-08",
+      "criterion_text": "The patient has not previously received systemic anti-tumor therapy for advanced or metastatic non-small cell lung cancer.",
+      "source_text": "6. No prior systemic anti-tumor therapy for advanced/metastatic NSCLC; Subjects who received (neo)adjuvant chemotherapy or definitive chemoradiotherapy must have disease recurrence/progression ≥6 months after completion;",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The note explicitly states that she has not received systemic therapy for her lung cancer.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "advanced/metastatic NSCLC",
+          "normalized": "advanced or metastatic non-small cell lung cancer",
+          "category": "condition"
+        },
+        {
+          "original": "systemic anti-tumor therapy",
+          "normalized": "systemic anti-tumor therapy",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-09",
+      "criterion_text": "If the patient previously received neoadjuvant or adjuvant chemotherapy or definitive chemoradiotherapy, disease recurrence or progression occurred at least 6 months after completion.",
+      "source_text": "6. No prior systemic anti-tumor therapy for advanced/metastatic NSCLC; Subjects who received (neo)adjuvant chemotherapy or definitive chemoradiotherapy must have disease recurrence/progression ≥6 months after completion;",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The note rules out documented prior systemic therapy but does not establish the required history and timing of prior neoadjuvant, adjuvant, or definitive chemoradiotherapy.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient previously received neoadjuvant or adjuvant chemotherapy or definitive chemoradiotherapy, and if so, the interval from completion to recurrence or progression.",
+      "established_part": "No systemic therapy for lung cancer is documented",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "time from completion of neoadjuvant/adjuvant chemotherapy or definitive chemoradiotherapy to disease recurrence or progression",
+        "comparator": ">=",
+        "value": "6",
+        "unit": "months"
+      },
+      "concepts": [
+        {
+          "original": "(neo)adjuvant chemotherapy",
+          "normalized": "adjuvant chemotherapy",
+          "category": "drug"
+        },
+        {
+          "original": "definitive chemoradiotherapy",
+          "normalized": "definitive chemoradiotherapy",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-10",
+      "criterion_text": "The patient has at least one measurable intracranial lesion per RECIST v1.1 without prior local treatment.",
+      "source_text": "7. ≥1 measurable intracranial AND extracranial lesion(s) per RECIST v1.1 without prior local treatment;",
+      "type": "inclusion",
+      "verdict": "not_met",
+      "effect": "blocks",
+      "evidence": [
+        {
+          "quote": "Brain MRI on 2026-08-14 showed no intracranial metastases.",
+          "start": 502,
+          "end": 560,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The brain MRI showed no intracranial metastases, so the note does not show a measurable intracranial lesion.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "measurable intracranial lesions",
+        "comparator": ">=",
+        "value": "1",
+        "unit": "lesions"
+      },
+      "concepts": [
+        {
+          "original": "intracranial lesion",
+          "normalized": "brain metastasis",
+          "category": "condition"
+        },
+        {
+          "original": "extracranial lesion",
+          "normalized": "extracranial lesion",
+          "category": "condition"
+        },
+        {
+          "original": "RECIST v1.1",
+          "normalized": "RECIST v1.1",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "not_met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-11",
+      "criterion_text": "The patient has at least one measurable extracranial lesion per RECIST v1.1 without prior local treatment.",
+      "source_text": "7. ≥1 measurable intracranial AND extracranial lesion(s) per RECIST v1.1 without prior local treatment;",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "CT chest showed a 4.2 cm right upper lobe mass with mediastinal lymphadenopathy.",
+          "start": 283,
+          "end": 363,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The note documents a large extracranial lung mass, but does not state whether it has had prior local treatment or explicitly confirm RECIST measurability.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the extracranial lesion meets RECIST v1.1 measurability requirements and has had no prior local treatment.",
+      "established_part": "A 4.2 cm extracranial lung mass is documented",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "measurable extracranial lesions",
+        "comparator": ">=",
+        "value": "1",
+        "unit": "lesions"
+      },
+      "concepts": [
+        {
+          "original": "extracranial lesion",
+          "normalized": "extracranial lesion",
+          "category": "condition"
+        },
+        {
+          "original": "RECIST v1.1",
+          "normalized": "RECIST v1.1",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-12",
+      "criterion_text": "The patient's ECOG performance status is 0 to 1.",
+      "source_text": "8. ECOG PS 0-1 with no deterioration within 2 weeks prior to first dose, and life expectancy ≥3 months;",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "ECOG performance status 1.",
+          "start": 1200,
+          "end": 1226,
+          "segment_id": "S9"
+        }
+      ],
+      "rationale": "The documented ECOG performance status of 1 is within the required range of 0 to 1.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": "1",
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "ECOG performance status",
+        "comparator": "between",
+        "value": "0-1",
+        "unit": null
+      },
+      "concepts": [
+        {
+          "original": "ECOG PS",
+          "normalized": "ECOG performance status",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 1.0,
+            "value_unit": null,
+            "comparator": "between",
+            "threshold": 0.0,
+            "threshold_upper": 1.0,
+            "threshold_unit": null,
+            "reference_limit": null,
+            "reference_limit_assumed": false,
+            "analyte": null
+          },
+          "model_answer": true,
+          "computed": true,
+          "status": "confirmed",
+          "detail": "1 between [0, 1] is true",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": false
+        }
+      ],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-13",
+      "criterion_text": "The patient's ECOG performance status has not deteriorated within the 2 weeks before the first dose.",
+      "source_text": "8. ECOG PS 0-1 with no deterioration within 2 weeks prior to first dose, and life expectancy ≥3 months;",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "ECOG performance status 1.",
+          "start": 1200,
+          "end": 1226,
+          "segment_id": "S9"
+        }
+      ],
+      "rationale": "The patient has not started treatment, so deterioration before the first dose cannot yet be assessed.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether ECOG performance status deteriorated during the 2 weeks before the first dose; the first-dose date and a pre-dose comparison are needed.",
+      "established_part": "Current ECOG performance status is 1",
+      "answer_source": "medical_record",
+      "time_window": "within 2 weeks prior to first dose",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "ECOG PS",
+          "normalized": "ECOG performance status",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-14",
+      "criterion_text": "The patient's life expectancy is at least 3 months.",
+      "source_text": "8. ECOG PS 0-1 with no deterioration within 2 weeks prior to first dose, and life expectancy ≥3 months;",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not state whether life expectancy is at least 3 months.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Clinician-estimated life expectancy.",
+      "established_part": null,
+      "answer_source": "screening_visit",
+      "time_window": null,
+      "threshold": {
+        "parameter": "life expectancy",
+        "comparator": ">=",
+        "value": "3",
+        "unit": "months"
+      },
+      "concepts": [],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-15",
+      "criterion_text": "The patient has adequate bone marrow and organ function.",
+      "source_text": "9. Adequate bone marrow and organ function (no transfusion/G-CSF within 2 weeks prior to first dose);",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Laboratory results (2026-09-15): Hemoglobin 11.8 g/dL, absolute neutrophil count 3.4 x 10^9/L, platelets 245 x 10^9/L. Creatinine 0.9 mg/dL. ALT 28 U/L, AST 31 U/L, total bilirubin 0.6 mg/dL.",
+          "start": 1336,
+          "end": 1527,
+          "segment_id": "S10"
+        }
+      ],
+      "rationale": "The note provides relevant laboratory results but does not state the protocol thresholds or the required recent transfusion and G-CSF history.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Protocol-defined adequacy thresholds and whether there was any transfusion or G-CSF use within 2 weeks before the first dose.",
+      "established_part": "Blood counts and several organ-function laboratory results are documented",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "bone marrow",
+          "normalized": "bone marrow function",
+          "category": "lab_test"
+        },
+        {
+          "original": "organ function",
+          "normalized": "organ function",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-16",
+      "criterion_text": "The patient has not received a blood transfusion or granulocyte colony-stimulating factor within 2 weeks before the first dose.",
+      "source_text": "9. Adequate bone marrow and organ function (no transfusion/G-CSF within 2 weeks prior to first dose);",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The first dose has not occurred and the note does not address recent transfusion or G-CSF use.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient received a blood transfusion or G-CSF within 2 weeks before the first dose, and the first-dose date.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 2 weeks prior to first dose",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "transfusion",
+          "normalized": "blood transfusion",
+          "category": "procedure"
+        },
+        {
+          "original": "G-CSF",
+          "normalized": "granulocyte colony-stimulating factor",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-17",
+      "criterion_text": "All of the patient's prior treatment-related toxicities have resolved to grade 1 or lower per NCI CTCAE v5.0, except that alopecia and peripheral neuropathy may be grade 2 or lower.",
+      "source_text": "10. All prior treatment-related toxicities resolved to ≤Grade 1 (per NCI CTCAE v5.0) except alopecia (≤Grade 2) or peripheral neuropathy (≤Grade 2);",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note documents prior cancer treatment but does not state whether any treatment-related toxicities remain or their CTCAE grades.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Document the grade and current status of all prior treatment-related toxicities, including toxicities from prior breast cancer treatment.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "prior treatment-related toxicity grade",
+        "comparator": "<=",
+        "value": "1",
+        "unit": "NCI CTCAE grade"
+      },
+      "concepts": [
+        {
+          "original": "NCI CTCAE v5.0",
+          "normalized": "NCI CTCAE version 5.0",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-18",
+      "criterion_text": "The patient's prior treatment-related alopecia is grade 2 or lower per NCI CTCAE v5.0.",
+      "source_text": "10. All prior treatment-related toxicities resolved to ≤Grade 1 (per NCI CTCAE v5.0) except alopecia (≤Grade 2) or peripheral neuropathy (≤Grade 2);",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not mention prior treatment-related alopecia or its grade.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Determine whether the patient has prior treatment-related alopecia and, if present, its current NCI CTCAE v5.0 grade.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "alopecia grade",
+        "comparator": "<=",
+        "value": "2",
+        "unit": "NCI CTCAE grade"
+      },
+      "concepts": [
+        {
+          "original": "alopecia",
+          "normalized": "alopecia",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-19",
+      "criterion_text": "The patient's prior treatment-related peripheral neuropathy is grade 2 or lower per NCI CTCAE v5.0.",
+      "source_text": "10. All prior treatment-related toxicities resolved to ≤Grade 1 (per NCI CTCAE v5.0) except alopecia (≤Grade 2) or peripheral neuropathy (≤Grade 2);",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not mention prior treatment-related peripheral neuropathy or its grade.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Determine whether the patient has prior treatment-related peripheral neuropathy and, if present, its current NCI CTCAE v5.0 grade.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "peripheral neuropathy grade",
+        "comparator": "<=",
+        "value": "2",
+        "unit": "NCI CTCAE grade"
+      },
+      "concepts": [
+        {
+          "original": "peripheral neuropathy",
+          "normalized": "peripheral neuropathy",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-20",
+      "criterion_text": "A woman of childbearing potential has a negative serum pregnancy test within 7 days before the first dose.",
+      "source_text": "11. Women of childbearing potential (WOCBP) must have negative serum pregnancy test within 7 days prior to first dose, be non-lactating, and use effective contraception from ICF signing until 6 months after last dose. Male subjects with fertile partners must use contraception during the same period.",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "62-year-old woman",
+          "start": 148,
+          "end": 165,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The patient is a woman, but the note does not establish that she is of childbearing potential or document the required pregnancy test timing.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Confirm whether the patient is of childbearing potential, identify the planned first-dose date, and obtain a negative serum pregnancy test within 7 days before that dose if applicable.",
+      "established_part": "The patient is documented as a woman, but childbearing potential and first-dose timing are not established.",
+      "answer_source": "medical_record",
+      "time_window": "within 7 days prior to first dose",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "serum pregnancy test",
+          "normalized": "serum pregnancy test",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-21",
+      "criterion_text": "A woman of childbearing potential is not lactating.",
+      "source_text": "11. Women of childbearing potential (WOCBP) must have negative serum pregnancy test within 7 days prior to first dose, be non-lactating, and use effective contraception from ICF signing until 6 months after last dose. Male subjects with fertile partners must use contraception during the same period.",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "62-year-old woman",
+          "start": 148,
+          "end": 165,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The note does not establish that the patient is of childbearing potential or state whether she is lactating.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Confirm whether the patient is of childbearing potential and whether she is currently lactating.",
+      "established_part": "The patient is documented as a woman, but childbearing potential and lactation status are not established.",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-22",
+      "criterion_text": "A woman of childbearing potential is willing to use effective contraception from signing the informed consent form until 6 months after the last dose.",
+      "source_text": "11. Women of childbearing potential (WOCBP) must have negative serum pregnancy test within 7 days prior to first dose, be non-lactating, and use effective contraception from ICF signing until 6 months after last dose. Male subjects with fertile partners must use contraception during the same period.",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "62-year-old woman",
+          "start": 148,
+          "end": 165,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The note does not establish that the patient is of childbearing potential or document willingness to use the required contraception.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Confirm whether the patient is of childbearing potential and document willingness to use effective contraception from informed-consent signing through 6 months after the last dose.",
+      "established_part": "The patient is documented as a woman, but childbearing potential and willingness to use contraception are not established.",
+      "answer_source": "screening_visit",
+      "time_window": "from ICF signing until 6 months after last dose",
+      "threshold": null,
+      "concepts": [],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-23",
+      "criterion_text": "A male patient with a fertile partner is willing to use contraception from signing the informed consent form until 6 months after the last dose.",
+      "source_text": "11. Women of childbearing potential (WOCBP) must have negative serum pregnancy test within 7 days prior to first dose, be non-lactating, and use effective contraception from ICF signing until 6 months after last dose. Male subjects with fertile partners must use contraception during the same period.",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "62-year-old woman",
+          "start": 148,
+          "end": 165,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "This criterion applies to male patients with fertile partners, and the note identifies the patient as a woman.",
+      "confidence": "high",
+      "basis": "inferred",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "screening_visit",
+      "time_window": "from ICF signing until 6 months after last dose",
+      "threshold": null,
+      "concepts": [],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-01",
+      "criterion_text": "The patient's tumor histology or cytology confirms that the combination of neuroendocrine carcinoma, sarcomatoid carcinoma, or squamous cell carcinoma constitutes more than 10% of the tumor.",
+      "source_text": "1. The tumor histology or cytology confirmed that the combination of neuroendocrine carcinoma, sarcomatoid carcinoma or squamous cell carcinoma was more than 10%;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "confirmed lung adenocarcinoma",
+          "start": 395,
+          "end": 424,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "Adenocarcinoma is documented, but the note does not quantify whether the specified combined components exceed 10%.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Obtain tumor histology or cytology quantifying the combined percentage of neuroendocrine, sarcomatoid, and squamous carcinoma components.",
+      "established_part": "Biopsy confirms lung adenocarcinoma.",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "combined proportion of neuroendocrine carcinoma, sarcomatoid carcinoma, or squamous cell carcinoma",
+        "comparator": ">",
+        "value": "10",
+        "unit": "%"
+      },
+      "concepts": [
+        {
+          "original": "neuroendocrine carcinoma",
+          "normalized": "neuroendocrine carcinoma",
+          "category": "condition"
+        },
+        {
+          "original": "sarcomatoid carcinoma",
+          "normalized": "sarcomatoid carcinoma",
+          "category": "condition"
+        },
+        {
+          "original": "squamous cell carcinoma",
+          "normalized": "squamous cell carcinoma",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-02",
+      "criterion_text": "The patient has any of the following: an ALK-positive tumor, ROS1-positive tumor, RET fusion-positive tumor, NTRK fusion-positive tumor, BRAF V600 mutation, MET exon 14 skipping variant, or another alteration for which an approved targeted drug exists.",
+      "source_text": "2. Known subjects with ALK positive, ros1 positive, RET fusion positive, ntrk fusion positive, BRAF V600 mutation, met exon 14 skipping variant and other approved drugs for this target;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "ALK and ROS1 negative.",
+          "start": 612,
+          "end": 634,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "ALK and ROS1 are negative, but the note does not assess all other alterations listed in the exclusion criterion.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "RET, NTRK, BRAF V600, MET exon 14, and other potentially targetable alterations",
+      "established_part": "ALK and ROS1 are negative",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "ALK positive",
+          "normalized": "ALK-positive tumor",
+          "category": "other"
+        },
+        {
+          "original": "ros1 positive",
+          "normalized": "ROS1-positive tumor",
+          "category": "other"
+        },
+        {
+          "original": "RET fusion positive",
+          "normalized": "RET fusion-positive tumor",
+          "category": "other"
+        },
+        {
+          "original": "ntrk fusion positive",
+          "normalized": "NTRK fusion-positive tumor",
+          "category": "other"
+        },
+        {
+          "original": "BRAF V600 mutation",
+          "normalized": "BRAF V600 mutation",
+          "category": "other"
+        },
+        {
+          "original": "met exon 14 skipping variant",
+          "normalized": "MET exon 14 skipping alteration",
+          "category": "other"
+        },
+        {
+          "original": "approved drugs for this target",
+          "normalized": "targeted therapy",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-03",
+      "criterion_text": "The patient has leptomeningeal metastasis but no brain parenchymal metastasis confirmed by MRI and/or cerebrospinal fluid malignant cell examination.",
+      "source_text": "3. Subjects with meningeal metastasis but no brain parenchymal metastasis confirmed by MRI and / or CSF malignant cell examination;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Brain MRI on 2026-08-14 showed no intracranial metastases.",
+          "start": 502,
+          "end": 560,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The MRI shows no intracranial metastases, but the note does not determine whether leptomeningeal metastasis is present.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether leptomeningeal metastasis is present, including cerebrospinal fluid examination if clinically indicated",
+      "established_part": "No intracranial metastases on brain MRI",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "meningeal metastasis",
+          "normalized": "leptomeningeal metastasis",
+          "category": "condition"
+        },
+        {
+          "original": "brain parenchymal metastasis",
+          "normalized": "brain metastasis",
+          "category": "condition"
+        },
+        {
+          "original": "MRI",
+          "normalized": "magnetic resonance imaging",
+          "category": "procedure"
+        },
+        {
+          "original": "CSF malignant cell examination",
+          "normalized": "cerebrospinal fluid malignant cell examination",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-04",
+      "criterion_text": "The patient has previously received any systemic anti-tumor therapy targeting EGFR, including an EGFR tyrosine kinase inhibitor, monoclonal antibody, or bispecific antibody, including therapy received in a clinical research setting.",
+      "source_text": "1. Have received any systemic anti-tumor therapy targeting EGFR in the past, including those in clinical research stage (including EGFR TKI, monoclonal antibody, bispecific antibody, etc.);",
+      "type": "exclusion",
+      "verdict": "not_met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The note explicitly states that she has not received prior systemic therapy for lung cancer, including EGFR-targeted therapy.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "in the past",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "systemic anti-tumor therapy targeting EGFR",
+          "normalized": "EGFR-targeted therapy",
+          "category": "drug"
+        },
+        {
+          "original": "EGFR TKI",
+          "normalized": "EGFR tyrosine kinase inhibitor",
+          "category": "drug"
+        },
+        {
+          "original": "monoclonal antibody",
+          "normalized": "monoclonal antibody",
+          "category": "drug"
+        },
+        {
+          "original": "bispecific antibody",
+          "normalized": "bispecific antibody",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "not_met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-05",
+      "criterion_text": "The patient has previously received systemic antitumor therapy, such as chemotherapy, targeted therapy, or immunotherapy, for locally advanced or metastatic non-small cell lung cancer.",
+      "source_text": "2. Previously received systemic antitumor therapy (such as chemotherapy, targeted therapy, immunotherapy, etc.) for locally advanced / metastatic non-small cell lung cancer;",
+      "type": "exclusion",
+      "verdict": "not_met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The note explicitly states that she has not received prior systemic antitumor therapy for lung cancer.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "previously",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "locally advanced / metastatic non-small cell lung cancer",
+          "normalized": "locally advanced or metastatic non-small cell lung cancer",
+          "category": "condition"
+        },
+        {
+          "original": "systemic antitumor therapy",
+          "normalized": "systemic antitumor therapy",
+          "category": "drug"
+        },
+        {
+          "original": "chemotherapy",
+          "normalized": "chemotherapy",
+          "category": "drug"
+        },
+        {
+          "original": "targeted therapy",
+          "normalized": "targeted therapy",
+          "category": "drug"
+        },
+        {
+          "original": "immunotherapy",
+          "normalized": "immunotherapy",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "not_met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-06",
+      "criterion_text": "The patient received more than 30 Gy of chest radiotherapy within 6 months before the first dose.",
+      "source_text": "3. Received > 30 Gy of chest radiotherapy within 6 months before the first dose; Received non thoracic radiotherapy of >30 Gy within 4 weeks before the first dose; Received palliative radiotherapy ≤ 30Gy within 2 weeks before the first dose; Previous brain radiotherapy;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not report chest radiotherapy or establish the first-dose date needed for this time-window criterion.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "History, dose, and date of any chest radiotherapy, plus the planned first-dose date",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 6 months before the first dose",
+      "threshold": {
+        "parameter": "chest radiotherapy dose",
+        "comparator": ">",
+        "value": "30",
+        "unit": "Gy"
+      },
+      "concepts": [
+        {
+          "original": "chest radiotherapy",
+          "normalized": "chest radiotherapy",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": false,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-07",
+      "criterion_text": "The patient received more than 30 Gy of non-thoracic radiotherapy within 4 weeks before the first dose.",
+      "source_text": "3. Received > 30 Gy of chest radiotherapy within 6 months before the first dose; Received non thoracic radiotherapy of >30 Gy within 4 weeks before the first dose; Received palliative radiotherapy ≤ 30Gy within 2 weeks before the first dose; Previous brain radiotherapy;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not report non-thoracic radiotherapy or establish the first-dose date needed for this time-window criterion.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "History, dose, and date of any non-thoracic radiotherapy, plus the planned first-dose date",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 4 weeks before the first dose",
+      "threshold": {
+        "parameter": "non-thoracic radiotherapy dose",
+        "comparator": ">",
+        "value": "30",
+        "unit": "Gy"
+      },
+      "concepts": [
+        {
+          "original": "non thoracic radiotherapy",
+          "normalized": "non-thoracic radiotherapy",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": false,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-08",
+      "criterion_text": "The patient received palliative radiotherapy of 30 Gy or less within 2 weeks before the first dose.",
+      "source_text": "3. Received > 30 Gy of chest radiotherapy within 6 months before the first dose; Received non thoracic radiotherapy of >30 Gy within 4 weeks before the first dose; Received palliative radiotherapy ≤ 30Gy within 2 weeks before the first dose; Previous brain radiotherapy;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not report palliative radiotherapy or establish the first-dose date needed for this time-window criterion.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether palliative radiotherapy was given, its dose and date, plus the planned first-dose date",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 2 weeks before the first dose",
+      "threshold": {
+        "parameter": "palliative radiotherapy dose",
+        "comparator": "<=",
+        "value": "30",
+        "unit": "Gy"
+      },
+      "concepts": [
+        {
+          "original": "palliative radiotherapy",
+          "normalized": "palliative radiotherapy",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": false,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-09",
+      "criterion_text": "The patient has previously received brain radiotherapy.",
+      "source_text": "3. Received > 30 Gy of chest radiotherapy within 6 months before the first dose; Received non thoracic radiotherapy of >30 Gy within 4 weeks before the first dose; Received palliative radiotherapy ≤ 30Gy within 2 weeks before the first dose; Previous brain radiotherapy;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not state whether the patient has previously received brain radiotherapy.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "History of prior brain radiotherapy",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "previously",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "brain radiotherapy",
+          "normalized": "brain radiotherapy",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": false,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-10",
+      "criterion_text": "The patient has received Chinese patent medicine containing non-specific immune modulators, including interferon or IL-2, with approved anti-tumor indications within 2 weeks before the first administration.",
+      "source_text": "5. Chinese patent medicine that has received non-specific immune modulators (including but not limited to interferon and IL-2) and approved anti-tumor indications within 2 weeks before the first administration;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not address use of Chinese patent medicines or the required time window.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient received any Chinese patent medicine containing non-specific immune modulators within 2 weeks before first administration.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 2 weeks before the first administration",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "non-specific immune modulators",
+          "normalized": "non-specific immune modulator",
+          "category": "drug"
+        },
+        {
+          "original": "interferon",
+          "normalized": "interferon",
+          "category": "drug"
+        },
+        {
+          "original": "IL-2",
+          "normalized": "interleukin-2",
+          "category": "drug"
+        },
+        {
+          "original": "Chinese patent medicine",
+          "normalized": "Chinese patent medicine",
+          "category": "drug"
+        },
+        {
+          "original": "approved anti-tumor indications",
+          "normalized": "antineoplastic agent",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-11",
+      "criterion_text": "The patient has used a strong CYP3A4 inhibitor within 7 days before the first administration or a strong CYP3A4 inducer within 21 days before the first administration.",
+      "source_text": "6. Have used any strong inhibitor of cytochrome P450 3A4 (CYP3A4) within 7 days before the first administration or any strong inducer of CYP3A4 within 21 days before the first administration;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not establish recent use or non-use of strong CYP3A4 inhibitors or inducers.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient used a strong CYP3A4 inhibitor within 7 days or a strong CYP3A4 inducer within 21 days before first administration.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 7 days before the first administration or within 21 days before the first administration",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "strong inhibitor of cytochrome P450 3A4 (CYP3A4)",
+          "normalized": "strong CYP3A4 inhibitor",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-12",
+      "criterion_text": "The patient has a malignant tumor other than the primary tumor, except for the specified cured malignancies or other malignancies cured for at least 3 years after radical treatment.",
+      "source_text": "7. Other malignant tumors in addition to the primary tumor; Skin basal cell or squamous cell carcinoma, superficial bladder cancer, cervical carcinoma in situ, breast ductal carcinoma in situ and papillary thyroid cancer that can be treated locally and have been cured can be selected; Subjects with a history of other malignancies and who have been cured for ≥ 3 years after radical treatment can be enrolled;",
+      "type": "exclusion",
+      "verdict": "not_met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence.",
+          "start": 847,
+          "end": 945,
+          "segment_id": "S6"
+        }
+      ],
+      "rationale": "The only other malignancy was breast ductal carcinoma in situ treated locally with no recurrence, which is an explicit exception to this exclusion.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "other malignant tumors",
+          "normalized": "second primary malignancy",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "not_met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-13",
+      "criterion_text": "The patient has a history of another malignancy that was not cured for at least 3 years after radical treatment, other than locally treatable and cured skin basal cell or squamous cell carcinoma, superficial bladder cancer, cervical carcinoma in situ, breast ductal carcinoma in situ, or papillary thyroid cancer.",
+      "source_text": "7. Other malignant tumors in addition to the primary tumor; Skin basal cell or squamous cell carcinoma, superficial bladder cancer, cervical carcinoma in situ, breast ductal carcinoma in situ and papillary thyroid cancer that can be treated locally and have been cured can be selected; Subjects with a history of other malignancies and who have been cured for ≥ 3 years after radical treatment can be enrolled;",
+      "type": "exclusion",
+      "verdict": "not_met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence.",
+          "start": 847,
+          "end": 945,
+          "segment_id": "S6"
+        }
+      ],
+      "rationale": "The documented prior malignancy is breast ductal carcinoma in situ, an explicitly permitted exception after local treatment, with no recurrence since 2014.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "time since radical treatment of other malignancy",
+        "comparator": "<",
+        "value": "3",
+        "unit": "years"
+      },
+      "concepts": [
+        {
+          "original": "Skin basal cell carcinoma",
+          "normalized": "basal cell carcinoma of skin",
+          "category": "condition"
+        },
+        {
+          "original": "squamous cell carcinoma",
+          "normalized": "squamous cell carcinoma of skin",
+          "category": "condition"
+        },
+        {
+          "original": "superficial bladder cancer",
+          "normalized": "superficial bladder cancer",
+          "category": "condition"
+        },
+        {
+          "original": "cervical carcinoma in situ",
+          "normalized": "cervical carcinoma in situ",
+          "category": "condition"
+        },
+        {
+          "original": "breast ductal carcinoma in situ",
+          "normalized": "ductal carcinoma in situ of breast",
+          "category": "condition"
+        },
+        {
+          "original": "papillary thyroid cancer",
+          "normalized": "papillary thyroid carcinoma",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "not_met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-14",
+      "criterion_text": "The patient has brain metastases with brainstem metastasis, spinal cord metastasis, or spinal cord compression; acute or progressive symptoms related to intracranial hypertension during screening; brain herniation or near herniation; significant brain midline deviation on brain imaging; or another finding requiring urgent local treatment.",
+      "source_text": "8. Brain metastasis subjects with known brain stem metastasis, spinal cord metastasis and / or compression; Subjects with acute or progressive intracranial hypertension related symptoms during the screening period; Subjects with brain herniation or near brain herniation; Brain imaging revealed significant brain midline deviation and other subjects requiring urgent local treatment;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Brain MRI on 2026-08-14 showed no intracranial metastases.",
+          "start": 502,
+          "end": 560,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The MRI rules out intracranial metastases, but the note does not address every other exclusion condition in this criterion.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether there are spinal cord metastases or compression, acute or progressive intracranial-hypertension symptoms during screening, brain herniation or near herniation, significant midline deviation, or another finding requiring urgent local treatment.",
+      "established_part": "No intracranial metastases on brain MRI",
+      "answer_source": "medical_record",
+      "time_window": "during the screening period where specified",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "brain metastasis",
+          "normalized": "brain metastasis",
+          "category": "condition"
+        },
+        {
+          "original": "brain stem metastasis",
+          "normalized": "brainstem metastasis",
+          "category": "condition"
+        },
+        {
+          "original": "spinal cord metastasis",
+          "normalized": "spinal cord metastasis",
+          "category": "condition"
+        },
+        {
+          "original": "compression",
+          "normalized": "spinal cord compression",
+          "category": "condition"
+        },
+        {
+          "original": "intracranial hypertension",
+          "normalized": "intracranial hypertension",
+          "category": "condition"
+        },
+        {
+          "original": "brain herniation",
+          "normalized": "brain herniation",
+          "category": "condition"
+        },
+        {
+          "original": "Brain imaging",
+          "normalized": "brain imaging",
+          "category": "procedure"
+        },
+        {
+          "original": "local treatment",
+          "normalized": "local therapy",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-15",
+      "criterion_text": "During screening, the patient has any of the following caused by increased intracranial pressure or brain metastases: grade 2 headache, vomiting, papilledema, sensory or motor impairment, visual field damage, mental symptoms, or seizures, except that relevant central nervous system symptoms controlled to grade 1 or lower with corticosteroids or anticonvulsants are allowed.",
+      "source_text": "9. According to CTCAE 5.0, there were subjects with grade 2 headache, vomiting, papilledema, etc. caused by increased intracranial pressure during the screening period; Subjects with grade 2 sensory / motor impairment and visual field damage caused by brain metastasis during the screening period; Subjects with mental symptoms (such as dementia, sluggish reaction, etc.) or seizures caused by brain metastasis during the screening period; Subjects who can control relevant central nervous system symptoms ≤ 1 grade by steroid hormones or anticonvulsants can be enrolled;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Brain MRI on 2026-08-14 showed no intracranial metastases.",
+          "start": 502,
+          "end": 560,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The note documents no intracranial metastases but does not assess the specified symptoms or their CTCAE grades during screening.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient has any listed grade 2 neurologic or intracranial-pressure symptoms during screening, including headache, vomiting, papilledema, sensory or motor impairment, visual-field damage, mental symptoms, or seizures.",
+      "established_part": "No intracranial metastases on brain MRI",
+      "answer_source": "medical_record",
+      "time_window": "during the screening period",
+      "threshold": {
+        "parameter": "symptom grade",
+        "comparator": "=",
+        "value": "2",
+        "unit": "CTCAE 5.0 grade"
+      },
+      "concepts": [
+        {
+          "original": "increased intracranial pressure",
+          "normalized": "intracranial hypertension",
+          "category": "condition"
+        },
+        {
+          "original": "headache",
+          "normalized": "headache",
+          "category": "condition"
+        },
+        {
+          "original": "vomiting",
+          "normalized": "vomiting",
+          "category": "condition"
+        },
+        {
+          "original": "papilledema",
+          "normalized": "papilledema",
+          "category": "condition"
+        },
+        {
+          "original": "sensory impairment",
+          "normalized": "sensory impairment",
+          "category": "condition"
+        },
+        {
+          "original": "motor impairment",
+          "normalized": "motor impairment",
+          "category": "condition"
+        },
+        {
+          "original": "visual field damage",
+          "normalized": "visual field defect",
+          "category": "condition"
+        },
+        {
+          "original": "seizures",
+          "normalized": "seizure",
+          "category": "condition"
+        },
+        {
+          "original": "steroid hormones",
+          "normalized": "corticosteroids",
+          "category": "drug"
+        },
+        {
+          "original": "anticonvulsants",
+          "normalized": "anticonvulsants",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-16",
+      "criterion_text": "The patient's tumor invades surrounding important organs or blood vessels, such as the heart, esophagus, or superior vena cava, or the patient has a risk of esophageal-tracheal fistula or esophageal-pleural fistula.",
+      "source_text": "10. The tumor invades the surrounding important organs and blood vessels (such as the heart, esophagus, superior vena cava, etc.) or has the risk of esophago tracheal fistula or esophago pleural fistula;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not address invasion of important organs or vessels or fistula risk.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether imaging or clinical assessment shows invasion of the heart, esophagus, superior vena cava, or other important structures, or risk of esophageal-tracheal or esophageal-pleural fistula.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "tumor invades",
+          "normalized": "tumor invasion",
+          "category": "condition"
+        },
+        {
+          "original": "esophago tracheal fistula",
+          "normalized": "esophageal-tracheal fistula",
+          "category": "condition"
+        },
+        {
+          "original": "esophago pleural fistula",
+          "normalized": "esophageal-pleural fistula",
+          "category": "condition"
+        },
+        {
+          "original": "heart",
+          "normalized": "heart",
+          "category": "condition"
+        },
+        {
+          "original": "esophagus",
+          "normalized": "esophagus",
+          "category": "condition"
+        },
+        {
+          "original": "superior vena cava",
+          "normalized": "superior vena cava",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-17",
+      "criterion_text": "The patient has cardiovascular or cerebrovascular disease or cardiovascular or cerebrovascular risk factors.",
+      "source_text": "11. Cardiovascular and cerebrovascular disease or cardiovascular and cerebrovascular risk factors exist.",
+      "type": "exclusion",
+      "verdict": "met",
+      "effect": "blocks",
+      "evidence": [
+        {
+          "quote": "Past medical history: Hypertension, well controlled on lisinopril.",
+          "start": 714,
+          "end": 780,
+          "segment_id": "S6"
+        }
+      ],
+      "rationale": "Hypertension is a documented cardiovascular risk factor, even though it is well controlled.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Cardiovascular disease",
+          "normalized": "cardiovascular disease",
+          "category": "condition"
+        },
+        {
+          "original": "cerebrovascular disease",
+          "normalized": "cerebrovascular disease",
+          "category": "condition"
+        },
+        {
+          "original": "cardiovascular risk factors",
+          "normalized": "cardiovascular risk factor",
+          "category": "other"
+        },
+        {
+          "original": "cardiovascular and cerebrovascular risk factors",
+          "normalized": "cerebrovascular risk factor",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-18",
+      "criterion_text": "The patient has an uncontrolled systemic disease.",
+      "source_text": "12. There are uncontrollable systemic diseases.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Hypertension, well controlled on lisinopril. Type 2 diabetes mellitus on metformin, HbA1c 7.1% in August 2026.",
+          "start": 736,
+          "end": 846,
+          "segment_id": "S6"
+        }
+      ],
+      "rationale": "The note documents controlled hypertension and treated diabetes but does not establish whether any other uncontrolled systemic disease is present.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Determine whether the patient has any uncontrolled systemic disease.",
+      "established_part": "Hypertension is well controlled and diabetes is treated with HbA1c 7.1%",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "uncontrollable systemic diseases",
+          "normalized": "uncontrolled systemic disease",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-19",
+      "criterion_text": "The patient has a history of noninfectious interstitial lung disease or noninfectious pneumonitis requiring steroid treatment.",
+      "source_text": "13. There is a history of (non infectious) interstitial lung disease (ILD) or non infectious pneumonia requiring steroid treatment.",
+      "type": "exclusion",
+      "verdict": "not_met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "She denies any history of interstitial lung disease or pneumonitis.",
+          "start": 946,
+          "end": 1013,
+          "segment_id": "S6"
+        }
+      ],
+      "rationale": "The patient explicitly denies a history of interstitial lung disease or pneumonitis requiring steroid treatment.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "history",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "interstitial lung disease (ILD)",
+          "normalized": "interstitial lung disease",
+          "category": "condition"
+        },
+        {
+          "original": "non infectious pneumonia",
+          "normalized": "noninfectious pneumonitis",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "not_met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-20",
+      "criterion_text": "The patient has pulmonary complications causing clinically severe lung damage.",
+      "source_text": "14. Pulmonary complications lead to clinically severe lung damage.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Decreased breath sounds at the right apex.",
+          "start": 1292,
+          "end": 1334,
+          "segment_id": "S9"
+        }
+      ],
+      "rationale": "The note reports decreased breath sounds but does not determine whether clinically severe lung damage from pulmonary complications is present.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Assess whether pulmonary complications are causing clinically severe lung damage.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Pulmonary complications",
+          "normalized": "pulmonary complication",
+          "category": "condition"
+        },
+        {
+          "original": "lung damage",
+          "normalized": "lung injury",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-21",
+      "criterion_text": "The patient has a severe acute or chronic infection.",
+      "source_text": "15. Severe acute or chronic infection",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not address whether the patient has a severe acute or chronic infection.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Assess for severe acute or chronic infection.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Severe acute or chronic infection",
+          "normalized": "severe infection",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-22",
+      "criterion_text": "Before the first administration, the patient is receiving long-term systemic corticosteroid therapy with prednisone greater than 10 mg/day or equivalent anti-inflammatory drugs, or any form of immunosuppressive therapy, except for the listed allowed uses of bronchodilators, inhaled or topical steroids, local steroid injections, prophylaxis for hypersensitivity reactions, or control of central nervous system symptoms in patients with brain metastases.",
+      "source_text": "16. Subjects who are receiving long-term systemic corticosteroid therapy with prednisone > 10 mg/d or equivalent anti-inflammatory active drugs or any form of immunosuppressive therapy before the first administration [subjects who need bronchodilators, inhaled or topical steroids or local steroid injection therapy, or as preventive medication for hypersensitivity reactions (such as medication before CT examination, etc.), or to control central nervous system symptoms in patients with brain metastasis can be included in the study];",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Medications: Lisinopril 10 mg daily, metformin 1000 mg twice daily.",
+          "start": 1118,
+          "end": 1185,
+          "segment_id": "S8"
+        }
+      ],
+      "rationale": "The listed medications do not include corticosteroids or immunosuppressants, but medication-list omission does not establish that none are being received and first administration has not occurred.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Confirm whether the patient is receiving long-term systemic corticosteroids, prednisone over 10 mg/day or equivalent, or any immunosuppressive therapy before first administration.",
+      "established_part": "Current medications listed without systemic corticosteroid or immunosuppressive therapy",
+      "answer_source": "medical_record",
+      "time_window": "before the first administration",
+      "threshold": {
+        "parameter": "prednisone dose",
+        "comparator": ">",
+        "value": "10",
+        "unit": "mg/day"
+      },
+      "concepts": [
+        {
+          "original": "systemic corticosteroid therapy",
+          "normalized": "systemic corticosteroid",
+          "category": "drug"
+        },
+        {
+          "original": "prednisone",
+          "normalized": "prednisone",
+          "category": "drug"
+        },
+        {
+          "original": "immunosuppressive therapy",
+          "normalized": "immunosuppressive therapy",
+          "category": "drug"
+        }
+      ],
+      "source_verified": false,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-23",
+      "criterion_text": "The patient underwent major surgery within 4 weeks before the first dose or is expected to undergo major surgery during the study.",
+      "source_text": "17. Subjects who had undergone major surgery within 4 weeks before the first dose or were expected to undergo major surgery during the study;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not address recent or planned major surgery relative to the first dose.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Confirm any major surgery within 4 weeks before the first dose and any planned major surgery during the study.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 4 weeks before the first dose or during the study",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "major surgery",
+          "normalized": "major surgery",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-24",
+      "criterion_text": "The patient has clinically significant bleeding symptoms or an obvious bleeding tendency within 4 weeks before the first administration.",
+      "source_text": "18. Bleeding symptoms with significant clinical significance or obvious bleeding tendency within 4 weeks before the first administration.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not address recent clinically significant bleeding symptoms or bleeding tendency.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Assess for clinically significant bleeding symptoms or an obvious bleeding tendency within 4 weeks before first administration.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 4 weeks before the first administration",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Bleeding symptoms with significant clinical significance",
+          "normalized": "clinically significant bleeding",
+          "category": "condition"
+        },
+        {
+          "original": "obvious bleeding tendency",
+          "normalized": "bleeding tendency",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-25",
+      "criterion_text": "The patient has known severe gastrointestinal dysfunction.",
+      "source_text": "19. Severe gastrointestinal dysfunction is known.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not address severe gastrointestinal dysfunction.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Assess whether the patient has known severe gastrointestinal dysfunction.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Severe gastrointestinal dysfunction",
+          "normalized": "severe gastrointestinal dysfunction",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-26",
+      "criterion_text": "The patient has a known or suspected allergy to an ingredient of the study drug or to an analogue of the study drug.",
+      "source_text": "20. Known or suspected allergy to the ingredients of the study drug or its analogues;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not state whether the patient has an allergy to any study drug ingredient or analogue.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Ask about known or suspected allergies to furmonertinib, osimertinib, platinum agents, chemotherapy components, and their analogues.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "allergy to the ingredients of the study drug",
+          "normalized": "study drug allergy",
+          "category": "other"
+        },
+        {
+          "original": "allergy to its analogues",
+          "normalized": "drug analogue allergy",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-27",
+      "criterion_text": "The patient is pregnant, is lactating, or is a female who plans to become pregnant during the study or within 6 months after the last dose.",
+      "source_text": "21. Pregnant or lactating women or female subjects who plan to become pregnant during the study or within 6 months after the last dose;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "62-year-old woman",
+          "start": 148,
+          "end": 165,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The patient is female, but the note does not address pregnancy, lactation, or plans for pregnancy during the specified period.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Determine whether the patient is pregnant, lactating, or plans to become pregnant during the study or within 6 months after the last dose.",
+      "established_part": "Female patient; pregnancy, lactation, and pregnancy plans are not documented",
+      "answer_source": "medical_record",
+      "time_window": "during the study or within 6 months after the last dose where specified",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Pregnant",
+          "normalized": "pregnancy",
+          "category": "condition"
+        },
+        {
+          "original": "lactating",
+          "normalized": "lactation",
+          "category": "condition"
+        },
+        {
+          "original": "plan to become pregnant",
+          "normalized": "pregnancy intention",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-28",
+      "criterion_text": "In the investigator's judgment, the patient has another factor that may affect study results or cause forced termination of the study, such as alcohol abuse, drug abuse, another serious disease requiring combined treatment, a serious abnormal laboratory test value, a family or social factor, or another condition affecting patient safety or collection of study data.",
+      "source_text": "22. In the judgment of the investigator, the subject has other factors that may affect the results of the study or cause the forced termination of the study, such as alcohol abuse, drug abuse, suffering from other serious diseases (including mental diseases) requiring combined treatment, serious abnormal laboratory test values, family or social factors and other conditions that may affect the safety of the subject or the collection of test data.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not provide the investigator's judgment about other factors that could affect study results, safety, or study completion.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Obtain investigator assessment of alcohol or drug abuse, serious comorbidities requiring combined treatment, clinically significant laboratory abnormalities, family or social factors, and other safety or data-collection concerns.",
+      "established_part": null,
+      "answer_source": "screening_visit",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "alcohol abuse",
+          "normalized": "alcohol use disorder",
+          "category": "condition"
+        },
+        {
+          "original": "drug abuse",
+          "normalized": "substance use disorder",
+          "category": "condition"
+        },
+        {
+          "original": "other serious diseases",
+          "normalized": "serious disease",
+          "category": "condition"
+        },
+        {
+          "original": "mental diseases",
+          "normalized": "mental disorder",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    }
+  ],
+  "summary": {
+    "overall": "not_eligible",
+    "overall_label": "Likely not eligible",
+    "counts": {
+      "total": 51,
+      "supports": 13,
+      "blocks": 2,
+      "unresolved": 36,
+      "missing_from_record": 32,
+      "confirm_at_screening": 4,
+      "partly_established": 16,
+      "low_confidence": 29,
+      "downgraded": 0
+    },
+    "key_reasons": [
+      {
+        "criterion_id": "INC-10",
+        "text": "Inclusion criterion not met: The patient has at least one measurable intracranial lesion per RECIST v1.1 without prior local treatment. (The brain MRI showed no intracranial metastases, so the note does not show a measurable intracranial lesion.)"
+      },
+      {
+        "criterion_id": "EXC-17",
+        "text": "Exclusion criterion applies: The patient has cardiovascular or cerebrovascular disease or cardiovascular or cerebrovascular risk factors. (Hypertension is a documented cardiovascular risk factor, even though it is well controlled.)"
+      }
+    ],
+    "follow_up": [
+      {
+        "criterion_id": "INC-03",
+        "text": "Check inclusion criterion \"The patient has histologically or cytologically confirmed non-squamous non-small cell lung cancer with brain parenchymal metastases assessed by blinded independent central review, or is enrolled in the safety run-in phase without brain metastases; patients with both brain parenchymal and leptomeningeal metastases are eligible.\": Whether the patient is enrolled in the safety run-in phase, which would determine eligibility without brain metastases. Already established: Histologically confirmed lung adenocarcinoma and no brain metastases on MRI."
+      },
+      {
+        "criterion_id": "INC-09",
+        "text": "Check inclusion criterion \"If the patient previously received neoadjuvant or adjuvant chemotherapy or definitive chemoradiotherapy, disease recurrence or progression occurred at least 6 months after completion.\": Whether the patient previously received neoadjuvant or adjuvant chemotherapy or definitive chemoradiotherapy, and if so, the interval from completion to recurrence or progression. Already established: No systemic therapy for lung cancer is documented."
+      },
+      {
+        "criterion_id": "INC-11",
+        "text": "Check inclusion criterion \"The patient has at least one measurable extracranial lesion per RECIST v1.1 without prior local treatment.\": Whether the extracranial lesion meets RECIST v1.1 measurability requirements and has had no prior local treatment. Already established: A 4.2 cm extracranial lung mass is documented."
+      },
+      {
+        "criterion_id": "INC-13",
+        "text": "Check inclusion criterion \"The patient's ECOG performance status has not deteriorated within the 2 weeks before the first dose.\": Whether ECOG performance status deteriorated during the 2 weeks before the first dose; the first-dose date and a pre-dose comparison are needed. Already established: Current ECOG performance status is 1."
+      },
+      {
+        "criterion_id": "INC-15",
+        "text": "Check inclusion criterion \"The patient has adequate bone marrow and organ function.\": Protocol-defined adequacy thresholds and whether there was any transfusion or G-CSF use within 2 weeks before the first dose. Already established: Blood counts and several organ-function laboratory results are documented."
+      },
+      {
+        "criterion_id": "INC-16",
+        "text": "Check inclusion criterion \"The patient has not received a blood transfusion or granulocyte colony-stimulating factor within 2 weeks before the first dose.\": Whether the patient received a blood transfusion or G-CSF within 2 weeks before the first dose, and the first-dose date."
+      },
+      {
+        "criterion_id": "INC-17",
+        "text": "Check inclusion criterion \"All of the patient's prior treatment-related toxicities have resolved to grade 1 or lower per NCI CTCAE v5.0, except that alopecia and peripheral neuropathy may be grade 2 or lower.\": Document the grade and current status of all prior treatment-related toxicities, including toxicities from prior breast cancer treatment."
+      },
+      {
+        "criterion_id": "INC-18",
+        "text": "Check inclusion criterion \"The patient's prior treatment-related alopecia is grade 2 or lower per NCI CTCAE v5.0.\": Determine whether the patient has prior treatment-related alopecia and, if present, its current NCI CTCAE v5.0 grade."
+      },
+      {
+        "criterion_id": "INC-19",
+        "text": "Check inclusion criterion \"The patient's prior treatment-related peripheral neuropathy is grade 2 or lower per NCI CTCAE v5.0.\": Determine whether the patient has prior treatment-related peripheral neuropathy and, if present, its current NCI CTCAE v5.0 grade."
+      },
+      {
+        "criterion_id": "INC-20",
+        "text": "Check inclusion criterion \"A woman of childbearing potential has a negative serum pregnancy test within 7 days before the first dose.\": Confirm whether the patient is of childbearing potential, identify the planned first-dose date, and obtain a negative serum pregnancy test within 7 days before that dose if applicable. Already established: The patient is documented as a woman, but childbearing potential and first-dose timing are not established."
+      },
+      {
+        "criterion_id": "INC-21",
+        "text": "Check inclusion criterion \"A woman of childbearing potential is not lactating.\": Confirm whether the patient is of childbearing potential and whether she is currently lactating. Already established: The patient is documented as a woman, but childbearing potential and lactation status are not established."
+      },
+      {
+        "criterion_id": "EXC-01",
+        "text": "Check exclusion criterion \"The patient's tumor histology or cytology confirms that the combination of neuroendocrine carcinoma, sarcomatoid carcinoma, or squamous cell carcinoma constitutes more than 10% of the tumor.\": Obtain tumor histology or cytology quantifying the combined percentage of neuroendocrine, sarcomatoid, and squamous carcinoma components. Already established: Biopsy confirms lung adenocarcinoma."
+      },
+      {
+        "criterion_id": "EXC-02",
+        "text": "Check exclusion criterion \"The patient has any of the following: an ALK-positive tumor, ROS1-positive tumor, RET fusion-positive tumor, NTRK fusion-positive tumor, BRAF V600 mutation, MET exon 14 skipping variant, or another alteration for which an approved targeted drug exists.\": RET, NTRK, BRAF V600, MET exon 14, and other potentially targetable alterations Already established: ALK and ROS1 are negative."
+      },
+      {
+        "criterion_id": "EXC-03",
+        "text": "Check exclusion criterion \"The patient has leptomeningeal metastasis but no brain parenchymal metastasis confirmed by MRI and/or cerebrospinal fluid malignant cell examination.\": Whether leptomeningeal metastasis is present, including cerebrospinal fluid examination if clinically indicated Already established: No intracranial metastases on brain MRI."
+      },
+      {
+        "criterion_id": "EXC-06",
+        "text": "Check exclusion criterion \"The patient received more than 30 Gy of chest radiotherapy within 6 months before the first dose.\": History, dose, and date of any chest radiotherapy, plus the planned first-dose date"
+      },
+      {
+        "criterion_id": "EXC-07",
+        "text": "Check exclusion criterion \"The patient received more than 30 Gy of non-thoracic radiotherapy within 4 weeks before the first dose.\": History, dose, and date of any non-thoracic radiotherapy, plus the planned first-dose date"
+      },
+      {
+        "criterion_id": "EXC-08",
+        "text": "Check exclusion criterion \"The patient received palliative radiotherapy of 30 Gy or less within 2 weeks before the first dose.\": Whether palliative radiotherapy was given, its dose and date, plus the planned first-dose date"
+      },
+      {
+        "criterion_id": "EXC-09",
+        "text": "Check exclusion criterion \"The patient has previously received brain radiotherapy.\": History of prior brain radiotherapy"
+      },
+      {
+        "criterion_id": "EXC-10",
+        "text": "Check exclusion criterion \"The patient has received Chinese patent medicine containing non-specific immune modulators, including interferon or IL-2, with approved anti-tumor indications within 2 weeks before the first administration.\": Whether the patient received any Chinese patent medicine containing non-specific immune modulators within 2 weeks before first administration."
+      },
+      {
+        "criterion_id": "EXC-11",
+        "text": "Check exclusion criterion \"The patient has used a strong CYP3A4 inhibitor within 7 days before the first administration or a strong CYP3A4 inducer within 21 days before the first administration.\": Whether the patient used a strong CYP3A4 inhibitor within 7 days or a strong CYP3A4 inducer within 21 days before first administration."
+      },
+      {
+        "criterion_id": "EXC-14",
+        "text": "Check exclusion criterion \"The patient has brain metastases with brainstem metastasis, spinal cord metastasis, or spinal cord compression; acute or progressive symptoms related to intracranial hypertension during screening; brain herniation or near herniation; significant brain midline deviation on brain imaging; or another finding requiring urgent local treatment.\": Whether there are spinal cord metastases or compression, acute or progressive intracranial-hypertension symptoms during screening, brain herniation or near herniation, significant midline deviation, or another finding requiring urgent local treatment. Already established: No intracranial metastases on brain MRI."
+      },
+      {
+        "criterion_id": "EXC-15",
+        "text": "Check exclusion criterion \"During screening, the patient has any of the following caused by increased intracranial pressure or brain metastases: grade 2 headache, vomiting, papilledema, sensory or motor impairment, visual field damage, mental symptoms, or seizures, except that relevant central nervous system symptoms controlled to grade 1 or lower with corticosteroids or anticonvulsants are allowed.\": Whether the patient has any listed grade 2 neurologic or intracranial-pressure symptoms during screening, including headache, vomiting, papilledema, sensory or motor impairment, visual-field damage, mental symptoms, or seizures. Already established: No intracranial metastases on brain MRI."
+      },
+      {
+        "criterion_id": "EXC-16",
+        "text": "Check exclusion criterion \"The patient's tumor invades surrounding important organs or blood vessels, such as the heart, esophagus, or superior vena cava, or the patient has a risk of esophageal-tracheal fistula or esophageal-pleural fistula.\": Whether imaging or clinical assessment shows invasion of the heart, esophagus, superior vena cava, or other important structures, or risk of esophageal-tracheal or esophageal-pleural fistula."
+      },
+      {
+        "criterion_id": "EXC-18",
+        "text": "Check exclusion criterion \"The patient has an uncontrolled systemic disease.\": Determine whether the patient has any uncontrolled systemic disease. Already established: Hypertension is well controlled and diabetes is treated with HbA1c 7.1%."
+      },
+      {
+        "criterion_id": "EXC-20",
+        "text": "Check exclusion criterion \"The patient has pulmonary complications causing clinically severe lung damage.\": Assess whether pulmonary complications are causing clinically severe lung damage."
+      },
+      {
+        "criterion_id": "EXC-21",
+        "text": "Check exclusion criterion \"The patient has a severe acute or chronic infection.\": Assess for severe acute or chronic infection."
+      },
+      {
+        "criterion_id": "EXC-22",
+        "text": "Check exclusion criterion \"Before the first administration, the patient is receiving long-term systemic corticosteroid therapy with prednisone greater than 10 mg/day or equivalent anti-inflammatory drugs, or any form of immunosuppressive therapy, except for the listed allowed uses of bronchodilators, inhaled or topical steroids, local steroid injections, prophylaxis for hypersensitivity reactions, or control of central nervous system symptoms in patients with brain metastases.\": Confirm whether the patient is receiving long-term systemic corticosteroids, prednisone over 10 mg/day or equivalent, or any immunosuppressive therapy before first administration. Already established: Current medications listed without systemic corticosteroid or immunosuppressive therapy."
+      },
+      {
+        "criterion_id": "EXC-23",
+        "text": "Check exclusion criterion \"The patient underwent major surgery within 4 weeks before the first dose or is expected to undergo major surgery during the study.\": Confirm any major surgery within 4 weeks before the first dose and any planned major surgery during the study."
+      },
+      {
+        "criterion_id": "EXC-24",
+        "text": "Check exclusion criterion \"The patient has clinically significant bleeding symptoms or an obvious bleeding tendency within 4 weeks before the first administration.\": Assess for clinically significant bleeding symptoms or an obvious bleeding tendency within 4 weeks before first administration."
+      },
+      {
+        "criterion_id": "EXC-25",
+        "text": "Check exclusion criterion \"The patient has known severe gastrointestinal dysfunction.\": Assess whether the patient has known severe gastrointestinal dysfunction."
+      },
+      {
+        "criterion_id": "EXC-26",
+        "text": "Check exclusion criterion \"The patient has a known or suspected allergy to an ingredient of the study drug or to an analogue of the study drug.\": Ask about known or suspected allergies to furmonertinib, osimertinib, platinum agents, chemotherapy components, and their analogues."
+      },
+      {
+        "criterion_id": "EXC-27",
+        "text": "Check exclusion criterion \"The patient is pregnant, is lactating, or is a female who plans to become pregnant during the study or within 6 months after the last dose.\": Determine whether the patient is pregnant, lactating, or plans to become pregnant during the study or within 6 months after the last dose. Already established: Female patient; pregnancy, lactation, and pregnancy plans are not documented."
+      }
+    ],
+    "confirm_at_screening": [
+      {
+        "criterion_id": "INC-01",
+        "text": "Confirm at screening \"The patient fully understands the trial and voluntarily signs the informed consent form.\": Whether the patient fully understands the trial and voluntarily signs the informed consent form."
+      },
+      {
+        "criterion_id": "INC-14",
+        "text": "Confirm at screening \"The patient's life expectancy is at least 3 months.\": Clinician-estimated life expectancy."
+      },
+      {
+        "criterion_id": "INC-22",
+        "text": "Confirm at screening \"A woman of childbearing potential is willing to use effective contraception from signing the informed consent form until 6 months after the last dose.\": Confirm whether the patient is of childbearing potential and document willingness to use effective contraception from informed-consent signing through 6 months after the last dose. Already established: The patient is documented as a woman, but childbearing potential and willingness to use contraception are not established."
+      },
+      {
+        "criterion_id": "EXC-28",
+        "text": "Confirm at screening \"In the investigator's judgment, the patient has another factor that may affect study results or cause forced termination of the study, such as alcohol abuse, drug abuse, another serious disease requiring combined treatment, a serious abnormal laboratory test value, a family or social factor, or another condition affecting patient safety or collection of study data.\": Obtain investigator assessment of alcohol or drug abuse, serious comorbidities requiring combined treatment, clinically significant laboratory abnormalities, family or social factors, and other safety or data-collection concerns."
+      }
+    ],
+    "disclaimer": "Screening aid only. This tool does not make enrollment decisions; every determination must be reviewed and confirmed by a physician."
+  },
+  "citation_stats": {
+    "quotes_total": 33,
+    "quotes_verified": 33,
+    "judgments_needing_evidence": 15,
+    "judgments_downgraded": 0
+  },
+  "tool_calls": []
+}

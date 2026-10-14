@@ -1,0 +1,3084 @@
+{
+  "run_id": "sample-nsclc__NCT07198841",
+  "created_at": "2026-10-14T00:28:06+00:00",
+  "model": "gpt-6-sol",
+  "note_coverage": "full",
+  "judge_batch_size": 8,
+  "patient": {
+    "id": "sample-nsclc",
+    "source": "Synthetic sample (hand-written, not a real patient)",
+    "text": "SYNTHETIC NOTE - NOT A REAL PATIENT\nNote date: 2026-09-18\n\nChief complaint: Follow-up for newly diagnosed lung cancer.\n\nHistory of present illness: 62-year-old woman, former smoker (30 pack-years, quit in 2015), who presented in July 2026 with persistent cough and 6 kg weight loss. CT chest showed a 4.2 cm right upper lobe mass with mediastinal lymphadenopathy. CT-guided biopsy on 2026-08-04 confirmed lung adenocarcinoma. PET-CT on 2026-08-12 showed bilateral adrenal metastases; stage IV disease. Brain MRI on 2026-08-14 showed no intracranial metastases. Molecular testing: EGFR exon 19 deletion detected; ALK and ROS1 negative. PD-L1 TPS 10%. She has not yet received any systemic therapy for lung cancer.\n\nPast medical history: Hypertension, well controlled on lisinopril. Type 2 diabetes mellitus on metformin, HbA1c 7.1% in August 2026. Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence. She denies any history of interstitial lung disease or pneumonitis.\n\nFamily history: Mother died of breast cancer at age 71. Father had a myocardial infarction at age 65.\n\nMedications: Lisinopril 10 mg daily, metformin 1000 mg twice daily.\n\nExamination: ECOG performance status 1. Blood pressure 128/76 mmHg, heart rate 82, SpO2 96% on room air. Decreased breath sounds at the right apex.\n\nLaboratory results (2026-09-15): Hemoglobin 11.8 g/dL, absolute neutrophil count 3.4 x 10^9/L, platelets 245 x 10^9/L. Creatinine 0.9 mg/dL. ALT 28 U/L, AST 31 U/L, total bilirubin 0.6 mg/dL. ECG on 2026-09-15: normal sinus rhythm, QTc 438 ms.\n\nAssessment and plan: Stage IV EGFR-mutated lung adenocarcinoma, treatment-naive. Discussed first-line options including clinical trial participation.",
+    "note_date": "2026-09-18"
+  },
+  "segments": [
+    {
+      "id": "S1",
+      "start": 0,
+      "end": 35,
+      "text": "SYNTHETIC NOTE - NOT A REAL PATIENT"
+    },
+    {
+      "id": "S2",
+      "start": 36,
+      "end": 57,
+      "text": "Note date: 2026-09-18"
+    },
+    {
+      "id": "S3",
+      "start": 59,
+      "end": 118,
+      "text": "Chief complaint: Follow-up for newly diagnosed lung cancer."
+    },
+    {
+      "id": "S4",
+      "start": 120,
+      "end": 501,
+      "text": "History of present illness: 62-year-old woman, former smoker (30 pack-years, quit in 2015), who presented in July 2026 with persistent cough and 6 kg weight loss. CT chest showed a 4.2 cm right upper lobe mass with mediastinal lymphadenopathy. CT-guided biopsy on 2026-08-04 confirmed lung adenocarcinoma. PET-CT on 2026-08-12 showed bilateral adrenal metastases; stage IV disease."
+    },
+    {
+      "id": "S5",
+      "start": 502,
+      "end": 712,
+      "text": "Brain MRI on 2026-08-14 showed no intracranial metastases. Molecular testing: EGFR exon 19 deletion detected; ALK and ROS1 negative. PD-L1 TPS 10%. She has not yet received any systemic therapy for lung cancer."
+    },
+    {
+      "id": "S6",
+      "start": 714,
+      "end": 1013,
+      "text": "Past medical history: Hypertension, well controlled on lisinopril. Type 2 diabetes mellitus on metformin, HbA1c 7.1% in August 2026. Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence. She denies any history of interstitial lung disease or pneumonitis."
+    },
+    {
+      "id": "S7",
+      "start": 1015,
+      "end": 1116,
+      "text": "Family history: Mother died of breast cancer at age 71. Father had a myocardial infarction at age 65."
+    },
+    {
+      "id": "S8",
+      "start": 1118,
+      "end": 1185,
+      "text": "Medications: Lisinopril 10 mg daily, metformin 1000 mg twice daily."
+    },
+    {
+      "id": "S9",
+      "start": 1187,
+      "end": 1334,
+      "text": "Examination: ECOG performance status 1. Blood pressure 128/76 mmHg, heart rate 82, SpO2 96% on room air. Decreased breath sounds at the right apex."
+    },
+    {
+      "id": "S10",
+      "start": 1336,
+      "end": 1579,
+      "text": "Laboratory results (2026-09-15): Hemoglobin 11.8 g/dL, absolute neutrophil count 3.4 x 10^9/L, platelets 245 x 10^9/L. Creatinine 0.9 mg/dL. ALT 28 U/L, AST 31 U/L, total bilirubin 0.6 mg/dL. ECG on 2026-09-15: normal sinus rhythm, QTc 438 ms."
+    },
+    {
+      "id": "S11",
+      "start": 1581,
+      "end": 1730,
+      "text": "Assessment and plan: Stage IV EGFR-mutated lung adenocarcinoma, treatment-naive. Discussed first-line options including clinical trial participation."
+    }
+  ],
+  "trial": {
+    "nct_id": "NCT07198841",
+    "title": "IBI351 Plus Cetuximab β in Untreated Advanced Non-small Cell Lung Cancer With KRAS G12C Mutation",
+    "conditions": [
+      "Lung Cancer (Non-Small Cell)"
+    ],
+    "criteria_text": "Inclusion Criteria\n\n1. Voluntarily participate in the study and sign the informed consent form (ICF).\n2. Male or female subjects aged ≥18 years and ≤75 years at the time of signing the ICF.\n3. Life expectancy ≥ 3 months.\n4. Histologically or cytologically confirmed unresectable locally advanced (Stage IIIB/IIIC), metastatic, or recurrent (Stage IV) non-small cell lung cancer (NSCLC), per the International Association for the Study of Lung Cancer (IASLC) and American Joint Committee on Cancer (AJCC) 8th edition TNM staging, and not candidates for curative concurrent chemoradiotherapy.\n5. Documented KRAS G12C mutation confirmed by a written report from a certified laboratory.\n6. Eastern Cooperative Oncology Group (ECOG) performance status (PS) score of 0 or 1.\n7. No prior systemic anti-tumor therapy for locally advanced or metastatic non-squamous NSCLC. Subjects who received prior adjuvant therapy are eligible provided disease recurrence occurred ≥6 months after the last dose of adjuvant therapy or the last session of radical radiotherapy.\n8. At least one measurable lesion per Response Evaluation Criteria in Solid Tumors (RECIST) version 1.1. Lesions within a prior radiation field or after local therapy can be considered target lesions if documented progression is evident.\n9. Adequate organ and bone marrow function, defined as:\n\n1）Hematopoietic: Absolute neutrophil count (ANC) ≥ 1.5 × 10⁹/L, platelet count ≥ 100 × 10⁹/L, hemoglobin ≥ 9 g/dL. No transfusion or treatment with granulocyte colony-stimulating factor (G-CSF), thrombopoietin, or erythropoietin within 14 days prior to hematology tests.\n\n2）Hepatic: Total bilirubin (TBIL) \\< 1.5 × upper limit of normal (ULN), aspartate aminotransferase (AST) and alanine aminotransferase (ALT) \\< 2.5 × ULN. For subjects with Gilbert's syndrome, TBIL \\< 2 × ULN is acceptable. For subjects with liver metastases, AST and ALT \\< 5.0 × ULN is required. If direct bilirubin (DBIL) suggests extrahepatic obstruction, TBIL \\< 3.0 × ULN is permitted.\n\n3）Renal: Serum creatinine (Cr) ≤ 1.5 × ULN OR calculated creatinine clearance (CrCl) ≥ 60 mL/min (using the Cockcroft-Gault formula) if Cr \\> 1.5 × ULN.\n\n4）Coagulation: Prothrombin time (PT) / activated partial thromboplastin time (APTT) \\< 1.5 × ULN and international normalized ratio (INR) \\< 1.5 or within the therapeutic range for subjects on anticoagulation therapy.\n\n5）Magnesium: Serum magnesium within normal limits. 10. Toxicities from prior anti-tumor therapy must have resolved to baseline or ≤ Grade 1 (except for residual alopecia; neurotoxicity ≤ Grade 2 is acceptable). Subjects with prior immune-related endocrine adverse events (irAEs) from immunotherapy (e.g., hypothyroidism) that are asymptomatic and stably controlled with ongoing hormone replacement or physiologic doses of corticosteroids may be enrolled if the investigator judges that this will not affect study drug administration or safety assessment.\n\n11\\. Female subjects of childbearing potential or male subjects with partners of childbearing potential must use effective contraception from signing the ICF until 6 months after the last dose of study drug. Female subjects of childbearing potential must have a negative serum pregnancy test within 7 days (inclusive) prior to the first dose. If a urine pregnancy test result is inconclusive, a serum pregnancy test is required.\n\nExclusion Criteria\n\n1. Histologically or cytologically confirmed NSCLC with mixed small cell components or predominantly squamous cell carcinoma components.\n2. Presence of EGFR sensitizing mutation, ALK rearrangement, ROS-1 fusion, or other genomic alterations for which NMPA-approved first-line NSCLC therapies exist.\n3. Significant cardiovascular or cerebrovascular disease, including:\n\n1）Clinically significant cardiovascular events within 6 months (e.g., myocardial infarction, angina, heart failure, severe arrhythmia) or history of angioplasty, stenting, or coronary artery bypass grafting.\n\n2）Clinically significant prolongation of the QTcF interval (QTcF \\> 470 ms for females or \\> 450 ms for males).\n\n3）Clinically significant cerebrovascular events within 3 months (e.g., cerebral hemorrhage, infarction).\n\n4\\. Active central nervous system (CNS) metastases (e.g., brain or leptomeningeal metastases). Subjects with previously treated brain metastases may be eligible if they are asymptomatic for at least 7 days after completion of radiotherapy/local therapy without requiring steroids/anti-epileptics, OR off steroids/anti-epileptics for at least 7 days, AND judged by the investigator to have stable CNS disease.\n\n5\\. Clinically significant interstitial lung disease (ILD), radiation pneumonitis, or drug-induced pneumonitis requiring treatment; active pulmonary tuberculosis; pneumoconiosis; Grade ≥2 pneumonitis of other etiologies; or severely impaired pulmonary function (FEV1 or DLCO or DLCO/VA \\<40% of predicted value).\n\n6\\. Significant gastrointestinal disorders affecting drug absorption or swallowing (e.g., refractory hiccups, nausea, vomiting, severe peptic ulcer disease, liver cirrhosis, active GI bleeding).\n\n7\\. Major active or chronic infections, including:\n\n1. Active infection requiring systemic therapy.\n2. Baseline positive HIV antibody (HIV-Ab); acute or chronic active hepatitis B (defined as HBsAg and/or HBcAb positive AND HBV-DNA \\> 2500 copies/mL or 500 IU/mL); or acute or chronic active hepatitis C (HCV antibody positive AND HCV-RNA above the lower limit of quantification).\n3. Active pulmonary tuberculosis. 8. Symptomatic pleural, peritoneal, or pericardial effusions requiring repeated drainage.\n\n9\\. Poorly controlled systemic diseases despite standard therapy (e.g., hypertension: systolic BP ≥160 mmHg or diastolic BP ≥100 mmHg; diabetes).\n\n10\\. History of other active malignancies within 2 years prior to study entry, except appropriately treated carcinoma in situ of the cervix, localized squamous cell carcinoma of the skin, basal cell carcinoma, prostate cancer not requiring treatment, ductal carcinoma in situ of the breast, and superficial non-muscle invasive urothelial carcinoma.\n\n11\\. Prior treatment with any KRAS G12C inhibitor. 12. Prior treatment with cetuximab or its analogues. 13. Systemic treatment with Chinese herbal medicine with anti-tumor indications within 1 week prior to the first dose, OR systemic treatment with immunomodulatory drugs (including thymosin, interferon, interleukin; except for localized intrapleural use for effusion control) within 2 weeks prior to the first dose.\n\n14\\. Therapeutic or palliative radiotherapy (except cranial radiotherapy) or local therapy within 14 days prior to the first study dose.\n\n15\\. Any other anti-tumor therapy (chemotherapy, targeted therapy, immunotherapy, investigational drug/device) within 28 days or 5 half-lives (whichever is shorter) prior to the first study dose.\n\n16\\. Major surgery within 28 days prior to study entry that could affect study drug administration or assessments (excluding diagnostic biopsy).\n\n17\\. Use of known sensitive substrates of CYP2D6, CYP3A4, P-gp, or BCRP with a narrow therapeutic window within 14 days or 5 half-lives (whichever is longer) prior to the first study dose, unless agreed upon by both the investigator and sponsor.\n\n18\\. Concurrent participation in another interventional clinical trial (participation in observational studies or the follow-up phase of an interventional study is permitted).\n\n19\\. Use of immunosuppressive drugs within 4 weeks prior to the first study dose, excluding intranasal, inhaled, or topical corticosteroids; systemic corticosteroids at physiologic doses (≤10 mg/day prednisone or equivalent); or corticosteroids administered for prophylaxis of contrast media allergy.\n\n20\\. Administration of live attenuated vaccines within 4 weeks prior to the first study dose or planned during the study period.\n\nNote: Inactivated seasonal influenza vaccines administered \\>4 weeks prior are allowed; live attenuated influenza vaccines are not permitted.\n\n21\\. Known or suspected autoimmune disease, or history of autoimmune disease within 2 years prior to screening (subjects with vitiligo, psoriasis, alopecia, or Graves' disease not requiring systemic therapy in the last 2 years, hypothyroidism managed only with hormone replacement, or type 1 diabetes managed only with insulin replacement are eligible).\n\n22\\. Known history of primary immunodeficiency. 23. History of allogeneic organ transplantation or allogeneic hematopoietic stem cell transplantation.\n\n24\\. History of deep vein thrombosis, pulmonary embolism, or any other severe thromboembolic event within 3 months prior to enrollment (implant port- or catheter-related thrombosis, or superficial venous thrombosis are not considered \"severe\").\n\n25\\. Known hypersensitivity to any component of the study drug or its formulation.\n\n26\\. Pregnant or breastfeeding women. 27. Any other condition that, in the investigator's judgment, would make the subject unsuitable for participation in the study.",
+    "minimum_age": "18 Years",
+    "maximum_age": "75 Years",
+    "sex": "ALL",
+    "overall_status": "RECRUITING",
+    "url": "https://clinicaltrials.gov/study/NCT07198841",
+    "fetched_at": "2026-10-14T00:23:11+00:00",
+    "source": "ctgov_api"
+  },
+  "criteria": [
+    {
+      "criterion_id": "INC-01",
+      "criterion_text": "The patient voluntarily agrees to participate in the study and signs the informed consent form.",
+      "source_text": "1. Voluntarily participate in the study and sign the informed consent form (ICF).",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note discusses clinical trial participation but does not document agreement or signed consent.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient voluntarily agrees to participate and has signed the informed consent form.",
+      "established_part": null,
+      "answer_source": "screening_visit",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-02",
+      "criterion_text": "The patient is aged 18 through 75 years at the time of signing the informed consent form.",
+      "source_text": "2. Male or female subjects aged ≥18 years and ≤75 years at the time of signing the ICF.",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "62-year-old woman",
+          "start": 148,
+          "end": 165,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The patient is documented as 62 and within the required age range, but the note does not establish her age at the time of ICF signing.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": "62 years",
+      "missing_info": "The date of informed consent signing, or confirmation that the patient is 62 years old at signing.",
+      "established_part": "Age 62 years documented",
+      "answer_source": "medical_record",
+      "time_window": "at the time of signing the ICF",
+      "threshold": {
+        "parameter": "age",
+        "comparator": "between",
+        "value": "≥18 and ≤75",
+        "unit": "years"
+      },
+      "concepts": [],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 62.0,
+            "value_unit": "years",
+            "comparator": "between",
+            "threshold": 18.0,
+            "threshold_upper": 75.0,
+            "threshold_unit": "years",
+            "reference_limit": null,
+            "reference_limit_assumed": false,
+            "analyte": null
+          },
+          "model_answer": true,
+          "computed": true,
+          "status": "confirmed",
+          "detail": "62 between [18, 75] years is true",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": false
+        }
+      ],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-03",
+      "criterion_text": "The patient's life expectancy is at least 3 months.",
+      "source_text": "3. Life expectancy ≥ 3 months.",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not state the patient's expected survival duration.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Documented physician-estimated life expectancy.",
+      "established_part": null,
+      "answer_source": "screening_visit",
+      "time_window": null,
+      "threshold": {
+        "parameter": "life expectancy",
+        "comparator": ">=",
+        "value": "3",
+        "unit": "months"
+      },
+      "concepts": [],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-04",
+      "criterion_text": "The patient has histologically or cytologically confirmed unresectable locally advanced (Stage IIIB/IIIC), metastatic, or recurrent (Stage IV) non-small cell lung cancer according to IASLC and AJCC 8th edition TNM staging, and is not a candidate for curative concurrent chemoradiotherapy.",
+      "source_text": "4. Histologically or cytologically confirmed unresectable locally advanced (Stage IIIB/IIIC), metastatic, or recurrent (Stage IV) non-small cell lung cancer (NSCLC), per the International Association for the Study of Lung Cancer (IASLC) and American Joint Committee on Cancer (AJCC) 8th edition TNM staging, and not candidates for curative concurrent chemoradiotherapy.",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "CT-guided biopsy on 2026-08-04 confirmed lung adenocarcinoma.",
+          "start": 364,
+          "end": 425,
+          "segment_id": "S4"
+        },
+        {
+          "quote": "PET-CT on 2026-08-12 showed bilateral adrenal metastases; stage IV disease.",
+          "start": 426,
+          "end": 501,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The note establishes biopsy-confirmed metastatic stage IV lung adenocarcinoma, but does not address candidacy for curative concurrent chemoradiotherapy or the specified staging documentation.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Confirmation that the staging follows IASLC/AJCC 8th edition criteria and documentation that the patient is not a candidate for curative concurrent chemoradiotherapy.",
+      "established_part": "Histologically confirmed stage IV metastatic lung adenocarcinoma",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "non-small cell lung cancer (NSCLC)",
+          "normalized": "non-small cell lung cancer",
+          "category": "condition"
+        },
+        {
+          "original": "International Association for the Study of Lung Cancer (IASLC) and American Joint Committee on Cancer (AJCC) 8th edition TNM staging",
+          "normalized": "IASLC/AJCC 8th edition TNM staging",
+          "category": "other"
+        },
+        {
+          "original": "concurrent chemoradiotherapy",
+          "normalized": "concurrent chemoradiotherapy",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-05",
+      "criterion_text": "The patient has a documented KRAS G12C mutation confirmed by a written report from a certified laboratory.",
+      "source_text": "5. Documented KRAS G12C mutation confirmed by a written report from a certified laboratory.",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Molecular testing: EGFR exon 19 deletion detected; ALK and ROS1 negative.",
+          "start": 561,
+          "end": 634,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The note documents an EGFR mutation but does not document the required KRAS G12C mutation.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "A certified-laboratory report documenting a KRAS G12C mutation.",
+      "established_part": "EGFR exon 19 deletion detected; KRAS status not documented",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "KRAS G12C mutation",
+          "normalized": "KRAS G12C mutation",
+          "category": "other"
+        },
+        {
+          "original": "written report from a certified laboratory",
+          "normalized": "laboratory report",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-06",
+      "criterion_text": "The patient's ECOG performance status score is 0 or 1.",
+      "source_text": "6. Eastern Cooperative Oncology Group (ECOG) performance status (PS) score of 0 or 1.",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "ECOG performance status 1.",
+          "start": 1200,
+          "end": 1226,
+          "segment_id": "S9"
+        }
+      ],
+      "rationale": "The documented ECOG performance status is 1, which is within the required range of 0 or 1.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": "1",
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "ECOG performance status score",
+        "comparator": "between",
+        "value": "0 or 1",
+        "unit": null
+      },
+      "concepts": [
+        {
+          "original": "Eastern Cooperative Oncology Group (ECOG) performance status (PS)",
+          "normalized": "Eastern Cooperative Oncology Group performance status",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 1.0,
+            "value_unit": null,
+            "comparator": "between",
+            "threshold": 0.0,
+            "threshold_upper": 1.0,
+            "threshold_unit": null,
+            "reference_limit": null,
+            "reference_limit_assumed": false,
+            "analyte": null
+          },
+          "model_answer": true,
+          "computed": true,
+          "status": "confirmed",
+          "detail": "1 between [0, 1] is true",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": false
+        }
+      ],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-07",
+      "criterion_text": "The patient has received no prior systemic anti-tumor therapy for locally advanced or metastatic non-squamous NSCLC, except that prior adjuvant therapy is permitted when disease recurrence occurred at least 6 months after the last adjuvant-therapy dose or last session of radical radiotherapy.",
+      "source_text": "7. No prior systemic anti-tumor therapy for locally advanced or metastatic non-squamous NSCLC. Subjects who received prior adjuvant therapy are eligible provided disease recurrence occurred ≥6 months after the last dose of adjuvant therapy or the last session of radical radiotherapy.",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The note explicitly states that she has not received systemic therapy for lung cancer, satisfying the no-prior-therapy requirement.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "before enrollment; for permitted prior adjuvant therapy, disease recurrence occurred ≥6 months after the last dose or session",
+      "threshold": {
+        "parameter": "time from last adjuvant therapy dose or last radical radiotherapy session to disease recurrence",
+        "comparator": ">=",
+        "value": "6",
+        "unit": "months"
+      },
+      "concepts": [
+        {
+          "original": "non-squamous NSCLC",
+          "normalized": "non-small cell lung cancer",
+          "category": "condition"
+        },
+        {
+          "original": "adjuvant therapy",
+          "normalized": "adjuvant therapy",
+          "category": "other"
+        },
+        {
+          "original": "radical radiotherapy",
+          "normalized": "radical radiotherapy",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-08",
+      "criterion_text": "The patient has at least one measurable lesion per RECIST version 1.1; a lesion within a prior radiation field or after local therapy may count if documented progression is evident.",
+      "source_text": "8. At least one measurable lesion per Response Evaluation Criteria in Solid Tumors (RECIST) version 1.1. Lesions within a prior radiation field or after local therapy can be considered target lesions if documented progression is evident.",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "CT chest showed a 4.2 cm right upper lobe mass with mediastinal lymphadenopathy.",
+          "start": 283,
+          "end": 363,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The 4.2 cm right upper lobe mass is a sufficiently sized CT lesion to support at least one measurable lesion under RECIST 1.1.",
+      "confidence": "medium",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "measurable lesions",
+        "comparator": ">=",
+        "value": "1",
+        "unit": null
+      },
+      "concepts": [
+        {
+          "original": "Response Evaluation Criteria in Solid Tumors (RECIST) version 1.1",
+          "normalized": "Response Evaluation Criteria in Solid Tumors version 1.1",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-09",
+      "criterion_text": "The patient's absolute neutrophil count is at least 1.5 × 10⁹/L.",
+      "source_text": "1）Hematopoietic: Absolute neutrophil count (ANC) ≥ 1.5 × 10⁹/L, platelet count ≥ 100 × 10⁹/L, hemoglobin ≥ 9 g/dL. No transfusion or treatment with granulocyte colony-stimulating factor (G-CSF), thrombopoietin, or erythropoietin within 14 days prior to hematology tests.",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "absolute neutrophil count 3.4 x 10^9/L",
+          "start": 1391,
+          "end": 1429,
+          "segment_id": "S10"
+        }
+      ],
+      "rationale": "The documented absolute neutrophil count of 3.4 x 10^9/L is at least 1.5 × 10⁹/L.",
+      "confidence": "low",
+      "basis": "stated",
+      "patient_value": "3.4 x 10^9/L",
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "absolute neutrophil count",
+        "comparator": ">=",
+        "value": "1.5",
+        "unit": "× 10⁹/L"
+      },
+      "concepts": [
+        {
+          "original": "Absolute neutrophil count (ANC)",
+          "normalized": "absolute neutrophil count",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 3.4,
+            "value_unit": "x 10^9/L",
+            "comparator": ">=",
+            "threshold": 1.5,
+            "threshold_upper": null,
+            "threshold_unit": "× 10⁹/L",
+            "reference_limit": null,
+            "reference_limit_assumed": false,
+            "analyte": "blood_cell_count"
+          },
+          "model_answer": true,
+          "computed": null,
+          "status": "not_checkable",
+          "detail": "No conversion known for blood_cell_count in '10⁹/l' (known: 10^9/l, 10^3/ul, k/ul, /ul, /mm3). Do not convert by hand; treat the comparison as not established.",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": false
+        }
+      ],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": [
+        "calculation_not_checkable"
+      ]
+    },
+    {
+      "criterion_id": "INC-10",
+      "criterion_text": "The patient's platelet count is at least 100 × 10⁹/L.",
+      "source_text": "1）Hematopoietic: Absolute neutrophil count (ANC) ≥ 1.5 × 10⁹/L, platelet count ≥ 100 × 10⁹/L, hemoglobin ≥ 9 g/dL. No transfusion or treatment with granulocyte colony-stimulating factor (G-CSF), thrombopoietin, or erythropoietin within 14 days prior to hematology tests.",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "platelets 245 x 10^9/L",
+          "start": 1431,
+          "end": 1453,
+          "segment_id": "S10"
+        }
+      ],
+      "rationale": "The documented platelet count of 245 x 10^9/L is at least 100 × 10⁹/L.",
+      "confidence": "low",
+      "basis": "stated",
+      "patient_value": "245 x 10^9/L",
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "platelet count",
+        "comparator": ">=",
+        "value": "100",
+        "unit": "× 10⁹/L"
+      },
+      "concepts": [
+        {
+          "original": "platelet count",
+          "normalized": "platelet count",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 245.0,
+            "value_unit": "x 10^9/L",
+            "comparator": ">=",
+            "threshold": 100.0,
+            "threshold_upper": null,
+            "threshold_unit": "× 10⁹/L",
+            "reference_limit": null,
+            "reference_limit_assumed": false,
+            "analyte": "blood_cell_count"
+          },
+          "model_answer": true,
+          "computed": null,
+          "status": "not_checkable",
+          "detail": "No conversion known for blood_cell_count in '10⁹/l' (known: 10^9/l, 10^3/ul, k/ul, /ul, /mm3). Do not convert by hand; treat the comparison as not established.",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": false
+        }
+      ],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": [
+        "calculation_not_checkable"
+      ]
+    },
+    {
+      "criterion_id": "INC-11",
+      "criterion_text": "The patient's hemoglobin is at least 9 g/dL.",
+      "source_text": "1）Hematopoietic: Absolute neutrophil count (ANC) ≥ 1.5 × 10⁹/L, platelet count ≥ 100 × 10⁹/L, hemoglobin ≥ 9 g/dL. No transfusion or treatment with granulocyte colony-stimulating factor (G-CSF), thrombopoietin, or erythropoietin within 14 days prior to hematology tests.",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "Hemoglobin 11.8 g/dL",
+          "start": 1369,
+          "end": 1389,
+          "segment_id": "S10"
+        }
+      ],
+      "rationale": "The documented hemoglobin of 11.8 g/dL is at least 9 g/dL.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": "11.8 g/dL",
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "hemoglobin",
+        "comparator": ">=",
+        "value": "9",
+        "unit": "g/dL"
+      },
+      "concepts": [
+        {
+          "original": "hemoglobin",
+          "normalized": "hemoglobin",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 11.8,
+            "value_unit": "g/dL",
+            "comparator": ">=",
+            "threshold": 9.0,
+            "threshold_upper": null,
+            "threshold_unit": "g/dL",
+            "reference_limit": null,
+            "reference_limit_assumed": false,
+            "analyte": "hemoglobin"
+          },
+          "model_answer": true,
+          "computed": true,
+          "status": "confirmed",
+          "detail": "11.8 >= 9 g/dL is true",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": false
+        }
+      ],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-12",
+      "criterion_text": "The patient has not received a transfusion or treatment with granulocyte colony-stimulating factor, thrombopoietin, or erythropoietin within 14 days before the hematology tests.",
+      "source_text": "1）Hematopoietic: Absolute neutrophil count (ANC) ≥ 1.5 × 10⁹/L, platelet count ≥ 100 × 10⁹/L, hemoglobin ≥ 9 g/dL. No transfusion or treatment with granulocyte colony-stimulating factor (G-CSF), thrombopoietin, or erythropoietin within 14 days prior to hematology tests.",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The note addresses systemic therapy but does not establish the required recent transfusion or hematopoietic treatment history.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether she received a transfusion, G-CSF, thrombopoietin, or erythropoietin within 14 days before the 2026-09-15 hematology tests",
+      "established_part": "No systemic therapy for lung cancer has been received",
+      "answer_source": "medical_record",
+      "time_window": "within 14 days prior to hematology tests",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "transfusion",
+          "normalized": "blood transfusion",
+          "category": "procedure"
+        },
+        {
+          "original": "granulocyte colony-stimulating factor (G-CSF)",
+          "normalized": "granulocyte colony-stimulating factor",
+          "category": "drug"
+        },
+        {
+          "original": "thrombopoietin",
+          "normalized": "thrombopoietin",
+          "category": "drug"
+        },
+        {
+          "original": "erythropoietin",
+          "normalized": "erythropoietin",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-13",
+      "criterion_text": "The patient's total bilirubin is below 1.5 × ULN, with the stated exceptions for Gilbert's syndrome or direct-bilirubin-suggested extrahepatic obstruction.",
+      "source_text": "2）Hepatic: Total bilirubin (TBIL) \\< 1.5 × upper limit of normal (ULN), aspartate aminotransferase (AST) and alanine aminotransferase (ALT) \\< 2.5 × ULN. For subjects with Gilbert's syndrome, TBIL \\< 2 × ULN is acceptable. For subjects with liver metastases, AST and ALT \\< 5.0 × ULN is required. If direct bilirubin (DBIL) suggests extrahepatic obstruction, TBIL \\< 3.0 × ULN is permitted.",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "total bilirubin 0.6 mg/dL",
+          "start": 1501,
+          "end": 1526,
+          "segment_id": "S10"
+        }
+      ],
+      "rationale": "Using the assumed adult bilirubin ULN of 1.2 mg/dL, 0.6 mg/dL is below 1.5 × ULN.",
+      "confidence": "medium",
+      "basis": "stated",
+      "patient_value": "0.6 mg/dL",
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "total bilirubin",
+        "comparator": "<",
+        "value": "1.5; <2 for Gilbert's syndrome; <3 if direct bilirubin suggests extrahepatic obstruction",
+        "unit": "× ULN"
+      },
+      "concepts": [
+        {
+          "original": "Total bilirubin (TBIL)",
+          "normalized": "total bilirubin",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 0.6,
+            "value_unit": "mg/dL",
+            "comparator": "<",
+            "threshold": 1.5,
+            "threshold_upper": null,
+            "threshold_unit": null,
+            "reference_limit": 1.2,
+            "reference_limit_assumed": true,
+            "analyte": "bilirubin"
+          },
+          "model_answer": true,
+          "computed": true,
+          "status": "confirmed",
+          "detail": "0.6 < 1.8 (1.5 x 1.2) mg/dL is true; the reference limit 1.2 is a typical adult value, not from the note, and the result holds if the lab's limit is 25% lower or higher",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": true
+        }
+      ],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": [
+        "assumed_reference_range"
+      ]
+    },
+    {
+      "criterion_id": "INC-14",
+      "criterion_text": "The patient's AST is below 2.5 × ULN, or below 5.0 × ULN if the patient has liver metastases.",
+      "source_text": "2）Hepatic: Total bilirubin (TBIL) \\< 1.5 × upper limit of normal (ULN), aspartate aminotransferase (AST) and alanine aminotransferase (ALT) \\< 2.5 × ULN. For subjects with Gilbert's syndrome, TBIL \\< 2 × ULN is acceptable. For subjects with liver metastases, AST and ALT \\< 5.0 × ULN is required. If direct bilirubin (DBIL) suggests extrahepatic obstruction, TBIL \\< 3.0 × ULN is permitted.",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "AST 31 U/L",
+          "start": 1489,
+          "end": 1499,
+          "segment_id": "S10"
+        }
+      ],
+      "rationale": "Using the assumed adult AST ULN of 40 U/L, 31 U/L is below 2.5 × ULN.",
+      "confidence": "medium",
+      "basis": "stated",
+      "patient_value": "31 U/L",
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "AST",
+        "comparator": "<",
+        "value": "2.5; <5.0 with liver metastases",
+        "unit": "× ULN"
+      },
+      "concepts": [
+        {
+          "original": "aspartate aminotransferase (AST)",
+          "normalized": "aspartate aminotransferase",
+          "category": "lab_test"
+        },
+        {
+          "original": "liver metastases",
+          "normalized": "liver metastases",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 31.0,
+            "value_unit": "U/L",
+            "comparator": "<",
+            "threshold": 2.5,
+            "threshold_upper": null,
+            "threshold_unit": null,
+            "reference_limit": 40.0,
+            "reference_limit_assumed": true,
+            "analyte": null
+          },
+          "model_answer": true,
+          "computed": true,
+          "status": "confirmed",
+          "detail": "31 < 100 (2.5 x 40) U/L is true; the reference limit 40 is a typical adult value, not from the note, and the result holds if the lab's limit is 25% lower or higher",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": true
+        }
+      ],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": [
+        "assumed_reference_range"
+      ]
+    },
+    {
+      "criterion_id": "INC-15",
+      "criterion_text": "The patient's ALT is below 2.5 × ULN, or below 5.0 × ULN if the patient has liver metastases.",
+      "source_text": "2）Hepatic: Total bilirubin (TBIL) \\< 1.5 × upper limit of normal (ULN), aspartate aminotransferase (AST) and alanine aminotransferase (ALT) \\< 2.5 × ULN. For subjects with Gilbert's syndrome, TBIL \\< 2 × ULN is acceptable. For subjects with liver metastases, AST and ALT \\< 5.0 × ULN is required. If direct bilirubin (DBIL) suggests extrahepatic obstruction, TBIL \\< 3.0 × ULN is permitted.",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "ALT 28 U/L",
+          "start": 1477,
+          "end": 1487,
+          "segment_id": "S10"
+        }
+      ],
+      "rationale": "Using the assumed adult ALT ULN of 40 U/L, 28 U/L is below 2.5 × ULN.",
+      "confidence": "medium",
+      "basis": "stated",
+      "patient_value": "28 U/L",
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "ALT",
+        "comparator": "<",
+        "value": "2.5; <5.0 with liver metastases",
+        "unit": "× ULN"
+      },
+      "concepts": [
+        {
+          "original": "alanine aminotransferase (ALT)",
+          "normalized": "alanine aminotransferase",
+          "category": "lab_test"
+        },
+        {
+          "original": "liver metastases",
+          "normalized": "liver metastases",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 28.0,
+            "value_unit": "U/L",
+            "comparator": "<",
+            "threshold": 2.5,
+            "threshold_upper": null,
+            "threshold_unit": null,
+            "reference_limit": 40.0,
+            "reference_limit_assumed": true,
+            "analyte": null
+          },
+          "model_answer": true,
+          "computed": true,
+          "status": "confirmed",
+          "detail": "28 < 100 (2.5 x 40) U/L is true; the reference limit 40 is a typical adult value, not from the note, and the result holds if the lab's limit is 25% lower or higher",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": true
+        }
+      ],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": [
+        "assumed_reference_range"
+      ]
+    },
+    {
+      "criterion_id": "INC-16",
+      "criterion_text": "The patient's serum creatinine is at most 1.5 × ULN, or, if serum creatinine is above 1.5 × ULN, calculated creatinine clearance using the Cockcroft-Gault formula is at least 60 mL/min.",
+      "source_text": "3）Renal: Serum creatinine (Cr) ≤ 1.5 × ULN OR calculated creatinine clearance (CrCl) ≥ 60 mL/min (using the Cockcroft-Gault formula) if Cr \\> 1.5 × ULN.",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Creatinine 0.9 mg/dL",
+          "start": 1455,
+          "end": 1475,
+          "segment_id": "S10"
+        }
+      ],
+      "rationale": "The note provides creatinine but not its laboratory ULN or a calculated creatinine clearance, and the supplied reference limits do not include creatinine.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": "0.9 mg/dL",
+      "missing_info": "The laboratory ULN for serum creatinine, or a calculated Cockcroft-Gault creatinine clearance if creatinine is above 1.5 × ULN",
+      "established_part": "Serum creatinine is 0.9 mg/dL",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "serum creatinine or calculated creatinine clearance",
+        "comparator": "other",
+        "value": "Cr ≤1.5 × ULN OR CrCl ≥60 mL/min if Cr >1.5 × ULN",
+        "unit": "× ULN or mL/min"
+      },
+      "concepts": [
+        {
+          "original": "Serum creatinine (Cr)",
+          "normalized": "serum creatinine",
+          "category": "lab_test"
+        },
+        {
+          "original": "calculated creatinine clearance (CrCl)",
+          "normalized": "creatinine clearance",
+          "category": "lab_test"
+        },
+        {
+          "original": "Cockcroft-Gault formula",
+          "normalized": "Cockcroft-Gault formula",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-17",
+      "criterion_text": "The patient's PT/APTT is below 1.5 × ULN and INR is below 1.5, or the INR is within the therapeutic range if the patient is receiving anticoagulation therapy.",
+      "source_text": "4）Coagulation: Prothrombin time (PT) / activated partial thromboplastin time (APTT) \\< 1.5 × ULN and international normalized ratio (INR) \\< 1.5 or within the therapeutic range for subjects on anticoagulation therapy.",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not report PT, APTT, or INR results or anticoagulation status.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "PT, APTT, INR values and the applicable ULN or therapeutic anticoagulation range.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "PT/APTT and INR",
+        "comparator": "other",
+        "value": "PT/APTT <1.5 × ULN and INR <1.5, or therapeutic range on anticoagulation",
+        "unit": "× ULN"
+      },
+      "concepts": [
+        {
+          "original": "Prothrombin time (PT)",
+          "normalized": "prothrombin time",
+          "category": "lab_test"
+        },
+        {
+          "original": "activated partial thromboplastin time (APTT)",
+          "normalized": "activated partial thromboplastin time",
+          "category": "lab_test"
+        },
+        {
+          "original": "international normalized ratio (INR)",
+          "normalized": "international normalized ratio",
+          "category": "lab_test"
+        },
+        {
+          "original": "anticoagulation therapy",
+          "normalized": "anticoagulant",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-18",
+      "criterion_text": "The patient's serum magnesium is within normal limits.",
+      "source_text": "5）Magnesium: Serum magnesium within normal limits.",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not report a serum magnesium value or whether it is within normal limits.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Serum magnesium result and laboratory reference range.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Serum magnesium",
+          "normalized": "serum magnesium",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-19",
+      "criterion_text": "The patient's toxicities from prior anti-tumor therapy have resolved to baseline or Grade 1 or lower, except residual alopecia; neurotoxicity up to Grade 2 is acceptable, and asymptomatic immune-related endocrine adverse events may be controlled with hormone replacement or physiologic-dose corticosteroids if the investigator judges they will not affect study-drug administration or safety assessment.",
+      "source_text": "10. Toxicities from prior anti-tumor therapy must have resolved to baseline or ≤ Grade 1 (except for residual alopecia; neurotoxicity ≤ Grade 2 is acceptable). Subjects with prior immune-related endocrine adverse events (irAEs) from immunotherapy (e.g., hypothyroidism) that are asymptomatic and stably controlled with ongoing hormone replacement or physiologic doses of corticosteroids may be enrolled if the investigator judges that this will not affect study drug administration or safety assessment.",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        },
+        {
+          "quote": "Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence.",
+          "start": 847,
+          "end": 945,
+          "segment_id": "S6"
+        }
+      ],
+      "rationale": "The note documents no systemic therapy for lung cancer but does not establish the current status of toxicities from all prior anti-tumor therapy.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether any toxicity from prior anti-tumor therapy, including the prior breast cancer treatment, is present and its current grade or resolution status.",
+      "established_part": "No systemic therapy for lung cancer has been received",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "toxicity grade",
+        "comparator": "<=",
+        "value": "1; neurotoxicity ≤2 acceptable",
+        "unit": "CTCAE grade"
+      },
+      "concepts": [
+        {
+          "original": "Grade",
+          "normalized": "Common Terminology Criteria for Adverse Events grade",
+          "category": "other"
+        },
+        {
+          "original": "anti-tumor therapy",
+          "normalized": "anti-tumor therapy",
+          "category": "drug"
+        },
+        {
+          "original": "corticosteroids",
+          "normalized": "corticosteroid",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-20",
+      "criterion_text": "The patient agrees to use effective contraception from signing the ICF until 6 months after the last dose of study drug when applicable based on childbearing potential and partner status.",
+      "source_text": "11\\. Female subjects of childbearing potential or male subjects with partners of childbearing potential must use effective contraception from signing the ICF until 6 months after the last dose of study drug. Female subjects of childbearing potential must have a negative serum pregnancy test within 7 days (inclusive) prior to the first dose. If a urine pregnancy test result is inconclusive, a serum pregnancy test is required.",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "62-year-old woman",
+          "start": 148,
+          "end": 165,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The note identifies a 62-year-old woman but does not establish childbearing potential or contraception agreement.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient is of childbearing potential and whether she agrees to use effective contraception if the requirement applies.",
+      "established_part": null,
+      "answer_source": "screening_visit",
+      "time_window": "from signing the ICF until 6 months after the last dose of study drug",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "effective contraception",
+          "normalized": "contraceptive",
+          "category": "drug"
+        },
+        {
+          "original": "study drug",
+          "normalized": "study drug",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-21",
+      "criterion_text": "A female patient of childbearing potential has a negative serum pregnancy test within 7 days before the first dose; if the urine pregnancy test is inconclusive, the serum test is required.",
+      "source_text": "11\\. Female subjects of childbearing potential or male subjects with partners of childbearing potential must use effective contraception from signing the ICF until 6 months after the last dose of study drug. Female subjects of childbearing potential must have a negative serum pregnancy test within 7 days (inclusive) prior to the first dose. If a urine pregnancy test result is inconclusive, a serum pregnancy test is required.",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "62-year-old woman",
+          "start": 148,
+          "end": 165,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The note does not report childbearing potential or a qualifying serum pregnancy test.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient is of childbearing potential, whether a serum pregnancy test was performed, and its result and date relative to the first dose.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 7 days (inclusive) prior to the first dose",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "serum pregnancy test",
+          "normalized": "serum pregnancy test",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-01",
+      "criterion_text": "The patient has histologically or cytologically confirmed NSCLC with mixed small-cell components or predominantly squamous-cell carcinoma components.",
+      "source_text": "1. Histologically or cytologically confirmed NSCLC with mixed small cell components or predominantly squamous cell carcinoma components.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "CT-guided biopsy on 2026-08-04 confirmed lung adenocarcinoma.",
+          "start": 364,
+          "end": 425,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "Adenocarcinoma is documented, but the note does not address whether a mixed small-cell component is present, so the exclusion cannot be fully assessed.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the tumor has any mixed small-cell component.",
+      "established_part": "Lung adenocarcinoma is documented",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "NSCLC",
+          "normalized": "non-small cell lung cancer",
+          "category": "condition"
+        },
+        {
+          "original": "small cell components",
+          "normalized": "small cell lung cancer",
+          "category": "condition"
+        },
+        {
+          "original": "squamous cell carcinoma components",
+          "normalized": "squamous cell carcinoma",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-02",
+      "criterion_text": "The patient has an EGFR sensitizing mutation, ALK rearrangement, ROS-1 fusion, or another genomic alteration for which an NMPA-approved first-line NSCLC therapy exists.",
+      "source_text": "2. Presence of EGFR sensitizing mutation, ALK rearrangement, ROS-1 fusion, or other genomic alterations for which NMPA-approved first-line NSCLC therapies exist.",
+      "type": "exclusion",
+      "verdict": "met",
+      "effect": "blocks",
+      "evidence": [
+        {
+          "quote": "EGFR exon 19 deletion detected; ALK and ROS1 negative.",
+          "start": 580,
+          "end": 634,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The documented EGFR exon 19 deletion is an EGFR sensitizing mutation covered by this exclusion criterion.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "EGFR sensitizing mutation",
+          "normalized": "EGFR sensitizing mutation",
+          "category": "other"
+        },
+        {
+          "original": "ALK rearrangement",
+          "normalized": "ALK rearrangement",
+          "category": "other"
+        },
+        {
+          "original": "ROS-1 fusion",
+          "normalized": "ROS1 fusion",
+          "category": "other"
+        },
+        {
+          "original": "other genomic alterations",
+          "normalized": "genomic alteration",
+          "category": "other"
+        },
+        {
+          "original": "NMPA-approved first-line NSCLC therapies",
+          "normalized": "NMPA-approved first-line NSCLC therapy",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-03",
+      "criterion_text": "The patient has significant cardiovascular or cerebrovascular disease, including a clinically significant cardiovascular event within 6 months or a history of angioplasty, stenting, or coronary artery bypass grafting.",
+      "source_text": "3. Significant cardiovascular or cerebrovascular disease, including:\n\n1）Clinically significant cardiovascular events within 6 months (e.g., myocardial infarction, angina, heart failure, severe arrhythmia) or history of angioplasty, stenting, or coronary artery bypass grafting.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not provide sufficient personal cardiovascular or cerebrovascular history to determine whether this exclusion applies.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "The patient's personal history of cardiovascular or cerebrovascular disease, clinically significant cardiovascular events in the prior 6 months, and any history of angioplasty, stenting, or coronary artery bypass grafting.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "clinically significant cardiovascular events within 6 months; procedure history has no stated time window",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "cardiovascular disease",
+          "normalized": "cardiovascular disease",
+          "category": "condition"
+        },
+        {
+          "original": "cerebrovascular disease",
+          "normalized": "cerebrovascular disease",
+          "category": "condition"
+        },
+        {
+          "original": "myocardial infarction",
+          "normalized": "myocardial infarction",
+          "category": "condition"
+        },
+        {
+          "original": "angina",
+          "normalized": "angina",
+          "category": "condition"
+        },
+        {
+          "original": "heart failure",
+          "normalized": "heart failure",
+          "category": "condition"
+        },
+        {
+          "original": "severe arrhythmia",
+          "normalized": "arrhythmia",
+          "category": "condition"
+        },
+        {
+          "original": "angioplasty",
+          "normalized": "angioplasty",
+          "category": "procedure"
+        },
+        {
+          "original": "stenting",
+          "normalized": "coronary stent placement",
+          "category": "procedure"
+        },
+        {
+          "original": "coronary artery bypass grafting",
+          "normalized": "coronary artery bypass grafting",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-04",
+      "criterion_text": "The patient's QTcF interval is clinically significantly prolonged, above 470 ms for a female or above 450 ms for a male.",
+      "source_text": "2）Clinically significant prolongation of the QTcF interval (QTcF \\> 470 ms for females or \\> 450 ms for males).",
+      "type": "exclusion",
+      "verdict": "not_met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "QTc 438 ms",
+          "start": 1568,
+          "end": 1578,
+          "segment_id": "S10"
+        }
+      ],
+      "rationale": "The QTc is 438 ms, which is not above the female exclusion threshold of 470 ms.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": "438 ms",
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "QTcF interval",
+        "comparator": "other",
+        "value": ">470 females or >450 males",
+        "unit": "ms"
+      },
+      "concepts": [
+        {
+          "original": "QTcF interval",
+          "normalized": "corrected QT interval using Fridericia formula",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 438.0,
+            "value_unit": "ms",
+            "comparator": ">",
+            "threshold": 470.0,
+            "threshold_upper": null,
+            "threshold_unit": "ms",
+            "reference_limit": null,
+            "reference_limit_assumed": false,
+            "analyte": null
+          },
+          "model_answer": false,
+          "computed": false,
+          "status": "confirmed",
+          "detail": "438 > 470 ms is false",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": false
+        }
+      ],
+      "model_verdict": "not_met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-05",
+      "criterion_text": "The patient has had a clinically significant cerebrovascular event, such as cerebral hemorrhage or infarction, within 3 months.",
+      "source_text": "3）Clinically significant cerebrovascular events within 3 months (e.g., cerebral hemorrhage, infarction).",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not address recent clinically significant cerebrovascular events.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "History of cerebrovascular events, including any cerebral hemorrhage or infarction, within the past 3 months.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 3 months",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "cerebrovascular events",
+          "normalized": "cerebrovascular event",
+          "category": "condition"
+        },
+        {
+          "original": "cerebral hemorrhage",
+          "normalized": "cerebral hemorrhage",
+          "category": "condition"
+        },
+        {
+          "original": "infarction",
+          "normalized": "cerebral infarction",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-06",
+      "criterion_text": "The patient has active CNS metastases, or has previously treated brain metastases that do not meet the stated exception of being asymptomatic for at least 7 days after radiotherapy/local therapy without steroids or anti-epileptics, or being off steroids or anti-epileptics for at least 7 days, with investigator-judged stable CNS disease.",
+      "source_text": "4\\. Active central nervous system (CNS) metastases (e.g., brain or leptomeningeal metastases). Subjects with previously treated brain metastases may be eligible if they are asymptomatic for at least 7 days after completion of radiotherapy/local therapy without requiring steroids/anti-epileptics, OR off steroids/anti-epileptics for at least 7 days, AND judged by the investigator to have stable CNS disease.",
+      "type": "exclusion",
+      "verdict": "not_met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "Brain MRI on 2026-08-14 showed no intracranial metastases.",
+          "start": 502,
+          "end": 560,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The brain MRI showed no intracranial metastases, so active CNS metastases are not documented.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "at least 7 days after completion of radiotherapy/local therapy or off steroids/anti-epileptics",
+      "threshold": {
+        "parameter": "time since completion of radiotherapy/local therapy or stopping steroids/anti-epileptics",
+        "comparator": ">=",
+        "value": "7",
+        "unit": "days"
+      },
+      "concepts": [
+        {
+          "original": "central nervous system (CNS) metastases",
+          "normalized": "central nervous system metastasis",
+          "category": "condition"
+        },
+        {
+          "original": "brain metastases",
+          "normalized": "brain metastasis",
+          "category": "condition"
+        },
+        {
+          "original": "leptomeningeal metastases",
+          "normalized": "leptomeningeal metastasis",
+          "category": "condition"
+        },
+        {
+          "original": "steroids",
+          "normalized": "corticosteroid",
+          "category": "drug"
+        },
+        {
+          "original": "anti-epileptics",
+          "normalized": "antiepileptic",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "not_met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-07",
+      "criterion_text": "The patient has clinically significant ILD, radiation pneumonitis, or drug-induced pneumonitis requiring treatment; active pulmonary tuberculosis; pneumoconiosis; Grade 2 or higher pneumonitis of another etiology; or FEV1, DLCO, or DLCO/VA below 40% of predicted value.",
+      "source_text": "5\\. Clinically significant interstitial lung disease (ILD), radiation pneumonitis, or drug-induced pneumonitis requiring treatment; active pulmonary tuberculosis; pneumoconiosis; Grade ≥2 pneumonitis of other etiologies; or severely impaired pulmonary function (FEV1 or DLCO or DLCO/VA \\<40% of predicted value).",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "She denies any history of interstitial lung disease or pneumonitis.",
+          "start": 946,
+          "end": 1013,
+          "segment_id": "S6"
+        }
+      ],
+      "rationale": "The note addresses ILD and pneumonitis history but does not establish the absence of all other listed pulmonary exclusion conditions.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether she has active pulmonary tuberculosis, pneumoconiosis, grade 2 or higher pneumonitis of another etiology, or FEV1, DLCO, or DLCO/VA below 40% of predicted.",
+      "established_part": "Denies history of interstitial lung disease or pneumonitis",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "pneumonitis grade or FEV1/DLCO/DLCO/VA",
+        "comparator": "other",
+        "value": "pneumonitis ≥2 or pulmonary function <40% predicted",
+        "unit": "CTCAE grade or % predicted"
+      },
+      "concepts": [
+        {
+          "original": "interstitial lung disease (ILD)",
+          "normalized": "interstitial lung disease",
+          "category": "condition"
+        },
+        {
+          "original": "radiation pneumonitis",
+          "normalized": "radiation pneumonitis",
+          "category": "condition"
+        },
+        {
+          "original": "drug-induced pneumonitis",
+          "normalized": "drug-induced pneumonitis",
+          "category": "condition"
+        },
+        {
+          "original": "active pulmonary tuberculosis",
+          "normalized": "pulmonary tuberculosis",
+          "category": "condition"
+        },
+        {
+          "original": "pneumoconiosis",
+          "normalized": "pneumoconiosis",
+          "category": "condition"
+        },
+        {
+          "original": "FEV1",
+          "normalized": "forced expiratory volume in 1 second",
+          "category": "lab_test"
+        },
+        {
+          "original": "DLCO",
+          "normalized": "diffusing capacity of the lung for carbon monoxide",
+          "category": "lab_test"
+        },
+        {
+          "original": "DLCO/VA",
+          "normalized": "DLCO/VA",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-08",
+      "criterion_text": "The patient has a significant gastrointestinal disorder affecting drug absorption or swallowing, such as refractory hiccups, nausea, vomiting, severe peptic ulcer disease, liver cirrhosis, or active gastrointestinal bleeding.",
+      "source_text": "6\\. Significant gastrointestinal disorders affecting drug absorption or swallowing (e.g., refractory hiccups, nausea, vomiting, severe peptic ulcer disease, liver cirrhosis, active GI bleeding).",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not address significant gastrointestinal disorders affecting absorption or swallowing.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "History or current presence of gastrointestinal disorders affecting drug absorption or swallowing, including refractory hiccups, nausea, vomiting, severe peptic ulcer disease, cirrhosis, or active gastrointestinal bleeding.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "gastrointestinal disorders",
+          "normalized": "gastrointestinal disorder",
+          "category": "condition"
+        },
+        {
+          "original": "refractory hiccups",
+          "normalized": "hiccups",
+          "category": "condition"
+        },
+        {
+          "original": "nausea",
+          "normalized": "nausea",
+          "category": "condition"
+        },
+        {
+          "original": "vomiting",
+          "normalized": "vomiting",
+          "category": "condition"
+        },
+        {
+          "original": "severe peptic ulcer disease",
+          "normalized": "peptic ulcer disease",
+          "category": "condition"
+        },
+        {
+          "original": "liver cirrhosis",
+          "normalized": "liver cirrhosis",
+          "category": "condition"
+        },
+        {
+          "original": "active GI bleeding",
+          "normalized": "gastrointestinal bleeding",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-09",
+      "criterion_text": "The patient has an active infection requiring systemic therapy.",
+      "source_text": "1. Active infection requiring systemic therapy.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not state whether an active infection requiring systemic therapy is present.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient currently has an infection requiring systemic therapy.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Active infection",
+          "normalized": "infection",
+          "category": "condition"
+        },
+        {
+          "original": "systemic therapy",
+          "normalized": "systemic therapy",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-10",
+      "criterion_text": "The patient has baseline-positive HIV antibody, active hepatitis B as defined by HBsAg and/or HBcAb positivity with HBV-DNA above 2500 copies/mL or 500 IU/mL, or active hepatitis C defined by positive HCV antibody with HCV-RNA above the lower limit of quantification.",
+      "source_text": "2. Baseline positive HIV antibody (HIV-Ab); acute or chronic active hepatitis B (defined as HBsAg and/or HBcAb positive AND HBV-DNA \\> 2500 copies/mL or 500 IU/mL); or acute or chronic active hepatitis C (HCV antibody positive AND HCV-RNA above the lower limit of quantification).",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not provide the required HIV, hepatitis B, or hepatitis C test results.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Baseline HIV antibody, HBsAg, HBcAb, HBV-DNA, HCV antibody, and HCV-RNA results.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "at baseline for HIV antibody",
+      "threshold": {
+        "parameter": "HBV-DNA",
+        "comparator": "other",
+        "value": ">2500 copies/mL or >500 IU/mL",
+        "unit": "copies/mL or IU/mL"
+      },
+      "concepts": [
+        {
+          "original": "HIV antibody (HIV-Ab)",
+          "normalized": "HIV antibody",
+          "category": "lab_test"
+        },
+        {
+          "original": "hepatitis B",
+          "normalized": "hepatitis B",
+          "category": "condition"
+        },
+        {
+          "original": "HBsAg",
+          "normalized": "hepatitis B surface antigen",
+          "category": "lab_test"
+        },
+        {
+          "original": "HBcAb",
+          "normalized": "hepatitis B core antibody",
+          "category": "lab_test"
+        },
+        {
+          "original": "HBV-DNA",
+          "normalized": "hepatitis B virus DNA",
+          "category": "lab_test"
+        },
+        {
+          "original": "hepatitis C",
+          "normalized": "hepatitis C",
+          "category": "condition"
+        },
+        {
+          "original": "HCV antibody",
+          "normalized": "hepatitis C antibody",
+          "category": "lab_test"
+        },
+        {
+          "original": "HCV-RNA",
+          "normalized": "hepatitis C virus RNA",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-11",
+      "criterion_text": "The patient has active pulmonary tuberculosis.",
+      "source_text": "3. Active pulmonary tuberculosis. 8\\. Symptomatic pleural, peritoneal, or pericardial effusions requiring repeated drainage.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not address active pulmonary tuberculosis.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient has active pulmonary tuberculosis.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Active pulmonary tuberculosis",
+          "normalized": "pulmonary tuberculosis",
+          "category": "condition"
+        }
+      ],
+      "source_verified": false,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-12",
+      "criterion_text": "The patient has symptomatic pleural, peritoneal, or pericardial effusion requiring repeated drainage.",
+      "source_text": "3. Active pulmonary tuberculosis. 8\\. Symptomatic pleural, peritoneal, or pericardial effusions requiring repeated drainage.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not address symptomatic serosal effusions or repeated drainage.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Ask about current pleural, peritoneal, or pericardial effusions and whether repeated drainage is required.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "pleural effusions",
+          "normalized": "pleural effusion",
+          "category": "condition"
+        },
+        {
+          "original": "peritoneal effusions",
+          "normalized": "peritoneal effusion",
+          "category": "condition"
+        },
+        {
+          "original": "pericardial effusions",
+          "normalized": "pericardial effusion",
+          "category": "condition"
+        },
+        {
+          "original": "repeated drainage",
+          "normalized": "drainage",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": false,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-13",
+      "criterion_text": "The patient has a poorly controlled systemic disease despite standard therapy, such as hypertension with systolic BP at least 160 mmHg or diastolic BP at least 100 mmHg, or diabetes.",
+      "source_text": "9\\. Poorly controlled systemic diseases despite standard therapy (e.g., hypertension: systolic BP ≥160 mmHg or diastolic BP ≥100 mmHg; diabetes).",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Hypertension, well controlled on lisinopril. Type 2 diabetes mellitus on metformin, HbA1c 7.1% in August 2026.",
+          "start": 736,
+          "end": 846,
+          "segment_id": "S6"
+        },
+        {
+          "quote": "Blood pressure 128/76 mmHg",
+          "start": 1227,
+          "end": 1253,
+          "segment_id": "S9"
+        }
+      ],
+      "rationale": "The documented hypertension is below the specified blood-pressure thresholds, but the note does not establish whether the diabetes is poorly controlled under the protocol.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": "128/76 mmHg",
+      "missing_info": "Clarify whether the diabetes meets the protocol definition of poorly controlled systemic disease despite standard therapy.",
+      "established_part": "Hypertension is documented as well controlled, with blood pressure 128/76 mmHg; diabetes is documented on metformin with HbA1c 7.1%.",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "blood pressure",
+        "comparator": "other",
+        "value": "systolic ≥160 or diastolic ≥100",
+        "unit": "mmHg"
+      },
+      "concepts": [
+        {
+          "original": "hypertension",
+          "normalized": "hypertension",
+          "category": "condition"
+        },
+        {
+          "original": "diabetes",
+          "normalized": "diabetes mellitus",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 128.0,
+            "value_unit": "mmHg",
+            "comparator": ">=",
+            "threshold": 160.0,
+            "threshold_upper": null,
+            "threshold_unit": "mmHg",
+            "reference_limit": null,
+            "reference_limit_assumed": false,
+            "analyte": null
+          },
+          "model_answer": false,
+          "computed": false,
+          "status": "confirmed",
+          "detail": "128 >= 160 mmHg is false",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": false
+        }
+      ],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-14",
+      "criterion_text": "The patient has a history of another active malignancy within 2 years before study entry, except the listed appropriately treated or non-treatment-requiring malignancies.",
+      "source_text": "10\\. History of other active malignancies within 2 years prior to study entry, except appropriately treated carcinoma in situ of the cervix, localized squamous cell carcinoma of the skin, basal cell carcinoma, prostate cancer not requiring treatment, ductal carcinoma in situ of the breast, and superficial non-muscle invasive urothelial carcinoma.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence.",
+          "start": 847,
+          "end": 945,
+          "segment_id": "S6"
+        }
+      ],
+      "rationale": "The note describes only an explicitly excepted prior breast DCIS with no recurrence, but does not establish the absence of other active malignancy within the required interval.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Confirm whether the patient has any other active malignancy and establish the study-entry date relative to any such malignancy.",
+      "established_part": "Prior breast ductal carcinoma in situ was treated in 2014 with no recurrence and is an explicitly excepted malignancy.",
+      "answer_source": "medical_record",
+      "time_window": "within 2 years prior to study entry",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "other active malignancies",
+          "normalized": "malignancy",
+          "category": "condition"
+        },
+        {
+          "original": "carcinoma in situ of the cervix",
+          "normalized": "carcinoma in situ of the cervix",
+          "category": "condition"
+        },
+        {
+          "original": "localized squamous cell carcinoma of the skin",
+          "normalized": "cutaneous squamous cell carcinoma",
+          "category": "condition"
+        },
+        {
+          "original": "basal cell carcinoma",
+          "normalized": "basal cell carcinoma",
+          "category": "condition"
+        },
+        {
+          "original": "prostate cancer",
+          "normalized": "prostate cancer",
+          "category": "condition"
+        },
+        {
+          "original": "ductal carcinoma in situ of the breast",
+          "normalized": "ductal carcinoma in situ of the breast",
+          "category": "condition"
+        },
+        {
+          "original": "superficial non-muscle invasive urothelial carcinoma",
+          "normalized": "superficial non-muscle invasive urothelial carcinoma",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-15",
+      "criterion_text": "The patient has previously received any KRAS G12C inhibitor.",
+      "source_text": "11. Prior treatment with any KRAS G12C inhibitor. 12. Prior treatment with cetuximab or its analogues.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The note does not specifically address prior treatment with a KRAS G12C inhibitor.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Ask or verify whether she has ever received a KRAS G12C inhibitor, including for a prior malignancy or outside the current lung-cancer treatment.",
+      "established_part": "No systemic therapy for the current lung cancer has yet been received.",
+      "answer_source": "medical_record",
+      "time_window": "prior to study entry",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "KRAS G12C inhibitor",
+          "normalized": "KRAS G12C inhibitor",
+          "category": "drug"
+        }
+      ],
+      "source_verified": false,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-16",
+      "criterion_text": "The patient has previously received cetuximab or a cetuximab analogue.",
+      "source_text": "11. Prior treatment with any KRAS G12C inhibitor. 12. Prior treatment with cetuximab or its analogues.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The note does not specifically address prior treatment with cetuximab or a cetuximab analogue.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Ask or verify whether she has ever received cetuximab or a cetuximab analogue, including for a prior malignancy or outside the current lung-cancer treatment.",
+      "established_part": "No systemic therapy for the current lung cancer has yet been received.",
+      "answer_source": "medical_record",
+      "time_window": "prior to study entry",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "cetuximab",
+          "normalized": "cetuximab",
+          "category": "drug"
+        },
+        {
+          "original": "its analogues",
+          "normalized": "cetuximab analogue",
+          "category": "drug"
+        }
+      ],
+      "source_verified": false,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-17",
+      "criterion_text": "The patient has received systemic Chinese herbal medicine with anti-tumor indications within 1 week before the first dose, or systemic immunomodulatory drugs including thymosin, interferon, or interleukin within 2 weeks before the first dose, except localized intrapleural use for effusion control.",
+      "source_text": "13\\. Systemic treatment with Chinese herbal medicine with anti-tumor indications within 1 week prior to the first dose, OR systemic treatment with immunomodulatory drugs (including thymosin, interferon, interleukin; except for localized intrapleural use for effusion control) within 2 weeks prior to the first dose.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not address the specified herbal or immunomodulatory treatments or their timing before the first dose.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Verify use and dates of systemic anti-tumor Chinese herbal medicines and systemic immunomodulatory drugs, and establish the planned first-dose date.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 1 week or 2 weeks prior to the first dose, respectively",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Chinese herbal medicine with anti-tumor indications",
+          "normalized": "Chinese herbal medicine",
+          "category": "drug"
+        },
+        {
+          "original": "thymosin",
+          "normalized": "thymosin",
+          "category": "drug"
+        },
+        {
+          "original": "interferon",
+          "normalized": "interferon",
+          "category": "drug"
+        },
+        {
+          "original": "interleukin",
+          "normalized": "interleukin",
+          "category": "drug"
+        }
+      ],
+      "source_verified": false,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-18",
+      "criterion_text": "The patient has received therapeutic or palliative radiotherapy, except cranial radiotherapy, or local therapy within 14 days before the first study dose.",
+      "source_text": "14\\. Therapeutic or palliative radiotherapy (except cranial radiotherapy) or local therapy within 14 days prior to the first study dose.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence.",
+          "start": 847,
+          "end": 945,
+          "segment_id": "S6"
+        }
+      ],
+      "rationale": "The note records remote radiotherapy but does not provide sufficient information about all recent radiotherapy or local therapy before the first study dose.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Confirm whether any therapeutic or palliative radiotherapy or local therapy occurred within 14 days before the planned first study dose, and establish the first-dose date.",
+      "established_part": "Radiotherapy for breast ductal carcinoma in situ is documented in 2014.",
+      "answer_source": "medical_record",
+      "time_window": "within 14 days prior to the first study dose",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Therapeutic or palliative radiotherapy",
+          "normalized": "radiotherapy",
+          "category": "procedure"
+        },
+        {
+          "original": "local therapy",
+          "normalized": "local therapy",
+          "category": "procedure"
+        },
+        {
+          "original": "cranial radiotherapy",
+          "normalized": "cranial radiotherapy",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-19",
+      "criterion_text": "The patient has received any other anti-tumor therapy, including chemotherapy, targeted therapy, immunotherapy, or an investigational drug or device, within 28 days or 5 half-lives, whichever is shorter, before the first study dose.",
+      "source_text": "15\\. Any other anti-tumor therapy (chemotherapy, targeted therapy, immunotherapy, investigational drug/device) within 28 days or 5 half-lives (whichever is shorter) prior to the first study dose.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "Treatment-naive status for the current lung cancer does not establish that no qualifying anti-tumor therapy was received for another condition or that the required washout interval is satisfied.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Verify all anti-tumor chemotherapy, targeted therapy, immunotherapy, investigational drugs or devices, and their dates relative to the planned first study dose; determine any applicable half-life.",
+      "established_part": "No systemic therapy for the current lung cancer has yet been received.",
+      "answer_source": "medical_record",
+      "time_window": "within 28 days or 5 half-lives (whichever is shorter) prior to the first study dose",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "chemotherapy",
+          "normalized": "chemotherapy",
+          "category": "drug"
+        },
+        {
+          "original": "targeted therapy",
+          "normalized": "targeted therapy",
+          "category": "drug"
+        },
+        {
+          "original": "immunotherapy",
+          "normalized": "immunotherapy",
+          "category": "drug"
+        },
+        {
+          "original": "investigational drug",
+          "normalized": "investigational drug",
+          "category": "drug"
+        },
+        {
+          "original": "investigational device",
+          "normalized": "investigational device",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-20",
+      "criterion_text": "The patient has undergone major surgery within 28 days before study entry that could affect study-drug administration or assessments, excluding diagnostic biopsy.",
+      "source_text": "16\\. Major surgery within 28 days prior to study entry that could affect study drug administration or assessments (excluding diagnostic biopsy).",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "CT-guided biopsy on 2026-08-04 confirmed lung adenocarcinoma.",
+          "start": 364,
+          "end": 425,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The note documents a diagnostic biopsy but does not state whether any qualifying major surgery occurred.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient underwent any major surgery within 28 days before study entry and whether it could affect study-drug administration or assessments.",
+      "established_part": "Diagnostic biopsy occurred on 2026-08-04",
+      "answer_source": "medical_record",
+      "time_window": "within 28 days prior to study entry",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Major surgery",
+          "normalized": "major surgery",
+          "category": "procedure"
+        },
+        {
+          "original": "diagnostic biopsy",
+          "normalized": "diagnostic biopsy",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-21",
+      "criterion_text": "The patient has used a known sensitive CYP2D6, CYP3A4, P-gp, or BCRP substrate with a narrow therapeutic window within 14 days or 5 half-lives, whichever is longer, before the first study dose, unless both the investigator and sponsor agreed to the use.",
+      "source_text": "17\\. Use of known sensitive substrates of CYP2D6, CYP3A4, P-gp, or BCRP with a narrow therapeutic window within 14 days or 5 half-lives (whichever is longer) prior to the first study dose, unless agreed upon by both the investigator and sponsor.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Medications: Lisinopril 10 mg daily, metformin 1000 mg twice daily.",
+          "start": 1118,
+          "end": 1185,
+          "segment_id": "S8"
+        }
+      ],
+      "rationale": "The medication list does not establish whether qualifying substrate use occurred during the required look-back period.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient used any sensitive CYP2D6, CYP3A4, P-gp, or BCRP substrate with a narrow therapeutic window during the specified period, including the first study-dose date and any investigator-sponsor agreement.",
+      "established_part": "Current medications are listed",
+      "answer_source": "medical_record",
+      "time_window": "within 14 days or 5 half-lives (whichever is longer) prior to the first study dose",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "sensitive substrates of CYP2D6",
+          "normalized": "CYP2D6 substrate",
+          "category": "drug"
+        },
+        {
+          "original": "sensitive substrates of CYP3A4",
+          "normalized": "CYP3A4 substrate",
+          "category": "drug"
+        },
+        {
+          "original": "P-gp",
+          "normalized": "P-glycoprotein substrate",
+          "category": "drug"
+        },
+        {
+          "original": "BCRP",
+          "normalized": "BCRP substrate",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-22",
+      "criterion_text": "The patient is concurrently participating in another interventional clinical trial, excluding an observational study or the follow-up phase of an interventional study.",
+      "source_text": "18\\. Concurrent participation in another interventional clinical trial (participation in observational studies or the follow-up phase of an interventional study is permitted).",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Discussed first-line options including clinical trial participation.",
+          "start": 1662,
+          "end": 1730,
+          "segment_id": "S11"
+        }
+      ],
+      "rationale": "Discussion of possible trial participation does not establish concurrent participation in another interventional trial.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient is currently participating in another interventional clinical trial.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "concurrently",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "interventional clinical trial",
+          "normalized": "interventional clinical trial",
+          "category": "other"
+        },
+        {
+          "original": "observational studies",
+          "normalized": "observational study",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-23",
+      "criterion_text": "The patient has used an immunosuppressive drug within 4 weeks before the first study dose, excluding intranasal, inhaled, or topical corticosteroids, physiologic-dose systemic corticosteroids of 10 mg/day prednisone or equivalent or less, or corticosteroids used for contrast-media-allergy prophylaxis.",
+      "source_text": "19\\. Use of immunosuppressive drugs within 4 weeks prior to the first study dose, excluding intranasal, inhaled, or topical corticosteroids; systemic corticosteroids at physiologic doses (≤10 mg/day prednisone or equivalent); or corticosteroids administered for prophylaxis of contrast media allergy.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Medications: Lisinopril 10 mg daily, metformin 1000 mg twice daily.",
+          "start": 1118,
+          "end": 1185,
+          "segment_id": "S8"
+        }
+      ],
+      "rationale": "The listed medications do not establish the absence of other recent immunosuppressive drug use.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient used any immunosuppressive drug, including systemic corticosteroids above the permitted physiologic dose, within 4 weeks before the first study dose.",
+      "established_part": "Listed medications do not include a documented immunosuppressive drug",
+      "answer_source": "medical_record",
+      "time_window": "within 4 weeks prior to the first study dose",
+      "threshold": {
+        "parameter": "prednisone-equivalent corticosteroid dose",
+        "comparator": "<=",
+        "value": "10",
+        "unit": "mg/day"
+      },
+      "concepts": [
+        {
+          "original": "immunosuppressive drugs",
+          "normalized": "immunosuppressive drug",
+          "category": "drug"
+        },
+        {
+          "original": "corticosteroids",
+          "normalized": "corticosteroid",
+          "category": "drug"
+        },
+        {
+          "original": "prednisone",
+          "normalized": "prednisone",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-24",
+      "criterion_text": "The patient has received a live attenuated vaccine within 4 weeks before the first study dose or plans to receive one during the study period; live attenuated influenza vaccines are not permitted, while inactivated seasonal influenza vaccine administered more than 4 weeks earlier is allowed.",
+      "source_text": "20\\. Administration of live attenuated vaccines within 4 weeks prior to the first study dose or planned during the study period.\n\nNote: Inactivated seasonal influenza vaccines administered \\>4 weeks prior are allowed; live attenuated influenza vaccines are not permitted.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note contains no information about recent or planned live attenuated vaccination.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient received a live attenuated vaccine within 4 weeks before the first study dose or plans to receive one during the study period.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 4 weeks prior to the first study dose or planned during the study period",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "live attenuated vaccines",
+          "normalized": "live attenuated vaccine",
+          "category": "procedure"
+        },
+        {
+          "original": "Inactivated seasonal influenza vaccines",
+          "normalized": "inactivated seasonal influenza vaccine",
+          "category": "procedure"
+        },
+        {
+          "original": "live attenuated influenza vaccines",
+          "normalized": "live attenuated influenza vaccine",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-25",
+      "criterion_text": "The patient has a known or suspected autoimmune disease, or a history of autoimmune disease within 2 years before screening, except vitiligo, psoriasis, alopecia, or Graves' disease not requiring systemic therapy in the last 2 years, hypothyroidism managed only with hormone replacement, or type 1 diabetes managed only with insulin replacement.",
+      "source_text": "21\\. Known or suspected autoimmune disease, or history of autoimmune disease within 2 years prior to screening (subjects with vitiligo, psoriasis, alopecia, or Graves' disease not requiring systemic therapy in the last 2 years, hypothyroidism managed only with hormone replacement, or type 1 diabetes managed only with insulin replacement are eligible).",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Type 2 diabetes mellitus on metformin",
+          "start": 781,
+          "end": 818,
+          "segment_id": "S6"
+        }
+      ],
+      "rationale": "The note documents type 2 diabetes but does not establish whether the patient has a qualifying autoimmune disease.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient has any known or suspected autoimmune disease or a qualifying history within 2 years before screening.",
+      "established_part": "Type 2 diabetes mellitus is documented",
+      "answer_source": "medical_record",
+      "time_window": "history within 2 years prior to screening; specified Graves' disease exception concerns the last 2 years",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "autoimmune disease",
+          "normalized": "autoimmune disease",
+          "category": "condition"
+        },
+        {
+          "original": "vitiligo",
+          "normalized": "vitiligo",
+          "category": "condition"
+        },
+        {
+          "original": "psoriasis",
+          "normalized": "psoriasis",
+          "category": "condition"
+        },
+        {
+          "original": "alopecia",
+          "normalized": "alopecia",
+          "category": "condition"
+        },
+        {
+          "original": "Graves' disease",
+          "normalized": "Graves disease",
+          "category": "condition"
+        },
+        {
+          "original": "hypothyroidism",
+          "normalized": "hypothyroidism",
+          "category": "condition"
+        },
+        {
+          "original": "type 1 diabetes",
+          "normalized": "type 1 diabetes mellitus",
+          "category": "condition"
+        },
+        {
+          "original": "hormone replacement",
+          "normalized": "hormone replacement therapy",
+          "category": "drug"
+        },
+        {
+          "original": "insulin replacement",
+          "normalized": "insulin",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-26",
+      "criterion_text": "The patient has a known history of primary immunodeficiency.",
+      "source_text": "22. Known history of primary immunodeficiency. 23. History of allogeneic organ transplantation or allogeneic hematopoietic stem cell transplantation.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Past medical history: Hypertension, well controlled on lisinopril.",
+          "start": 714,
+          "end": 780,
+          "segment_id": "S6"
+        }
+      ],
+      "rationale": "The provided past medical history does not address primary immunodeficiency sufficiently to determine its absence.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient has a known history of primary immunodeficiency.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "primary immunodeficiency",
+          "normalized": "primary immunodeficiency",
+          "category": "condition"
+        }
+      ],
+      "source_verified": false,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-27",
+      "criterion_text": "The patient has a history of allogeneic organ transplantation or allogeneic hematopoietic stem cell transplantation.",
+      "source_text": "22. Known history of primary immunodeficiency. 23. History of allogeneic organ transplantation or allogeneic hematopoietic stem cell transplantation.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Past medical history: Hypertension, well controlled on lisinopril.",
+          "start": 714,
+          "end": 780,
+          "segment_id": "S6"
+        }
+      ],
+      "rationale": "The provided past medical history does not address allogeneic transplantation sufficiently to determine its absence.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient has a history of allogeneic organ transplantation or allogeneic hematopoietic stem cell transplantation.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "allogeneic organ transplantation",
+          "normalized": "allogeneic organ transplantation",
+          "category": "procedure"
+        },
+        {
+          "original": "allogeneic hematopoietic stem cell transplantation",
+          "normalized": "allogeneic hematopoietic stem cell transplantation",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": false,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-28",
+      "criterion_text": "The patient has a history of deep vein thrombosis, pulmonary embolism, or another severe thromboembolic event within 3 months before enrollment, excluding implant port- or catheter-related thrombosis and superficial venous thrombosis.",
+      "source_text": "24\\. History of deep vein thrombosis, pulmonary embolism, or any other severe thromboembolic event within 3 months prior to enrollment (implant port- or catheter-related thrombosis, or superficial venous thrombosis are not considered \"severe\").",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not address recent severe thromboembolic events.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "History of deep vein thrombosis, pulmonary embolism, or another severe thromboembolic event within 3 months before enrollment.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 3 months prior to enrollment",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "deep vein thrombosis",
+          "normalized": "deep vein thrombosis",
+          "category": "condition"
+        },
+        {
+          "original": "pulmonary embolism",
+          "normalized": "pulmonary embolism",
+          "category": "condition"
+        },
+        {
+          "original": "severe thromboembolic event",
+          "normalized": "thromboembolic event",
+          "category": "condition"
+        },
+        {
+          "original": "implant port- or catheter-related thrombosis",
+          "normalized": "catheter-related thrombosis",
+          "category": "condition"
+        },
+        {
+          "original": "superficial venous thrombosis",
+          "normalized": "superficial venous thrombosis",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-29",
+      "criterion_text": "The patient has known hypersensitivity to any component of the study drug or its formulation.",
+      "source_text": "25\\. Known hypersensitivity to any component of the study drug or its formulation.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not state whether the patient has hypersensitivity to the study drug or its formulation.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Known hypersensitivity to any component of the study drug or its formulation.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "study drug",
+          "normalized": "study drug",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-30",
+      "criterion_text": "The patient is pregnant or breastfeeding.",
+      "source_text": "26\\. Pregnant or breastfeeding women. 27\\. Any other condition that, in the investigator's judgment, would make the subject unsuitable for participation in the study.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The patient is identified as a woman, but pregnancy and breastfeeding status are not documented.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient is pregnant or breastfeeding.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Pregnant",
+          "normalized": "pregnancy",
+          "category": "condition"
+        },
+        {
+          "original": "breastfeeding",
+          "normalized": "breastfeeding",
+          "category": "condition"
+        }
+      ],
+      "source_verified": false,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-31",
+      "criterion_text": "The investigator judges that another condition makes the patient unsuitable for participation in the study.",
+      "source_text": "26\\. Pregnant or breastfeeding women. 27\\. Any other condition that, in the investigator's judgment, would make the subject unsuitable for participation in the study.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not document an investigator judgment that another condition makes the patient unsuitable.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Investigator assessment of whether any condition makes the patient unsuitable for study participation.",
+      "established_part": null,
+      "answer_source": "screening_visit",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [],
+      "source_verified": false,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    }
+  ],
+  "summary": {
+    "overall": "not_eligible",
+    "overall_label": "Likely not eligible",
+    "counts": {
+      "total": 52,
+      "supports": 11,
+      "blocks": 1,
+      "unresolved": 40,
+      "missing_from_record": 36,
+      "confirm_at_screening": 4,
+      "partly_established": 18,
+      "low_confidence": 27,
+      "downgraded": 0
+    },
+    "key_reasons": [
+      {
+        "criterion_id": "EXC-02",
+        "text": "Exclusion criterion applies: The patient has an EGFR sensitizing mutation, ALK rearrangement, ROS-1 fusion, or another genomic alteration for which an NMPA-approved first-line NSCLC therapy exists. (The documented EGFR exon 19 deletion is an EGFR sensitizing mutation covered by this exclusion criterion.)"
+      }
+    ],
+    "follow_up": [
+      {
+        "criterion_id": "INC-09",
+        "text": "Verify low-confidence inclusion determination \"The patient's absolute neutrophil count is at least 1.5 × 10⁹/L.\": The documented absolute neutrophil count of 3.4 x 10^9/L is at least 1.5 × 10⁹/L."
+      },
+      {
+        "criterion_id": "INC-10",
+        "text": "Verify low-confidence inclusion determination \"The patient's platelet count is at least 100 × 10⁹/L.\": The documented platelet count of 245 x 10^9/L is at least 100 × 10⁹/L."
+      },
+      {
+        "criterion_id": "INC-02",
+        "text": "Check inclusion criterion \"The patient is aged 18 through 75 years at the time of signing the informed consent form.\": The date of informed consent signing, or confirmation that the patient is 62 years old at signing. Already established: Age 62 years documented."
+      },
+      {
+        "criterion_id": "INC-04",
+        "text": "Check inclusion criterion \"The patient has histologically or cytologically confirmed unresectable locally advanced (Stage IIIB/IIIC), metastatic, or recurrent (Stage IV) non-small cell lung cancer according to IASLC and AJCC 8th edition TNM staging, and is not a candidate for curative concurrent chemoradiotherapy.\": Confirmation that the staging follows IASLC/AJCC 8th edition criteria and documentation that the patient is not a candidate for curative concurrent chemoradiotherapy. Already established: Histologically confirmed stage IV metastatic lung adenocarcinoma."
+      },
+      {
+        "criterion_id": "INC-05",
+        "text": "Check inclusion criterion \"The patient has a documented KRAS G12C mutation confirmed by a written report from a certified laboratory.\": A certified-laboratory report documenting a KRAS G12C mutation. Already established: EGFR exon 19 deletion detected; KRAS status not documented."
+      },
+      {
+        "criterion_id": "INC-12",
+        "text": "Check inclusion criterion \"The patient has not received a transfusion or treatment with granulocyte colony-stimulating factor, thrombopoietin, or erythropoietin within 14 days before the hematology tests.\": Whether she received a transfusion, G-CSF, thrombopoietin, or erythropoietin within 14 days before the 2026-09-15 hematology tests Already established: No systemic therapy for lung cancer has been received."
+      },
+      {
+        "criterion_id": "INC-16",
+        "text": "Check inclusion criterion \"The patient's serum creatinine is at most 1.5 × ULN, or, if serum creatinine is above 1.5 × ULN, calculated creatinine clearance using the Cockcroft-Gault formula is at least 60 mL/min.\": The laboratory ULN for serum creatinine, or a calculated Cockcroft-Gault creatinine clearance if creatinine is above 1.5 × ULN Already established: Serum creatinine is 0.9 mg/dL."
+      },
+      {
+        "criterion_id": "INC-17",
+        "text": "Check inclusion criterion \"The patient's PT/APTT is below 1.5 × ULN and INR is below 1.5, or the INR is within the therapeutic range if the patient is receiving anticoagulation therapy.\": PT, APTT, INR values and the applicable ULN or therapeutic anticoagulation range."
+      },
+      {
+        "criterion_id": "INC-18",
+        "text": "Check inclusion criterion \"The patient's serum magnesium is within normal limits.\": Serum magnesium result and laboratory reference range."
+      },
+      {
+        "criterion_id": "INC-19",
+        "text": "Check inclusion criterion \"The patient's toxicities from prior anti-tumor therapy have resolved to baseline or Grade 1 or lower, except residual alopecia; neurotoxicity up to Grade 2 is acceptable, and asymptomatic immune-related endocrine adverse events may be controlled with hormone replacement or physiologic-dose corticosteroids if the investigator judges they will not affect study-drug administration or safety assessment.\": Whether any toxicity from prior anti-tumor therapy, including the prior breast cancer treatment, is present and its current grade or resolution status. Already established: No systemic therapy for lung cancer has been received."
+      },
+      {
+        "criterion_id": "INC-21",
+        "text": "Check inclusion criterion \"A female patient of childbearing potential has a negative serum pregnancy test within 7 days before the first dose; if the urine pregnancy test is inconclusive, the serum test is required.\": Whether the patient is of childbearing potential, whether a serum pregnancy test was performed, and its result and date relative to the first dose."
+      },
+      {
+        "criterion_id": "EXC-01",
+        "text": "Check exclusion criterion \"The patient has histologically or cytologically confirmed NSCLC with mixed small-cell components or predominantly squamous-cell carcinoma components.\": Whether the tumor has any mixed small-cell component. Already established: Lung adenocarcinoma is documented."
+      },
+      {
+        "criterion_id": "EXC-03",
+        "text": "Check exclusion criterion \"The patient has significant cardiovascular or cerebrovascular disease, including a clinically significant cardiovascular event within 6 months or a history of angioplasty, stenting, or coronary artery bypass grafting.\": The patient's personal history of cardiovascular or cerebrovascular disease, clinically significant cardiovascular events in the prior 6 months, and any history of angioplasty, stenting, or coronary artery bypass grafting."
+      },
+      {
+        "criterion_id": "EXC-05",
+        "text": "Check exclusion criterion \"The patient has had a clinically significant cerebrovascular event, such as cerebral hemorrhage or infarction, within 3 months.\": History of cerebrovascular events, including any cerebral hemorrhage or infarction, within the past 3 months."
+      },
+      {
+        "criterion_id": "EXC-07",
+        "text": "Check exclusion criterion \"The patient has clinically significant ILD, radiation pneumonitis, or drug-induced pneumonitis requiring treatment; active pulmonary tuberculosis; pneumoconiosis; Grade 2 or higher pneumonitis of another etiology; or FEV1, DLCO, or DLCO/VA below 40% of predicted value.\": Whether she has active pulmonary tuberculosis, pneumoconiosis, grade 2 or higher pneumonitis of another etiology, or FEV1, DLCO, or DLCO/VA below 40% of predicted. Already established: Denies history of interstitial lung disease or pneumonitis."
+      },
+      {
+        "criterion_id": "EXC-08",
+        "text": "Check exclusion criterion \"The patient has a significant gastrointestinal disorder affecting drug absorption or swallowing, such as refractory hiccups, nausea, vomiting, severe peptic ulcer disease, liver cirrhosis, or active gastrointestinal bleeding.\": History or current presence of gastrointestinal disorders affecting drug absorption or swallowing, including refractory hiccups, nausea, vomiting, severe peptic ulcer disease, cirrhosis, or active gastrointestinal bleeding."
+      },
+      {
+        "criterion_id": "EXC-09",
+        "text": "Check exclusion criterion \"The patient has an active infection requiring systemic therapy.\": Whether the patient currently has an infection requiring systemic therapy."
+      },
+      {
+        "criterion_id": "EXC-10",
+        "text": "Check exclusion criterion \"The patient has baseline-positive HIV antibody, active hepatitis B as defined by HBsAg and/or HBcAb positivity with HBV-DNA above 2500 copies/mL or 500 IU/mL, or active hepatitis C defined by positive HCV antibody with HCV-RNA above the lower limit of quantification.\": Baseline HIV antibody, HBsAg, HBcAb, HBV-DNA, HCV antibody, and HCV-RNA results."
+      },
+      {
+        "criterion_id": "EXC-11",
+        "text": "Check exclusion criterion \"The patient has active pulmonary tuberculosis.\": Whether the patient has active pulmonary tuberculosis."
+      },
+      {
+        "criterion_id": "EXC-12",
+        "text": "Check exclusion criterion \"The patient has symptomatic pleural, peritoneal, or pericardial effusion requiring repeated drainage.\": Ask about current pleural, peritoneal, or pericardial effusions and whether repeated drainage is required."
+      },
+      {
+        "criterion_id": "EXC-13",
+        "text": "Check exclusion criterion \"The patient has a poorly controlled systemic disease despite standard therapy, such as hypertension with systolic BP at least 160 mmHg or diastolic BP at least 100 mmHg, or diabetes.\": Clarify whether the diabetes meets the protocol definition of poorly controlled systemic disease despite standard therapy. Already established: Hypertension is documented as well controlled, with blood pressure 128/76 mmHg; diabetes is documented on metformin with HbA1c 7.1%.."
+      },
+      {
+        "criterion_id": "EXC-14",
+        "text": "Check exclusion criterion \"The patient has a history of another active malignancy within 2 years before study entry, except the listed appropriately treated or non-treatment-requiring malignancies.\": Confirm whether the patient has any other active malignancy and establish the study-entry date relative to any such malignancy. Already established: Prior breast ductal carcinoma in situ was treated in 2014 with no recurrence and is an explicitly excepted malignancy.."
+      },
+      {
+        "criterion_id": "EXC-15",
+        "text": "Check exclusion criterion \"The patient has previously received any KRAS G12C inhibitor.\": Ask or verify whether she has ever received a KRAS G12C inhibitor, including for a prior malignancy or outside the current lung-cancer treatment. Already established: No systemic therapy for the current lung cancer has yet been received.."
+      },
+      {
+        "criterion_id": "EXC-16",
+        "text": "Check exclusion criterion \"The patient has previously received cetuximab or a cetuximab analogue.\": Ask or verify whether she has ever received cetuximab or a cetuximab analogue, including for a prior malignancy or outside the current lung-cancer treatment. Already established: No systemic therapy for the current lung cancer has yet been received.."
+      },
+      {
+        "criterion_id": "EXC-17",
+        "text": "Check exclusion criterion \"The patient has received systemic Chinese herbal medicine with anti-tumor indications within 1 week before the first dose, or systemic immunomodulatory drugs including thymosin, interferon, or interleukin within 2 weeks before the first dose, except localized intrapleural use for effusion control.\": Verify use and dates of systemic anti-tumor Chinese herbal medicines and systemic immunomodulatory drugs, and establish the planned first-dose date."
+      },
+      {
+        "criterion_id": "EXC-18",
+        "text": "Check exclusion criterion \"The patient has received therapeutic or palliative radiotherapy, except cranial radiotherapy, or local therapy within 14 days before the first study dose.\": Confirm whether any therapeutic or palliative radiotherapy or local therapy occurred within 14 days before the planned first study dose, and establish the first-dose date. Already established: Radiotherapy for breast ductal carcinoma in situ is documented in 2014.."
+      },
+      {
+        "criterion_id": "EXC-19",
+        "text": "Check exclusion criterion \"The patient has received any other anti-tumor therapy, including chemotherapy, targeted therapy, immunotherapy, or an investigational drug or device, within 28 days or 5 half-lives, whichever is shorter, before the first study dose.\": Verify all anti-tumor chemotherapy, targeted therapy, immunotherapy, investigational drugs or devices, and their dates relative to the planned first study dose; determine any applicable half-life. Already established: No systemic therapy for the current lung cancer has yet been received.."
+      },
+      {
+        "criterion_id": "EXC-20",
+        "text": "Check exclusion criterion \"The patient has undergone major surgery within 28 days before study entry that could affect study-drug administration or assessments, excluding diagnostic biopsy.\": Whether the patient underwent any major surgery within 28 days before study entry and whether it could affect study-drug administration or assessments. Already established: Diagnostic biopsy occurred on 2026-08-04."
+      },
+      {
+        "criterion_id": "EXC-21",
+        "text": "Check exclusion criterion \"The patient has used a known sensitive CYP2D6, CYP3A4, P-gp, or BCRP substrate with a narrow therapeutic window within 14 days or 5 half-lives, whichever is longer, before the first study dose, unless both the investigator and sponsor agreed to the use.\": Whether the patient used any sensitive CYP2D6, CYP3A4, P-gp, or BCRP substrate with a narrow therapeutic window during the specified period, including the first study-dose date and any investigator-sponsor agreement. Already established: Current medications are listed."
+      },
+      {
+        "criterion_id": "EXC-22",
+        "text": "Check exclusion criterion \"The patient is concurrently participating in another interventional clinical trial, excluding an observational study or the follow-up phase of an interventional study.\": Whether the patient is currently participating in another interventional clinical trial."
+      },
+      {
+        "criterion_id": "EXC-23",
+        "text": "Check exclusion criterion \"The patient has used an immunosuppressive drug within 4 weeks before the first study dose, excluding intranasal, inhaled, or topical corticosteroids, physiologic-dose systemic corticosteroids of 10 mg/day prednisone or equivalent or less, or corticosteroids used for contrast-media-allergy prophylaxis.\": Whether the patient used any immunosuppressive drug, including systemic corticosteroids above the permitted physiologic dose, within 4 weeks before the first study dose. Already established: Listed medications do not include a documented immunosuppressive drug."
+      },
+      {
+        "criterion_id": "EXC-24",
+        "text": "Check exclusion criterion \"The patient has received a live attenuated vaccine within 4 weeks before the first study dose or plans to receive one during the study period; live attenuated influenza vaccines are not permitted, while inactivated seasonal influenza vaccine administered more than 4 weeks earlier is allowed.\": Whether the patient received a live attenuated vaccine within 4 weeks before the first study dose or plans to receive one during the study period."
+      },
+      {
+        "criterion_id": "EXC-25",
+        "text": "Check exclusion criterion \"The patient has a known or suspected autoimmune disease, or a history of autoimmune disease within 2 years before screening, except vitiligo, psoriasis, alopecia, or Graves' disease not requiring systemic therapy in the last 2 years, hypothyroidism managed only with hormone replacement, or type 1 diabetes managed only with insulin replacement.\": Whether the patient has any known or suspected autoimmune disease or a qualifying history within 2 years before screening. Already established: Type 2 diabetes mellitus is documented."
+      },
+      {
+        "criterion_id": "EXC-26",
+        "text": "Check exclusion criterion \"The patient has a known history of primary immunodeficiency.\": Whether the patient has a known history of primary immunodeficiency."
+      },
+      {
+        "criterion_id": "EXC-27",
+        "text": "Check exclusion criterion \"The patient has a history of allogeneic organ transplantation or allogeneic hematopoietic stem cell transplantation.\": Whether the patient has a history of allogeneic organ transplantation or allogeneic hematopoietic stem cell transplantation."
+      },
+      {
+        "criterion_id": "EXC-28",
+        "text": "Check exclusion criterion \"The patient has a history of deep vein thrombosis, pulmonary embolism, or another severe thromboembolic event within 3 months before enrollment, excluding implant port- or catheter-related thrombosis and superficial venous thrombosis.\": History of deep vein thrombosis, pulmonary embolism, or another severe thromboembolic event within 3 months before enrollment."
+      },
+      {
+        "criterion_id": "EXC-29",
+        "text": "Check exclusion criterion \"The patient has known hypersensitivity to any component of the study drug or its formulation.\": Known hypersensitivity to any component of the study drug or its formulation."
+      },
+      {
+        "criterion_id": "EXC-30",
+        "text": "Check exclusion criterion \"The patient is pregnant or breastfeeding.\": Whether the patient is pregnant or breastfeeding."
+      }
+    ],
+    "confirm_at_screening": [
+      {
+        "criterion_id": "INC-01",
+        "text": "Confirm at screening \"The patient voluntarily agrees to participate in the study and signs the informed consent form.\": Whether the patient voluntarily agrees to participate and has signed the informed consent form."
+      },
+      {
+        "criterion_id": "INC-03",
+        "text": "Confirm at screening \"The patient's life expectancy is at least 3 months.\": Documented physician-estimated life expectancy."
+      },
+      {
+        "criterion_id": "INC-20",
+        "text": "Confirm at screening \"The patient agrees to use effective contraception from signing the ICF until 6 months after the last dose of study drug when applicable based on childbearing potential and partner status.\": Whether the patient is of childbearing potential and whether she agrees to use effective contraception if the requirement applies."
+      },
+      {
+        "criterion_id": "EXC-31",
+        "text": "Confirm at screening \"The investigator judges that another condition makes the patient unsuitable for participation in the study.\": Investigator assessment of whether any condition makes the patient unsuitable for study participation."
+      }
+    ],
+    "disclaimer": "Screening aid only. This tool does not make enrollment decisions; every determination must be reviewed and confirmed by a physician."
+  },
+  "citation_stats": {
+    "quotes_total": 38,
+    "quotes_verified": 38,
+    "judgments_needing_evidence": 12,
+    "judgments_downgraded": 0
+  },
+  "tool_calls": []
+}

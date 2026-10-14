@@ -1,0 +1,185 @@
+{
+  "patient_id": "sample-nsclc",
+  "pool_id": "lung-cancer-demo",
+  "pool_title": "Lung cancer demo pool (8 trials)",
+  "created_at": "2026-10-14T01:03:08+00:00",
+  "model": "gpt-6-sol",
+  "rows": [
+    {
+      "nct_id": "NCT04035486",
+      "title": "A Study of Osimertinib With or Without Chemotherapy as 1st Line Treatment in Patients With Mutated Epidermal Growth Factor Receptor Non-Small Cell Lung Cancer (FLAURA2)",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "rank": 1,
+      "overall": "needs_more_info",
+      "overall_label": "More information needed",
+      "counts": {
+        "total": 31,
+        "supports": 16,
+        "blocks": 0,
+        "unresolved": 15,
+        "missing_from_record": 12,
+        "confirm_at_screening": 3,
+        "partly_established": 8,
+        "low_confidence": 5,
+        "downgraded": 0
+      },
+      "headline": "16 of 31 criteria confirmed, none against, 12 to check in the record, 3 to confirm at the screening visit",
+      "run_id": "sample-nsclc__NCT04035486",
+      "error": null
+    },
+    {
+      "nct_id": "NCT06735391",
+      "title": "A Clinical Study of JMT101 in Combination With Osimertinib Versus Osimertinib Alone as First-Line Treatment for Patients With Locally Advanced or Metastatic Non-Squamous Non-Small Cell Lung Cancer (NSCLC) Harboring Epidermal Growth Factor Receptor (EGFR) Sensitive Mutations",
+      "status": "RECRUITING",
+      "rank": 2,
+      "overall": "needs_more_info",
+      "overall_label": "More information needed",
+      "counts": {
+        "total": 30,
+        "supports": 7,
+        "blocks": 0,
+        "unresolved": 23,
+        "missing_from_record": 21,
+        "confirm_at_screening": 2,
+        "partly_established": 12,
+        "low_confidence": 7,
+        "downgraded": 0
+      },
+      "headline": "7 of 30 criteria confirmed, none against, 21 to check in the record, 2 to confirm at the screening visit",
+      "run_id": "sample-nsclc__NCT06735391",
+      "error": null
+    },
+    {
+      "nct_id": "NCT05281406",
+      "title": "Additional Chemotherapy for EGFRm Patients with the Continued Presence of Plasma CtDNA EGFRm At Week 3 After Start of Osimertinib 1st-line Treatment (PACE-LUNG)",
+      "status": "RECRUITING",
+      "rank": 3,
+      "overall": "needs_more_info",
+      "overall_label": "More information needed",
+      "counts": {
+        "total": 48,
+        "supports": 15,
+        "blocks": 0,
+        "unresolved": 33,
+        "missing_from_record": 25,
+        "confirm_at_screening": 8,
+        "partly_established": 16,
+        "low_confidence": 12,
+        "downgraded": 0
+      },
+      "headline": "15 of 48 criteria confirmed, none against, 25 to check in the record, 8 to confirm at the screening visit",
+      "run_id": "sample-nsclc__NCT05281406",
+      "error": null
+    },
+    {
+      "nct_id": "NCT04181060",
+      "title": "Osimertinib With or Without Bevacizumab as Initial Treatment for Patients With EGFR-Mutant Lung Cancer",
+      "status": "RECRUITING",
+      "rank": 4,
+      "overall": "needs_more_info",
+      "overall_label": "More information needed",
+      "counts": {
+        "total": 41,
+        "supports": 9,
+        "blocks": 0,
+        "unresolved": 32,
+        "missing_from_record": 28,
+        "confirm_at_screening": 4,
+        "partly_established": 19,
+        "low_confidence": 20,
+        "downgraded": 0
+      },
+      "headline": "9 of 41 criteria confirmed, none against, 28 to check in the record, 4 to confirm at the screening visit",
+      "run_id": "sample-nsclc__NCT04181060",
+      "error": null
+    },
+    {
+      "nct_id": "NCT06487078",
+      "title": "Analysis of the Effectiveness and Safety of Lorlatinib in Untreated ALK-Positive NSCLC Patients in a French Real-World Context",
+      "status": "RECRUITING",
+      "rank": 5,
+      "overall": "not_eligible",
+      "overall_label": "Likely not eligible",
+      "counts": {
+        "total": 20,
+        "supports": 6,
+        "blocks": 1,
+        "unresolved": 13,
+        "missing_from_record": 8,
+        "confirm_at_screening": 5,
+        "partly_established": 6,
+        "low_confidence": 2,
+        "downgraded": 0
+      },
+      "headline": "Inclusion criterion not met: The patient has a histologically or cytologically confirmed diagnosis of locally advanced or metastatic ALK-positive NSCLC according to the TNM 8th classification, established by IHC 3+, positive FISH, or a transcriptomic method. (The note states that ALK testing was negative, so the required ALK-positive NSCLC criterion is not met.)",
+      "run_id": "sample-nsclc__NCT06487078",
+      "error": null
+    },
+    {
+      "nct_id": "NCT07198841",
+      "title": "IBI351 Plus Cetuximab β in Untreated Advanced Non-small Cell Lung Cancer With KRAS G12C Mutation",
+      "status": "RECRUITING",
+      "rank": 6,
+      "overall": "not_eligible",
+      "overall_label": "Likely not eligible",
+      "counts": {
+        "total": 52,
+        "supports": 11,
+        "blocks": 1,
+        "unresolved": 40,
+        "missing_from_record": 36,
+        "confirm_at_screening": 4,
+        "partly_established": 18,
+        "low_confidence": 27,
+        "downgraded": 0
+      },
+      "headline": "Exclusion criterion applies: The patient has an EGFR sensitizing mutation, ALK rearrangement, ROS-1 fusion, or another genomic alteration for which an NMPA-approved first-line NSCLC therapy exists. (The documented EGFR exon 19 deletion is an EGFR sensitizing mutation covered by this exclusion criterion.)",
+      "run_id": "sample-nsclc__NCT07198841",
+      "error": null
+    },
+    {
+      "nct_id": "NCT06970639",
+      "title": "A Study Evaluating Furmonertinib Plus Platinum-based Doublet Chemotherapy Versus Osimertinib in Patients With Epidermal Growth Factor Receptor (EGFR) Sensitizing Mutation-Positive Non-squamous Non-Small Cell Lung Cancer (NSCLC) and Brain Metastases",
+      "status": "RECRUITING",
+      "rank": 7,
+      "overall": "not_eligible",
+      "overall_label": "Likely not eligible",
+      "counts": {
+        "total": 51,
+        "supports": 13,
+        "blocks": 2,
+        "unresolved": 36,
+        "missing_from_record": 32,
+        "confirm_at_screening": 4,
+        "partly_established": 16,
+        "low_confidence": 29,
+        "downgraded": 0
+      },
+      "headline": "Inclusion criterion not met: The patient has at least one measurable intracranial lesion per RECIST v1.1 without prior local treatment. (The brain MRI showed no intracranial metastases, so the note does not show a measurable intracranial lesion.)",
+      "run_id": "sample-nsclc__NCT06970639",
+      "error": null
+    },
+    {
+      "nct_id": "NCT07279935",
+      "title": "Osimertinib Combined With Chemotherapy in Patients Who Had Distant Recurrence After Adjuvant Osimertinib for EGFRm Resectable SIB-IIIA NSCLC.",
+      "status": "RECRUITING",
+      "rank": 8,
+      "overall": "not_eligible",
+      "overall_label": "Likely not eligible",
+      "counts": {
+        "total": 22,
+        "supports": 9,
+        "blocks": 3,
+        "unresolved": 10,
+        "missing_from_record": 9,
+        "confirm_at_screening": 1,
+        "partly_established": 4,
+        "low_confidence": 6,
+        "downgraded": 0
+      },
+      "headline": "Inclusion criterion not met: The patient previously received adjuvant osimertinib for EGFRm resectable SIB-IIIA NSCLC according to the AJCC 7th edition. (The note explicitly states that she has not received systemic therapy, which includes adjuvant osimertinib.)",
+      "run_id": "sample-nsclc__NCT07279935",
+      "error": null
+    }
+  ]
+}

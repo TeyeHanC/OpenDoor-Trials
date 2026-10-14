@@ -1,0 +1,1187 @@
+{
+  "run_id": "sample-nsclc__NCT07279935",
+  "created_at": "2026-10-14T00:38:32+00:00",
+  "model": "gpt-6-sol",
+  "note_coverage": "full",
+  "judge_batch_size": 8,
+  "patient": {
+    "id": "sample-nsclc",
+    "source": "Synthetic sample (hand-written, not a real patient)",
+    "text": "SYNTHETIC NOTE - NOT A REAL PATIENT\nNote date: 2026-09-18\n\nChief complaint: Follow-up for newly diagnosed lung cancer.\n\nHistory of present illness: 62-year-old woman, former smoker (30 pack-years, quit in 2015), who presented in July 2026 with persistent cough and 6 kg weight loss. CT chest showed a 4.2 cm right upper lobe mass with mediastinal lymphadenopathy. CT-guided biopsy on 2026-08-04 confirmed lung adenocarcinoma. PET-CT on 2026-08-12 showed bilateral adrenal metastases; stage IV disease. Brain MRI on 2026-08-14 showed no intracranial metastases. Molecular testing: EGFR exon 19 deletion detected; ALK and ROS1 negative. PD-L1 TPS 10%. She has not yet received any systemic therapy for lung cancer.\n\nPast medical history: Hypertension, well controlled on lisinopril. Type 2 diabetes mellitus on metformin, HbA1c 7.1% in August 2026. Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence. She denies any history of interstitial lung disease or pneumonitis.\n\nFamily history: Mother died of breast cancer at age 71. Father had a myocardial infarction at age 65.\n\nMedications: Lisinopril 10 mg daily, metformin 1000 mg twice daily.\n\nExamination: ECOG performance status 1. Blood pressure 128/76 mmHg, heart rate 82, SpO2 96% on room air. Decreased breath sounds at the right apex.\n\nLaboratory results (2026-09-15): Hemoglobin 11.8 g/dL, absolute neutrophil count 3.4 x 10^9/L, platelets 245 x 10^9/L. Creatinine 0.9 mg/dL. ALT 28 U/L, AST 31 U/L, total bilirubin 0.6 mg/dL. ECG on 2026-09-15: normal sinus rhythm, QTc 438 ms.\n\nAssessment and plan: Stage IV EGFR-mutated lung adenocarcinoma, treatment-naive. Discussed first-line options including clinical trial participation.",
+    "note_date": "2026-09-18"
+  },
+  "segments": [
+    {
+      "id": "S1",
+      "start": 0,
+      "end": 35,
+      "text": "SYNTHETIC NOTE - NOT A REAL PATIENT"
+    },
+    {
+      "id": "S2",
+      "start": 36,
+      "end": 57,
+      "text": "Note date: 2026-09-18"
+    },
+    {
+      "id": "S3",
+      "start": 59,
+      "end": 118,
+      "text": "Chief complaint: Follow-up for newly diagnosed lung cancer."
+    },
+    {
+      "id": "S4",
+      "start": 120,
+      "end": 501,
+      "text": "History of present illness: 62-year-old woman, former smoker (30 pack-years, quit in 2015), who presented in July 2026 with persistent cough and 6 kg weight loss. CT chest showed a 4.2 cm right upper lobe mass with mediastinal lymphadenopathy. CT-guided biopsy on 2026-08-04 confirmed lung adenocarcinoma. PET-CT on 2026-08-12 showed bilateral adrenal metastases; stage IV disease."
+    },
+    {
+      "id": "S5",
+      "start": 502,
+      "end": 712,
+      "text": "Brain MRI on 2026-08-14 showed no intracranial metastases. Molecular testing: EGFR exon 19 deletion detected; ALK and ROS1 negative. PD-L1 TPS 10%. She has not yet received any systemic therapy for lung cancer."
+    },
+    {
+      "id": "S6",
+      "start": 714,
+      "end": 1013,
+      "text": "Past medical history: Hypertension, well controlled on lisinopril. Type 2 diabetes mellitus on metformin, HbA1c 7.1% in August 2026. Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence. She denies any history of interstitial lung disease or pneumonitis."
+    },
+    {
+      "id": "S7",
+      "start": 1015,
+      "end": 1116,
+      "text": "Family history: Mother died of breast cancer at age 71. Father had a myocardial infarction at age 65."
+    },
+    {
+      "id": "S8",
+      "start": 1118,
+      "end": 1185,
+      "text": "Medications: Lisinopril 10 mg daily, metformin 1000 mg twice daily."
+    },
+    {
+      "id": "S9",
+      "start": 1187,
+      "end": 1334,
+      "text": "Examination: ECOG performance status 1. Blood pressure 128/76 mmHg, heart rate 82, SpO2 96% on room air. Decreased breath sounds at the right apex."
+    },
+    {
+      "id": "S10",
+      "start": 1336,
+      "end": 1579,
+      "text": "Laboratory results (2026-09-15): Hemoglobin 11.8 g/dL, absolute neutrophil count 3.4 x 10^9/L, platelets 245 x 10^9/L. Creatinine 0.9 mg/dL. ALT 28 U/L, AST 31 U/L, total bilirubin 0.6 mg/dL. ECG on 2026-09-15: normal sinus rhythm, QTc 438 ms."
+    },
+    {
+      "id": "S11",
+      "start": 1581,
+      "end": 1730,
+      "text": "Assessment and plan: Stage IV EGFR-mutated lung adenocarcinoma, treatment-naive. Discussed first-line options including clinical trial participation."
+    }
+  ],
+  "trial": {
+    "nct_id": "NCT07279935",
+    "title": "Osimertinib Combined With Chemotherapy in Patients Who Had Distant Recurrence After Adjuvant Osimertinib for EGFRm Resectable SIB-IIIA NSCLC.",
+    "conditions": [
+      "Non-small Cell Lung Cancer"
+    ],
+    "criteria_text": "Inclusion Criteria for pre-screening:\n\n1. Prior complete surgical resection (R0) and adjuvant osimertinib in EGFRm resectable SIB-IIIA NSCLC (AJCC 7th edition).\n2. Off-treatment recurrence (including completed 3 years adjuvant osimertinib \\& discontinued adjuvant osimertinib before 3 years due to non-recurrence reason).\n3. Newly diagnosed distant recurrent NSCLC (IVA or IVB) (per Version 9 of the International Association for the Study of Lung Cancer \\[IASLC\\] Staging Manual in Thoracic Oncology).\n4. ≥6 months interval between recurrence and completion or discontinuation of adjuvant osimertinib.\n5. Histologically/cytologically confirmed nonsquamous NSCLC (Investigators confirmed recurrence of primary lesion allowed if biopsy not available)\n6. No prior systemic anti-cancer therapy after adjuvant therapy, but can receive local therapy (including surgery, radiotherapy, etc. per investigator choice).\n7. Patients with asymptomatic or stable CNS metastases allowed.\n\nInclusion Criteria for screening:\n\n1. Male or female, at least 18 years of age. Type of patient and disease characteristics\n2. EGFR mutation (Exon 19del/Exon 21 L858R)-reconfirmed for study entry (mandatory undergo NGS by plasma, and tissue if applicable).\n3. Life expectancy \\>12 weeks at Day 1.\n\nExclusion Criteria:\n\n1. Patients with only local/regional recurrence.\n2. Spinal cord compression and symptomatic brain metastases.\n3. Past medical history of ILD/pneumonitis, including radiation pneumonitis (apart from radiation pneumonitis that did not require steroids), or drug-induced ILD/pneumonitis, or has suspected ILD/pneumonitis that cannot be ruled out by imaging at screening.\n4. Adjuvant osimertinib therapy was discontinued due to the occurrence of severe adverse events.\n5. Prior with other adjuvant EGFR-TKIs (excluding osimertinib).\n6. Refractory nausea and vomiting, chronic gastrointestinal diseases, inability to swallow the formulated product or previous significant bowel resection that would preclude adequate absorption of osimertinib.\n7. History of hypersensitivity to active or inactive excipients of osimertinib or drugs with a similar chemical structure or class to osimertinib.\n8. Contraindication for pemetrexed and cisplatin/carboplatin according to local approved label.",
+    "minimum_age": "18 Years",
+    "maximum_age": null,
+    "sex": "ALL",
+    "overall_status": "RECRUITING",
+    "url": "https://clinicaltrials.gov/study/NCT07279935",
+    "fetched_at": "2026-10-14T00:20:23+00:00",
+    "source": "ctgov_api"
+  },
+  "criteria": [
+    {
+      "criterion_id": "INC-01",
+      "criterion_text": "The patient previously underwent complete surgical resection (R0) for EGFRm resectable SIB-IIIA NSCLC according to the AJCC 7th edition.",
+      "source_text": "1. Prior complete surgical resection (R0) and adjuvant osimertinib in EGFRm resectable SIB-IIIA NSCLC (AJCC 7th edition).",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not document prior complete surgical resection of the lung cancer.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Document whether the patient previously underwent R0 surgical resection for EGFR-mutated resectable stage IB-IIIA NSCLC.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "complete surgical resection (R0)",
+          "normalized": "Complete surgical resection",
+          "category": "procedure"
+        },
+        {
+          "original": "EGFRm resectable SIB-IIIA NSCLC",
+          "normalized": "Resectable stage II-IIIA non-small cell lung cancer",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-02",
+      "criterion_text": "The patient previously received adjuvant osimertinib for EGFRm resectable SIB-IIIA NSCLC according to the AJCC 7th edition.",
+      "source_text": "1. Prior complete surgical resection (R0) and adjuvant osimertinib in EGFRm resectable SIB-IIIA NSCLC (AJCC 7th edition).",
+      "type": "inclusion",
+      "verdict": "not_met",
+      "effect": "blocks",
+      "evidence": [
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The note explicitly states that she has not received systemic therapy, which includes adjuvant osimertinib.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "osimertinib",
+          "normalized": "Osimertinib",
+          "category": "drug"
+        },
+        {
+          "original": "EGFRm resectable SIB-IIIA NSCLC",
+          "normalized": "Resectable stage II-IIIA non-small cell lung cancer",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "not_met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-03",
+      "criterion_text": "The patient has off-treatment recurrence, including recurrence after completing 3 years of adjuvant osimertinib or after discontinuing adjuvant osimertinib before 3 years for a non-recurrence reason.",
+      "source_text": "2. Off-treatment recurrence (including completed 3 years adjuvant osimertinib \\& discontinued adjuvant osimertinib before 3 years due to non-recurrence reason).",
+      "type": "inclusion",
+      "verdict": "not_met",
+      "effect": "blocks",
+      "evidence": [
+        {
+          "quote": "Chief complaint: Follow-up for newly diagnosed lung cancer.",
+          "start": 59,
+          "end": 118,
+          "segment_id": "S3"
+        },
+        {
+          "quote": "Stage IV EGFR-mutated lung adenocarcinoma, treatment-naive.",
+          "start": 1602,
+          "end": 1661,
+          "segment_id": "S11"
+        }
+      ],
+      "rationale": "The disease is described as newly diagnosed and treatment-naive rather than as an off-treatment recurrence.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "adjuvant osimertinib",
+          "normalized": "Osimertinib",
+          "category": "drug"
+        },
+        {
+          "original": "recurrence",
+          "normalized": "Recurrent non-small cell lung cancer",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "not_met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-04",
+      "criterion_text": "The patient has newly diagnosed distant recurrent NSCLC, stage IVA or IVB, per Version 9 of the International Association for the Study of Lung Cancer (IASLC) Staging Manual in Thoracic Oncology.",
+      "source_text": "3. Newly diagnosed distant recurrent NSCLC (IVA or IVB) (per Version 9 of the International Association for the Study of Lung Cancer \\[IASLC\\] Staging Manual in Thoracic Oncology).",
+      "type": "inclusion",
+      "verdict": "not_met",
+      "effect": "blocks",
+      "evidence": [
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        },
+        {
+          "quote": "Stage IV EGFR-mutated lung adenocarcinoma, treatment-naive.",
+          "start": 1602,
+          "end": 1661,
+          "segment_id": "S11"
+        }
+      ],
+      "rationale": "The note documents newly diagnosed stage IV metastatic disease but does not support that it is recurrent disease.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "distant recurrent NSCLC",
+          "normalized": "Distant recurrent non-small cell lung cancer",
+          "category": "other"
+        },
+        {
+          "original": "IVA or IVB",
+          "normalized": "Stage IV non-small cell lung cancer",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "not_met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-05",
+      "criterion_text": "At least 6 months elapsed between recurrence and completion or discontinuation of adjuvant osimertinib.",
+      "source_text": "4. ≥6 months interval between recurrence and completion or discontinuation of adjuvant osimertinib.",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Stage IV EGFR-mutated lung adenocarcinoma, treatment-naive.",
+          "start": 1602,
+          "end": 1661,
+          "segment_id": "S11"
+        }
+      ],
+      "rationale": "The note provides no adjuvant osimertinib completion or discontinuation date from which to calculate a six-month interval.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Obtain the dates of recurrence and completion or discontinuation of adjuvant osimertinib, if applicable.",
+      "established_part": "The patient is treatment-naive and no adjuvant osimertinib completion or discontinuation is documented.",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "Interval between recurrence and completion or discontinuation of adjuvant osimertinib",
+        "comparator": ">=",
+        "value": "6",
+        "unit": "months"
+      },
+      "concepts": [
+        {
+          "original": "recurrence",
+          "normalized": "Recurrence",
+          "category": "other"
+        },
+        {
+          "original": "adjuvant osimertinib",
+          "normalized": "Osimertinib",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-06",
+      "criterion_text": "The patient has histologically or cytologically confirmed nonsquamous NSCLC; investigator-confirmed recurrence of the primary lesion is allowed if biopsy is not available.",
+      "source_text": "5. Histologically/cytologically confirmed nonsquamous NSCLC (Investigators confirmed recurrence of primary lesion allowed if biopsy not available)",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "CT-guided biopsy on 2026-08-04 confirmed lung adenocarcinoma.",
+          "start": 364,
+          "end": 425,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "Biopsy confirmed lung adenocarcinoma, which is histologically confirmed nonsquamous NSCLC.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "nonsquamous NSCLC",
+          "normalized": "Nonsquamous non-small cell lung cancer",
+          "category": "other"
+        },
+        {
+          "original": "biopsy",
+          "normalized": "Biopsy",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-07",
+      "criterion_text": "The patient has not received prior systemic anti-cancer therapy after adjuvant therapy; local therapy, including surgery or radiotherapy, is permitted according to investigator choice.",
+      "source_text": "6. No prior systemic anti-cancer therapy after adjuvant therapy, but can receive local therapy (including surgery, radiotherapy, etc. per investigator choice).",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The note explicitly states that she has not received prior systemic anti-cancer therapy for lung cancer.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "systemic anti-cancer therapy",
+          "normalized": "Systemic anticancer therapy",
+          "category": "drug"
+        },
+        {
+          "original": "adjuvant therapy",
+          "normalized": "Osimertinib",
+          "category": "drug"
+        },
+        {
+          "original": "local therapy",
+          "normalized": "Local therapy",
+          "category": "procedure"
+        },
+        {
+          "original": "surgery",
+          "normalized": "Surgery",
+          "category": "procedure"
+        },
+        {
+          "original": "radiotherapy",
+          "normalized": "Radiotherapy",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-08",
+      "criterion_text": "The patient has asymptomatic or stable CNS metastases, if CNS metastases are present.",
+      "source_text": "7. Patients with asymptomatic or stable CNS metastases allowed.",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "Brain MRI on 2026-08-14 showed no intracranial metastases.",
+          "start": 502,
+          "end": 560,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "No CNS metastases are present, so the requirement concerning patients with CNS metastases does not apply.",
+      "confidence": "high",
+      "basis": "inferred",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "CNS metastases",
+          "normalized": "Central nervous system metastases",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-09",
+      "criterion_text": "The patient is male or female.",
+      "source_text": "1. Male or female, at least 18 years of age. Type of patient and disease characteristics",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "62-year-old woman",
+          "start": 148,
+          "end": 165,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The note identifies the patient as a woman, satisfying the male-or-female criterion.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-10",
+      "criterion_text": "The patient is at least 18 years of age.",
+      "source_text": "1. Male or female, at least 18 years of age. Type of patient and disease characteristics",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "62-year-old woman",
+          "start": 148,
+          "end": 165,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The stated age is 62 years, which is at least 18 years.",
+      "confidence": "high",
+      "basis": "inferred",
+      "patient_value": "62 years",
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "Age",
+        "comparator": ">=",
+        "value": "18",
+        "unit": "years"
+      },
+      "concepts": [],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 62.0,
+            "value_unit": "years",
+            "comparator": ">=",
+            "threshold": 18.0,
+            "threshold_upper": null,
+            "threshold_unit": "years",
+            "reference_limit": null,
+            "reference_limit_assumed": false,
+            "analyte": null
+          },
+          "model_answer": true,
+          "computed": true,
+          "status": "confirmed",
+          "detail": "62 >= 18 years is true",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": false
+        }
+      ],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-11",
+      "criterion_text": "The patient has an EGFR mutation consisting of Exon 19del or Exon 21 L858R.",
+      "source_text": "2. EGFR mutation (Exon 19del/Exon 21 L858R)-reconfirmed for study entry (mandatory undergo NGS by plasma, and tissue if applicable).",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "EGFR exon 19 deletion detected",
+          "start": 580,
+          "end": 610,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "Molecular testing documented an EGFR exon 19 deletion, which is an eligible mutation.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "EGFR mutation",
+          "normalized": "EGFR mutation",
+          "category": "other"
+        },
+        {
+          "original": "Exon 19del",
+          "normalized": "EGFR exon 19 deletion",
+          "category": "other"
+        },
+        {
+          "original": "Exon 21 L858R",
+          "normalized": "EGFR L858R mutation",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-12",
+      "criterion_text": "The patient's EGFR mutation has been reconfirmed for study entry by mandatory next-generation sequencing of plasma, with tissue testing if applicable.",
+      "source_text": "2. EGFR mutation (Exon 19del/Exon 21 L858R)-reconfirmed for study entry (mandatory undergo NGS by plasma, and tissue if applicable).",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Molecular testing: EGFR exon 19 deletion detected",
+          "start": 561,
+          "end": 610,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The note documents an EGFR exon 19 deletion but does not document the required plasma NGS reconfirmation for study entry.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Confirm reconfirmation for study entry by mandatory plasma next-generation sequencing, with tissue testing if applicable.",
+      "established_part": "EGFR exon 19 deletion detected",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "EGFR mutation",
+          "normalized": "EGFR mutation",
+          "category": "other"
+        },
+        {
+          "original": "NGS",
+          "normalized": "Next-generation sequencing",
+          "category": "procedure"
+        },
+        {
+          "original": "plasma",
+          "normalized": "Plasma molecular testing",
+          "category": "lab_test"
+        },
+        {
+          "original": "tissue",
+          "normalized": "Tumor tissue molecular testing",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-13",
+      "criterion_text": "The investigator estimates that the patient's life expectancy is greater than 12 weeks at Day 1.",
+      "source_text": "3. Life expectancy \\>12 weeks at Day 1.",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not state whether the investigator estimates life expectancy to exceed 12 weeks at Day 1.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Obtain the investigator's estimate of life expectancy at Day 1.",
+      "established_part": null,
+      "answer_source": "screening_visit",
+      "time_window": "at Day 1",
+      "threshold": {
+        "parameter": "Life expectancy",
+        "comparator": ">",
+        "value": "12",
+        "unit": "weeks"
+      },
+      "concepts": [],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-01",
+      "criterion_text": "The patient has only local or regional recurrence.",
+      "source_text": "1. Patients with only local/regional recurrence.",
+      "type": "exclusion",
+      "verdict": "not_met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "bilateral adrenal metastases; stage IV disease",
+          "start": 454,
+          "end": 500,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "Bilateral adrenal metastases and stage IV disease show that the disease is not limited to local or regional recurrence.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "local/regional recurrence",
+          "normalized": "Local or regional recurrence",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "not_met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-02",
+      "criterion_text": "The patient has spinal cord compression or symptomatic brain metastases.",
+      "source_text": "2. Spinal cord compression and symptomatic brain metastases.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Brain MRI on 2026-08-14 showed no intracranial metastases",
+          "start": 502,
+          "end": 559,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The note rules out intracranial metastases but does not address spinal cord compression, so the combined exclusion criterion cannot be fully assessed.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Determine whether spinal cord compression is present.",
+      "established_part": "No intracranial metastases on brain MRI",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Spinal cord compression",
+          "normalized": "Spinal cord compression",
+          "category": "other"
+        },
+        {
+          "original": "symptomatic brain metastases",
+          "normalized": "Symptomatic brain metastases",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-03",
+      "criterion_text": "The patient has a past medical history of ILD or pneumonitis, including radiation pneumonitis except radiation pneumonitis that did not require steroids, or drug-induced ILD or pneumonitis, or has suspected ILD or pneumonitis that cannot be ruled out by imaging at screening.",
+      "source_text": "3. Past medical history of ILD/pneumonitis, including radiation pneumonitis (apart from radiation pneumonitis that did not require steroids), or drug-induced ILD/pneumonitis, or has suspected ILD/pneumonitis that cannot be ruled out by imaging at screening.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "She denies any history of interstitial lung disease or pneumonitis.",
+          "start": 946,
+          "end": 1013,
+          "segment_id": "S6"
+        }
+      ],
+      "rationale": "The note denies a past history of ILD or pneumonitis but does not provide screening imaging to assess suspected current disease.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Review screening imaging and determine whether suspected ILD or pneumonitis can be ruled out, including any relevant radiation- or drug-induced history.",
+      "established_part": "Denies history of interstitial lung disease or pneumonitis",
+      "answer_source": "medical_record",
+      "time_window": "at screening",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "ILD",
+          "normalized": "Interstitial lung disease",
+          "category": "other"
+        },
+        {
+          "original": "pneumonitis",
+          "normalized": "Pneumonitis",
+          "category": "other"
+        },
+        {
+          "original": "radiation pneumonitis",
+          "normalized": "Radiation pneumonitis",
+          "category": "other"
+        },
+        {
+          "original": "steroids",
+          "normalized": "Corticosteroids",
+          "category": "drug"
+        },
+        {
+          "original": "drug-induced ILD/pneumonitis",
+          "normalized": "Drug-induced interstitial lung disease",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-04",
+      "criterion_text": "The patient's adjuvant osimertinib therapy was discontinued because of severe adverse events.",
+      "source_text": "4. Adjuvant osimertinib therapy was discontinued due to the occurrence of severe adverse events.",
+      "type": "exclusion",
+      "verdict": "not_met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The patient has not received systemic therapy, so there is no adjuvant osimertinib discontinuation due to severe adverse events.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Adjuvant osimertinib",
+          "normalized": "Osimertinib",
+          "category": "drug"
+        },
+        {
+          "original": "severe adverse events",
+          "normalized": "Severe adverse event",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "not_met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-05",
+      "criterion_text": "The patient previously received an adjuvant EGFR-TKI other than osimertinib.",
+      "source_text": "5. Prior with other adjuvant EGFR-TKIs (excluding osimertinib).",
+      "type": "exclusion",
+      "verdict": "not_met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The note states that she has not received systemic therapy, which rules out prior adjuvant EGFR-TKI treatment.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "EGFR-TKIs",
+          "normalized": "Epidermal growth factor receptor tyrosine kinase inhibitors",
+          "category": "drug"
+        },
+        {
+          "original": "osimertinib",
+          "normalized": "Osimertinib",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "not_met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-06",
+      "criterion_text": "The patient has refractory nausea and vomiting, chronic gastrointestinal disease, inability to swallow the formulated product, or previous significant bowel resection that would preclude adequate absorption of osimertinib.",
+      "source_text": "6. Refractory nausea and vomiting, chronic gastrointestinal diseases, inability to swallow the formulated product or previous significant bowel resection that would preclude adequate absorption of osimertinib.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not provide enough information about gastrointestinal symptoms, swallowing ability, or bowel surgery.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Ask about refractory nausea or vomiting, chronic gastrointestinal disease, ability to swallow osimertinib, and prior significant bowel resection affecting absorption.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "nausea and vomiting",
+          "normalized": "Nausea and vomiting",
+          "category": "other"
+        },
+        {
+          "original": "chronic gastrointestinal diseases",
+          "normalized": "Chronic gastrointestinal disease",
+          "category": "other"
+        },
+        {
+          "original": "bowel resection",
+          "normalized": "Bowel resection",
+          "category": "procedure"
+        },
+        {
+          "original": "osimertinib",
+          "normalized": "Osimertinib",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-07",
+      "criterion_text": "The patient has a history of hypersensitivity to active or inactive excipients of osimertinib or to drugs with a chemical structure or class similar to osimertinib.",
+      "source_text": "7. History of hypersensitivity to active or inactive excipients of osimertinib or drugs with a similar chemical structure or class to osimertinib.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not address hypersensitivity to osimertinib, its excipients, or similar drugs.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Confirm any history of hypersensitivity to osimertinib, its excipients, or chemically or pharmacologically similar drugs.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "hypersensitivity",
+          "normalized": "Hypersensitivity",
+          "category": "other"
+        },
+        {
+          "original": "osimertinib",
+          "normalized": "Osimertinib",
+          "category": "drug"
+        },
+        {
+          "original": "inactive excipients",
+          "normalized": "Inactive excipients",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-08",
+      "criterion_text": "The patient has a contraindication to pemetrexed according to the local approved label.",
+      "source_text": "8. Contraindication for pemetrexed and cisplatin/carboplatin according to local approved label.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not establish whether the patient has a contraindication to pemetrexed under the local approved label.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Review the local approved pemetrexed label and the patient's history, medications, allergies, renal function, and other factors for contraindications.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "pemetrexed",
+          "normalized": "Pemetrexed",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-09",
+      "criterion_text": "The patient has a contraindication to cisplatin or carboplatin according to the local approved label.",
+      "source_text": "8. Contraindication for pemetrexed and cisplatin/carboplatin according to local approved label.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not establish whether the patient has a contraindication to cisplatin or carboplatin under the local approved label.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Review the local approved cisplatin and carboplatin labels and assess contraindications, including relevant allergies, renal function, hearing, neuropathy, and other treatment factors.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "cisplatin",
+          "normalized": "Cisplatin",
+          "category": "drug"
+        },
+        {
+          "original": "carboplatin",
+          "normalized": "Carboplatin",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    }
+  ],
+  "summary": {
+    "overall": "not_eligible",
+    "overall_label": "Likely not eligible",
+    "counts": {
+      "total": 22,
+      "supports": 9,
+      "blocks": 3,
+      "unresolved": 10,
+      "missing_from_record": 9,
+      "confirm_at_screening": 1,
+      "partly_established": 4,
+      "low_confidence": 6,
+      "downgraded": 0
+    },
+    "key_reasons": [
+      {
+        "criterion_id": "INC-02",
+        "text": "Inclusion criterion not met: The patient previously received adjuvant osimertinib for EGFRm resectable SIB-IIIA NSCLC according to the AJCC 7th edition. (The note explicitly states that she has not received systemic therapy, which includes adjuvant osimertinib.)"
+      },
+      {
+        "criterion_id": "INC-03",
+        "text": "Inclusion criterion not met: The patient has off-treatment recurrence, including recurrence after completing 3 years of adjuvant osimertinib or after discontinuing adjuvant osimertinib before 3 years for a non-recurrence reason. (The disease is described as newly diagnosed and treatment-naive rather than as an off-treatment recurrence.)"
+      },
+      {
+        "criterion_id": "INC-04",
+        "text": "Inclusion criterion not met: The patient has newly diagnosed distant recurrent NSCLC, stage IVA or IVB, per Version 9 of the International Association for the Study of Lung Cancer (IASLC) Staging Manual in Thoracic Oncology. (The note documents newly diagnosed stage IV metastatic disease but does not support that it is recurrent disease.)"
+      }
+    ],
+    "follow_up": [
+      {
+        "criterion_id": "INC-01",
+        "text": "Check inclusion criterion \"The patient previously underwent complete surgical resection (R0) for EGFRm resectable SIB-IIIA NSCLC according to the AJCC 7th edition.\": Document whether the patient previously underwent R0 surgical resection for EGFR-mutated resectable stage IB-IIIA NSCLC."
+      },
+      {
+        "criterion_id": "INC-05",
+        "text": "Check inclusion criterion \"At least 6 months elapsed between recurrence and completion or discontinuation of adjuvant osimertinib.\": Obtain the dates of recurrence and completion or discontinuation of adjuvant osimertinib, if applicable. Already established: The patient is treatment-naive and no adjuvant osimertinib completion or discontinuation is documented.."
+      },
+      {
+        "criterion_id": "INC-12",
+        "text": "Check inclusion criterion \"The patient's EGFR mutation has been reconfirmed for study entry by mandatory next-generation sequencing of plasma, with tissue testing if applicable.\": Confirm reconfirmation for study entry by mandatory plasma next-generation sequencing, with tissue testing if applicable. Already established: EGFR exon 19 deletion detected."
+      },
+      {
+        "criterion_id": "EXC-02",
+        "text": "Check exclusion criterion \"The patient has spinal cord compression or symptomatic brain metastases.\": Determine whether spinal cord compression is present. Already established: No intracranial metastases on brain MRI."
+      },
+      {
+        "criterion_id": "EXC-03",
+        "text": "Check exclusion criterion \"The patient has a past medical history of ILD or pneumonitis, including radiation pneumonitis except radiation pneumonitis that did not require steroids, or drug-induced ILD or pneumonitis, or has suspected ILD or pneumonitis that cannot be ruled out by imaging at screening.\": Review screening imaging and determine whether suspected ILD or pneumonitis can be ruled out, including any relevant radiation- or drug-induced history. Already established: Denies history of interstitial lung disease or pneumonitis."
+      },
+      {
+        "criterion_id": "EXC-06",
+        "text": "Check exclusion criterion \"The patient has refractory nausea and vomiting, chronic gastrointestinal disease, inability to swallow the formulated product, or previous significant bowel resection that would preclude adequate absorption of osimertinib.\": Ask about refractory nausea or vomiting, chronic gastrointestinal disease, ability to swallow osimertinib, and prior significant bowel resection affecting absorption."
+      },
+      {
+        "criterion_id": "EXC-07",
+        "text": "Check exclusion criterion \"The patient has a history of hypersensitivity to active or inactive excipients of osimertinib or to drugs with a chemical structure or class similar to osimertinib.\": Confirm any history of hypersensitivity to osimertinib, its excipients, or chemically or pharmacologically similar drugs."
+      },
+      {
+        "criterion_id": "EXC-08",
+        "text": "Check exclusion criterion \"The patient has a contraindication to pemetrexed according to the local approved label.\": Review the local approved pemetrexed label and the patient's history, medications, allergies, renal function, and other factors for contraindications."
+      },
+      {
+        "criterion_id": "EXC-09",
+        "text": "Check exclusion criterion \"The patient has a contraindication to cisplatin or carboplatin according to the local approved label.\": Review the local approved cisplatin and carboplatin labels and assess contraindications, including relevant allergies, renal function, hearing, neuropathy, and other treatment factors."
+      }
+    ],
+    "confirm_at_screening": [
+      {
+        "criterion_id": "INC-13",
+        "text": "Confirm at screening \"The investigator estimates that the patient's life expectancy is greater than 12 weeks at Day 1.\": Obtain the investigator's estimate of life expectancy at Day 1."
+      }
+    ],
+    "disclaimer": "Screening aid only. This tool does not make enrollment decisions; every determination must be reviewed and confirmed by a physician."
+  },
+  "citation_stats": {
+    "quotes_total": 18,
+    "quotes_verified": 18,
+    "judgments_needing_evidence": 12,
+    "judgments_downgraded": 0
+  },
+  "tool_calls": []
+}

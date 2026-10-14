@@ -1,0 +1,1184 @@
+{
+  "run_id": "sample-nsclc__NCT06487078",
+  "created_at": "2026-10-14T00:28:21+00:00",
+  "model": "gpt-6-sol",
+  "note_coverage": "full",
+  "judge_batch_size": 8,
+  "patient": {
+    "id": "sample-nsclc",
+    "source": "Synthetic sample (hand-written, not a real patient)",
+    "text": "SYNTHETIC NOTE - NOT A REAL PATIENT\nNote date: 2026-09-18\n\nChief complaint: Follow-up for newly diagnosed lung cancer.\n\nHistory of present illness: 62-year-old woman, former smoker (30 pack-years, quit in 2015), who presented in July 2026 with persistent cough and 6 kg weight loss. CT chest showed a 4.2 cm right upper lobe mass with mediastinal lymphadenopathy. CT-guided biopsy on 2026-08-04 confirmed lung adenocarcinoma. PET-CT on 2026-08-12 showed bilateral adrenal metastases; stage IV disease. Brain MRI on 2026-08-14 showed no intracranial metastases. Molecular testing: EGFR exon 19 deletion detected; ALK and ROS1 negative. PD-L1 TPS 10%. She has not yet received any systemic therapy for lung cancer.\n\nPast medical history: Hypertension, well controlled on lisinopril. Type 2 diabetes mellitus on metformin, HbA1c 7.1% in August 2026. Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence. She denies any history of interstitial lung disease or pneumonitis.\n\nFamily history: Mother died of breast cancer at age 71. Father had a myocardial infarction at age 65.\n\nMedications: Lisinopril 10 mg daily, metformin 1000 mg twice daily.\n\nExamination: ECOG performance status 1. Blood pressure 128/76 mmHg, heart rate 82, SpO2 96% on room air. Decreased breath sounds at the right apex.\n\nLaboratory results (2026-09-15): Hemoglobin 11.8 g/dL, absolute neutrophil count 3.4 x 10^9/L, platelets 245 x 10^9/L. Creatinine 0.9 mg/dL. ALT 28 U/L, AST 31 U/L, total bilirubin 0.6 mg/dL. ECG on 2026-09-15: normal sinus rhythm, QTc 438 ms.\n\nAssessment and plan: Stage IV EGFR-mutated lung adenocarcinoma, treatment-naive. Discussed first-line options including clinical trial participation.",
+    "note_date": "2026-09-18"
+  },
+  "segments": [
+    {
+      "id": "S1",
+      "start": 0,
+      "end": 35,
+      "text": "SYNTHETIC NOTE - NOT A REAL PATIENT"
+    },
+    {
+      "id": "S2",
+      "start": 36,
+      "end": 57,
+      "text": "Note date: 2026-09-18"
+    },
+    {
+      "id": "S3",
+      "start": 59,
+      "end": 118,
+      "text": "Chief complaint: Follow-up for newly diagnosed lung cancer."
+    },
+    {
+      "id": "S4",
+      "start": 120,
+      "end": 501,
+      "text": "History of present illness: 62-year-old woman, former smoker (30 pack-years, quit in 2015), who presented in July 2026 with persistent cough and 6 kg weight loss. CT chest showed a 4.2 cm right upper lobe mass with mediastinal lymphadenopathy. CT-guided biopsy on 2026-08-04 confirmed lung adenocarcinoma. PET-CT on 2026-08-12 showed bilateral adrenal metastases; stage IV disease."
+    },
+    {
+      "id": "S5",
+      "start": 502,
+      "end": 712,
+      "text": "Brain MRI on 2026-08-14 showed no intracranial metastases. Molecular testing: EGFR exon 19 deletion detected; ALK and ROS1 negative. PD-L1 TPS 10%. She has not yet received any systemic therapy for lung cancer."
+    },
+    {
+      "id": "S6",
+      "start": 714,
+      "end": 1013,
+      "text": "Past medical history: Hypertension, well controlled on lisinopril. Type 2 diabetes mellitus on metformin, HbA1c 7.1% in August 2026. Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence. She denies any history of interstitial lung disease or pneumonitis."
+    },
+    {
+      "id": "S7",
+      "start": 1015,
+      "end": 1116,
+      "text": "Family history: Mother died of breast cancer at age 71. Father had a myocardial infarction at age 65."
+    },
+    {
+      "id": "S8",
+      "start": 1118,
+      "end": 1185,
+      "text": "Medications: Lisinopril 10 mg daily, metformin 1000 mg twice daily."
+    },
+    {
+      "id": "S9",
+      "start": 1187,
+      "end": 1334,
+      "text": "Examination: ECOG performance status 1. Blood pressure 128/76 mmHg, heart rate 82, SpO2 96% on room air. Decreased breath sounds at the right apex."
+    },
+    {
+      "id": "S10",
+      "start": 1336,
+      "end": 1579,
+      "text": "Laboratory results (2026-09-15): Hemoglobin 11.8 g/dL, absolute neutrophil count 3.4 x 10^9/L, platelets 245 x 10^9/L. Creatinine 0.9 mg/dL. ALT 28 U/L, AST 31 U/L, total bilirubin 0.6 mg/dL. ECG on 2026-09-15: normal sinus rhythm, QTc 438 ms."
+    },
+    {
+      "id": "S11",
+      "start": 1581,
+      "end": 1730,
+      "text": "Assessment and plan: Stage IV EGFR-mutated lung adenocarcinoma, treatment-naive. Discussed first-line options including clinical trial participation."
+    }
+  ],
+  "trial": {
+    "nct_id": "NCT06487078",
+    "title": "Analysis of the Effectiveness and Safety of Lorlatinib in Untreated ALK-Positive NSCLC Patients in a French Real-World Context",
+    "conditions": [
+      "ALK+ Non-Small-Cell Lung Carcinoma"
+    ],
+    "criteria_text": "Inclusion Criteria: Participants are eligible to be included in the study only if all the following criteria apply:\n\n* Patients (male or female) 18 years of age or older at age inclusion\n* Patients with histologically or cytologically confirmed diagnosis of locally advanced or metastatic (TNM 8th classification) ALK-positive NSCLC (IHC 3+/FISH positive/transcriptomic method)\n* Complete radiological evaluation has to be performed before the start of lorlatinib by contrast enhanced CT-scan of thorax and upper abdomen and brain MRI, as per routine care\n* Patients with ECOG performance status grade 0, 1, or 2\n\nExclusion Criteria: Participants are excluded from the study if any of the following criteria Apply\n\n* Evidence of active malignancy within the last 2 years prior to inclusion (other than NSCLC, non-melanoma skin cancer, cervical in situ cancer, papillary thyroid cancer, lobular carcinoma in situ/ductal carcinoma in situ (LCIS/DCIS) of the breast, or localized prostate cancer).\n* Patients who have previously received adjuvant ALK TKI therapy (unless metastatic relapse occurs more than one year after completion of adjuvant therapy).\n* Patients who have previously received systemic NSCLC therapy in metastatic condition.\n* Patients using any of the following food or drugs within 12 days prior to the first dose of lorlatinib:\n\n  * known strong CYP3A inhibitors\n  * known strong CYP3A inducers\n  * known P gp substrates with a narrow therapeutic index\n* Patients with any medical or psychiatric condition, or that may, in the investigator's judgment, increase the risk of study participation or make the participant inappropriate for the study.\n* Positive pregnancy test for females of childbearing potential.\n* Breastfeeding and childbearing potential female unwilling/unable to use a highly effective contraception method for the study duration and for at least 35 days after the last dose of lorlatinib\n* Fertile male patients unwilling/unable to use a highly effective method of contraception for the duration of the study and for at least 97 days after the last dose of lorlatinib.\n* Patients participating in another clinical study, unless it is an observational (non-interventional) clinical study or during the follow-up period of an interventional study.\n* Patients deprived of their liberty, under protective custody or guardianship or unable to provide signed consent.\n* Patients not affiliated to the French social security system.\n* Patients opposed to the collection of their data.\n* Patients willing and able to comply with the protocol for the duration of the study including undergoing treatment, scheduled visits and examinations including follow-up.\n* Patients judged inapt to respond to the questions required for the study due to linguistical, psychological, social, or geographical reasons.\n* Investigator site staff directly involved in the conduct of the study and their family members, site staff otherwise supervised by the investigator, and sponsor and sponsor delegate employees directly involved in the conduct of the study and their family members.",
+    "minimum_age": "18 Years",
+    "maximum_age": null,
+    "sex": "ALL",
+    "overall_status": "RECRUITING",
+    "url": "https://clinicaltrials.gov/study/NCT06487078",
+    "fetched_at": "2026-10-14T00:26:15+00:00",
+    "source": "ctgov_api"
+  },
+  "criteria": [
+    {
+      "criterion_id": "INC-01",
+      "criterion_text": "The patient is 18 years of age or older at inclusion.",
+      "source_text": "Patients (male or female) 18 years of age or older at age inclusion",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "62-year-old woman",
+          "start": 148,
+          "end": 165,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The patient is 62 years old, which is at least 18.",
+      "confidence": "high",
+      "basis": "inferred",
+      "patient_value": "62 years",
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "at age inclusion",
+      "threshold": {
+        "parameter": "age",
+        "comparator": ">=",
+        "value": "18",
+        "unit": "years"
+      },
+      "concepts": [
+        {
+          "original": "18 years of age",
+          "normalized": "age",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 62.0,
+            "value_unit": "years",
+            "comparator": ">=",
+            "threshold": 18.0,
+            "threshold_upper": null,
+            "threshold_unit": "years",
+            "reference_limit": null,
+            "reference_limit_assumed": false,
+            "analyte": null
+          },
+          "model_answer": true,
+          "computed": true,
+          "status": "confirmed",
+          "detail": "62 >= 18 years is true",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": false
+        }
+      ],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-02",
+      "criterion_text": "The patient has a histologically or cytologically confirmed diagnosis of locally advanced or metastatic ALK-positive NSCLC according to the TNM 8th classification, established by IHC 3+, positive FISH, or a transcriptomic method.",
+      "source_text": "Patients with histologically or cytologically confirmed diagnosis of locally advanced or metastatic (TNM 8th classification) ALK-positive NSCLC (IHC 3+/FISH positive/transcriptomic method)",
+      "type": "inclusion",
+      "verdict": "not_met",
+      "effect": "blocks",
+      "evidence": [
+        {
+          "quote": "ALK and ROS1 negative",
+          "start": 612,
+          "end": 633,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The note states that ALK testing was negative, so the required ALK-positive NSCLC criterion is not met.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "ALK-positive NSCLC",
+          "normalized": "ALK-positive non-small cell lung cancer",
+          "category": "condition"
+        },
+        {
+          "original": "IHC",
+          "normalized": "immunohistochemistry",
+          "category": "procedure"
+        },
+        {
+          "original": "FISH",
+          "normalized": "fluorescence in situ hybridization",
+          "category": "lab_test"
+        },
+        {
+          "original": "transcriptomic method",
+          "normalized": "transcriptomic testing",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "not_met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-03",
+      "criterion_text": "The patient has undergone a contrast-enhanced CT scan of the thorax and upper abdomen before starting lorlatinib.",
+      "source_text": "Complete radiological evaluation has to be performed before the start of lorlatinib by contrast enhanced CT-scan of thorax and upper abdomen and brain MRI, as per routine care",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "CT chest showed a 4.2 cm right upper lobe mass with mediastinal lymphadenopathy.",
+          "start": 283,
+          "end": 363,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "A chest CT is documented, but contrast enhancement, upper-abdomen coverage, and timing before lorlatinib are not established.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Confirm that the scan was contrast-enhanced and included the upper abdomen, and confirm its timing before lorlatinib initiation.",
+      "established_part": "CT chest was performed",
+      "answer_source": "medical_record",
+      "time_window": "before the start of lorlatinib",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "contrast enhanced CT-scan of thorax and upper abdomen",
+          "normalized": "contrast-enhanced computed tomography of the thorax and upper abdomen",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-04",
+      "criterion_text": "The patient has undergone a brain MRI before starting lorlatinib.",
+      "source_text": "Complete radiological evaluation has to be performed before the start of lorlatinib by contrast enhanced CT-scan of thorax and upper abdomen and brain MRI, as per routine care",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "Brain MRI on 2026-08-14 showed no intracranial metastases.",
+          "start": 502,
+          "end": 560,
+          "segment_id": "S5"
+        },
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "Brain MRI was performed while the patient had not yet started systemic lung-cancer therapy, including lorlatinib.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "before the start of lorlatinib",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "brain MRI",
+          "normalized": "brain magnetic resonance imaging",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-05",
+      "criterion_text": "The patient has an ECOG performance status grade of 0, 1, or 2.",
+      "source_text": "Patients with ECOG performance status grade 0, 1, or 2",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "ECOG performance status 1",
+          "start": 1200,
+          "end": 1225,
+          "segment_id": "S9"
+        }
+      ],
+      "rationale": "The documented ECOG performance status is grade 1, within the required range of 0 through 2.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": "1 grade",
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "ECOG performance status",
+        "comparator": "between",
+        "value": "0-2",
+        "unit": "grade"
+      },
+      "concepts": [
+        {
+          "original": "ECOG performance status",
+          "normalized": "Eastern Cooperative Oncology Group performance status",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 1.0,
+            "value_unit": "grade",
+            "comparator": "between",
+            "threshold": 0.0,
+            "threshold_upper": 2.0,
+            "threshold_unit": "grade",
+            "reference_limit": null,
+            "reference_limit_assumed": false,
+            "analyte": null
+          },
+          "model_answer": true,
+          "computed": true,
+          "status": "confirmed",
+          "detail": "1 between [0, 2] grade is true",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": false
+        }
+      ],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-01",
+      "criterion_text": "The patient has evidence of an active malignancy within the 2 years before inclusion, other than NSCLC, non-melanoma skin cancer, cervical in situ cancer, papillary thyroid cancer, lobular carcinoma in situ or ductal carcinoma in situ of the breast, or localized prostate cancer.",
+      "source_text": "Evidence of active malignancy within the last 2 years prior to inclusion (other than NSCLC, non-melanoma skin cancer, cervical in situ cancer, papillary thyroid cancer, lobular carcinoma in situ/ductal carcinoma in situ (LCIS/DCIS) of the breast, or localized prostate cancer).",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "stage IV disease",
+          "start": 484,
+          "end": 500,
+          "segment_id": "S4"
+        },
+        {
+          "quote": "Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence.",
+          "start": 847,
+          "end": 945,
+          "segment_id": "S6"
+        }
+      ],
+      "rationale": "The note identifies only the current NSCLC and prior DCIS, both listed exceptions, but does not establish the absence of another active malignancy within the two-year window.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Confirm whether any active malignancy other than the current NSCLC or the listed exceptions was present within the 2 years before inclusion.",
+      "established_part": "The current NSCLC and prior breast DCIS are within the criterion's listed exceptions",
+      "answer_source": "medical_record",
+      "time_window": "within the last 2 years prior to inclusion",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "active malignancy",
+          "normalized": "active malignancy",
+          "category": "condition"
+        },
+        {
+          "original": "NSCLC",
+          "normalized": "non-small cell lung cancer",
+          "category": "condition"
+        },
+        {
+          "original": "non-melanoma skin cancer",
+          "normalized": "non-melanoma skin cancer",
+          "category": "condition"
+        },
+        {
+          "original": "cervical in situ cancer",
+          "normalized": "cervical carcinoma in situ",
+          "category": "condition"
+        },
+        {
+          "original": "papillary thyroid cancer",
+          "normalized": "papillary thyroid cancer",
+          "category": "condition"
+        },
+        {
+          "original": "lobular carcinoma in situ (LCIS) of the breast",
+          "normalized": "lobular carcinoma in situ of the breast",
+          "category": "condition"
+        },
+        {
+          "original": "ductal carcinoma in situ (DCIS) of the breast",
+          "normalized": "ductal carcinoma in situ of the breast",
+          "category": "condition"
+        },
+        {
+          "original": "localized prostate cancer",
+          "normalized": "localized prostate cancer",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-02",
+      "criterion_text": "The patient has previously received adjuvant ALK TKI therapy, unless metastatic relapse occurred more than one year after completion of adjuvant therapy.",
+      "source_text": "Patients who have previously received adjuvant ALK TKI therapy (unless metastatic relapse occurs more than one year after completion of adjuvant therapy).",
+      "type": "exclusion",
+      "verdict": "not_met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "No prior systemic lung-cancer therapy is documented, so prior adjuvant ALK TKI therapy is not present in the note.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "previously; more than one year after completion of adjuvant therapy",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "ALK TKI therapy",
+          "normalized": "ALK tyrosine kinase inhibitor",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "not_met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-03",
+      "criterion_text": "The patient has previously received systemic therapy for NSCLC in the metastatic setting.",
+      "source_text": "Patients who have previously received systemic NSCLC therapy in metastatic condition.",
+      "type": "exclusion",
+      "verdict": "not_met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        },
+        {
+          "quote": "treatment-naive",
+          "start": 1645,
+          "end": 1660,
+          "segment_id": "S11"
+        }
+      ],
+      "rationale": "The patient is documented as treatment-naive and has not received systemic therapy for lung cancer.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "previously",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "systemic NSCLC therapy",
+          "normalized": "systemic therapy for non-small cell lung cancer",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "not_met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-04",
+      "criterion_text": "The patient has used any of the following food or drugs within 12 days before the first dose of lorlatinib: a known strong CYP3A inhibitor, a known strong CYP3A inducer, or a known P-glycoprotein substrate with a narrow therapeutic index.",
+      "source_text": "Patients using any of the following food or drugs within 12 days prior to the first dose of lorlatinib:\n\n  * known strong CYP3A inhibitors\n  * known strong CYP3A inducers\n  * known P gp substrates with a narrow therapeutic index",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Medications: Lisinopril 10 mg daily, metformin 1000 mg twice daily.",
+          "start": 1118,
+          "end": 1185,
+          "segment_id": "S8"
+        }
+      ],
+      "rationale": "The medication list is provided, but the required pre-dose exposure window and all food or drug use are not established.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Confirm all food and drug exposures during the 12 days before the first lorlatinib dose, including whether any were strong CYP3A inhibitors, strong CYP3A inducers, or narrow-therapeutic-index P-glycoprotein substrates.",
+      "established_part": "Current medications are lisinopril and metformin",
+      "answer_source": "medical_record",
+      "time_window": "within 12 days prior to the first dose of lorlatinib",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "strong CYP3A inhibitors",
+          "normalized": "strong CYP3A inhibitor",
+          "category": "drug"
+        },
+        {
+          "original": "strong CYP3A inducers",
+          "normalized": "strong CYP3A inducer",
+          "category": "drug"
+        },
+        {
+          "original": "P gp substrates with a narrow therapeutic index",
+          "normalized": "P-glycoprotein substrate with a narrow therapeutic index",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-05",
+      "criterion_text": "The patient has a medical or psychiatric condition that, in the investigator's judgment, may increase the risk of study participation or make the participant inappropriate for the study.",
+      "source_text": "Patients with any medical or psychiatric condition, or that may, in the investigator's judgment, increase the risk of study participation or make the participant inappropriate for the study.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Past medical history: Hypertension, well controlled on lisinopril. Type 2 diabetes mellitus on metformin, HbA1c 7.1% in August 2026. Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence.",
+          "start": 714,
+          "end": 945,
+          "segment_id": "S6"
+        }
+      ],
+      "rationale": "Medical conditions are documented, but the note does not state whether the investigator considers them study-risk increasing or disqualifying.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Obtain investigator assessment of whether any medical or psychiatric condition increases study risk or makes the patient inappropriate for participation.",
+      "established_part": "Hypertension, type 2 diabetes, and prior breast ductal carcinoma in situ are documented",
+      "answer_source": "screening_visit",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "medical condition",
+          "normalized": "medical condition",
+          "category": "condition"
+        },
+        {
+          "original": "psychiatric condition",
+          "normalized": "psychiatric condition",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-06",
+      "criterion_text": "The patient is a female of childbearing potential with a positive pregnancy test.",
+      "source_text": "Positive pregnancy test for females of childbearing potential.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "62-year-old woman",
+          "start": 148,
+          "end": 165,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "Female sex is documented, but childbearing potential and pregnancy-test status are not provided.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Determine whether the patient is of childbearing potential and obtain the required pregnancy test result.",
+      "established_part": "The patient is female",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "pregnancy test",
+          "normalized": "pregnancy test",
+          "category": "lab_test"
+        },
+        {
+          "original": "females of childbearing potential",
+          "normalized": "female of childbearing potential",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-07",
+      "criterion_text": "The patient is breastfeeding and is a female of childbearing potential who is unwilling or unable to use a highly effective contraception method for the study duration and for at least 35 days after the last dose of lorlatinib.",
+      "source_text": "Breastfeeding and childbearing potential female unwilling/unable to use a highly effective contraception method for the study duration and for at least 35 days after the last dose of lorlatinib",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "62-year-old woman",
+          "start": 148,
+          "end": 165,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The note identifies a female patient but does not establish breastfeeding, childbearing potential, or contraception ability and willingness.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Determine breastfeeding status, childbearing potential, and willingness and ability to use highly effective contraception for the study duration and at least 35 days after the last lorlatinib dose.",
+      "established_part": "The patient is female",
+      "answer_source": "screening_visit",
+      "time_window": "for the study duration and for at least 35 days after the last dose of lorlatinib",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Breastfeeding",
+          "normalized": "breastfeeding",
+          "category": "other"
+        },
+        {
+          "original": "childbearing potential female",
+          "normalized": "female of childbearing potential",
+          "category": "other"
+        },
+        {
+          "original": "highly effective contraception method",
+          "normalized": "highly effective contraception",
+          "category": "other"
+        },
+        {
+          "original": "lorlatinib",
+          "normalized": "lorlatinib",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-08",
+      "criterion_text": "The patient is a fertile male who is unwilling or unable to use a highly effective method of contraception for the duration of the study and for at least 97 days after the last dose of lorlatinib.",
+      "source_text": "Fertile male patients unwilling/unable to use a highly effective method of contraception for the duration of the study and for at least 97 days after the last dose of lorlatinib.",
+      "type": "exclusion",
+      "verdict": "not_met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "62-year-old woman",
+          "start": 148,
+          "end": 165,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The patient is documented as a woman, so the fertile-male exclusion criterion does not apply.",
+      "confidence": "high",
+      "basis": "inferred",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "screening_visit",
+      "time_window": "for the duration of the study and for at least 97 days after the last dose of lorlatinib",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Fertile male patients",
+          "normalized": "fertile male",
+          "category": "other"
+        },
+        {
+          "original": "highly effective method of contraception",
+          "normalized": "highly effective contraception",
+          "category": "other"
+        },
+        {
+          "original": "lorlatinib",
+          "normalized": "lorlatinib",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "not_met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-09",
+      "criterion_text": "The patient is participating in another clinical study, unless it is an observational non-interventional clinical study or the patient is in the follow-up period of an interventional study.",
+      "source_text": "Patients participating in another clinical study, unless it is an observational (non-interventional) clinical study or during the follow-up period of an interventional study.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not state whether the patient is participating in another clinical study.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Ask or verify whether the patient is participating in another clinical study and, if so, whether it is observational or follow-up only.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "another clinical study",
+          "normalized": "clinical study participation",
+          "category": "other"
+        },
+        {
+          "original": "observational (non-interventional) clinical study",
+          "normalized": "observational clinical study",
+          "category": "other"
+        },
+        {
+          "original": "interventional study",
+          "normalized": "interventional clinical study",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-10",
+      "criterion_text": "The patient is deprived of liberty, under protective custody or guardianship, or unable to provide signed consent.",
+      "source_text": "Patients deprived of their liberty, under protective custody or guardianship or unable to provide signed consent.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not address liberty status, guardianship, or ability to provide signed consent.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Verify liberty or custody status, guardianship or protective custody, and ability to provide signed informed consent.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "deprived of their liberty",
+          "normalized": "deprivation of liberty",
+          "category": "other"
+        },
+        {
+          "original": "protective custody",
+          "normalized": "protective custody",
+          "category": "other"
+        },
+        {
+          "original": "guardianship",
+          "normalized": "guardianship",
+          "category": "other"
+        },
+        {
+          "original": "signed consent",
+          "normalized": "signed informed consent",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-11",
+      "criterion_text": "The patient is not affiliated with the French social security system.",
+      "source_text": "Patients not affiliated to the French social security system.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not state the patient's French social security affiliation.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Verify whether the patient is affiliated with the French social security system.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "French social security system",
+          "normalized": "French social security affiliation",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-12",
+      "criterion_text": "The patient is opposed to the collection of their data.",
+      "source_text": "Patients opposed to the collection of their data.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not state whether the patient opposes collection of their data.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient is opposed to collection of their data.",
+      "established_part": null,
+      "answer_source": "screening_visit",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "collection of their data",
+          "normalized": "data collection",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-13",
+      "criterion_text": "The patient is willing and able to comply with the protocol for the duration of the study, including undergoing treatment, attending scheduled visits, completing examinations, and participating in follow-up.",
+      "source_text": "Patients willing and able to comply with the protocol for the duration of the study including undergoing treatment, scheduled visits and examinations including follow-up.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not address the patient's willingness or ability to comply with the study protocol.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient is willing and able to comply with the protocol for the duration of the study, including treatment, scheduled visits, examinations, and follow-up.",
+      "established_part": null,
+      "answer_source": "screening_visit",
+      "time_window": "for the duration of the study",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "comply with the protocol",
+          "normalized": "protocol compliance",
+          "category": "other"
+        },
+        {
+          "original": "treatment",
+          "normalized": "study treatment",
+          "category": "procedure"
+        },
+        {
+          "original": "scheduled visits",
+          "normalized": "study visits",
+          "category": "procedure"
+        },
+        {
+          "original": "examinations",
+          "normalized": "study examinations",
+          "category": "procedure"
+        },
+        {
+          "original": "follow-up",
+          "normalized": "follow-up",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-14",
+      "criterion_text": "The patient is judged inapt to respond to the questions required for the study due to linguistic, psychological, social, or geographical reasons.",
+      "source_text": "Patients judged inapt to respond to the questions required for the study due to linguistical, psychological, social, or geographical reasons.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not state that the patient is inapt to respond to required study questions for any listed reason.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient is judged unable to respond to required study questions because of linguistic, psychological, social, or geographical reasons.",
+      "established_part": null,
+      "answer_source": "screening_visit",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "respond to the questions required for the study",
+          "normalized": "ability to respond to study questions",
+          "category": "other"
+        },
+        {
+          "original": "linguistical reasons",
+          "normalized": "linguistic reasons",
+          "category": "other"
+        },
+        {
+          "original": "psychological reasons",
+          "normalized": "psychological reasons",
+          "category": "other"
+        },
+        {
+          "original": "social reasons",
+          "normalized": "social reasons",
+          "category": "other"
+        },
+        {
+          "original": "geographical reasons",
+          "normalized": "geographical reasons",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-15",
+      "criterion_text": "The patient is investigator site staff directly involved in the conduct of the study, a family member of such staff, site staff otherwise supervised by the investigator, a sponsor or sponsor delegate employee directly involved in the conduct of the study, or a family member of such an employee.",
+      "source_text": "Investigator site staff directly involved in the conduct of the study and their family members, site staff otherwise supervised by the investigator, and sponsor and sponsor delegate employees directly involved in the conduct of the study and their family members.",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not provide the patient's relationship to investigator site staff or sponsor personnel.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient is study investigator or sponsor staff, a supervised site staff member, or a family member of such personnel.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Investigator site staff directly involved in the conduct of the study",
+          "normalized": "clinical trial site staff",
+          "category": "other"
+        },
+        {
+          "original": "family members",
+          "normalized": "family member",
+          "category": "other"
+        },
+        {
+          "original": "site staff otherwise supervised by the investigator",
+          "normalized": "site staff supervised by the investigator",
+          "category": "other"
+        },
+        {
+          "original": "sponsor ... employees directly involved in the conduct of the study",
+          "normalized": "study sponsor employee",
+          "category": "other"
+        },
+        {
+          "original": "sponsor delegate employees directly involved in the conduct of the study",
+          "normalized": "study sponsor delegate employee",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    }
+  ],
+  "summary": {
+    "overall": "not_eligible",
+    "overall_label": "Likely not eligible",
+    "counts": {
+      "total": 20,
+      "supports": 6,
+      "blocks": 1,
+      "unresolved": 13,
+      "missing_from_record": 8,
+      "confirm_at_screening": 5,
+      "partly_established": 6,
+      "low_confidence": 2,
+      "downgraded": 0
+    },
+    "key_reasons": [
+      {
+        "criterion_id": "INC-02",
+        "text": "Inclusion criterion not met: The patient has a histologically or cytologically confirmed diagnosis of locally advanced or metastatic ALK-positive NSCLC according to the TNM 8th classification, established by IHC 3+, positive FISH, or a transcriptomic method. (The note states that ALK testing was negative, so the required ALK-positive NSCLC criterion is not met.)"
+      }
+    ],
+    "follow_up": [
+      {
+        "criterion_id": "INC-03",
+        "text": "Check inclusion criterion \"The patient has undergone a contrast-enhanced CT scan of the thorax and upper abdomen before starting lorlatinib.\": Confirm that the scan was contrast-enhanced and included the upper abdomen, and confirm its timing before lorlatinib initiation. Already established: CT chest was performed."
+      },
+      {
+        "criterion_id": "EXC-01",
+        "text": "Check exclusion criterion \"The patient has evidence of an active malignancy within the 2 years before inclusion, other than NSCLC, non-melanoma skin cancer, cervical in situ cancer, papillary thyroid cancer, lobular carcinoma in situ or ductal carcinoma in situ of the breast, or localized prostate cancer.\": Confirm whether any active malignancy other than the current NSCLC or the listed exceptions was present within the 2 years before inclusion. Already established: The current NSCLC and prior breast DCIS are within the criterion's listed exceptions."
+      },
+      {
+        "criterion_id": "EXC-04",
+        "text": "Check exclusion criterion \"The patient has used any of the following food or drugs within 12 days before the first dose of lorlatinib: a known strong CYP3A inhibitor, a known strong CYP3A inducer, or a known P-glycoprotein substrate with a narrow therapeutic index.\": Confirm all food and drug exposures during the 12 days before the first lorlatinib dose, including whether any were strong CYP3A inhibitors, strong CYP3A inducers, or narrow-therapeutic-index P-glycoprotein substrates. Already established: Current medications are lisinopril and metformin."
+      },
+      {
+        "criterion_id": "EXC-06",
+        "text": "Check exclusion criterion \"The patient is a female of childbearing potential with a positive pregnancy test.\": Determine whether the patient is of childbearing potential and obtain the required pregnancy test result. Already established: The patient is female."
+      },
+      {
+        "criterion_id": "EXC-09",
+        "text": "Check exclusion criterion \"The patient is participating in another clinical study, unless it is an observational non-interventional clinical study or the patient is in the follow-up period of an interventional study.\": Ask or verify whether the patient is participating in another clinical study and, if so, whether it is observational or follow-up only."
+      },
+      {
+        "criterion_id": "EXC-10",
+        "text": "Check exclusion criterion \"The patient is deprived of liberty, under protective custody or guardianship, or unable to provide signed consent.\": Verify liberty or custody status, guardianship or protective custody, and ability to provide signed informed consent."
+      },
+      {
+        "criterion_id": "EXC-11",
+        "text": "Check exclusion criterion \"The patient is not affiliated with the French social security system.\": Verify whether the patient is affiliated with the French social security system."
+      },
+      {
+        "criterion_id": "EXC-15",
+        "text": "Check exclusion criterion \"The patient is investigator site staff directly involved in the conduct of the study, a family member of such staff, site staff otherwise supervised by the investigator, a sponsor or sponsor delegate employee directly involved in the conduct of the study, or a family member of such an employee.\": Whether the patient is study investigator or sponsor staff, a supervised site staff member, or a family member of such personnel."
+      }
+    ],
+    "confirm_at_screening": [
+      {
+        "criterion_id": "EXC-05",
+        "text": "Confirm at screening \"The patient has a medical or psychiatric condition that, in the investigator's judgment, may increase the risk of study participation or make the participant inappropriate for the study.\": Obtain investigator assessment of whether any medical or psychiatric condition increases study risk or makes the patient inappropriate for participation. Already established: Hypertension, type 2 diabetes, and prior breast ductal carcinoma in situ are documented."
+      },
+      {
+        "criterion_id": "EXC-07",
+        "text": "Confirm at screening \"The patient is breastfeeding and is a female of childbearing potential who is unwilling or unable to use a highly effective contraception method for the study duration and for at least 35 days after the last dose of lorlatinib.\": Determine breastfeeding status, childbearing potential, and willingness and ability to use highly effective contraception for the study duration and at least 35 days after the last lorlatinib dose. Already established: The patient is female."
+      },
+      {
+        "criterion_id": "EXC-12",
+        "text": "Confirm at screening \"The patient is opposed to the collection of their data.\": Whether the patient is opposed to collection of their data."
+      },
+      {
+        "criterion_id": "EXC-13",
+        "text": "Confirm at screening \"The patient is willing and able to comply with the protocol for the duration of the study, including undergoing treatment, attending scheduled visits, completing examinations, and participating in follow-up.\": Whether the patient is willing and able to comply with the protocol for the duration of the study, including treatment, scheduled visits, examinations, and follow-up."
+      },
+      {
+        "criterion_id": "EXC-14",
+        "text": "Confirm at screening \"The patient is judged inapt to respond to the questions required for the study due to linguistic, psychological, social, or geographical reasons.\": Whether the patient is judged unable to respond to required study questions because of linguistic, psychological, social, or geographical reasons."
+      }
+    ],
+    "disclaimer": "Screening aid only. This tool does not make enrollment decisions; every determination must be reviewed and confirmed by a physician."
+  },
+  "citation_stats": {
+    "quotes_total": 16,
+    "quotes_verified": 16,
+    "judgments_needing_evidence": 7,
+    "judgments_downgraded": 0
+  },
+  "tool_calls": []
+}

@@ -1,0 +1,1765 @@
+{
+  "run_id": "sample-nsclc__NCT06735391",
+  "created_at": "2026-10-14T00:19:04+00:00",
+  "model": "gpt-6-sol",
+  "note_coverage": "full",
+  "judge_batch_size": 8,
+  "patient": {
+    "id": "sample-nsclc",
+    "source": "Synthetic sample (hand-written, not a real patient)",
+    "text": "SYNTHETIC NOTE - NOT A REAL PATIENT\nNote date: 2026-09-18\n\nChief complaint: Follow-up for newly diagnosed lung cancer.\n\nHistory of present illness: 62-year-old woman, former smoker (30 pack-years, quit in 2015), who presented in July 2026 with persistent cough and 6 kg weight loss. CT chest showed a 4.2 cm right upper lobe mass with mediastinal lymphadenopathy. CT-guided biopsy on 2026-08-04 confirmed lung adenocarcinoma. PET-CT on 2026-08-12 showed bilateral adrenal metastases; stage IV disease. Brain MRI on 2026-08-14 showed no intracranial metastases. Molecular testing: EGFR exon 19 deletion detected; ALK and ROS1 negative. PD-L1 TPS 10%. She has not yet received any systemic therapy for lung cancer.\n\nPast medical history: Hypertension, well controlled on lisinopril. Type 2 diabetes mellitus on metformin, HbA1c 7.1% in August 2026. Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence. She denies any history of interstitial lung disease or pneumonitis.\n\nFamily history: Mother died of breast cancer at age 71. Father had a myocardial infarction at age 65.\n\nMedications: Lisinopril 10 mg daily, metformin 1000 mg twice daily.\n\nExamination: ECOG performance status 1. Blood pressure 128/76 mmHg, heart rate 82, SpO2 96% on room air. Decreased breath sounds at the right apex.\n\nLaboratory results (2026-09-15): Hemoglobin 11.8 g/dL, absolute neutrophil count 3.4 x 10^9/L, platelets 245 x 10^9/L. Creatinine 0.9 mg/dL. ALT 28 U/L, AST 31 U/L, total bilirubin 0.6 mg/dL. ECG on 2026-09-15: normal sinus rhythm, QTc 438 ms.\n\nAssessment and plan: Stage IV EGFR-mutated lung adenocarcinoma, treatment-naive. Discussed first-line options including clinical trial participation.",
+    "note_date": "2026-09-18"
+  },
+  "segments": [
+    {
+      "id": "S1",
+      "start": 0,
+      "end": 35,
+      "text": "SYNTHETIC NOTE - NOT A REAL PATIENT"
+    },
+    {
+      "id": "S2",
+      "start": 36,
+      "end": 57,
+      "text": "Note date: 2026-09-18"
+    },
+    {
+      "id": "S3",
+      "start": 59,
+      "end": 118,
+      "text": "Chief complaint: Follow-up for newly diagnosed lung cancer."
+    },
+    {
+      "id": "S4",
+      "start": 120,
+      "end": 501,
+      "text": "History of present illness: 62-year-old woman, former smoker (30 pack-years, quit in 2015), who presented in July 2026 with persistent cough and 6 kg weight loss. CT chest showed a 4.2 cm right upper lobe mass with mediastinal lymphadenopathy. CT-guided biopsy on 2026-08-04 confirmed lung adenocarcinoma. PET-CT on 2026-08-12 showed bilateral adrenal metastases; stage IV disease."
+    },
+    {
+      "id": "S5",
+      "start": 502,
+      "end": 712,
+      "text": "Brain MRI on 2026-08-14 showed no intracranial metastases. Molecular testing: EGFR exon 19 deletion detected; ALK and ROS1 negative. PD-L1 TPS 10%. She has not yet received any systemic therapy for lung cancer."
+    },
+    {
+      "id": "S6",
+      "start": 714,
+      "end": 1013,
+      "text": "Past medical history: Hypertension, well controlled on lisinopril. Type 2 diabetes mellitus on metformin, HbA1c 7.1% in August 2026. Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence. She denies any history of interstitial lung disease or pneumonitis."
+    },
+    {
+      "id": "S7",
+      "start": 1015,
+      "end": 1116,
+      "text": "Family history: Mother died of breast cancer at age 71. Father had a myocardial infarction at age 65."
+    },
+    {
+      "id": "S8",
+      "start": 1118,
+      "end": 1185,
+      "text": "Medications: Lisinopril 10 mg daily, metformin 1000 mg twice daily."
+    },
+    {
+      "id": "S9",
+      "start": 1187,
+      "end": 1334,
+      "text": "Examination: ECOG performance status 1. Blood pressure 128/76 mmHg, heart rate 82, SpO2 96% on room air. Decreased breath sounds at the right apex."
+    },
+    {
+      "id": "S10",
+      "start": 1336,
+      "end": 1579,
+      "text": "Laboratory results (2026-09-15): Hemoglobin 11.8 g/dL, absolute neutrophil count 3.4 x 10^9/L, platelets 245 x 10^9/L. Creatinine 0.9 mg/dL. ALT 28 U/L, AST 31 U/L, total bilirubin 0.6 mg/dL. ECG on 2026-09-15: normal sinus rhythm, QTc 438 ms."
+    },
+    {
+      "id": "S11",
+      "start": 1581,
+      "end": 1730,
+      "text": "Assessment and plan: Stage IV EGFR-mutated lung adenocarcinoma, treatment-naive. Discussed first-line options including clinical trial participation."
+    }
+  ],
+  "trial": {
+    "nct_id": "NCT06735391",
+    "title": "A Clinical Study of JMT101 in Combination With Osimertinib Versus Osimertinib Alone as First-Line Treatment for Patients With Locally Advanced or Metastatic Non-Squamous Non-Small Cell Lung Cancer (NSCLC) Harboring Epidermal Growth Factor Receptor (EGFR) Sensitive Mutations",
+    "conditions": [
+      "Locally Advanced or Metastatic Non-squamous NSCLC",
+      "Harboring EGFR Sensitive Mutations NSCLC",
+      "Previously Untreated Systematically NSCLC"
+    ],
+    "criteria_text": "Inclusion Criteria:\n\n1. Be able to understand and voluntarily sign the written informed consent form (ICF);\n2. Age ≥ 18 years old, male or female;\n3. Participants with histologically or cytologically (pathology report required) confirmed non-squamous NSCLC that is unresectable and locally advanced or metastatic (stage IIIB, IIIC, or IV) according to the International Association for the Study of Lung Cancer (IASLC) 8th edition TNM staging criteria.\n4. Participants who have no prior systemic anti-tumor therapy (including anti-EGFR targeted therapy, chemotherapy, biotherapy, immunotherapy, or any investigational drug) for locally advanced or metastatic NSCLC and are not amenable to radical surgery or radiotherapy. For participants with recurrent disease after prior surgical treatment who have undergone prior adjuvant and neoadjuvant therapy, it is necessary to confirm that there is no recurrence or metastasis of tumor within 6 months after surgery, and the randomization is \\> 6 months from the end of adjuvant/neoadjuvant therapy;\n5. Have at least one measurable lesion that meets the RECIST 1.1 criteria at baseline. Target lesions must be either radiation naive or, if previously irradiated, there must be evidence of unequivocal disease progression after radiotherapy. Brain metastases should not be considered as target lesions;\n6. ECOG PS score of 0 or 1;\n7. Expected survival ≥ 3 months;\n8. Have major organ and bone marrow functions that meet the following criteria within 7 days prior to the first dose in a non-intervention state:\n\n1\\) Hematology:\n\n1. Absolute neutrophil count (ANC) ≥ 1.5×109/L (prior to the hematology assessment, there is no treatment with cell growth factors within 7 days, and no treatment with long-acting granulocyte colony-stimulating factor (G-CSF) or pegylated recombinant human granulocyte colony-stimulating factor (PEG-CSF) within 14 days);\n2. Platelets ≥ 90×109/L (there is no platelet transfusion or recombinant human thrombopoietin therapy within 7 days prior to hematology assessment);\n3. Hemoglobin ≥ 90 g/L (there is no red blood cell transfusion/blood transfusion treatment within 14 days prior to hematology assessment); 2) Renal function: Serum creatinine ≤ 1.5×upper limit of normal (ULN), or creatinine clearance (CrCL) ≥ 50 mL/min (using the Cockcroft-Gault formula); 3) Liver function:\n\na. Total bilirubin ≤ 1.5×ULN (or ≤ 3×ULN for participants with Gilbert syndrome or metastases to liver); b. Aspartate aminotransferase (AST) and alanine aminotransferase (ALT) ≤ 2.5×ULN (or AST and ALT ≤ 5×ULN for participants with metastases to liver); 4) Coagulation function:\n\n1. International normalized ratio (INR) ≤ 1.5;\n2. Activated partial thromboplastin time (APTT) ≤ 1.5×ULN;\n\nExclusion Criteria:\n\n1. Participants with concomitant mutations such as ALK, ROS1, KRAS, BRAF, RET, MET, NTRK, and HER2, for which targeted drugs are commercially available for clinical treatment, who will not benefit from this clinical study as judged by the investigator; or participants with other mutations who will not benefit from this clinical study as judged by the investigator;\n2. Have received Chinese patent medicine preparations for the treatment of lung cancer as an indication within 2 weeks prior to randomization;\n3. Have received local radiotherapy within 2 weeks prior to randomization; have received more than 30% of bone marrow irradiation or extensive radiotherapy within 4 weeks prior to randomization;\n4. Presence of pericardial effusion (small amount of pericardial effusion stable for ≥ 2 weeks prior to randomization is allowed);\n5. Major surgery or severe traumatic injury within 4 weeks prior to the first study treatment, or anticipation of major surgery during the study. Some clinical procedures such as vascular access placement and aspiration biopsy are allowed;\n6. Participants with meningeal metastases; spinal cord compression; symptomatic and unstable brain metastases, unless the participants have completed curative treatment, are in stable condition for at least 2 weeks prior to randomization and do not require steroid therapy. Participants with asymptomatic brain metastases may be enrolled if the investigator assesses that there is no indication for immediate curative treatment;",
+    "minimum_age": "18 Years",
+    "maximum_age": null,
+    "sex": "ALL",
+    "overall_status": "RECRUITING",
+    "url": "https://clinicaltrials.gov/study/NCT06735391",
+    "fetched_at": "2026-10-14T00:17:48+00:00",
+    "source": "ctgov_api"
+  },
+  "criteria": [
+    {
+      "criterion_id": "INC-01",
+      "criterion_text": "The patient is able to understand and voluntarily sign the written informed consent form (ICF).",
+      "source_text": "1. Be able to understand and voluntarily sign the written informed consent form (ICF);",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not address the patient's ability or willingness to provide informed consent.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient can understand and voluntarily sign the written informed consent form.",
+      "established_part": null,
+      "answer_source": "screening_visit",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "written informed consent form (ICF)",
+          "normalized": "Informed consent",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-02",
+      "criterion_text": "The patient is 18 years old or older.",
+      "source_text": "2. Age ≥ 18 years old, male or female;",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "62-year-old woman",
+          "start": 148,
+          "end": 165,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The patient is 62 years old, which is at least 18.",
+      "confidence": "high",
+      "basis": "inferred",
+      "patient_value": "62 years",
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "age",
+        "comparator": ">=",
+        "value": "18",
+        "unit": "years"
+      },
+      "concepts": [],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 62.0,
+            "value_unit": "years",
+            "comparator": ">=",
+            "threshold": 18.0,
+            "threshold_upper": null,
+            "threshold_unit": "years",
+            "reference_limit": null,
+            "reference_limit_assumed": false,
+            "analyte": null
+          },
+          "model_answer": true,
+          "computed": true,
+          "status": "confirmed",
+          "detail": "62 >= 18 years is true",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": false
+        }
+      ],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-03",
+      "criterion_text": "The patient has pathology-report-confirmed non-squamous non-small cell lung cancer by histology or cytology.",
+      "source_text": "3. Participants with histologically or cytologically (pathology report required) confirmed non-squamous NSCLC that is unresectable and locally advanced or metastatic (stage IIIB, IIIC, or IV) according to the International Association for the Study of Lung Cancer (IASLC) 8th edition TNM staging criteria.",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "CT-guided biopsy on 2026-08-04 confirmed lung adenocarcinoma.",
+          "start": 364,
+          "end": 425,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The biopsy confirmed lung adenocarcinoma, a non-squamous non-small cell lung cancer histology.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "non-squamous NSCLC",
+          "normalized": "Non-small cell lung cancer",
+          "category": "condition"
+        },
+        {
+          "original": "unresectable and locally advanced or metastatic",
+          "normalized": "Locally advanced or metastatic non-small cell lung cancer",
+          "category": "condition"
+        },
+        {
+          "original": "histologically",
+          "normalized": "Histopathology",
+          "category": "procedure"
+        },
+        {
+          "original": "cytologically",
+          "normalized": "Cytology",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-04",
+      "criterion_text": "The patient's non-squamous non-small cell lung cancer is unresectable and locally advanced or metastatic, staged as IIIB, IIIC, or IV according to the IASLC 8th edition TNM staging criteria.",
+      "source_text": "3. Participants with histologically or cytologically (pathology report required) confirmed non-squamous NSCLC that is unresectable and locally advanced or metastatic (stage IIIB, IIIC, or IV) according to the International Association for the Study of Lung Cancer (IASLC) 8th edition TNM staging criteria.",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "PET-CT on 2026-08-12 showed bilateral adrenal metastases; stage IV disease.",
+          "start": 426,
+          "end": 501,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "Stage IV metastatic disease is documented, but unresectability and the specified staging basis are not established.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the disease is documented as unresectable or not amenable to radical surgery or radiotherapy, and whether staging conforms to IASLC 8th edition criteria.",
+      "established_part": "Metastatic stage IV disease documented",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "disease stage",
+        "comparator": "between",
+        "value": "IIIB, IIIC, or IV",
+        "unit": null
+      },
+      "concepts": [
+        {
+          "original": "unresectable and locally advanced or metastatic",
+          "normalized": "Locally advanced or metastatic non-small cell lung cancer",
+          "category": "condition"
+        },
+        {
+          "original": "TNM staging criteria",
+          "normalized": "TNM staging system",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-05",
+      "criterion_text": "The patient has received no prior systemic anti-tumor therapy for locally advanced or metastatic non-small cell lung cancer, including anti-EGFR targeted therapy, chemotherapy, biotherapy, immunotherapy, or any investigational drug; for recurrent disease after prior surgery with prior adjuvant or neoadjuvant therapy, there was no tumor recurrence or metastasis within 6 months after surgery and randomization is > 6 months after completion of adjuvant or neoadjuvant therapy.",
+      "source_text": "4. Participants who have no prior systemic anti-tumor therapy (including anti-EGFR targeted therapy, chemotherapy, biotherapy, immunotherapy, or any investigational drug) for locally advanced or metastatic NSCLC and are not amenable to radical surgery or radiotherapy. For participants with recurrent disease after prior surgical treatment who have undergone prior adjuvant and neoadjuvant therapy, it is necessary to confirm that there is no recurrence or metastasis of tumor within 6 months after surgery, and the randomization is \\> 6 months from the end of adjuvant/neoadjuvant therapy;",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "She has not yet received any systemic therapy for lung cancer.",
+          "start": 650,
+          "end": 712,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The note establishes no prior systemic lung-cancer therapy but does not establish all additional requirements in this criterion.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the locally advanced or metastatic disease is not amenable to radical surgery or radiotherapy; for any recurrent disease after prior surgery, the required recurrence and adjuvant/neoadjuvant therapy timing.",
+      "established_part": "No systemic therapy for lung cancer received",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "systemic anti-tumor therapy",
+          "normalized": "Anti-tumor therapy",
+          "category": "drug"
+        },
+        {
+          "original": "anti-EGFR targeted therapy",
+          "normalized": "Anti-EGFR targeted therapy",
+          "category": "drug"
+        },
+        {
+          "original": "chemotherapy",
+          "normalized": "Chemotherapy",
+          "category": "drug"
+        },
+        {
+          "original": "biotherapy",
+          "normalized": "Biological therapy",
+          "category": "drug"
+        },
+        {
+          "original": "immunotherapy",
+          "normalized": "Immunotherapy",
+          "category": "drug"
+        },
+        {
+          "original": "investigational drug",
+          "normalized": "Investigational drug",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-06",
+      "criterion_text": "The patient's locally advanced or metastatic non-small cell lung cancer is not amenable to radical surgery or radiotherapy.",
+      "source_text": "4. Participants who have no prior systemic anti-tumor therapy (including anti-EGFR targeted therapy, chemotherapy, biotherapy, immunotherapy, or any investigational drug) for locally advanced or metastatic NSCLC and are not amenable to radical surgery or radiotherapy. For participants with recurrent disease after prior surgical treatment who have undergone prior adjuvant and neoadjuvant therapy, it is necessary to confirm that there is no recurrence or metastasis of tumor within 6 months after surgery, and the randomization is \\> 6 months from the end of adjuvant/neoadjuvant therapy;",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not state whether radical surgery or radiotherapy is feasible.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the locally advanced or metastatic lung cancer is not amenable to radical surgery or radiotherapy.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "radical surgery",
+          "normalized": "Radical surgery",
+          "category": "procedure"
+        },
+        {
+          "original": "radiotherapy",
+          "normalized": "Radiotherapy",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-07",
+      "criterion_text": "The patient has at least one measurable lesion meeting RECIST 1.1 criteria at baseline.",
+      "source_text": "5. Have at least one measurable lesion that meets the RECIST 1.1 criteria at baseline. Target lesions must be either radiation naive or, if previously irradiated, there must be evidence of unequivocal disease progression after radiotherapy. Brain metastases should not be considered as target lesions;",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "CT chest showed a 4.2 cm right upper lobe mass",
+          "start": 283,
+          "end": 329,
+          "segment_id": "S4"
+        }
+      ],
+      "rationale": "The documented 4.2 cm lung mass is large enough to constitute at least one measurable non-nodal lesion at baseline.",
+      "confidence": "medium",
+      "basis": "stated",
+      "patient_value": "4.2 cm",
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "at baseline",
+      "threshold": {
+        "parameter": "number of measurable lesions",
+        "comparator": ">=",
+        "value": "1",
+        "unit": null
+      },
+      "concepts": [
+        {
+          "original": "measurable lesion",
+          "normalized": "Measurable lesion",
+          "category": "other"
+        },
+        {
+          "original": "RECIST 1.1",
+          "normalized": "RECIST 1.1",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-08",
+      "criterion_text": "The patient's target lesion is radiation-naive or, if previously irradiated, has unequivocal disease progression after radiotherapy; brain metastases are not considered target lesions.",
+      "source_text": "5. Have at least one measurable lesion that meets the RECIST 1.1 criteria at baseline. Target lesions must be either radiation naive or, if previously irradiated, there must be evidence of unequivocal disease progression after radiotherapy. Brain metastases should not be considered as target lesions;",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Brain MRI on 2026-08-14 showed no intracranial metastases.",
+          "start": 502,
+          "end": 560,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The note excludes intracranial metastases but does not state whether the target lesion is radiation-naive or progressed after radiotherapy.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the target lesion has been irradiated; if so, whether there is unequivocal progression after radiotherapy.",
+      "established_part": "No intracranial metastases documented",
+      "answer_source": "medical_record",
+      "time_window": "at baseline",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Target lesions",
+          "normalized": "Target lesion",
+          "category": "other"
+        },
+        {
+          "original": "radiotherapy",
+          "normalized": "Radiotherapy",
+          "category": "procedure"
+        },
+        {
+          "original": "Brain metastases",
+          "normalized": "Brain metastasis",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-09",
+      "criterion_text": "The patient's ECOG performance status score is 0 or 1.",
+      "source_text": "6. ECOG PS score of 0 or 1;",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "ECOG performance status 1",
+          "start": 1200,
+          "end": 1225,
+          "segment_id": "S9"
+        }
+      ],
+      "rationale": "The documented ECOG performance status is 1, which is within the required range of 0 or 1.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": null,
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": {
+        "parameter": "ECOG performance status score",
+        "comparator": "between",
+        "value": "0 or 1",
+        "unit": null
+      },
+      "concepts": [
+        {
+          "original": "ECOG PS score",
+          "normalized": "ECOG performance status",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-10",
+      "criterion_text": "The patient's expected survival is at least 3 months.",
+      "source_text": "7. Expected survival ≥ 3 months;",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not state the patient's expected survival.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Expected survival or clinician-estimated life expectancy.",
+      "established_part": null,
+      "answer_source": "screening_visit",
+      "time_window": null,
+      "threshold": {
+        "parameter": "expected survival",
+        "comparator": ">=",
+        "value": "3",
+        "unit": "months"
+      },
+      "concepts": [],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-11",
+      "criterion_text": "The patient's absolute neutrophil count is at least 1.5×109/L.",
+      "source_text": "1. Absolute neutrophil count (ANC) ≥ 1.5×109/L (prior to the hematology assessment, there is no treatment with cell growth factors within 7 days, and no treatment with long-acting granulocyte colony-stimulating factor (G-CSF) or pegylated recombinant human granulocyte colony-stimulating factor (PEG-CSF) within 14 days);",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "absolute neutrophil count 3.4 x 10^9/L",
+          "start": 1391,
+          "end": 1429,
+          "segment_id": "S10"
+        }
+      ],
+      "rationale": "The absolute neutrophil count is 3.4 x 10^9/L, above the required minimum of 1.5 x 10^9/L.",
+      "confidence": "low",
+      "basis": "stated",
+      "patient_value": "3.4 x 10^9/L",
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 7 days prior to the first dose",
+      "threshold": {
+        "parameter": "absolute neutrophil count (ANC)",
+        "comparator": ">=",
+        "value": "1.5",
+        "unit": "×109/L"
+      },
+      "concepts": [
+        {
+          "original": "Absolute neutrophil count (ANC)",
+          "normalized": "Absolute neutrophil count",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 3.4,
+            "value_unit": "x 10^9/L",
+            "comparator": ">=",
+            "threshold": 1.5,
+            "threshold_upper": null,
+            "threshold_unit": "×109/L",
+            "reference_limit": null,
+            "reference_limit_assumed": false,
+            "analyte": "blood_cell_count"
+          },
+          "model_answer": true,
+          "computed": null,
+          "status": "not_checkable",
+          "detail": "No conversion known for blood_cell_count in '109/l' (known: 10^9/l, 10^3/ul, k/ul, /ul, /mm3). Do not convert by hand; treat the comparison as not established.",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": false
+        }
+      ],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": [
+        "calculation_not_checkable"
+      ]
+    },
+    {
+      "criterion_id": "INC-12",
+      "criterion_text": "The patient has not received treatment with cell growth factors within 7 days before the hematology assessment.",
+      "source_text": "1. Absolute neutrophil count (ANC) ≥ 1.5×109/L (prior to the hematology assessment, there is no treatment with cell growth factors within 7 days, and no treatment with long-acting granulocyte colony-stimulating factor (G-CSF) or pegylated recombinant human granulocyte colony-stimulating factor (PEG-CSF) within 14 days);",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not state whether the patient received cell growth factors within the required 7-day window.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether cell growth factor treatment occurred within 7 days before the hematology assessment.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 7 days prior to the hematology assessment",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "cell growth factors",
+          "normalized": "Cell growth factor",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-13",
+      "criterion_text": "The patient has not received long-acting granulocyte colony-stimulating factor (G-CSF) or pegylated recombinant human granulocyte colony-stimulating factor (PEG-CSF) within 14 days before the hematology assessment.",
+      "source_text": "1. Absolute neutrophil count (ANC) ≥ 1.5×109/L (prior to the hematology assessment, there is no treatment with cell growth factors within 7 days, and no treatment with long-acting granulocyte colony-stimulating factor (G-CSF) or pegylated recombinant human granulocyte colony-stimulating factor (PEG-CSF) within 14 days);",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not state whether the patient received long-acting G-CSF or PEG-CSF within the required 14-day window.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether long-acting G-CSF or PEG-CSF treatment occurred within 14 days before the hematology assessment.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 14 days prior to the hematology assessment",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "long-acting granulocyte colony-stimulating factor (G-CSF)",
+          "normalized": "Granulocyte colony-stimulating factor",
+          "category": "drug"
+        },
+        {
+          "original": "pegylated recombinant human granulocyte colony-stimulating factor (PEG-CSF)",
+          "normalized": "Pegfilgrastim",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-14",
+      "criterion_text": "The patient's platelet count is at least 90×109/L.",
+      "source_text": "2. Platelets ≥ 90×109/L (there is no platelet transfusion or recombinant human thrombopoietin therapy within 7 days prior to hematology assessment);",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "platelets 245 x 10^9/L",
+          "start": 1431,
+          "end": 1453,
+          "segment_id": "S10"
+        }
+      ],
+      "rationale": "The platelet count is 245 x 10^9/L, above the required minimum of 90 x 10^9/L.",
+      "confidence": "low",
+      "basis": "stated",
+      "patient_value": "245 x 10^9/L",
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 7 days prior to the first dose",
+      "threshold": {
+        "parameter": "platelet count",
+        "comparator": ">=",
+        "value": "90",
+        "unit": "×109/L"
+      },
+      "concepts": [
+        {
+          "original": "Platelets",
+          "normalized": "Platelet count",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 245.0,
+            "value_unit": "x 10^9/L",
+            "comparator": ">=",
+            "threshold": 90.0,
+            "threshold_upper": null,
+            "threshold_unit": "×109/L",
+            "reference_limit": null,
+            "reference_limit_assumed": false,
+            "analyte": "blood_cell_count"
+          },
+          "model_answer": true,
+          "computed": null,
+          "status": "not_checkable",
+          "detail": "No conversion known for blood_cell_count in '109/l' (known: 10^9/l, 10^3/ul, k/ul, /ul, /mm3). Do not convert by hand; treat the comparison as not established.",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": false
+        }
+      ],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": [
+        "calculation_not_checkable"
+      ]
+    },
+    {
+      "criterion_id": "INC-15",
+      "criterion_text": "The patient has not received platelet transfusion or recombinant human thrombopoietin therapy within 7 days before the hematology assessment.",
+      "source_text": "2. Platelets ≥ 90×109/L (there is no platelet transfusion or recombinant human thrombopoietin therapy within 7 days prior to hematology assessment);",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not state whether platelet transfusion or recombinant human thrombopoietin therapy occurred within the required 7-day window.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether platelet transfusion or recombinant human thrombopoietin therapy occurred within 7 days before the hematology assessment.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 7 days prior to the hematology assessment",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "platelet transfusion",
+          "normalized": "Platelet transfusion",
+          "category": "procedure"
+        },
+        {
+          "original": "recombinant human thrombopoietin therapy",
+          "normalized": "Recombinant human thrombopoietin",
+          "category": "drug"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-16",
+      "criterion_text": "The patient's hemoglobin is at least 90 g/L.",
+      "source_text": "3. Hemoglobin ≥ 90 g/L (there is no red blood cell transfusion/blood transfusion treatment within 14 days prior to hematology assessment);",
+      "type": "inclusion",
+      "verdict": "met",
+      "effect": "supports",
+      "evidence": [
+        {
+          "quote": "Hemoglobin 11.8 g/dL",
+          "start": 1369,
+          "end": 1389,
+          "segment_id": "S10"
+        }
+      ],
+      "rationale": "The hemoglobin is 11.8 g/dL, equivalent to 118 g/L and above the required minimum of 90 g/L.",
+      "confidence": "high",
+      "basis": "stated",
+      "patient_value": "11.8 g/dL",
+      "missing_info": null,
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 7 days prior to the first dose",
+      "threshold": {
+        "parameter": "hemoglobin",
+        "comparator": ">=",
+        "value": "90",
+        "unit": "g/L"
+      },
+      "concepts": [
+        {
+          "original": "Hemoglobin",
+          "normalized": "Hemoglobin",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 11.8,
+            "value_unit": "g/dL",
+            "comparator": ">=",
+            "threshold": 90.0,
+            "threshold_upper": null,
+            "threshold_unit": "g/L",
+            "reference_limit": null,
+            "reference_limit_assumed": false,
+            "analyte": "hemoglobin"
+          },
+          "model_answer": true,
+          "computed": true,
+          "status": "confirmed",
+          "detail": "11.8 g/dL = 118 g/L; 118 >= 90 g/L is true",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": false
+        }
+      ],
+      "model_verdict": "met",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-17",
+      "criterion_text": "The patient has not received red blood cell transfusion or blood transfusion treatment within 14 days before the hematology assessment.",
+      "source_text": "3. Hemoglobin ≥ 90 g/L (there is no red blood cell transfusion/blood transfusion treatment within 14 days prior to hematology assessment);",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not state whether a transfusion occurred within the required 14-day period.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient received a red blood cell transfusion or blood transfusion treatment within 14 days before the hematology assessment.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 14 days prior to the hematology assessment",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "red blood cell transfusion/blood transfusion treatment",
+          "normalized": "Red blood cell transfusion",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-18",
+      "criterion_text": "The patient's serum creatinine is at most 1.5× the upper limit of normal or the patient's creatinine clearance is at least 50 mL/min using the Cockcroft-Gault formula.",
+      "source_text": "2) Renal function: Serum creatinine ≤ 1.5×upper limit of normal (ULN), or creatinine clearance (CrCL) ≥ 50 mL/min (using the Cockcroft-Gault formula);",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Creatinine 0.9 mg/dL.",
+          "start": 1455,
+          "end": 1476,
+          "segment_id": "S10"
+        }
+      ],
+      "rationale": "Creatinine is documented, but the note gives neither the creatinine ULN nor creatinine clearance and does not establish timing before the first dose.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": "0.9 mg/dL",
+      "missing_info": "The laboratory ULN for creatinine or a Cockcroft-Gault creatinine clearance calculation, and confirmation that the result is within 7 days before the first dose.",
+      "established_part": "Serum creatinine documented as 0.9 mg/dL",
+      "answer_source": "medical_record",
+      "time_window": "within 7 days prior to the first dose",
+      "threshold": {
+        "parameter": "renal function",
+        "comparator": "other",
+        "value": "serum creatinine ≤ 1.5×ULN, or CrCL ≥ 50 mL/min",
+        "unit": null
+      },
+      "concepts": [
+        {
+          "original": "Serum creatinine",
+          "normalized": "Serum creatinine",
+          "category": "lab_test"
+        },
+        {
+          "original": "creatinine clearance (CrCL)",
+          "normalized": "Creatinine clearance",
+          "category": "lab_test"
+        },
+        {
+          "original": "Cockcroft-Gault formula",
+          "normalized": "Cockcroft-Gault formula",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-19",
+      "criterion_text": "The patient's total bilirubin is at most 1.5×ULN, or at most 3×ULN if the patient has Gilbert syndrome or liver metastases.",
+      "source_text": "a. Total bilirubin ≤ 1.5×ULN (or ≤ 3×ULN for participants with Gilbert syndrome or metastases to liver);",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "total bilirubin 0.6 mg/dL.",
+          "start": 1501,
+          "end": 1527,
+          "segment_id": "S10"
+        }
+      ],
+      "rationale": "The bilirubin value satisfies the threshold using the assumed typical ULN, but timing relative to the first dose is not provided.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": "0.6 mg/dL",
+      "missing_info": "Confirmation that the laboratory result from 2026-09-15 is within 7 days before the first dose.",
+      "established_part": "Total bilirubin is below 1.5× the assumed typical adult ULN",
+      "answer_source": "medical_record",
+      "time_window": "within 7 days prior to the first dose",
+      "threshold": {
+        "parameter": "total bilirubin",
+        "comparator": "<=",
+        "value": "1.5×ULN (or 3×ULN with Gilbert syndrome or liver metastases)",
+        "unit": "ULN"
+      },
+      "concepts": [
+        {
+          "original": "Total bilirubin",
+          "normalized": "Total bilirubin",
+          "category": "lab_test"
+        },
+        {
+          "original": "Gilbert syndrome",
+          "normalized": "Gilbert syndrome",
+          "category": "condition"
+        },
+        {
+          "original": "metastases to liver",
+          "normalized": "Liver metastasis",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 0.6,
+            "value_unit": "mg/dL",
+            "comparator": "<=",
+            "threshold": 1.5,
+            "threshold_upper": null,
+            "threshold_unit": "ULN",
+            "reference_limit": 1.2,
+            "reference_limit_assumed": true,
+            "analyte": "bilirubin"
+          },
+          "model_answer": true,
+          "computed": true,
+          "status": "confirmed",
+          "detail": "0.6 <= 1.8 (1.5 x 1.2) ULN is true; the reference limit 1.2 is a typical adult value, not from the note, and the result holds if the lab's limit is 25% lower or higher",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": true
+        }
+      ],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-20",
+      "criterion_text": "The patient's aspartate aminotransferase (AST) is at most 2.5×ULN, or at most 5×ULN if the patient has liver metastases.",
+      "source_text": "b. Aspartate aminotransferase (AST) and alanine aminotransferase (ALT) ≤ 2.5×ULN (or AST and ALT ≤ 5×ULN for participants with metastases to liver);",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The AST value satisfies the threshold using the assumed typical ULN, but timing relative to the first dose is not provided.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": "31 U/L",
+      "missing_info": "Confirmation that the laboratory result from 2026-09-15 is within 7 days before the first dose.",
+      "established_part": "AST is below 2.5× the assumed typical adult ULN",
+      "answer_source": "medical_record",
+      "time_window": "within 7 days prior to the first dose",
+      "threshold": {
+        "parameter": "AST",
+        "comparator": "<=",
+        "value": "2.5×ULN (or 5×ULN with liver metastases)",
+        "unit": "ULN"
+      },
+      "concepts": [
+        {
+          "original": "Aspartate aminotransferase (AST)",
+          "normalized": "Aspartate aminotransferase",
+          "category": "lab_test"
+        },
+        {
+          "original": "metastases to liver",
+          "normalized": "Liver metastasis",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 31.0,
+            "value_unit": "U/L",
+            "comparator": "<=",
+            "threshold": 2.5,
+            "threshold_upper": null,
+            "threshold_unit": "ULN",
+            "reference_limit": 40.0,
+            "reference_limit_assumed": true,
+            "analyte": null
+          },
+          "model_answer": true,
+          "computed": true,
+          "status": "confirmed",
+          "detail": "31 <= 100 (2.5 x 40) ULN is true; the reference limit 40 is a typical adult value, not from the note, and the result holds if the lab's limit is 25% lower or higher",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": true
+        }
+      ],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [
+        "AST 31 U/L."
+      ],
+      "flags": [
+        "quote_not_found_in_note"
+      ]
+    },
+    {
+      "criterion_id": "INC-21",
+      "criterion_text": "The patient's alanine aminotransferase (ALT) is at most 2.5×ULN, or at most 5×ULN if the patient has liver metastases.",
+      "source_text": "b. Aspartate aminotransferase (AST) and alanine aminotransferase (ALT) ≤ 2.5×ULN (or AST and ALT ≤ 5×ULN for participants with metastases to liver);",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The ALT value satisfies the threshold using the assumed typical ULN, but timing relative to the first dose is not provided.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": "28 U/L",
+      "missing_info": "Confirmation that the laboratory result from 2026-09-15 is within 7 days before the first dose.",
+      "established_part": "ALT is below 2.5× the assumed typical adult ULN",
+      "answer_source": "medical_record",
+      "time_window": "within 7 days prior to the first dose",
+      "threshold": {
+        "parameter": "ALT",
+        "comparator": "<=",
+        "value": "2.5×ULN (or 5×ULN with liver metastases)",
+        "unit": "ULN"
+      },
+      "concepts": [
+        {
+          "original": "alanine aminotransferase (ALT)",
+          "normalized": "Alanine aminotransferase",
+          "category": "lab_test"
+        },
+        {
+          "original": "metastases to liver",
+          "normalized": "Liver metastasis",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [
+        {
+          "kind": "threshold",
+          "inputs": {
+            "value": 28.0,
+            "value_unit": "U/L",
+            "comparator": "<=",
+            "threshold": 2.5,
+            "threshold_upper": null,
+            "threshold_unit": "ULN",
+            "reference_limit": 40.0,
+            "reference_limit_assumed": true,
+            "analyte": null
+          },
+          "model_answer": true,
+          "computed": true,
+          "status": "confirmed",
+          "detail": "28 <= 100 (2.5 x 40) ULN is true; the reference limit 40 is a typical adult value, not from the note, and the result holds if the lab's limit is 25% lower or higher",
+          "inputs_not_in_note": [],
+          "assumed_reference_limit": true
+        }
+      ],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [
+        "ALT 28 U/L."
+      ],
+      "flags": [
+        "quote_not_found_in_note"
+      ]
+    },
+    {
+      "criterion_id": "INC-22",
+      "criterion_text": "The patient's international normalized ratio (INR) is at most 1.5.",
+      "source_text": "1. International normalized ratio (INR) ≤ 1.5;",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not provide an INR result.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "The patient's INR value from within 7 days before the first dose.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 7 days prior to the first dose",
+      "threshold": {
+        "parameter": "international normalized ratio (INR)",
+        "comparator": "<=",
+        "value": "1.5",
+        "unit": null
+      },
+      "concepts": [
+        {
+          "original": "International normalized ratio (INR)",
+          "normalized": "International normalized ratio",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "INC-23",
+      "criterion_text": "The patient's activated partial thromboplastin time (APTT) is at most 1.5×ULN.",
+      "source_text": "2. Activated partial thromboplastin time (APTT) ≤ 1.5×ULN;",
+      "type": "inclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not provide an APTT result or its laboratory ULN.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "The patient's APTT value and the laboratory ULN from within 7 days before the first dose.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 7 days prior to the first dose",
+      "threshold": {
+        "parameter": "activated partial thromboplastin time (APTT)",
+        "comparator": "<=",
+        "value": "1.5×ULN",
+        "unit": "ULN"
+      },
+      "concepts": [
+        {
+          "original": "Activated partial thromboplastin time (APTT)",
+          "normalized": "Activated partial thromboplastin time",
+          "category": "lab_test"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-01",
+      "criterion_text": "The patient has a concomitant ALK, ROS1, KRAS, BRAF, RET, MET, NTRK, or HER2 mutation or alteration for which targeted drugs are commercially available, or another mutation, and the investigator judges that the patient will not benefit from this clinical study.",
+      "source_text": "1. Participants with concomitant mutations such as ALK, ROS1, KRAS, BRAF, RET, MET, NTRK, and HER2, for which targeted drugs are commercially available for clinical treatment, who will not benefit from this clinical study as judged by the investigator; or participants with other mutations who will not benefit from this clinical study as judged by the investigator;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "ALK and ROS1 negative.",
+          "start": 612,
+          "end": 634,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "ALK and ROS1 are negative, but the note does not assess all listed alterations or document the investigator's benefit judgment.",
+      "confidence": "high",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Results for KRAS, BRAF, RET, MET, NTRK, HER2, and other relevant mutations or alterations, plus the investigator's judgment about whether the patient would benefit from the study.",
+      "established_part": "ALK and ROS1 are negative",
+      "answer_source": "medical_record",
+      "time_window": null,
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "ALK",
+          "normalized": "ALK alteration",
+          "category": "other"
+        },
+        {
+          "original": "ROS1",
+          "normalized": "ROS1 alteration",
+          "category": "other"
+        },
+        {
+          "original": "KRAS",
+          "normalized": "KRAS mutation",
+          "category": "other"
+        },
+        {
+          "original": "BRAF",
+          "normalized": "BRAF mutation",
+          "category": "other"
+        },
+        {
+          "original": "RET",
+          "normalized": "RET alteration",
+          "category": "other"
+        },
+        {
+          "original": "MET",
+          "normalized": "MET alteration",
+          "category": "other"
+        },
+        {
+          "original": "NTRK",
+          "normalized": "NTRK fusion",
+          "category": "other"
+        },
+        {
+          "original": "HER2",
+          "normalized": "HER2 alteration",
+          "category": "other"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-02",
+      "criterion_text": "The patient has received Chinese patent medicine preparations indicated for treatment of lung cancer.",
+      "source_text": "2. Have received Chinese patent medicine preparations for the treatment of lung cancer as an indication within 2 weeks prior to randomization;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not state whether Chinese patent medicine preparations were received or provide a randomization date.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether the patient received Chinese patent medicine preparations for lung cancer within 2 weeks before randomization, and the randomization date.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "within 2 weeks prior to randomization",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Chinese patent medicine preparations",
+          "normalized": "Chinese patent medicine",
+          "category": "drug"
+        },
+        {
+          "original": "lung cancer",
+          "normalized": "Lung cancer",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-03",
+      "criterion_text": "The patient has received local radiotherapy.",
+      "source_text": "3. Have received local radiotherapy within 2 weeks prior to randomization; have received more than 30% of bone marrow irradiation or extensive radiotherapy within 4 weeks prior to randomization;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence.",
+          "start": 847,
+          "end": 945,
+          "segment_id": "S6"
+        }
+      ],
+      "rationale": "Radiotherapy is documented in 2014, but its timing relative to randomization is not established.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether local radiotherapy occurred within 2 weeks before randomization, and the randomization date.",
+      "established_part": "Prior radiotherapy in 2014 is documented",
+      "answer_source": "medical_record",
+      "time_window": "within 2 weeks prior to randomization",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "local radiotherapy",
+          "normalized": "Radiotherapy",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-04",
+      "criterion_text": "The patient has received irradiation of more than 30% of bone marrow or extensive radiotherapy.",
+      "source_text": "3. Have received local radiotherapy within 2 weeks prior to randomization; have received more than 30% of bone marrow irradiation or extensive radiotherapy within 4 weeks prior to randomization;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence.",
+          "start": 847,
+          "end": 945,
+          "segment_id": "S6"
+        }
+      ],
+      "rationale": "Prior radiation is documented, but the irradiated bone-marrow percentage, extent, and timing relative to randomization are unknown.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether more than 30% of bone marrow was irradiated or extensive radiotherapy occurred within 4 weeks before randomization, including the randomization date and radiation extent.",
+      "established_part": "Prior radiotherapy in 2014 is documented",
+      "answer_source": "medical_record",
+      "time_window": "within 4 weeks prior to randomization",
+      "threshold": {
+        "parameter": "percentage of bone marrow irradiated",
+        "comparator": ">",
+        "value": "30",
+        "unit": "%"
+      },
+      "concepts": [
+        {
+          "original": "bone marrow irradiation",
+          "normalized": "Bone marrow irradiation",
+          "category": "procedure"
+        },
+        {
+          "original": "extensive radiotherapy",
+          "normalized": "Extensive radiotherapy",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-05",
+      "criterion_text": "The patient has pericardial effusion, except for a small amount of pericardial effusion that has been stable for at least 2 weeks before randomization.",
+      "source_text": "4. Presence of pericardial effusion (small amount of pericardial effusion stable for ≥ 2 weeks prior to randomization is allowed);",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [],
+      "rationale": "The note does not address pericardial effusion or its stability.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether pericardial effusion is present and, if small, whether it has been stable for at least 2 weeks before randomization.",
+      "established_part": null,
+      "answer_source": "medical_record",
+      "time_window": "prior to randomization",
+      "threshold": {
+        "parameter": "stability of small pericardial effusion",
+        "comparator": ">=",
+        "value": "2",
+        "unit": "weeks"
+      },
+      "concepts": [
+        {
+          "original": "pericardial effusion",
+          "normalized": "Pericardial effusion",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-06",
+      "criterion_text": "The patient has undergone major surgery or sustained severe traumatic injury within 4 weeks before the first study treatment, or major surgery is anticipated during the study; vascular access placement and aspiration biopsy are exceptions.",
+      "source_text": "5. Major surgery or severe traumatic injury within 4 weeks prior to the first study treatment, or anticipation of major surgery during the study. Some clinical procedures such as vascular access placement and aspiration biopsy are allowed;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Left breast ductal carcinoma in situ treated with lumpectomy and radiation in 2014, no recurrence.",
+          "start": 847,
+          "end": 945,
+          "segment_id": "S6"
+        }
+      ],
+      "rationale": "A remote lumpectomy is documented, but the required peri-treatment timing, severity, and anticipated surgery status are not established.",
+      "confidence": "low",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether any major surgery or severe traumatic injury occurred within 4 weeks before first study treatment, whether major surgery is anticipated during the study, and the first-treatment date.",
+      "established_part": "Lumpectomy and radiation occurred in 2014",
+      "answer_source": "medical_record",
+      "time_window": "within 4 weeks prior to the first study treatment, or during the study",
+      "threshold": null,
+      "concepts": [
+        {
+          "original": "Major surgery",
+          "normalized": "Major surgery",
+          "category": "procedure"
+        },
+        {
+          "original": "severe traumatic injury",
+          "normalized": "Severe traumatic injury",
+          "category": "condition"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    },
+    {
+      "criterion_id": "EXC-07",
+      "criterion_text": "The patient has meningeal metastases, spinal cord compression, or symptomatic and unstable brain metastases, unless curative treatment has been completed, the condition has been stable for at least 2 weeks before randomization, and steroid therapy is not required; patients with asymptomatic brain metastases are excluded only if the investigator assesses that immediate curative treatment is indicated.",
+      "source_text": "6. Participants with meningeal metastases; spinal cord compression; symptomatic and unstable brain metastases, unless the participants have completed curative treatment, are in stable condition for at least 2 weeks prior to randomization and do not require steroid therapy. Participants with asymptomatic brain metastases may be enrolled if the investigator assesses that there is no indication for immediate curative treatment;",
+      "type": "exclusion",
+      "verdict": "unknown",
+      "effect": "unresolved",
+      "evidence": [
+        {
+          "quote": "Brain MRI on 2026-08-14 showed no intracranial metastases.",
+          "start": 502,
+          "end": 560,
+          "segment_id": "S5"
+        }
+      ],
+      "rationale": "The MRI shows no intracranial metastases, but the note does not address meningeal metastases, spinal cord compression, or all specified investigator and treatment conditions.",
+      "confidence": "medium",
+      "basis": "not_applicable",
+      "patient_value": null,
+      "missing_info": "Whether meningeal metastases or spinal cord compression are present, and whether the investigator considers immediate curative treatment indicated; the note does not establish these conditions or the required stability and steroid-treatment details.",
+      "established_part": "No intracranial metastases on brain MRI",
+      "answer_source": "medical_record",
+      "time_window": "at least 2 weeks prior to randomization",
+      "threshold": {
+        "parameter": "stability after curative treatment",
+        "comparator": ">=",
+        "value": "2",
+        "unit": "weeks"
+      },
+      "concepts": [
+        {
+          "original": "meningeal metastases",
+          "normalized": "Meningeal metastasis",
+          "category": "condition"
+        },
+        {
+          "original": "spinal cord compression",
+          "normalized": "Spinal cord compression",
+          "category": "condition"
+        },
+        {
+          "original": "brain metastases",
+          "normalized": "Brain metastasis",
+          "category": "condition"
+        },
+        {
+          "original": "steroid therapy",
+          "normalized": "Corticosteroid",
+          "category": "drug"
+        },
+        {
+          "original": "curative treatment",
+          "normalized": "Curative treatment",
+          "category": "procedure"
+        }
+      ],
+      "source_verified": true,
+      "origin": "criteria_text",
+      "retrieved_segments": [],
+      "checks": [],
+      "model_verdict": "unknown",
+      "downgraded": false,
+      "rejected_quotes": [],
+      "flags": []
+    }
+  ],
+  "summary": {
+    "overall": "needs_more_info",
+    "overall_label": "More information needed",
+    "counts": {
+      "total": 30,
+      "supports": 7,
+      "blocks": 0,
+      "unresolved": 23,
+      "missing_from_record": 21,
+      "confirm_at_screening": 2,
+      "partly_established": 12,
+      "low_confidence": 7,
+      "downgraded": 0
+    },
+    "key_reasons": [
+      {
+        "criterion_id": "INC-02",
+        "text": "Meets inclusion criterion: The patient is 18 years old or older. (The patient is 62 years old, which is at least 18.)"
+      },
+      {
+        "criterion_id": "INC-03",
+        "text": "Meets inclusion criterion: The patient has pathology-report-confirmed non-squamous non-small cell lung cancer by histology or cytology. (The biopsy confirmed lung adenocarcinoma, a non-squamous non-small cell lung cancer histology.)"
+      },
+      {
+        "criterion_id": "INC-09",
+        "text": "Meets inclusion criterion: The patient's ECOG performance status score is 0 or 1. (The documented ECOG performance status is 1, which is within the required range of 0 or 1.)"
+      },
+      {
+        "criterion_id": "INC-16",
+        "text": "Meets inclusion criterion: The patient's hemoglobin is at least 90 g/L. (The hemoglobin is 11.8 g/dL, equivalent to 118 g/L and above the required minimum of 90 g/L.)"
+      },
+      {
+        "criterion_id": "INC-07",
+        "text": "Meets inclusion criterion: The patient has at least one measurable lesion meeting RECIST 1.1 criteria at baseline. (The documented 4.2 cm lung mass is large enough to constitute at least one measurable non-nodal lesion at baseline.)"
+      }
+    ],
+    "follow_up": [
+      {
+        "criterion_id": "INC-11",
+        "text": "Verify low-confidence inclusion determination \"The patient's absolute neutrophil count is at least 1.5×109/L.\": The absolute neutrophil count is 3.4 x 10^9/L, above the required minimum of 1.5 x 10^9/L."
+      },
+      {
+        "criterion_id": "INC-14",
+        "text": "Verify low-confidence inclusion determination \"The patient's platelet count is at least 90×109/L.\": The platelet count is 245 x 10^9/L, above the required minimum of 90 x 10^9/L."
+      },
+      {
+        "criterion_id": "INC-04",
+        "text": "Check inclusion criterion \"The patient's non-squamous non-small cell lung cancer is unresectable and locally advanced or metastatic, staged as IIIB, IIIC, or IV according to the IASLC 8th edition TNM staging criteria.\": Whether the disease is documented as unresectable or not amenable to radical surgery or radiotherapy, and whether staging conforms to IASLC 8th edition criteria. Already established: Metastatic stage IV disease documented."
+      },
+      {
+        "criterion_id": "INC-05",
+        "text": "Check inclusion criterion \"The patient has received no prior systemic anti-tumor therapy for locally advanced or metastatic non-small cell lung cancer, including anti-EGFR targeted therapy, chemotherapy, biotherapy, immunotherapy, or any investigational drug; for recurrent disease after prior surgery with prior adjuvant or neoadjuvant therapy, there was no tumor recurrence or metastasis within 6 months after surgery and randomization is > 6 months after completion of adjuvant or neoadjuvant therapy.\": Whether the locally advanced or metastatic disease is not amenable to radical surgery or radiotherapy; for any recurrent disease after prior surgery, the required recurrence and adjuvant/neoadjuvant therapy timing. Already established: No systemic therapy for lung cancer received."
+      },
+      {
+        "criterion_id": "INC-06",
+        "text": "Check inclusion criterion \"The patient's locally advanced or metastatic non-small cell lung cancer is not amenable to radical surgery or radiotherapy.\": Whether the locally advanced or metastatic lung cancer is not amenable to radical surgery or radiotherapy."
+      },
+      {
+        "criterion_id": "INC-08",
+        "text": "Check inclusion criterion \"The patient's target lesion is radiation-naive or, if previously irradiated, has unequivocal disease progression after radiotherapy; brain metastases are not considered target lesions.\": Whether the target lesion has been irradiated; if so, whether there is unequivocal progression after radiotherapy. Already established: No intracranial metastases documented."
+      },
+      {
+        "criterion_id": "INC-12",
+        "text": "Check inclusion criterion \"The patient has not received treatment with cell growth factors within 7 days before the hematology assessment.\": Whether cell growth factor treatment occurred within 7 days before the hematology assessment."
+      },
+      {
+        "criterion_id": "INC-13",
+        "text": "Check inclusion criterion \"The patient has not received long-acting granulocyte colony-stimulating factor (G-CSF) or pegylated recombinant human granulocyte colony-stimulating factor (PEG-CSF) within 14 days before the hematology assessment.\": Whether long-acting G-CSF or PEG-CSF treatment occurred within 14 days before the hematology assessment."
+      },
+      {
+        "criterion_id": "INC-15",
+        "text": "Check inclusion criterion \"The patient has not received platelet transfusion or recombinant human thrombopoietin therapy within 7 days before the hematology assessment.\": Whether platelet transfusion or recombinant human thrombopoietin therapy occurred within 7 days before the hematology assessment."
+      },
+      {
+        "criterion_id": "INC-17",
+        "text": "Check inclusion criterion \"The patient has not received red blood cell transfusion or blood transfusion treatment within 14 days before the hematology assessment.\": Whether the patient received a red blood cell transfusion or blood transfusion treatment within 14 days before the hematology assessment."
+      },
+      {
+        "criterion_id": "INC-18",
+        "text": "Check inclusion criterion \"The patient's serum creatinine is at most 1.5× the upper limit of normal or the patient's creatinine clearance is at least 50 mL/min using the Cockcroft-Gault formula.\": The laboratory ULN for creatinine or a Cockcroft-Gault creatinine clearance calculation, and confirmation that the result is within 7 days before the first dose. Already established: Serum creatinine documented as 0.9 mg/dL."
+      },
+      {
+        "criterion_id": "INC-19",
+        "text": "Check inclusion criterion \"The patient's total bilirubin is at most 1.5×ULN, or at most 3×ULN if the patient has Gilbert syndrome or liver metastases.\": Confirmation that the laboratory result from 2026-09-15 is within 7 days before the first dose. Already established: Total bilirubin is below 1.5× the assumed typical adult ULN."
+      },
+      {
+        "criterion_id": "INC-20",
+        "text": "Check inclusion criterion \"The patient's aspartate aminotransferase (AST) is at most 2.5×ULN, or at most 5×ULN if the patient has liver metastases.\": Confirmation that the laboratory result from 2026-09-15 is within 7 days before the first dose. Already established: AST is below 2.5× the assumed typical adult ULN."
+      },
+      {
+        "criterion_id": "INC-21",
+        "text": "Check inclusion criterion \"The patient's alanine aminotransferase (ALT) is at most 2.5×ULN, or at most 5×ULN if the patient has liver metastases.\": Confirmation that the laboratory result from 2026-09-15 is within 7 days before the first dose. Already established: ALT is below 2.5× the assumed typical adult ULN."
+      },
+      {
+        "criterion_id": "INC-22",
+        "text": "Check inclusion criterion \"The patient's international normalized ratio (INR) is at most 1.5.\": The patient's INR value from within 7 days before the first dose."
+      },
+      {
+        "criterion_id": "INC-23",
+        "text": "Check inclusion criterion \"The patient's activated partial thromboplastin time (APTT) is at most 1.5×ULN.\": The patient's APTT value and the laboratory ULN from within 7 days before the first dose."
+      },
+      {
+        "criterion_id": "EXC-01",
+        "text": "Check exclusion criterion \"The patient has a concomitant ALK, ROS1, KRAS, BRAF, RET, MET, NTRK, or HER2 mutation or alteration for which targeted drugs are commercially available, or another mutation, and the investigator judges that the patient will not benefit from this clinical study.\": Results for KRAS, BRAF, RET, MET, NTRK, HER2, and other relevant mutations or alterations, plus the investigator's judgment about whether the patient would benefit from the study. Already established: ALK and ROS1 are negative."
+      },
+      {
+        "criterion_id": "EXC-02",
+        "text": "Check exclusion criterion \"The patient has received Chinese patent medicine preparations indicated for treatment of lung cancer.\": Whether the patient received Chinese patent medicine preparations for lung cancer within 2 weeks before randomization, and the randomization date."
+      },
+      {
+        "criterion_id": "EXC-03",
+        "text": "Check exclusion criterion \"The patient has received local radiotherapy.\": Whether local radiotherapy occurred within 2 weeks before randomization, and the randomization date. Already established: Prior radiotherapy in 2014 is documented."
+      },
+      {
+        "criterion_id": "EXC-04",
+        "text": "Check exclusion criterion \"The patient has received irradiation of more than 30% of bone marrow or extensive radiotherapy.\": Whether more than 30% of bone marrow was irradiated or extensive radiotherapy occurred within 4 weeks before randomization, including the randomization date and radiation extent. Already established: Prior radiotherapy in 2014 is documented."
+      },
+      {
+        "criterion_id": "EXC-05",
+        "text": "Check exclusion criterion \"The patient has pericardial effusion, except for a small amount of pericardial effusion that has been stable for at least 2 weeks before randomization.\": Whether pericardial effusion is present and, if small, whether it has been stable for at least 2 weeks before randomization."
+      },
+      {
+        "criterion_id": "EXC-06",
+        "text": "Check exclusion criterion \"The patient has undergone major surgery or sustained severe traumatic injury within 4 weeks before the first study treatment, or major surgery is anticipated during the study; vascular access placement and aspiration biopsy are exceptions.\": Whether any major surgery or severe traumatic injury occurred within 4 weeks before first study treatment, whether major surgery is anticipated during the study, and the first-treatment date. Already established: Lumpectomy and radiation occurred in 2014."
+      },
+      {
+        "criterion_id": "EXC-07",
+        "text": "Check exclusion criterion \"The patient has meningeal metastases, spinal cord compression, or symptomatic and unstable brain metastases, unless curative treatment has been completed, the condition has been stable for at least 2 weeks before randomization, and steroid therapy is not required; patients with asymptomatic brain metastases are excluded only if the investigator assesses that immediate curative treatment is indicated.\": Whether meningeal metastases or spinal cord compression are present, and whether the investigator considers immediate curative treatment indicated; the note does not establish these conditions or the required stability and steroid-treatment details. Already established: No intracranial metastases on brain MRI."
+      }
+    ],
+    "confirm_at_screening": [
+      {
+        "criterion_id": "INC-01",
+        "text": "Confirm at screening \"The patient is able to understand and voluntarily sign the written informed consent form (ICF).\": Whether the patient can understand and voluntarily sign the written informed consent form."
+      },
+      {
+        "criterion_id": "INC-10",
+        "text": "Confirm at screening \"The patient's expected survival is at least 3 months.\": Expected survival or clinician-estimated life expectancy."
+      }
+    ],
+    "disclaimer": "Screening aid only. This tool does not make enrollment decisions; every determination must be reviewed and confirmed by a physician."
+  },
+  "citation_stats": {
+    "quotes_total": 19,
+    "quotes_verified": 17,
+    "judgments_needing_evidence": 7,
+    "judgments_downgraded": 0
+  },
+  "tool_calls": []
+}
