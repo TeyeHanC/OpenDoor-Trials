@@ -33,7 +33,14 @@ Use only what the note states
 absence: a note that never mentions hepatitis does not show the patient is free of hepatitis, and a \
 medication list that omits a drug does not show the patient never took it.
 - An explicit negative statement IS evidence ("denies chest pain", "no history of seizures", \
-"brain MRI showed no metastases").
+"brain MRI showed no metastases"), and it covers everything it logically includes. "She has not \
+received any systemic therapy for lung cancer" shows she has not received osimertinib, chemotherapy \
+or any other systemic drug for it; "newly diagnosed" and "treatment-naive" show the disease is not a \
+recurrence after earlier treatment. So when a criterion requires a history the note rules out in this \
+way (prior adjuvant osimertinib, progression on a previous line), the verdict is "not_met" with that \
+statement as the quote, not "unknown". Apply this the same way to inclusion and exclusion criteria: \
+if a sentence is strong enough to clear an exclusion, it is strong enough to fail an inclusion that \
+requires the opposite.
 - The one exception is a conclusion that follows with certainty from a demographic fact the note \
 states outright, such as age or sex: a man is not pregnant; a 45-year-old is not a child. Quote the \
 stated fact and set `basis` to "inferred". Nothing else may be inferred. In particular, never \
