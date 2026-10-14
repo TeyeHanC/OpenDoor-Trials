@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Trial eligibility screening</title>
+  <title>OpenDoor Trials</title>
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
   <header class="topbar">
-    <h1>Trial eligibility screening</h1>
+    <h1><a href="/" id="home-link">OpenDoor Trials</a></h1>
     <label class="field">Saved run
       <select id="run-select"><option value="">Select a run</option></select>
     </label>
@@ -28,7 +28,29 @@
 
   <p id="status" class="status" role="status" hidden></p>
 
+  <section id="home" class="home">
+    <h2>Find trials for a patient</h2>
+    <p class="muted">
+      Choose a patient note and a pool of trials. Every trial is checked criterion by criterion against the note and
+      the trials are listed best match first. Open a trial to see each criterion with its evidence in the note.
+    </p>
+    <form id="screen-form" class="screen-form">
+      <label class="field">Patient
+        <select id="screen-patient" required></select>
+      </label>
+      <label class="field">Trial pool
+        <select id="screen-pool" required></select>
+      </label>
+      <button type="submit" id="screen-button" class="primary">Find trials</button>
+    </form>
+    <p id="pool-description" class="muted"></p>
+    <p id="screen-status" class="status" role="status" hidden></p>
+    <ol id="screen-rows" class="screen-rows"></ol>
+    <p class="disclaimer">A ranking for review, not an enrollment decision. Every determination must be confirmed by a physician.</p>
+  </section>
+
   <section id="summary" class="summary" hidden>
+    <button type="button" id="back-home" class="back">&larr; Trial list</button>
     <div class="summary-head">
       <div>
         <div class="summary-context" id="summary-context"></div>
@@ -81,10 +103,6 @@
       <ol id="criteria" class="criteria"></ol>
     </section>
   </main>
-
-  <p id="empty" class="empty">
-    Select a saved run, or pick a patient and enter an NCT number to run a new match.
-  </p>
 
   <script src="/static/app.js"></script>
 </body>

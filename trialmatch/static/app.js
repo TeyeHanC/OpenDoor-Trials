@@ -381,7 +381,7 @@ async function loadRun(runId) {
     setStatus(`Could not load ${runId}: ${error.message}`, true);
     return;
   }
-  $("empty").hidden = true;
+  $("home").hidden = true;
   $("summary").hidden = false;
   $("workspace").hidden = false;
   $("note-source").textContent = state.run.patient.source + (state.run.patient.note_date ? `  ·  note dated ${state.run.patient.note_date}` : "");
@@ -389,6 +389,94 @@ async function loadRun(runId) {
   history.replaceState(null, "", `?run=${encodeURIComponent(runId)}`);
   renderAll();
   $("note").scrollTop = 0;
+}
+
+// ---- home: ranked trials for one patient ----
+
+let screenTimer = null;
+
+function showHome() {
+  $("summary").hidden = true;
+  $("workspace").hidden = true;
+  $("home").hidden = false;
+  $("run-select").value = "";
+  history.replaceState(null, "", location.pathname);
+  loadScreen();
+}
+
+function statusNote(status) {
+  return status && status !== "RECRUITING" ? `Registry status: ${status.replaceAll("_", " ").toLowerCase()}` : "";
+}
+
+function renderScreenRow(row) {
+  const head = el("div", { class: "screen-head" },
+    el("span", { class: "rank", text: row.rank ? String(row.rank) : "–" }),
+    el("a", { href: `https://clinicaltrials.gov/study/${row.nct_id}`, target: "_blank", rel: "noopener", text: row.nct_id }),
+    row.overall
+      ? el("span", { class: "overall small", "data-overall": row.overall, text: row.overall_label })
+      : el("span", { class: "badge warn", text: "Could not be assessed" }),
+    statusNote(row.status) ? el("span", { class: "badge low", text: statusNote(row.status) }) : null);
+  const item = el("li", { class: "screen-row" }, head,
+    el("div", { class: "screen-title", text: row.title }),
+    el("div", { class: "screen-headline", text: row.overall ? row.headline : row.error }));
+  if (row.run_id) {
+    item.append(el("button", { type: "button", text: "Open criteria and evidence", onclick: () => loadRun(row.run_id) }));
+  }
+  return item;
+}
+
+async function loadScreen() {
+  clearTimeout(screenTimer);
+  const patient = $("screen-patient").value;
+  const pool = $("screen-pool").value;
+  if (!patient || !pool) return;
+  const status = $("screen-status");
+  let data;
+  try {
+    data = await api(`/api/screens?patient_id=${encodeURIComponent(patient)}&pool_id=${encodeURIComponent(pool)}`);
+  } catch (error) {
+    status.hidden = false;
+    status.textContent = `Could not load the trial list: ${error.message}`;
+    return;
+  }
+  // The selection may have changed while the request was in flight.
+  if (patient !== $("screen-patient").value || pool !== $("screen-pool").value) return;
+
+  $("screen-rows").replaceChildren(...data.rows.map(renderScreenRow));
+  $("screen-button").disabled = data.state === "running";
+  $("screen-button").textContent = data.state === "done" ? "Run again" : "Find trials";
+  const messages = {
+    none: "No trials have been checked for this patient yet. Checking a pool calls the model for every trial and takes several minutes per trial.",
+    running: `Checking trials: ${data.done} of ${data.total} done. This page updates as each one finishes.`,
+    failed: `The check stopped: ${data.error}`,
+    done: `${data.rows.filter((r) => r.overall).length} of ${data.rows.length} trials assessed with ${data.model}, ${String(data.created_at).slice(0, 10)}.`,
+  };
+  status.hidden = false;
+  status.textContent = messages[data.state];
+  status.classList.toggle("error", data.state === "failed");
+  if (data.state === "running") screenTimer = setTimeout(loadScreen, 5000);
+}
+
+async function startScreen(rerun) {
+  const status = $("screen-status");
+  try {
+    await api("/api/screens", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ patient_id: $("screen-patient").value, pool_id: $("screen-pool").value, rerun }),
+    });
+  } catch (error) {
+    status.hidden = false;
+    status.classList.add("error");
+    status.textContent = `The check did not start: ${error.message}`;
+    return;
+  }
+  await loadScreen();
+}
+
+function describePool(pools) {
+  const pool = pools.find((p) => p.id === $("screen-pool").value);
+  $("pool-description").textContent = pool ? pool.description : "";
 }
 
 async function refreshRuns() {
@@ -427,14 +515,28 @@ async function init() {
     }
   });
 
+  $("back-home").addEventListener("click", showHome);
+  $("home-link").addEventListener("click", (event) => { event.preventDefault(); showHome(); });
+  $("screen-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    // "Run again" replaces saved matches; the first run reuses any that already exist.
+    startScreen($("screen-button").textContent === "Run again");
+  });
+
   try {
-    const [patients, runs] = await Promise.all([api("/api/patients"), refreshRuns()]);
+    const [patients, runs, pools] = await Promise.all([api("/api/patients"), refreshRuns(), api("/api/pools")]);
     $("patient-select").replaceChildren(...patients.map((p) => el("option", { value: p.id, text: p.label })));
+    $("screen-patient").replaceChildren(...patients.map((p) => el("option", { value: p.id, text: p.label })));
+    $("screen-pool").replaceChildren(...pools.map((p) => el("option", { value: p.id, text: p.title })));
+    describePool(pools);
+    $("screen-patient").addEventListener("change", loadScreen);
+    $("screen-pool").addEventListener("change", () => { describePool(pools); loadScreen(); });
     // Deep links: ?run=<id> opens a run, &criterion=<id> also selects one criterion.
     const params = new URLSearchParams(location.search);
     const criterion = params.get("criterion");
+    // Without a deep link the page opens on the trial list, not on a single match.
     if (params.get("run")) await loadRun(params.get("run"));
-    else if (runs.length) await loadRun(runs[0].run_id);
+    else await loadScreen();
     if (criterion && state.run?.criteria.some((c) => c.criterion_id === criterion)) jumpTo(criterion);
   } catch (error) {
     setStatus(`Could not reach the server: ${error.message}`, true);

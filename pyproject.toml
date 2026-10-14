@@ -25,7 +25,7 @@ trialmatch = "trialmatch.cli:main"
 include = ["trialmatch*"]
 
 [tool.setuptools.package-data]
-trialmatch = ["static/*", "samples/*"]
+trialmatch = ["static/*", "samples/*", "pools/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

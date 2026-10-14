@@ -1,0 +1,48 @@
+{
+  "id": "lung-cancer-demo",
+  "title": "Lung cancer demo pool (8 trials)",
+  "description": "A fixed set of non-small cell lung cancer trials from ClinicalTrials.gov, chosen by hand for demonstrations: first-line EGFR-mutant trials alongside trials for other mutations or for patients already treated, so a ranking has something to separate. Not a complete or current list of open trials.",
+  "selected_on": "2026-10-13",
+  "trials": [
+    {
+      "nct_id": "NCT04035486",
+      "title": "A Study of Osimertinib With or Without Chemotherapy as 1st Line Treatment in Patients With Mutated Epidermal Growth Factor Receptor Non-Small Cell Lung Cancer (FLAURA2)",
+      "status_when_selected": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "nct_id": "NCT06735391",
+      "title": "A Clinical Study of JMT101 in Combination With Osimertinib Versus Osimertinib Alone as First-Line Treatment for Patients With Locally Advanced or Metastatic Non-Squamous Non-Small Cell Lung Cancer (NSCLC) Harboring Epidermal Growth Factor Receptor (EGFR) Sensitive Mutations",
+      "status_when_selected": "RECRUITING"
+    },
+    {
+      "nct_id": "NCT04181060",
+      "title": "Osimertinib With or Without Bevacizumab as Initial Treatment for Patients With EGFR-Mutant Lung Cancer",
+      "status_when_selected": "RECRUITING"
+    },
+    {
+      "nct_id": "NCT06970639",
+      "title": "A Study Evaluating Furmonertinib Plus Platinum-based Doublet Chemotherapy Versus Osimertinib in Patients With Epidermal Growth Factor Receptor (EGFR) Sensitizing Mutation-Positive Non-squamous Non-Small Cell Lung Cancer (NSCLC) and Brain Metastases",
+      "status_when_selected": "RECRUITING"
+    },
+    {
+      "nct_id": "NCT07279935",
+      "title": "Osimertinib Combined With Chemotherapy in Patients Who Had Distant Recurrence After Adjuvant Osimertinib for EGFRm Resectable SIB-IIIA NSCLC.",
+      "status_when_selected": "RECRUITING"
+    },
+    {
+      "nct_id": "NCT05281406",
+      "title": "Additional Chemotherapy for EGFRm Patients with the Continued Presence of Plasma CtDNA EGFRm At Week 3 After Start of Osimertinib 1st-line Treatment (PACE-LUNG)",
+      "status_when_selected": "RECRUITING"
+    },
+    {
+      "nct_id": "NCT07198841",
+      "title": "IBI351 Plus Cetuximab β in Untreated Advanced Non-small Cell Lung Cancer With KRAS G12C Mutation",
+      "status_when_selected": "RECRUITING"
+    },
+    {
+      "nct_id": "NCT06487078",
+      "title": "Analysis of the Effectiveness and Safety of Lorlatinib in Untreated ALK-Positive NSCLC Patients in a French Real-World Context",
+      "status_when_selected": "RECRUITING"
+    }
+  ]
+}

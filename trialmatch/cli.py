@@ -134,6 +134,31 @@ def cmd_check_model(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_screen(args: argparse.Namespace) -> int:
+    from .llm import make_llm
+    from .patients import load_patient
+    from .screen import format_screen, list_pools, load_pool, save_screen, screen_patient
+
+    if args.list_pools:
+        for pool in list_pools():
+            print(f"{pool.id}  {pool.title}\n    {pool.description}")
+        return 0
+    if not args.patient:
+        raise ValueError("--patient is required (or use --list-pools)")
+    settings = get_settings()
+    patient = load_patient(args.patient, settings)
+    pool = load_pool(args.pool)
+    print(f"Screening {patient.id} against {len(pool.trials)} trials in {pool.id}; saved matches are reused", file=sys.stderr)
+    result = screen_patient(
+        patient, pool, settings, make_llm(settings), rerun=args.rerun, workers=args.workers,
+        on_row=lambda row: print(f"  {row.nct_id}: {row.overall_label or row.error}", file=sys.stderr),
+    )
+    path = save_screen(settings, result)
+    print("\n" + format_screen(result))
+    print(f"\nSaved to {path}\nOpen the list in the browser: python -m trialmatch serve")
+    return 0
+
+
 def cmd_find_trials(args: argparse.Namespace) -> int:
     from .find import find_trials, format_find_result, save_find_result
     from .llm import make_llm
@@ -222,6 +247,14 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("check-model", help="Send two tiny requests to check the configured model and endpoint")
     p.set_defaults(func=cmd_check_model)
 
+    p = sub.add_parser("screen", help="Rank the trials in a pool for one patient")
+    p.add_argument("--patient", help="sample-nsclc, trec2021-1, ...")
+    p.add_argument("--pool", default="lung-cancer-demo", help="Trial pool id (see --list-pools)")
+    p.add_argument("--workers", type=int, default=2, help="Trials matched concurrently")
+    p.add_argument("--rerun", action="store_true", help="Ignore saved matches and call the model again for every trial")
+    p.add_argument("--list-pools", action="store_true", help="Show the available trial pools and exit")
+    p.set_defaults(func=cmd_screen)
+
     p = sub.add_parser("find-trials", help="Search ClinicalTrials.gov for trials a patient might qualify for")
     p.add_argument("--patient", required=True, help="sample-nsclc, trec2021-1, ...")
     p.add_argument("--max", type=int, default=5, help="Maximum number of trials to shortlist")
@@ -267,11 +300,12 @@ def main(argv: list[str] | None = None) -> int:
     from .ctgov import TrialNotFound
     from .llm import LLMError
     from .patients import PatientNotFound
+    from .screen import PoolNotFound
 
     args = build_parser().parse_args(argv)
     try:
         return args.func(args)
-    except (LLMError, PatientNotFound, TrialNotFound, FileNotFoundError, ValueError) as exc:
+    except (LLMError, PatientNotFound, TrialNotFound, PoolNotFound, FileNotFoundError, ValueError) as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 2
 

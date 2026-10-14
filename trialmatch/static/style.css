@@ -62,7 +62,6 @@ select, input, textarea { border: 1px solid var(--border); border-radius: 6px; p
 
 .status { margin: 0; padding: 8px 16px; background: #e8f0fc; border-bottom: 1px solid var(--border); }
 .status.error { background: var(--blocks-bg); color: var(--blocks); }
-.empty { margin: 80px auto; color: var(--muted); text-align: center; max-width: 420px; }
 
 /* ---------- summary ---------- */
 .summary {
@@ -179,3 +178,17 @@ select, input, textarea { border: 1px solid var(--border); border-radius: 6px; p
   .new-run { border-left: 0; padding-left: 0; }
   .reviewer { margin-left: 0; }
 }
+
+/* ---- home: ranked trials for one patient ---- */
+.topbar h1 a { color: inherit; text-decoration: none; }
+.home { max-width: 860px; margin: 24px auto; padding: 0 16px; }
+.home h2 { margin: 0 0 6px; font-size: 18px; text-transform: none; letter-spacing: 0; color: inherit; }
+.screen-form { display: flex; gap: 12px; align-items: end; flex-wrap: wrap; margin: 16px 0 8px; }
+.screen-rows { list-style: none; padding: 0; margin: 16px 0; display: grid; gap: 10px; }
+.screen-row { border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; background: #fff; }
+.screen-head { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.screen-head .rank { font-weight: 700; min-width: 1.4em; }
+.screen-title { margin: 6px 0 2px; font-weight: 600; }
+.screen-headline { color: var(--muted); margin-bottom: 8px; }
+.overall.small { font-size: 0.9rem; padding: 2px 8px; }
+.back { margin-bottom: 8px; }
