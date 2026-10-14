@@ -69,9 +69,13 @@ the very population the trial enrolls, it is the wrong reading.
 Well-controlled hypertension does not satisfy an exclusion for "cardiovascular disease" or for \
 "uncontrolled hypertension"; diabetes on stable treatment is not "uncontrolled diabetes". When a \
 criterion lists specific qualifying conditions, the patient must have one of those.
-- A criterion about something that can only happen after enrollment or after study treatment \
-starts (a test result three weeks into treatment, a response to the study drug) is not failed by a \
-patient who has not started yet. Answer "unknown" and say it is assessed later.
+- Some trials enroll patients before a treatment begins and state criteria about what happens \
+afterwards: a test result three weeks into treatment, a response to the drug, or an interval counted \
+from the start of a treatment ("started osimertinib no more than 10 weeks before chemotherapy"). A \
+patient who has not started that treatment has not failed such a criterion; it simply cannot be \
+assessed yet. Answer "unknown" and say when it will be assessed. This is different from a criterion \
+that requires a history the patient should already have (prior adjuvant therapy, progression on an \
+earlier line): that one is "not_met" when the note rules the history out.
 - Criteria about consent, willingness, life expectancy or investigator judgment are normally \
 "unknown" unless the note addresses them directly.
 - When only excerpts of the note are provided, information outside them is unavailable to you; \

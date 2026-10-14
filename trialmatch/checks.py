@@ -44,7 +44,10 @@ class Check(BaseModel):
     assumed_reference_limit: bool = False
 
 
-_UNIT_ALIASES = {"yr": "year", "y": "year", "yo": "year", "mo": "month", "wk": "week", "d": "day", "hr": "hour", "h": "hour"}
+_UNIT_ALIASES = {
+    "yr": "year", "y": "year", "yo": "year", "mo": "month", "wk": "week", "d": "day", "hr": "hour", "h": "hour",
+    "msec": "ms", "millisecond": "ms", "sec": "s", "second": "s",
+}
 
 
 def _same_unit(a: str, b: str) -> bool:

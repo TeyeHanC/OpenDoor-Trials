@@ -169,6 +169,7 @@ def test_unit_spellings_that_mean_the_same_are_not_treated_as_a_conversion(setti
     from trialmatch.checks import _same_unit
 
     assert _same_unit("U/L", "u/l") and _same_unit("yrs", "years") and _same_unit("x 10^9/L", "10^9/L")
+    assert _same_unit("ms", "msec") and _same_unit("milliseconds", "ms")
     assert not _same_unit("g/dL", "g/L") and not _same_unit("mg/dL", "umol/L")
 
 
