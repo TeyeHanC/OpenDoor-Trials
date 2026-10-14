@@ -31,7 +31,7 @@ def _follow_up_text(c: CriterionResult) -> str:
     kind = "inclusion" if c.type == "inclusion" else "exclusion"
     if c.verdict == "unknown":
         detail = c.missing_info or "Not documented in the note."
-        covered = f" Already established: {c.established_part}." if c.established_part else ""
+        covered = f" Already established: {c.established_part.rstrip('.')}." if c.established_part else ""
         lead = "Confirm at screening" if c.answer_source == "screening_visit" else f"Check {kind} criterion"
         return f"{lead} \"{c.criterion_text}\": {detail}{covered}"
     return f"Verify low-confidence {kind} determination \"{c.criterion_text}\": {c.rationale}"
