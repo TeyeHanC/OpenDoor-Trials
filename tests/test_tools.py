@@ -690,3 +690,12 @@ def test_limit_written_into_both_fields_is_read_once():
     done = run_threshold_check(platelets, "platelets 245 x 10^9/L")
     assert done.status == "confirmed" and done.computed is False and done.detail.startswith("245 < 150 (1 x 150) x 10^9/L is false")
     assert done.inputs["threshold"] == 1.0
+
+
+def test_judge_is_told_what_the_trial_is_for(settings, patient, trial):
+    llm = FakeLLM(GOOD)
+    run_match(patient, trial.model_copy(update={"conditions": ["EGFR-mutant NSCLC"]}), settings, llm)
+    judging = [c for c in llm.calls if c["schema"] is LLMJudgmentBatch][0]
+    criteria_block = judging["user_blocks"][-1]
+    assert criteria_block.startswith("Trial: NCT00000000 - Test trial\nConditions studied: EGFR-mutant NSCLC\n\nCriteria to judge:")
+    assert "Trial:" not in judging["user_blocks"][0]  # the note block stays identical across trials

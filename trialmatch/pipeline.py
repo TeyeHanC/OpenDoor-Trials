@@ -80,7 +80,7 @@ def run_match(
             wanted = {r.segment_id for c in batch for r in retrieved[c.id]}
             batch_segments = [s for s in segments if s.id in wanted]
         trace: list[dict] = []
-        judgments = judge_batch(patient, batch_segments, batch, llm, complete=complete, tools=tools, trace=trace)
+        judgments = judge_batch(patient, batch_segments, batch, llm, complete=complete, tools=tools, trace=trace, trial=trial)
         calls = [ToolCall(criterion_ids=[c.id for c in batch], **call) for call in trace]
         results = []
         for criterion in batch:

@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 
 from .llm import LLMRefusal, StructuredLLM
-from .models import AtomicCriterion, LLMJudgment, LLMJudgmentBatch, Patient, Segment
+from .models import AtomicCriterion, LLMJudgment, LLMJudgmentBatch, Patient, Segment, Trial
 from .tools import Tool
 
 SYSTEM_PROMPT = """\
@@ -60,6 +60,18 @@ outside that subgroup, the criterion places no requirement on them and cannot ke
 them outside the subgroup, set `basis` to "inferred" and say in the rationale that the criterion does \
 not apply. Answering "not_met" to such an inclusion criterion would wrongly rule out every man from \
 a trial that has a rule for women.
+- Read each criterion as the trial's authors meant it, using the trial's title and the conditions \
+it studies. A trial for patients with an EGFR mutation cannot be excluding patients for having that \
+mutation: an exclusion such as "other driver alterations with an approved targeted therapy" refers \
+to alterations other than the one the trial is about. If a reading of an exclusion would shut out \
+the very population the trial enrolls, it is the wrong reading.
+- A risk factor is not the disease, and a controlled condition is not an uncontrolled one. \
+Well-controlled hypertension does not satisfy an exclusion for "cardiovascular disease" or for \
+"uncontrolled hypertension"; diabetes on stable treatment is not "uncontrolled diabetes". When a \
+criterion lists specific qualifying conditions, the patient must have one of those.
+- A criterion about something that can only happen after enrollment or after study treatment \
+starts (a test result three weeks into treatment, a response to the study drug) is not failed by a \
+patient who has not started yet. Answer "unknown" and say it is assessed later.
 - Criteria about consent, willingness, life expectancy or investigator judgment are normally \
 "unknown" unless the note addresses them directly.
 - When only excerpts of the note are provided, information outside them is unavailable to you; \
@@ -166,7 +178,14 @@ def render_note(patient: Patient, segments: list[Segment], *, complete: bool, se
     return "\n".join(header) + f"\n\n<note>\n{body}\n</note>"
 
 
-def render_criteria(criteria: list[AtomicCriterion]) -> str:
+def render_criteria(criteria: list[AtomicCriterion], trial: Trial | None = None) -> str:
+    context = ""
+    if trial is not None:
+        # What the trial is for, so a criterion is read as its authors meant it.
+        context = (
+            f"Trial: {trial.nct_id} - {trial.title}\n"
+            f"Conditions studied: {', '.join(trial.conditions) or 'not listed'}\n\n"
+        )
     items = []
     for c in criteria:
         item = {"criterion_id": c.id, "type": c.type, "criterion": c.text}
@@ -177,7 +196,7 @@ def render_criteria(criteria: list[AtomicCriterion]) -> str:
         if c.threshold:
             item["threshold"] = c.threshold.model_dump(exclude_none=True)
         items.append(item)
-    return "Criteria to judge:\n" + json.dumps(items, indent=2, ensure_ascii=False)
+    return context + "Criteria to judge:\n" + json.dumps(items, indent=2, ensure_ascii=False)
 
 
 def judge_batch(
@@ -189,6 +208,7 @@ def judge_batch(
     complete: bool,
     tools: list[Tool] | None = None,
     trace: list[dict] | None = None,
+    trial: Trial | None = None,
 ) -> dict[str, LLMJudgment] | None:
     """Judgments keyed by criterion id; None when the model declined the batch.
 
@@ -201,7 +221,7 @@ def judge_batch(
             system=system_prompt(tools),
             user_blocks=[
                 render_note(patient, segments, complete=complete, searchable=searchable),
-                render_criteria(criteria),
+                render_criteria(criteria, trial),
             ],
             schema=LLMJudgmentBatch,
             tools=tools,
